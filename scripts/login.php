@@ -1,5 +1,5 @@
 <?php
-require_once('newpamo_config.php');
+require_once('/SysDev/CoreGroup/admin/config.php');
 if (isset($_SESSION['id'])) {
     if($_SESSION['role']=='client' || $_SESSION['role']=='receptionist'){
         header("location: /helpdesk.php");
