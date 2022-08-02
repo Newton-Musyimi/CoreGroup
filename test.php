@@ -1,19 +1,19 @@
 <?php
-require_once "Role.php";
-require_once "PrivilegedUser.php";
+require_once ("Role.php");
+require_once ("PrivilegedUser.php");
 
 // connect to database...
-// ...
+// ..."g19m80452022"
 require_once('/SysDev/CoreGroup/security/admin/config.php');
 $conn = get_db();
 $GLOBALS["DB"] = $conn;
 session_start();
 
 if (isset($_SESSION["logged_in"])) {
-    $u = PrivilegedUser::getByUsername($_SESSION["loggedin"]);
+    $user_id = PrivilegedUser::getByUsername($_SESSION["loggedin"]);
 }
 
-if ($u->hasPrivilege("thisPermission")) {
+if ($user_id->hasPrivilege("thisPermission")) {
     // do something
 }
 ?>
@@ -38,11 +38,6 @@ if ($u->hasPrivilege("thisPermission")) {
             <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
         </div>
     </footer>
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="/assets/js/logout.js"></script>
-    <script src="/assets/js/theme.js"></script>
 </body>
 
 </html>

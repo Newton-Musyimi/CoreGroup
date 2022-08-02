@@ -18,7 +18,18 @@ require_once("security/admin/config.php");
 
 <body id="page-top">
     <header>
+    <a href="scripts/logout.php">Log out</a>
+    <?php
+        if(isset($_SESSION['logged_in'])){
+            $role = $_SESSION['role'];
+            getHeader($role);
+        }else{
+            echo "<h1>Header</h1>";
+            var_dump($_SESSION);
+        }
+        ?>
     </header>
+    
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>

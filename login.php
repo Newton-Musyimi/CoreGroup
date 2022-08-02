@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once("security/admin/config.php");
 //require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
@@ -19,6 +18,13 @@ require_once("security/admin/config.php");
 <body id="page-top">
     <header>
     </header>
+    <form action="scripts/login.php" method="POST">
+        <label for="username">USERNAME: </label></br>
+        <input type="text" id="username" name="username"></br>
+        <label for="password">PASSWORD: </label></br>
+        <input type="password" id="password" name="password"></br></br>
+        <input type="submit" value="LOG IN">
+    </form>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
