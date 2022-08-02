@@ -1,1 +1,5 @@
-security/
+security/admin/config.php
+
+security/Role
+
+security/PrivilegedUser.php
