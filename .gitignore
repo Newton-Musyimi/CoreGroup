@@ -1,5 +1,5 @@
 security/admin/config.php
 
-security/Role
+security/Role.php
 
 security/PrivilegedUser.php
