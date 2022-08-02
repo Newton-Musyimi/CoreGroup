@@ -1,5 +1,5 @@
 <?php
-require_once('/SysDev/CoreGroup/admin/config.php');
+require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">

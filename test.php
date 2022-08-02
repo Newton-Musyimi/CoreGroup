@@ -4,7 +4,7 @@ require_once "PrivilegedUser.php";
 
 // connect to database...
 // ...
-require_once('/SysDev/CoreGroup/admin/config.php');
+require_once('/SysDev/CoreGroup/security/admin/config.php');
 $conn = get_db();
 $GLOBALS["DB"] = $conn;
 session_start();
