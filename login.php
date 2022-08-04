@@ -45,7 +45,7 @@ if (isset($_SESSION['id'])) {
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE) OR die("Could not connect to MySQL: " . mysqli_connect_error() . "<br>Contact IT for assistance!");
+        $conn = get_db();
         $username = standardize($_POST['username']);
         $password = $_POST['password'];
         $query = "SELECT `user_id`, `username`, `user_type`, `password` FROM `users` WHERE `username` = '$username';";

@@ -24,7 +24,7 @@ function standardize($column_name): string
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE) OR die("Could not connect to MySQL: " . mysqli_connect_error() . "<br>Contact IT for assistance!");
+    $conn = get_db();
 
     //$organization = $_REQUEST['org'];
     $firstname = standardize($_REQUEST['first_name']);
