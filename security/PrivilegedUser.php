@@ -103,10 +103,4 @@ class PrivilegedUser extends Role
         $row = mysqli_fetch_array($result);
         return $row['role_id'];
     }
-
-    public function checkPermission($check){
-        $perms = $this->permissions;
-        echo "hasPerm: ".$check."<br>";
-        return isset($perms, $check);
-    }
 }
