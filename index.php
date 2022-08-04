@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once("security/admin/config.php");
-//require_once('/SysDev/CoreGroup/security/admin/config.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
+require_once ($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -18,6 +18,9 @@ require_once("security/admin/config.php");
 
 <body id="page-top">
     <header>
+        <?php
+        getHeader();
+        ?>
     </header>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">

@@ -4,7 +4,7 @@ if (isset($_SESSION['id'])) {
     header("location: /SysDev/CoreGroup/index.php");
 }
 function current_employee($conn, $user_id, $email, $phone_number){
-    $user_search = "SELECT `user_id`, `email`, `mobile` FROM `employees` WHERE `employee_id` = '$user_id'";
+    $user_search = "SELECT `email`, `mobile` FROM `employees` WHERE `employee_id` = '" . $user_id . "'";
     $result = mysqli_query($conn, $user_search) or die ("client SELECT error!" . $conn->error);
     while($row = mysqli_fetch_array($result)){
         if($row['user_id'] === $user_id){

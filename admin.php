@@ -1,7 +1,8 @@
 <?php
 session_start();
-require_once("security/admin/config.php");
-//require_once('/SysDev/CoreGroup/security/admin/config.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
+require_once ($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -18,15 +19,8 @@ require_once("security/admin/config.php");
 
 <body id="page-top">
     <header>
-    <a href="scripts/logout.php">Log out</a>
-    <?php
-        if(isset($_SESSION['logged_in'])){
-            $role = $_SESSION['role'];
-            getHeader($role);
-        }else{
-            echo "<h1>Header</h1>";
-            var_dump($_SESSION);
-        }
+        <?php
+        getHeader();
         ?>
     </header>
     
