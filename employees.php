@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Core Group</title>
     <meta http-equiv="Cache-control" content="no-store">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon.png">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/images/favicon.png';?>">
+    <link rel="stylesheet" href="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
 
 <body id="page-top">
@@ -19,12 +19,11 @@
             <div class="text-center my-auto copyright"><span>Copyright © Newton Musyimi 2022</span></div>
         </div>
     </footer>
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/js/bs-init.js"></script>
-    <script src="/assets/js/admin_page.js"></script>
-    <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/employees_control.js"></script>
+    <script src="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/js/jquery.min.js';?>"></script>
+    <script src="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
+    <script src="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js';?>"></script>
+    <script src="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/js/logout.js';?>"></script>
+    <script src="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>
 
 </html>

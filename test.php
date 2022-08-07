@@ -13,9 +13,9 @@ require_once ($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Core Group</title>
     <meta http-equiv="Cache-control" content="no-store">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon.png">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/images/favicon.png';?>">
+    <link rel="stylesheet" href="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
 
 <body id="page-top">

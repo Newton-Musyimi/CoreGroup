@@ -1,5 +1,5 @@
 <?php
-require_once('/SysDev/CoreGroup/security/admin/config.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 if (isset($_SESSION['id'])) {
     header("location: /SysDev/CoreGroup/index.php");
 }
