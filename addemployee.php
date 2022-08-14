@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //$organization = $_REQUEST['org'];
     $firstname = standardize($_REQUEST['first_name']);
     $lastname = standardize($_REQUEST['last_name']);
-    $title = standardize($_REQUEST['user_id']);
+    $title = standardize($_REQUEST['title']);
     $address = strtoupper($_REQUEST['address']);
     $email = standardize($_REQUEST['email']);
     $phone_number = $_REQUEST['mobile'];

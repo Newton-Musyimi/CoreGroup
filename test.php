@@ -3,7 +3,8 @@
 // ..."g19m80452022"
 
 session_start();
-require_once ($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -13,9 +14,9 @@ require_once ($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Core Group</title>
     <meta http-equiv="Cache-control" content="no-store">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/images/favicon.png';?>">
-    <link rel="stylesheet" href="<?php echo $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/assets/css/style.css';?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
+    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
 
 <body id="page-top">
@@ -38,7 +39,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
         $string = stripslashes($string);
         return strtolower($string);
     }
-    require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
+
     if (isset($_SESSION["logged_in"])) {
         require_once("security/Role.php");
         require_once("security/PrivilegedUser.php");
