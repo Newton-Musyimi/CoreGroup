@@ -96,7 +96,7 @@ if (isset($_SESSION['id'])) {
         $_SESSION['logged_in'] = $id;
         $_SESSION['username'] = $username_query;
         var_dump($_SESSION);
-        //header("location: ../admin.php");
+        //header("location: ../dashboard.php");
 
 
     }

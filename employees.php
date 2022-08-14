@@ -25,7 +25,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
         ?>
     </header>
     <div class='tab'>
-        <button class="tablinks" onclick="openTab(event, 'Employees')" id="defaultOpen">Employees</button>
+        <button class="tablinks" id="defaultOpen" onclick="openTab(event, 'Employees')">Employees</button>
         <button class="tablinks" onclick="openTab(event, 'AddEmployee')">Add Employee</button>
     </div>
     <div id='Employees' class='tabcontent'>
@@ -72,6 +72,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
                 </tfoot>
             </table>
         </div>
+    </div>
     <div id="AddEmployee" class="tabcontent">
         <h3>Add Employee</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">

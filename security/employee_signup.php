@@ -2,8 +2,15 @@
 session_start();
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
-
-//require_once('/SysDev/CoreGroup/security/admin/config.php');
+if (isset($_SESSION['id'])) {
+    if($_SESSION['role']=='CLIENT' || $_SESSION['role']=='RECEPTIONIST'){
+        header("location: helpdesk.php");
+    }else if($_SESSION['role']=='ADMINISTRATOR'){
+        header("location: dashboard.php");
+    }else{
+        header("location: employee_profile.php");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -19,23 +26,22 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
 </head>
 
 <body id="page-top">
-<header>
+<header value="login">
     <?php
     getHeader();
     ?>
 </header>
 <div class="content-body">
 
+
 </div>
+
 <footer style="padding-bottom: 32px;">
     <div class="container my-auto">
         <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
     </div>
 </footer>
-<script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/jquery.min.js';?>"></script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
-<script src="<?php echo $host.'/SysDev/CoreGroup/https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js';?>"></script>
-<script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/logout.js';?>"></script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>
 

@@ -33,10 +33,42 @@
 
 .navbar {
     overflow: hidden;
-    background-color: #333;
-    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
 }
 
-.nav-item {
+.navbar li {
+    background-color: inherit;
     float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+nav button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+nav button:hover {
+    background-color: #ddd;
+}
+
+nav button.active {
+    background-color: #ccc;
+}
+
+nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

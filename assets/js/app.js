@@ -13,7 +13,6 @@ function openTab(evt, tabName) {
 }
 
 //make current page button active
-document.window.onload = function () {
-    let page = document.getElementsByTagName("header").valueOf();
-    document.getElementById(page).className += "active";
+window.onload = function () {
+    document.getElementById("defaultOpen").click();
 }

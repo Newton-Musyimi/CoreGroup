@@ -1,11 +1,31 @@
 <?php
 $host = "http://".$_SERVER['HTTP_HOST'];
+function getCommon(): string
+{
+    global $host;
+    return "<div class=\"navbar\">
+<nav class=\"top-nav\">
+        <ul>
+            <li><a href=\"$host/SysDev/CoreGroup/dashboard.php\"  class=\"nav-item\"><button>Admin</button></a> </li>
+            <li><a href=\"$host/SysDev/CoreGroup/test.php\"  class=\"nav-item\"><button>Test</button></a> </li>
+            <li><a href=\"$host/SysDev/CoreGroup/helpdesk.php\"  class=\"nav-item\"><button>Helpdesk</button></a> </li>
+            <li><a href=\"$host/SysDev/CoreGroup/employee_profile.php\"  class=\"nav-item\"><button>Profile</button></a> </li>
+            <li><a href=\"$host/SysDev/CoreGroup/employees.php\"  class=\"nav-item\"><button>Employees</button></a> </li>
+            <li><a href=\"$host/SysDev/CoreGroup/workorders.php\"  class=\"nav-item\"><button>Workorders</button></a> </li>
+            <li><a href=\"$host/SysDev/CoreGroup/security/login.php\"  class=\"nav-item\"><button>Login</button></a> </li>
+            <li><a href=\"$host/SysDev/CoreGroup/security/signup.php\"  class=\"nav-item\"><button>Signup</button></a> </li>
+            <li><a href=\"$host/SysDev/CoreGroup/scripts/logout.php\"  class=\"nav-item\"><button>Logout</button></a> </li>
+            
+        </ul>
+    </nav>
+    </div>";
+}
 function getAdminHeader(){
     global $host;
     echo "<div class=\"navbar\">
     <nav class=\"top-nav\">
         <ul>
-            <li><a href=\"$host/SysDev/CoreGroup/admin.php\"  class=\"nav-item\">Admin</a> </li>
+            <li><a href=\"$host/SysDev/CoreGroup/dashboard.php\"  class=\"nav-item\">Admin</a> </li>
             <li><a href=\"$host/SysDev/CoreGroup/test.php\"  class=\"nav-item\">Test</a> </li>
             <li><a href=\"$host/SysDev/CoreGroup/employees.php\"  class=\"nav-item\">Employees</a> </li>
             <li><a href=\"$host/SysDev/CoreGroup/workorders.php\"  class=\"nav-item\">Workorders</a> </li>
@@ -20,7 +40,7 @@ function getReceptionistHeader(){
     echo "<div class=\"navbar\"
 <nav class=\"top-nav\">
     <ul>
-        <li><a href=\"$host/SysDev/CoreGroup/workorders.php\"  class=\"nav-item\">Admin</a> </li>
+        <li><a href=\"$host/SysDev/CoreGroup/dashboard.php\"  class=\"nav-item\">Admin</a> </li>
         <li><a href=\"$host/SysDev/CoreGroup/helpdesk.php\"  class=\"nav-item\">Test</a> </li>
             <li><a href=\"$host/SysDev/CoreGroup/employees.php\"  class=\"nav-item\">Employees</a> </li>
             <li><a href=\"$host/SysDev/CoreGroup/workorders.php\"  class=\"nav-item\">Workorders</a> </li>
@@ -67,18 +87,20 @@ function getHeader(){
         }elseif($role == 'CLIENT'){
             getClientHeader();
         }else{
-            echo '<h1>employee header here</h1>';
+            getEmployeeHeader();
         }
+        echo getCommon();
     }else{
         echo "<div class=\"navbar\"
 <nav class=\"top-nav\">
     <ul>
-        <li><a href=\"$host/SysDev/CoreGroup/admin.php\">Admin</a> </li>
+        <li><a href=\"$host/SysDev/CoreGroup/dashboard.php\">Admin</a> </li>
         <li><a href=\"$host/SysDev/CoreGroup/test.php\">Test</a> </li>
-        <li><a href=\"$host/SysDev/CoreGroup/login.php\">Log In</a> </li>
-        <li><a href=\"$host/SysDev/CoreGroup/signup.php\">Sign Up</a> </li>
+        <li><a href=\"$host/SysDev/CoreGroup/security/login.php\">Log In</a> </li>
+        <li><a href=\"$host/SysDev/CoreGroup/security/signup.php\">Sign Up</a> </li>
     </ul>
 </nav>
 </div>";
+        echo getCommon();
     }
 }

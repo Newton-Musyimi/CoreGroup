@@ -23,50 +23,14 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
         ?>
     </header>
 
-    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-            </tr>
-        </thead>
-
-        <tbody>
-        <?php
-        $conn = get_db();
-        $sql = "SELECT * FROM employees";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . $row['title'] . "</td>";
-                echo "<td>" . $row['first_name'] . "</td>";
-                echo "<td>" . $row['email'] . "</td>";
-                echo "<td>" . $row['mobile'] . "</td>";
-                echo "<td>" . $row['address'] . "</td>";
-                echo "</tr>";
-
-            }
-        }
-        ?>
-        </tbody>
-        <tfoot>
-        <tr>
-            <th>Title</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Address</th>
-        </tr>
-        </tfoot>
-    </table>
-
     <div class='tab'>
+        <button class='tablinks' id="defaultOpen" onclick='openTab(event, "Dashboard")'>Dashboard</button>
         <button class='tablinks' onclick='openTab(event, "Reports")'>Reports</button>
         <button class='tablinks' onclick='openTab(event, "Settings")'>Settings</button>
+    </div>
+    <div id="Dashboard" class="tabcontent">
+        <h3>Dashboard</h3>
+
     </div>
     <div id='Reports' class='tabcontent'>
         <h3>Reports</h3>
@@ -82,15 +46,9 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
             <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
         </div>
     </footer>
-    <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/jquery.min.js';?>"></script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
-    <script src="<?php echo $host.'/SysDev/CoreGroup/https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js';?>"></script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/logout.js';?>"></script>
-    <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
-                </div>
-            </div>
-            </div>
-    </div>
+
 </body>
 
 </html>
