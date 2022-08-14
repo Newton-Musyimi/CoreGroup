@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $root = $_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/';
+    $root = "http://{$_SERVER['HTTP_HOST']}/SysDev/CoreGroup/";
     if(session_unset() && session_destroy()){
         header("location: $root/index.php");
         //header("location: /SysDev/CoreGroup/index.php");
