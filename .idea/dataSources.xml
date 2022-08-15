@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/coregroup</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="coregroup" uuid="c925fcae-0095-46a4-aa14-cc266158ada3">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://is3-dev.ict.ru.ac.za:3306/coregroup</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

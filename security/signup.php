@@ -104,10 +104,14 @@ if (isset($_SESSION['logged_in'])) {
                 $address = $_REQUEST['address'];
                 $password = str_replace(' ', '',$_REQUEST['password']);
                 $password = password_hash($password, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO clients (first_name, last_name, email, mobile, address) VALUES ($first_name', '$last_name', '$email', '$mobile', '$address');";
+                $sql = "INSERT INTO clients (first_name, last_name, email, mobile, address) VALUES ('$first_name', '$last_name', '$email', '$mobile', '$address');";
                 if ($conn->query($sql) === TRUE) {
                     //echo "<p style='color: green'>$first_name $last_name has been added to the database</p>";
-                    $sql = "INSERT INTO users (username, password, user_type) VALUES ('$username', '$password', '$user_type');";
+                    $get_client_id_query = "SELECT client_id FROM clients WHERE email='$email';";
+                    $result = mysqli_query($conn, $get_client_id_query);
+                    $row = mysqli_fetch_assoc($result);
+                    $user_id = $row['client_id'];
+                    $sql = "INSERT INTO users (user_id, username, password, user_type) VALUES ('$user_id', '$username', '$password', '$user_type');";
                     if($conn->query($sql) === TRUE){
                         echo "<p style='color: green'>$username, your account has been created!</p><br>Proceed to <a href='login.php'>login</a>";
                     }else{

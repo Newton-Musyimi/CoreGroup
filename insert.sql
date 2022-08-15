@@ -24,3 +24,21 @@ DROP FOREIGN KEY `clientid_fk`;
 
 ALTER TABLE `coregroup`.`employees`
     CHANGE COLUMN `address` `address` TEXT NULL ;
+
+ALTER TABLE `coregroup`.`workorders`
+DROP FOREIGN KEY `client_fk`;
+ALTER TABLE `coregroup`.`workorders`
+DROP INDEX `client_fk_idx` ;
+;
+
+//-make client id auto-inc then run below code:
+ALTER TABLE `coregroup`.`workorders`
+    ADD INDEX `clientid_fk_idx` (`client_id` ASC) VISIBLE;
+;
+ALTER TABLE `coregroup`.`workorders`
+    ADD CONSTRAINT `clientid_fk`
+        FOREIGN KEY (`client_id`)
+            REFERENCES `coregroup`.`clients` (`client_id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
+
