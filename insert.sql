@@ -16,3 +16,11 @@ INSERT INTO `coregroup`.`user_role`  (`user_id`, `role_id`) VALUES (1, 1);
 //-- Language: sql
 INSERT INTO `coregroup`.`employees` (`employee_id`, `first_name`, `last_name`, `email`, `title`, `mobile`, `address`)
 VALUES ('1', 'first', 'last', 'email', 'title', 'mobile', 'address');
+
+//
+ALTER TABLE `coregroup`.`users`
+DROP FOREIGN KEY `employeeid_fk`,
+DROP FOREIGN KEY `clientid_fk`;
+
+ALTER TABLE `coregroup`.`employees`
+    CHANGE COLUMN `address` `address` TEXT NULL ;

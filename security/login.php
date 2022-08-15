@@ -1,7 +1,11 @@
 <?php
 session_start();
+/*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
+*/
+require_once('admin/config.php');
+require_once('header.php');
 if (isset($_SESSION['logged_in'])) {
     global $host;
     if($_SESSION['role']=='CLIENT' || $_SESSION['role']=='RECEPTIONIST'){
@@ -55,7 +59,7 @@ if (isset($_SESSION['logged_in'])) {
         $password = str_replace(' ', '', $_POST['password']);
         $query = "SELECT `user_id`, `username`, `user_type`, `password` FROM `users` WHERE `username` = '$username';";
         $result = mysqli_query($conn, $query) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
-        echo "<p class='access_form'>Log in <span style='color:green;'>Success!</span> Username entered is okay.</p> ";
+        //echo "<p class='access_form'>Log in <span style='color:green;'>Success!</span> Username entered is okay.</p> ";
         $row = mysqli_fetch_array($result);
         $hashed_pass = $row['password'];
         if(password_verify($password, $hashed_pass)){

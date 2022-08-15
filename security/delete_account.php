@@ -1,8 +1,9 @@
 <?php
     session_start();
-    require_once("../security/admin/config.php");
+    require_once("admin/config.php");
     //require_once('/SysDev/CoreGroup/security/admin/config.php');
     if(isset($_SESSION['logged_in'])){
+        $conn = get_db();
         $user_id = $_SESSION['user_id'];
             mysqli_query($conn, "DELETE  FROM `users` WHERE `user_id`='$user_id';") or die("Could not delete account. Try again in a few!");
             if($_SESSION['user_type']=='employee'){

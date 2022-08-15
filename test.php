@@ -3,8 +3,12 @@
 // ..."g19m80452022"
 
 session_start();
+/*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
+*/
+require_once('security/admin/config.php');
+require_once('header.php');
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">

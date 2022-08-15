@@ -1,7 +1,11 @@
 <?php
 session_start();
+/*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
+*/
+require_once('admin/config.php');
+require_once('header.php');
 if (isset($_SESSION['logged_in'])) {
     global $host;
     if($_SESSION['role']=='CLIENT' || $_SESSION['role']=='RECEPTIONIST'){

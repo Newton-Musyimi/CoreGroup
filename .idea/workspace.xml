@@ -4,17 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="">
+    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Varius changes pushed 14th Sunday August by Newton">
+      <change afterPath="$PROJECT_DIR$/security/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f7857c9c-435d-428b-943c-40dd31d6cfee.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f7857c9c-435d-428b-943c-40dd31d6cfee.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addemployee.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/employee_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/employee_profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/employees.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/delete_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/delete_account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/security/employee_signup.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpdesk.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/insert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/delete_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/delete_account.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/security/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/logout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/security/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/signup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workorders.php" beforeDir="false" afterPath="$PROJECT_DIR$/workorders.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +37,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="PhpTemplates">
     <option name="NEW_PHP_FILE_LAST_EXTENSION" value="inc" />
   </component>
@@ -36,24 +49,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.data.extractors.current.export.id" value="CSV-Groovy.csv.groovy" />
-    <property name="database.data.extractors.current.id" value="CSV-Groovy.csv.groovy" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/security" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "//is3-dev.ict.ru.ac.za/SysDev/CoreGroup",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\is3-dev.ict.ru.ac.za\SysDev\CoreGroup" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\is3-dev.ict.ru.ac.za\SysDev\CoreGroup\security" />
       <recent name="C:\wamp64\www\core\SysDev\CoreGroup\security" />
       <recent name="C:\wamp64\www\core\SysDev\CoreGroup" />
     </key>
@@ -80,6 +95,8 @@
       <workItem from="1660388434787" duration="3443000" />
       <workItem from="1660485320162" duration="21991000" />
       <workItem from="1660513764836" duration="7856000" />
+      <workItem from="1660566826083" duration="748000" />
+      <workItem from="1660567590933" duration="3557000" />
     </task>
     <task id="LOCAL-00001" summary="PHPStorm configuration files">
       <created>1659551907951</created>
@@ -138,7 +155,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="PHPStorm configuration files" />

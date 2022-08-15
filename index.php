@@ -1,8 +1,13 @@
 <?php
 session_start();
+/*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
-require_once ($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
+*/
+require_once('security/admin/config.php');
+require_once('security/header.php');
 
+echo $_SERVER['HTTP_HOST'];
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">

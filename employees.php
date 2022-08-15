@@ -1,8 +1,11 @@
 <?php
 session_start();
+/*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
-
+*/
+require_once('security/admin/config.php');
+require_once('security/header.php');
 //require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
 <!DOCTYPE html>
@@ -106,43 +109,46 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
                 <input type="text" class="form-control" id="address" name="address" placeholder="Address"><br>
             </div><br>
             <button type="submit" class="btn btn-primary">Submit</button><br>
-            <?php
-            function current_employee($conn, $email, $phone_number){
-                $user_search = "SELECT `email`, `mobile` FROM `employees` WHERE `email` = '$email'";
-                $result = mysqli_query($conn, $user_search) or die ("client SELECT error!" . $conn->error);
-                while($row = mysqli_fetch_array($result)){
-                    if($row['email'] === $email){
-                        echo '<p class="access_form">Email <span style="color:red;">exists</span> enter a different email!</p>';
-                    }
-                    if($row['mobile'] === $phone_number){
-                        echo '<p class="access_form">Phone Number <span style="color:red;">exists</span> enter a different phone number!</p>';
-                    }
-                }
-            }
-            function standardize($column_name): string
-            {
-                $string = str_replace(' ','',$column_name);
-                $string = stripslashes($string);
-                return strtolower($string);
-            }
-            if(isset($_REQUEST['title'])){
-                $title = $_REQUEST['title'];
-                $first_name = $_REQUEST['first_name'];
-                $last_name = $_REQUEST['last_name'];
-                $email = $_REQUEST['email'];
-                $mobile = $_REQUEST['mobile'];
-                $address = $_REQUEST['address'];
-                $sql = "INSERT INTO employees (title, first_name, last_name, email, mobile, address) VALUES ('$title', '$first_name', '$last_name', '$email', '$mobile', '$address');";
-                if ($conn->query($sql) === TRUE) {
-                    echo "<p style='color: green'>$first_name $last_name has been added to the database</p>";
-                } else {
-                    echo "<p style='color: darkred'><strong style='color: red'>Error:</strong> Could not add $first_name $last_name into the databse because ".current_employee($conn, $email, $mobile)."</p> <br><p style='color: red'><strong>Message: </strong>" .$conn->error."";
-                }
-                $conn ->close();
-            }
-            ?>
+
         </form>
     </div>
+    <?php
+    function current_employee($conn, $email, $phone_number){
+        $user_search = "SELECT `email`, `mobile` FROM `employees` WHERE `email` = '$email'";
+        $result = mysqli_query($conn, $user_search) or die ("client SELECT error!" . $conn->error);
+        $error = "";
+        while($row = mysqli_fetch_array($result)){
+            if($row['email'] === $email){
+                $error .= '<p class="access_form">Email <span style="color:red;">exists</span> enter a different email!</p>';
+            }
+            if($row['mobile'] === $phone_number){
+                $error .= '<p class="access_form">Phone Number <span style="color:red;">exists</span> enter a different phone number!</p>';
+            }
+        }
+        return $error;
+    }
+    function standardize($column_name): string
+    {
+        $string = str_replace(' ','',$column_name);
+        $string = stripslashes($string);
+        return strtolower($string);
+    }
+    if(isset($_REQUEST['title'])){
+        $title = $_REQUEST['title'];
+        $first_name = $_REQUEST['first_name'];
+        $last_name = $_REQUEST['last_name'];
+        $email = $_REQUEST['email'];
+        $mobile = $_REQUEST['mobile'];
+        $address = $_REQUEST['address'];
+        $sql = "INSERT INTO employees (title, first_name, last_name, email, mobile, address) VALUES ('$title', '$first_name', '$last_name', '$email', '$mobile', '$address');";
+        if ($conn->query($sql) === TRUE) {
+            echo "<p style='color: green'>$first_name $last_name has been added to the database</p>";
+        } else {
+            echo "<p style='color: darkred'><strong style='color: red'>Error:</strong> Could not add $first_name $last_name into the databse because:".current_employee($conn, $email, $mobile)."</p><p style='color: red'><strong>Message: </strong>" .$conn->error."</p>";
+        }
+        $conn ->close();
+    }
+    ?>
     <footer class="bg-white sticky-footer" style="padding-bottom: 32px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Newton Musyimi 2022</span></div>
