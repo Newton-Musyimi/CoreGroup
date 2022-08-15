@@ -3,12 +3,13 @@ session_start();
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
 if (isset($_SESSION['logged_in'])) {
+    global $host;
     if($_SESSION['role']=='CLIENT' || $_SESSION['role']=='RECEPTIONIST'){
         header("location: helpdesk.php");
     }else if($_SESSION['role']=='ADMINISTRATOR'){
-        header("location: dashboard.php");
+        header("location:$host/SysDev/CoreGroup/dashboard.php");
     }else{
-         header("location: workorders.php");
+         header("location:$host/SysDev/CoreGroup/workorders.php");
     }
 }
 ?>
@@ -36,6 +37,7 @@ if (isset($_SESSION['logged_in'])) {
         <button class='tablinks' id="defaultOpen" onclick='openTab(event, "ClientSignUp")'>Client Sign Up</button>
         <button class='tablinks' onclick='openTab(event, "EmployeeSignUp")'>Employee Sign Up</button>
     </div>
+
     <div id="ClientSignUp" class="tabcontent">
         <h3>Client Sign Up</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -126,7 +128,7 @@ if (isset($_SESSION['logged_in'])) {
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label for="employee_id">Employee ID</label>
-                <input type="text" class="form-control" id="employee_id" name="employee_id"  placeholder="Employee ID">
+                <input type="number" class="form-control" id="employee_id" name="employee_id"  placeholder="Employee ID">
             </div>
             <div class="form-group">
                 <label for="username">Username</label>
@@ -138,24 +140,43 @@ if (isset($_SESSION['logged_in'])) {
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <?php
+            function checkEmployment($conn, $employee_id): bool
+            {
+                $sql = "SELECT * FROM employees WHERE employee_id='$employee_id';";
+                $result = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($result) > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
             if(isset($_REQUEST['employee_id'])){
+                $conn = get_db();
                 $employee_id = $_REQUEST['employee_id'];
-                $username = str_replace(' ', '',$_REQUEST['username']);
-                $invalid = checkUsername($username);
-                if($invalid) {
-                    die('<div class="alert alert-danger" role="alert">
-                        Username already exists
-                    </div>');
-                }
-                $password = str_replace(' ', '',$_REQUEST['password']);
-                $password = password_hash($password, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO users (username, password, user_type) VALUES ('$username', '$password', 'EMPLOYEE');";
-                if($conn->query($sql) === TRUE){
-                    echo "<p style='color: green'>$username, your account has been created!</p><br>Proceed to <a href='login.php'>login</a>";
+                $employment_status = checkEmployment($conn, $employee_id);
+                if(!$employment_status) {
+                    echo '<div class="alert alert-danger" role="alert">
+                        Employee does not exist. Contact the administrator!
+                    </div>';
                 }else{
-                    echo "<p style='color: darkred'><strong style='color: red'>Error:</strong> Could not create account for $username</p> <br><p style='color: red'><strong>Message: </strong>" .$conn->error."</p>";
+                    $username = strtolower(str_replace(' ', '',$_REQUEST['username']));
+                    $invalid = checkUsername($username);
+                    if($invalid) {
+                        echo '<div class="alert alert-danger" role="alert">
+                        Username already exists
+                    </div>';
+                    }else{
+                        $password = str_replace(' ', '',$_REQUEST['password']);
+                        $password = password_hash($password, PASSWORD_DEFAULT);
+                        $sql = "INSERT INTO users (user_id, username, password, user_type) VALUES ('$employee_id', '$username', '$password', 'EMPLOYEE');";
+                        if($conn->query($sql) === TRUE){
+                            echo "<p style='color: green'>$username, your account has been created!</p><br>Proceed to <a href='login.php'>login</a>";
+                        }else{
+                            echo "<p style='color: darkred'><strong style='color: red'>Error:</strong> Could not create account for $username</p> <br><p style='color: red'><strong>Message: </strong>" .$conn->error."</p>";
+                        }
+                        $conn ->close();
+                    }
                 }
-                $conn ->close();
             }
             ?>
         </form>

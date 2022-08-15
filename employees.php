@@ -76,29 +76,55 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
     <div id="AddEmployee" class="tabcontent">
         <h3>Add Employee</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <input type="hidden" name="title" value="TECHNICIAN">
             <div class="form-group">
-                <label for="first_name">First Name</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                <label for="title">Employee Title/Position</label><br>
+                <select class="form-control" id="title" name="title">
+                    <option value="TECHNICIAN">Technician</option>
+                    <option value="MANAGER">Manager</option>
+                    <option value="SECRETARY">Secretary</option>
+                </select><br>
+            </div>
+
+            <div class="form-group">
+                <label for="first_name">First Name</label><br>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name"><br>
             </div>
             <div class="form-group">
-                <label for="last_name">Last Name</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                <label for="last_name">Last Name</label><br>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"><br>
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                <label for="email">Email</label><br>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email"><br>
             </div>
             <div class="form-group">
-                <label for="mobile">Mobile</label>
-                <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile">
+                <label for="mobile">Mobile</label><br>
+                <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile"><br>
             </div>
             <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Address">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+                <label for="address">Address</label><br>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address"><br>
+            </div><br>
+            <button type="submit" class="btn btn-primary">Submit</button><br>
             <?php
+            function current_employee($conn, $email, $phone_number){
+                $user_search = "SELECT `email`, `mobile` FROM `employees` WHERE `email` = '$email'";
+                $result = mysqli_query($conn, $user_search) or die ("client SELECT error!" . $conn->error);
+                while($row = mysqli_fetch_array($result)){
+                    if($row['email'] === $email){
+                        echo '<p class="access_form">Email <span style="color:red;">exists</span> enter a different email!</p>';
+                    }
+                    if($row['mobile'] === $phone_number){
+                        echo '<p class="access_form">Phone Number <span style="color:red;">exists</span> enter a different phone number!</p>';
+                    }
+                }
+            }
+            function standardize($column_name): string
+            {
+                $string = str_replace(' ','',$column_name);
+                $string = stripslashes($string);
+                return strtolower($string);
+            }
             if(isset($_REQUEST['title'])){
                 $title = $_REQUEST['title'];
                 $first_name = $_REQUEST['first_name'];
@@ -110,7 +136,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
                 if ($conn->query($sql) === TRUE) {
                     echo "<p style='color: green'>$first_name $last_name has been added to the database</p>";
                 } else {
-                    echo "<p style='color: darkred'><strong style='color: red'>Error:</strong> Could not add $first_name $last_name into the databse</p> <br><p style='color: red'><strong>Message: </strong>" .$conn->error."";
+                    echo "<p style='color: darkred'><strong style='color: red'>Error:</strong> Could not add $first_name $last_name into the databse because ".current_employee($conn, $email, $mobile)."</p> <br><p style='color: red'><strong>Message: </strong>" .$conn->error."";
                 }
                 $conn ->close();
             }

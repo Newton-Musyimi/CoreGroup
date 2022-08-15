@@ -2,11 +2,14 @@
 session_start();
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['logged_in'])) {
+    global $host;
     if($_SESSION['role']=='CLIENT' || $_SESSION['role']=='RECEPTIONIST'){
         header("location: helpdesk.php");
+    }else if($_SESSION['role']=='ADMINISTRATOR'){
+        header("location:$host/SysDev/CoreGroup/dashboard.php");
     }else{
-        header("location: workorders.php");
+        header("location:$host/SysDev/CoreGroup/workorders.php");
     }
 }
 ?>
@@ -32,9 +35,9 @@ if (isset($_SESSION['id'])) {
     <div class="content-body">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <label for="username">USERNAME: </label><br>
-            <input type="text" id="username" name="username"><br>
+            <input type="text" id="username" name="username" value="newtonmusyimi"><br>
             <label for="password">PASSWORD: </label><br>
-            <input type="password" id="password" name="password"><br><br>
+            <input type="password" id="password" name="password" value="g19m80452022"><br><br>
             <input type="submit" value="LOG IN">
         </form>
     </div>
@@ -43,29 +46,24 @@ if (isset($_SESSION['id'])) {
     {
         $string = str_replace(' ', '', $string);
         $string = stripslashes($string);
-        return strtolower($string);
+        return ucfirst($string);
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $conn = get_db();
         $username = standardize($_POST['username']);
-        $password = $_POST['password'];
+        $password = str_replace(' ', '', $_POST['password']);
         $query = "SELECT `user_id`, `username`, `user_type`, `password` FROM `users` WHERE `username` = '$username';";
         $result = mysqli_query($conn, $query) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
         echo "<p class='access_form'>Log in <span style='color:green;'>Success!</span> Username entered is okay.</p> ";
         $row = mysqli_fetch_array($result);
         $hashed_pass = $row['password'];
-        echo $hashed_pass.'<br>';
-        $pass_hash = password_hash($password, PASSWORD_DEFAULT);
-        echo $pass_hash.'<br>';
-        if(password_verify('g19m80452022', $hashed_pass)){
+        if(password_verify($password, $hashed_pass)){
             $id = $row['user_id'];
             $username_query = $row['username'];
             if($row['user_type'] == 'client'){
                 $_SESSION['role'] = "CLIENT";
             }else{
-                var_dump($row);
-
                 $result = mysqli_query($conn, "SELECT `role_id` FROM `user_role` WHERE `user_id` = '$id';");
 
                 if ($row = mysqli_fetch_array($result)){
@@ -95,8 +93,7 @@ if (isset($_SESSION['id'])) {
         mysqli_close($conn);
         $_SESSION['logged_in'] = $id;
         $_SESSION['username'] = $username_query;
-        var_dump($_SESSION);
-        //header("location: ../dashboard.php");
+        header("location:$host/SysDev/CoreGroup/dashboard.php");
 
 
     }
