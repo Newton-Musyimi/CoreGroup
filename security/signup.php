@@ -56,7 +56,7 @@ if (isset($_SESSION['logged_in'])) {
             </div>
             <div class="form-group">
                 <td><label for="first_name">First Name</label></td>
-                <td><input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name"></td>
+                <td><input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" ></td>
             </div>
             </tr>
             <tr>
@@ -68,13 +68,13 @@ if (isset($_SESSION['logged_in'])) {
             <tr>
             <div class="form-group">
                 <td><label for="email">Email</label></td>
-                <td><input type="email" class="form-control" id="email" name="email" placeholder="Email"></td>
+                <td><input type="email" class="form-control" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></td>
             </div>
             </tr>
             <tr>
             <div class="form-group">
                 <td><label for="mobile">Mobile</label></td>
-                <td><input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile"></td>
+                <td><input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" pattern></td>
             </div>
             </tr>
             <tr>
@@ -86,7 +86,7 @@ if (isset($_SESSION['logged_in'])) {
             <tr>
             <div class="form-group">
                 <td><label for="password">Password</label></td>
-                <td><input type="password" class="form-control" id="password" name="password" placeholder="Password"></td>
+                <td><input type="password" class="form-control" id="password" name="password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"></td>
             </div>
             </tr>
             <tr>
@@ -151,20 +151,29 @@ if (isset($_SESSION['logged_in'])) {
     </div>
     <div id='EmployeeSignUp' class='tabcontent'>
         <h3>Employee Sign Up</h3>
+        <table>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
-                <label for="employee_id">Employee ID</label>
-                <input type="number" class="form-control" id="employee_id" name="employee_id"  placeholder="Employee ID">
+            <tr>
+                <td><label for="employee_id">Employee ID</label></td>
+                <td><input type="number" class="form-control" id="employee_id" name="employee_id"  placeholder="Employee ID"><td>
+            </tr>
             </div>
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username"  placeholder="Username">
+                <tr>
+                <td><label for="username">Username</label></td>
+                <td><input type="text" class="form-control" id="username" name="username"  placeholder="Username"></td>
+            </tr>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td><input type="password" class="form-control" id="password" name="password" placeholder="Password"></td>
+            </tr>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <tr>
+                <td><button type="submit" class="btn btn-primary">Submit</button></td>
+            </tr>
             <?php
             function checkEmployment($conn, $employee_id): bool
             {

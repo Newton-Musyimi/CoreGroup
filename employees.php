@@ -10,6 +10,12 @@ require_once('security/header.php');
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
+<style>
+table, th, td {
+  border-bottom: 1px solid;
+}
+tr:hover {background-color: #048337;}
+</style>
 
 <head>
     <meta charset="utf-8">

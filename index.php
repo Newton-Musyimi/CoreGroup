@@ -30,12 +30,20 @@ echo $_SERVER['HTTP_HOST'];
             ?>
         </div>
 
+        
+
     </header>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
         </div>
     </footer>
+    <div class= "bottom-page">
+        <p>Baddies only</p>
+        <form action="login.php" method="POST">
+        <input type = "submit" value ="Create a Ticket">
+    </form>
+        </div>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/jquery.min.js';?>"></script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js';?>"></script>

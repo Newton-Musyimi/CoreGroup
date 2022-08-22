@@ -37,13 +37,19 @@ if (isset($_SESSION['logged_in'])) {
     <div class="content-body">
         <h1>Log in</h1>
         <img src="">
-       
+       <table>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-            <label for="username"><strong>USERNAME:</strong></label><br>
-            <input type="text" id="username" name="username" value="newtonmusyimi" required><br>
-            <label for="password"><strong>PASSWORD:</strong></label><br>
-            <input type="password" id="password" name="password" value="g19m80452022"><br><br>         
-            <input type="submit" class= "submit" name  = "submit"value="LOG IN">
+        <tr>
+            <td><label for="username"><strong>USERNAME:</strong></label><br></td>
+            <td><input type="text" id="username" name="username" value="newtonmusyimi" required><br></td>
+        </tr>
+        <tr>   
+            <td><label for="password"><strong>PASSWORD:</strong></label><br></td>
+            <td><input type="password" id="password" name="password" value="g19m80452022"><br><br></td>
+        </tr>
+        <tr>        
+            <td><input type="submit" class= "submit" name  = "submit"value="LOG IN"></td>
+        </tr>
         </form>
     </div>
     <?php

@@ -6,6 +6,7 @@
     ;
 }
 
+
 .tab button {
     background-color: inherit;
     float: left;
@@ -104,4 +105,7 @@ footer{
     background-color: #a3dc4f;
     box-shadow:  0 5px #FFFF;
     transform: translateY(4px);
+}
+.bottom-page{
+    background-color: #a3dc4f;   
 }

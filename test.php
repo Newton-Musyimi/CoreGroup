@@ -29,13 +29,21 @@ require_once('header.php');
         getHeader();
         ?>
     </header>
+    <table>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <label for="permission"> PERMISSION: <br>
-            <input type="text" name="permission" id="permission" placeholder="permission">
+    <tr>
+        <td><label for="permission"> PERMISSION: <br></td>
+            <td><input type="text" name="permission" id="permission" placeholder="permission"></td>
+    </tr>
+    <tr>
         </label>
-            <input type="text" name="with" id="with" hidden="true" value="ADD PERMISSION">
-        <input type="submit" value="ADD PERMISSION">
+        <td><input type="text" name="with" id="with" hidden="true" value="ADD PERMISSION"></td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="ADD PERMISSION"></td>
+    </tr>
     </form>
+    </table>
     <?php
     function standardize($string): string
     {
