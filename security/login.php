@@ -19,7 +19,6 @@ if (isset($_SESSION['logged_in'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -29,7 +28,6 @@ if (isset($_SESSION['logged_in'])) {
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
-
 <body id="page-top">
     <header value="login">
         <?php
@@ -37,12 +35,15 @@ if (isset($_SESSION['logged_in'])) {
         ?>
     </header>
     <div class="content-body">
+        <h1>Log in</h1>
+        <img src="">
+       
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-            <label for="username">USERNAME: </label><br>
-            <input type="text" id="username" name="username" value="newtonmusyimi"><br>
-            <label for="password">PASSWORD: </label><br>
-            <input type="password" id="password" name="password" value="g19m80452022"><br><br>
-            <input type="submit" value="LOG IN">
+            <label for="username"><strong>USERNAME:</strong></label><br>
+            <input type="text" id="username" name="username" value="newtonmusyimi" required><br>
+            <label for="password"><strong>PASSWORD:</strong></label><br>
+            <input type="password" id="password" name="password" value="g19m80452022"><br><br>         
+            <input type="submit" class= "submit" name  = "submit"value="LOG IN">
         </form>
     </div>
     <?php

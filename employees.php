@@ -113,6 +113,9 @@ require_once('security/header.php');
         </form>
     </div>
     <?php
+    function valid(): bool{
+        return true;
+    }
     function current_employee($conn, $email, $phone_number){
         $user_search = "SELECT `email`, `mobile` FROM `employees` WHERE `email` = '$email'";
         $result = mysqli_query($conn, $user_search) or die ("client SELECT error!" . $conn->error);
@@ -140,13 +143,19 @@ require_once('security/header.php');
         $email = $_REQUEST['email'];
         $mobile = $_REQUEST['mobile'];
         $address = $_REQUEST['address'];
-        $sql = "INSERT INTO employees (title, first_name, last_name, email, mobile, address) VALUES ('$title', '$first_name', '$last_name', '$email', '$mobile', '$address');";
-        if ($conn->query($sql) === TRUE) {
-            echo "<p style='color: green'>$first_name $last_name has been added to the database</p>";
-        } else {
-            echo "<p style='color: darkred'><strong style='color: red'>Error:</strong> Could not add $first_name $last_name into the databse because:".current_employee($conn, $email, $mobile)."</p><p style='color: red'><strong>Message: </strong>" .$conn->error."</p>";
+        if(valid()){
+            
+            $sql = "INSERT INTO employees (title, first_name, last_name, email, mobile, address) VALUES ('$title', '$first_name', '$last_name', '$email', '$mobile', '$address');";
+            if ($conn->query($sql) === TRUE) {
+                echo "<p style='color: green'>$first_name $last_name has been added to the database</p>";
+            } else {
+                echo "<p style='color: darkred'><strong style='color: red'>Error:</strong> Could not add $first_name $last_name into the databse because:".current_employee($conn, $email, $mobile)."</p><p style='color: red'><strong>Message: </strong>" .$conn->error."</p>";
+            }
+            $conn ->close();
+        }else{
+
         }
-        $conn ->close();
+        
     }
     ?>
     <footer class="bg-white sticky-footer" style="padding-bottom: 32px;">

@@ -43,38 +43,56 @@ if (isset($_SESSION['logged_in'])) {
     </div>
 
     <div id="ClientSignUp" class="tabcontent">
-        <h3>Client Sign Up</h3>
+        <h3><strong>Client Sign Up</strong></h3>
+        <table>
+            <tr>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="hidden" name="client" value="CLIENT">
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username"  placeholder="Username">
+                <td><label for="username">Username</label></td>
+                <td><input type="text" class="form-control" id="username" name="username"  placeholder="Username"></td>
+            </tr>
+            <tr>
             </div>
             <div class="form-group">
-                <label for="first_name">First Name</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                <td><label for="first_name">First Name</label></td>
+                <td><input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name"></td>
             </div>
+            </tr>
+            <tr>
             <div class="form-group">
-                <label for="last_name">Last Name</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                <td><label for="last_name">Last Name</label></td>
+                <td><input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"></td>
             </div>
+            </tr>
+            <tr>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                <td><label for="email">Email</label></td>
+                <td><input type="email" class="form-control" id="email" name="email" placeholder="Email"></td>
             </div>
+            </tr>
+            <tr>
             <div class="form-group">
-                <label for="mobile">Mobile</label>
-                <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile">
+                <td><label for="mobile">Mobile</label></td>
+                <td><input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile"></td>
             </div>
+            </tr>
+            <tr>
             <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                <td><label for="address">Address</label></td>
+                <td><input type="text" class="form-control" id="address" name="address" placeholder="Address"></td>
             </div>
+            </tr>
+            <tr>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <td><label for="password">Password</label></td>
+                <td><input type="password" class="form-control" id="password" name="password" placeholder="Password"></td>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            </tr>
+            <tr>
+            <td><button type="submit" class="btn btn-primary">Submit</button></td>
+            </tr>
+        </table>
             <?php
             function checkUsername($username): bool
             {

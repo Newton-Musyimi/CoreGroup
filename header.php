@@ -23,6 +23,7 @@ $links = array(
     'profile' => $profile,
     'employees' => $employees
 );
+/*
 function getCommon(): string
 {
     global $links;
@@ -44,6 +45,7 @@ function getCommon(): string
     </nav>
     </div>";
 }
+*/
 function getAdminHeader(){
     global $links;
     echo "<div class=\"navbar\">
@@ -113,7 +115,7 @@ function getHeader(){
         }else{
             getEmployeeHeader();
         }
-        echo getCommon();
+        //echo getCommon();
     }else{
         echo "<div class=\"navbar\">
     <nav class=\"top-nav\">
@@ -126,6 +128,6 @@ function getHeader(){
         </ul>
     </nav>
 </div>";
-        echo getCommon();
+        //echo getCommon();
     }
 }
