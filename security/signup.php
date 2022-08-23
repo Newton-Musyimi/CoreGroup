@@ -97,9 +97,13 @@ if (isset($_SESSION['logged_in'])) {
             function checkUsername($username): bool
             {
                 global $conn;
-                $sql = "SELECT * FROM users WHERE username='$username'";
-                $result = mysqli_query($conn, $sql);
-                if (mysqli_num_rows($result) > 0) {
+                $sql = "SELECT * FROM clients WHERE username='$username'";
+                $client_result = mysqli_query($conn, $sql);
+                $clients = mysqli_num_rows($client_result) > 0;
+                $sql = "SELECT * FROM employees WHERE username='$username'";
+                $employee_result = mysqli_query($conn, $sql);
+                $employees = mysqli_num_rows($employee_result) > 0;
+                if ($clients || $employees) {
                     return true;
                 } else {
                     return false;
