@@ -41,4 +41,84 @@ ALTER TABLE `coregroup`.`workorders`
             REFERENCES `coregroup`.`clients` (`client_id`)
             ON DELETE CASCADE
             ON UPDATE CASCADE;
-
+//- update based on lecturer corrections
+ALTER TABLE `coregroup`.`payments`
+    DROP FOREIGN KEY `invoice_id_fk`;
+ALTER TABLE `coregroup`.`payments`
+    DROP INDEX `invoice_id_fk_idx` ;
+ALTER TABLE `coregroup`.`workorders`
+    DROP FOREIGN KEY `requested_by_fk`;
+ALTER TABLE `coregroup`.`workorders`
+    DROP INDEX `requested_by_fk_idx` ;
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `requested_by` `requested_by` VARCHAR(20) NOT NULL ;
+ALTER TABLE `coregroup`.`user_role`
+    DROP FOREIGN KEY `user_role_ibfk_1`;
+ALTER TABLE `coregroup`.`user_role`
+    CHANGE COLUMN `user_id` `employee_id` INT(10) UNSIGNED NOT NULL ,
+    DROP INDEX `user_id` ;
+ALTER TABLE `coregroup`.`user_role`
+    RENAME TO  `coregroup`.`employee_role` ;
+DROP TABLE `coregroup`.`payments`;
+ALTER TABLE `coregroup`.`invoices`
+    DROP COLUMN `balance`;
+ALTER TABLE `coregroup`.`clients`
+    ADD COLUMN `username` VARCHAR(20) NOT NULL AFTER `address`,
+    ADD COLUMN `password` VARCHAR(60) NOT NULL AFTER `username`,
+    ADD UNIQUE INDEX `username_UNIQUE` (`username` ASC);
+ALTER TABLE `coregroup`.`employees`
+    ADD COLUMN `username` VARCHAR(20) NOT NULL AFTER `address`,
+    ADD COLUMN `password` VARCHAR(60) NULL AFTER `username`,
+    ADD UNIQUE INDEX `username_UNIQUE` (`username` ASC);
+DROP TABLE `coregroup`.`users`;
+ALTER TABLE `coregroup`.`invoices`
+    CHANGE COLUMN `payment_status` `payment_status` TINYINT NOT NULL DEFAULT 0 ;
+ALTER TABLE `coregroup`.`invoices`
+    DROP FOREIGN KEY `quote_id_fk`;
+ALTER TABLE `coregroup`.`invoices`
+    ADD CONSTRAINT `quote_id`
+        FOREIGN KEY (`invoice_id`)
+            REFERENCES `coregroup`.`quotes` (`quote_id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
+ALTER TABLE `coregroup`.`devices`
+    DROP FOREIGN KEY `owner_id_fk`;
+ALTER TABLE `coregroup`.`devices`
+    ADD INDEX `owner_id_fk_idx` (`owner_id` ASC),
+    DROP INDEX `owner_id_fk_idx` ;
+;
+ALTER TABLE `coregroup`.`devices`
+    ADD CONSTRAINT `owner_id_fk`
+        FOREIGN KEY (`owner_id`)
+            REFERENCES `coregroup`.`clients` (`client_id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
+ALTER TABLE `coregroup`.`documents`
+    DROP FOREIGN KEY `file_uploader_fk`;
+ALTER TABLE `coregroup`.`documents`
+    CHANGE COLUMN `uploaded_by` `uploaded_by` VARCHAR(20) NULL DEFAULT NULL ,
+    DROP INDEX `file_uploader_fk_idx` ;
+ALTER TABLE `coregroup`.`logs`
+    DROP FOREIGN KEY `log_user_id_fk`;
+ALTER TABLE `coregroup`.`logs`
+    CHANGE COLUMN `user_id` `employee_id` INT(10) UNSIGNED NULL DEFAULT NULL ,
+    ADD INDEX `log_user_id_fk_idx` (`employee_id` ASC),
+    DROP INDEX `log_user_id_fk_idx` ;
+;
+ALTER TABLE `coregroup`.`logs`
+    ADD CONSTRAINT `employee_id_fk`
+        FOREIGN KEY (`employee_id`)
+            REFERENCES `coregroup`.`employees` (`employee_id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
+ALTER TABLE `coregroup`.`messages`
+    DROP FOREIGN KEY `sender_id_fk`,
+    DROP FOREIGN KEY `recipient_id_fk`;
+ALTER TABLE `coregroup`.`messages`
+    CHANGE COLUMN `sender` `sender` VARCHAR(20) NOT NULL ,
+    CHANGE COLUMN `recipient` `recipient` VARCHAR(20) NOT NULL ,
+    DROP INDEX `recipient_id_fk` ,
+    DROP INDEX `sender_id_fk` ;
+UPDATE `coregroup`.`employees` SET `username` = 'newtonmusyimi', `password` = '$2y$10$JOLVeoPQGFmMJgl52d.vU.IemcsZNAha5MiOFra/o.n8LuVPbsxhq' WHERE (`employee_id` = '1');
+INSERT INTO `coregroup`.`clients` (`client_id`, `first_name`, `last_name`, `email`, `mobile`, `address`, `username`, `password`)
+VALUES ('1', 'Newton', 'Musyimi', 'newtonmusyimi@gmail.com', '0791411796', 'Grahamstown, Eastern Cape', 'clientnewton', '$2y$10$JOLVeoPQGFmMJgl52d.vU.IemcsZNAha5MiOFra/o.n8LuVPbsxhq');
