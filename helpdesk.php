@@ -5,6 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.
 */
 require_once('security/admin/config.php');
 require_once('security/header.php');
+global $host;
 //require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
 <!DOCTYPE html>
