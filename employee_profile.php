@@ -2,10 +2,9 @@
 session_start();
 /*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
 */
 require_once('security/admin/config.php');
-require_once('header.php');
+require_once('security/header.php');
 //require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
 <!DOCTYPE html>

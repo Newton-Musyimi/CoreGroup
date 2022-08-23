@@ -1,11 +1,12 @@
 <?php
 session_start();
+global $host;
 /*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
-require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/header.php');
 */
+
 require_once('security/admin/config.php');
-require_once('header.php');
+require_once('security/header.php');
 //require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
 <!DOCTYPE html>
@@ -16,7 +17,7 @@ require_once('header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Core Group</title>
     <meta http-equiv="Cache-control" content="no-store">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
