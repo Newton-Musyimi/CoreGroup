@@ -3,6 +3,8 @@ $host = "http://".$_SERVER['HTTP_HOST'];
 $dashboard = "<li><a href=\"$host/SysDev/CoreGroup/dashboard.php\" class=\"nav-item\"><button>Admin</button></a> </li>";
 $test = "<li><a href=\"$host/SysDev/CoreGroup/test.php\" class=\"nav-item\"><button>Test</button></a> </li>";
 $workorders = "<li><a href=\"$host/SysDev/CoreGroup/workorders.php\" class=\"nav-item\"><button>Workorders</button></a> </li>";
+
+$client_workorders = "<li><a href=\"$host/SysDev/CoreGroup/client_workorders.php\" class=\"nav-item\"><button>Workorders</button></a> </li>";
 $login = "<li><a href=\"$host/SysDev/CoreGroup/security/login.php\" class=\"nav-item\"><button>Login</button></a> </li>";
 $logout = "<li><a href=\"$host/SysDev/CoreGroup/security/logout.php\" class=\"nav-item\"><button>Logout</button></a> </li>";
 $signup = "<li><a href=\"$host/SysDev/CoreGroup/security/signup.php\" class=\"nav-item\"><button>Signup</button></a> </li>";
@@ -15,6 +17,7 @@ $links = array(
     'dashboard' => $dashboard,
     'test' => $test,
     'workorders' => $workorders,
+    'client_workorders' => $client_workorders,
     'login' => $login,
     'logout' => $logout,
     'signup' => $signup,
@@ -82,7 +85,7 @@ function getClientHeader(){
     echo "<div class=\"navbar\">
     <nav class=\"top-nav\">
         <ul>
-            {$links['workorders']}
+            {$links['client_workorders']}
             {$links['profile']}
             {$links['logout']}
         </ul>
