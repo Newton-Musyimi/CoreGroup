@@ -1,11 +1,14 @@
 <?php
 class PrivilegedUser extends Role
 {
+    /**
+     * @var mixed
+     */
     private $roles;
     /**
      * @var mixed
      */
-    private $user_id;
+    private mixed $user_id;
     /**
      * @var mixed
      */
@@ -20,15 +23,20 @@ class PrivilegedUser extends Role
     }
 
     // override User method
-    public static function getByUsername($username) {
-        $sql = "SELECT * FROM users WHERE username = '$username'";
+    public static function getByUsername($username, $usertype) {
+        if($usertype == 'client'){
+            $sql = "SELECT * FROM coregroup.clients WHERE username = '$username'";
+        }else{
+            $sql = "SELECT * FROM coregroup.employees WHERE username = '$username'";
+        }
+
         $conn = $GLOBALS["DB"];
         //$query = "SELECT `user_id`, `username`, `user_type`, `password` FROM `users` WHERE `username` = $username;";
         $result = mysqli_query($conn, $sql) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
 
         if ($row = mysqli_fetch_array($result)) {
             $privUser = new PrivilegedUser();
-            $privUser->user_id = $row["user_id"];
+            $privUser->user_id = $row["employee_id"];
             $privUser->username = $row["username"];
             $privUser->password = $row["password"];
             $privUser->initRoles();
@@ -42,9 +50,9 @@ class PrivilegedUser extends Role
     protected function initRoles() {
         $this->roles = array();
         $user_id = $this->user_id;
-        $sql = "SELECT t1.role_id, t2.role_name FROM user_role as t1
+        $sql = "SELECT t1.role_id, t2.role_name FROM employee_role as t1
                 JOIN roles as t2 ON t1.role_id = t2.role_id
-                WHERE t1.user_id = $user_id";
+                WHERE t1.employee_id = $user_id";
         $conn = $GLOBALS["DB"];
         $result = mysqli_query($conn, $sql);
         //$sth->execute(array(":user_id" => $this->user_id));
@@ -52,7 +60,7 @@ class PrivilegedUser extends Role
         $row = mysqli_fetch_array($result);
         $role_name = $row["role_name"];
         $role_id = $row["role_id"];
-        array_push($this->roles, $role_name);
+        $this->roles[] = $role_name;
         $this->getRolePerms($role_id);
 
         //$this->roles = $this->roles[$role_name] = Role::getRolePerms($row["role_id"]);
@@ -75,7 +83,8 @@ class PrivilegedUser extends Role
     }
 
     // insert a new role permission association
-    public static function insertPerm($role_id, $perm_id) {
+    public static function insertPerm($role_id, $perm_id): mysqli_result|bool
+    {
         $sql = "INSERT INTO role_perm (role_id, perm_id) VALUES ($role_id, $perm_id)";
         //$sth = $GLOBALS["DB"]->prepare($sql);
         $conn = $GLOBALS["DB"];
@@ -84,7 +93,8 @@ class PrivilegedUser extends Role
     }
 
     // delete ALL role permissions
-    public static function deletePerms() {
+    public static function deletePerms(): mysqli_result|bool
+    {
         $sql = "TRUNCATE role_perm";
         //$sth = $GLOBALS["DB"]->prepare($sql);
         $conn = $GLOBALS["DB"];
@@ -95,8 +105,8 @@ class PrivilegedUser extends Role
     public function getRoleId(){
         $username = $this->username;
         $conn = $GLOBALS["DB"];
-        $sql = "SELECT role_id FROM users as t1
-                JOIN user_role as t2 ON t1.user_id = t2.user_id
+        $sql = "SELECT role_id FROM coregroup.employees as t1
+                JOIN coregroup.employee_role as t2 ON t1.employee_id = t2.employee_id
                 WHERE t1.username = '$username';";
         $result = mysqli_query($conn, $sql);
 

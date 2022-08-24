@@ -89,7 +89,8 @@ if (isset($_SESSION['logged_in'])) {
         return ucfirst($string);
     }
 
-    function clientLogIn(){
+    function clientLogIn(): void
+    {
         global $host;
         $conn = get_db();
         $username = standardize($_POST['username']);
@@ -110,10 +111,12 @@ if (isset($_SESSION['logged_in'])) {
         mysqli_close($conn);
         $_SESSION['logged_in'] = $id;
         $_SESSION['username'] = $username_query;
+        $_SESSION['user_type'] = "client";
         header("location:$host/SysDev/CoreGroup/client_workorders.php");
     }
 
-    function employeeLogIn(){
+    function employeeLogIn(): void
+    {
         global $host;
         $conn = get_db();
         $username = standardize($_POST['username']);
@@ -151,6 +154,7 @@ if (isset($_SESSION['logged_in'])) {
         mysqli_close($conn);
         $_SESSION['logged_in'] = $id;
         $_SESSION['username'] = $username_query;
+        $_SESSION['user_type'] = "employee";
         header("location:$host/SysDev/CoreGroup/dashboard.php");
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){

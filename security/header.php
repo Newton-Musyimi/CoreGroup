@@ -49,7 +49,8 @@ function getCommon(): string
     </div>";
 }
 */
-function getAdminHeader(){
+function getAdminHeader(): void
+{
     global $links;
     echo "<div class=\"navbar\">
     <nav class=\"top-nav\">
@@ -64,7 +65,8 @@ function getAdminHeader(){
 </div>";
 }
 
-function getReceptionistHeader(){
+function getReceptionistHeader(): void
+{
     global $links;
     echo "<div class=\"navbar\">
     <nav class=\"top-nav\">
@@ -80,7 +82,8 @@ function getReceptionistHeader(){
 
 }
 
-function getClientHeader(){
+function getClientHeader(): void
+{
     global $links;
     echo "<div class=\"navbar\">
     <nav class=\"top-nav\">
@@ -92,7 +95,8 @@ function getClientHeader(){
     </nav>
 </div>";
 }
-function getEmployeeHeader(){
+function getEmployeeHeader(): void
+{
     global $links;
     echo "<div class=\"navbar\">
     <nav class=\"top-nav\">
@@ -104,7 +108,8 @@ function getEmployeeHeader(){
     </nav>
     </div>";
 }
-function getHeader(){
+function getHeader(): void
+{
     global $links;
     if(isset($_SESSION['logged_in'])){
         $role = $_SESSION['role'];
