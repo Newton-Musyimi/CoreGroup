@@ -122,3 +122,90 @@ ALTER TABLE `coregroup`.`messages`
 UPDATE `coregroup`.`employees` SET `username` = 'newtonmusyimi', `password` = '$2y$10$JOLVeoPQGFmMJgl52d.vU.IemcsZNAha5MiOFra/o.n8LuVPbsxhq' WHERE (`employee_id` = '1');
 INSERT INTO `coregroup`.`clients` (`client_id`, `first_name`, `last_name`, `email`, `mobile`, `address`, `username`, `password`)
 VALUES ('1', 'Newton', 'Musyimi', 'newtonmusyimi@gmail.com', '0791411796', 'Grahamstown, Eastern Cape', 'clientnewton', '$2y$10$JOLVeoPQGFmMJgl52d.vU.IemcsZNAha5MiOFra/o.n8LuVPbsxhq');
+
+--
+ALTER TABLE `coregroup`.`messages` 
+ADD COLUMN `wo_id` INT UNSIGNED NULL AFTER `type`;
+
+ALTER TABLE `coregroup`.`messages` 
+ADD CONSTRAINT `wo_id`
+  FOREIGN KEY (`wo_id`)
+  REFERENCES `coregroup`.`workorders` (`wo_id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+ALTER TABLE `coregroup`.`messages` 
+DROP FOREIGN KEY `wo_id`;
+ALTER TABLE `coregroup`.`messages` 
+CHANGE COLUMN `wo_id` `wo_id` INT UNSIGNED NOT NULL ;
+ALTER TABLE `coregroup`.`messages` 
+ADD CONSTRAINT `wo_id`
+  FOREIGN KEY (`wo_id`)
+  REFERENCES `coregroup`.`workorders` (`wo_id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+  ALTER TABLE `coregroup`.`employee_role` 
+ADD INDEX `employee_id_idx` (`employee_id` ASC) VISIBLE;
+;
+ALTER TABLE `coregroup`.`employee_role` 
+ADD CONSTRAINT `employee_id`
+  FOREIGN KEY (`employee_id`)
+  REFERENCES `coregroup`.`employees` (`employee_id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+ALTER TABLE `coregroup`.`used_resources`
+    DROP FOREIGN KEY `wo_id_resources_fk`,
+    DROP FOREIGN KEY `asset_id_fk`;
+ALTER TABLE `coregroup`.`used_resources`
+    DROP INDEX `wo_id_fk_idx` ;
+DROP TABLE `coregroup`.`used_resources`;
+
+ALTER TABLE `coregroup`.`resources`
+    ADD INDEX `resource_wo_id_idx` (`wo_id` ASC) VISIBLE;
+;
+ALTER TABLE `coregroup`.`resources`
+    ADD CONSTRAINT `resource_wo_id`
+        FOREIGN KEY (`wo_id`)
+            REFERENCES `coregroup`.`workorders` (`wo_id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
+ALTER TABLE `coregroup`.`resources`
+    DROP INDEX `wo_id_idx` ;
+
+ALTER TABLE `coregroup`.`resources`
+    ADD COLUMN `cost` DECIMAL(6,2) NOT NULL AFTER `wo_id`,
+    ADD COLUMN `price` DECIMAL(6,2) NULL AFTER `cost`;
+
+ALTER TABLE `coregroup`.`resources`
+    DROP COLUMN `quantity`;
+
+ALTER TABLE `coregroup`.`invoices`
+    ADD COLUMN `wo_id` INT UNSIGNED NULL AFTER `amount`;
+
+ALTER TABLE `coregroup`.`invoices`
+    DROP FOREIGN KEY `quote_id_fk`;
+
+ALTER TABLE `coregroup`.`invoices`
+    ADD INDEX `invoice_wo_id_idx` (`wo_id` ASC) VISIBLE;
+;
+ALTER TABLE `coregroup`.`invoices`
+    ADD CONSTRAINT `invoice_wo_id`
+        FOREIGN KEY (`wo_id`)
+            REFERENCES `coregroup`.`workorders` (`wo_id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
+
+ALTER TABLE `coregroup`.`invoices`
+    DROP FOREIGN KEY `invoice_wo_id`;
+ALTER TABLE `coregroup`.`invoices`
+    CHANGE COLUMN `wo_id` `wo_id` INT UNSIGNED NOT NULL ;
+ALTER TABLE `coregroup`.`invoices`
+    ADD CONSTRAINT `invoice_wo_id`
+        FOREIGN KEY (`wo_id`)
+            REFERENCES `coregroup`.`workorders` (`wo_id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
+
+DROP TABLE `coregroup`.`quotes`;
+

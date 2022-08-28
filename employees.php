@@ -157,8 +157,6 @@ tr:hover {background-color: #048337;}
                 echo "<p style='color: darkred'><strong style='color: red'>Error:</strong> Could not add $first_name $last_name into the databse because:".current_employee($conn, $email, $mobile)."</p><p style='color: red'><strong>Message: </strong>" .$conn->error."</p>";
             }
             $conn ->close();
-        }else{
-
         }
         
     }

@@ -24,7 +24,7 @@ class Role
         while($row = mysqli_fetch_array($result)) {
             $perm = $row["perm_desc"];
             echo "Permission $num: ".$perm."<br>";
-            array_push($this->permissions, $perm);
+            $this->permissions[] = $perm;
             //$role->permissions[$row["perm_desc"]] = true;
             $num++;
         }
@@ -39,7 +39,8 @@ class Role
     }
 
     // insert a new role
-    public static function insertRole($role_name) {
+    public static function insertRole($role_name): mysqli_result|bool
+    {
         $sql = "INSERT INTO roles (role_name) VALUES ($role_name)";
         //$sth = $GLOBALS["DB"]->prepare($sql);
         $conn = $GLOBALS["DB"];
@@ -52,7 +53,7 @@ class Role
     public static function insertUserRoles($user_id, $roles): bool
     {
         foreach ($roles as $role_id) {
-            $sql = "INSERT INTO user_role (user_id, role_id) VALUES ($user_id, $role_id)";
+            $sql = "INSERT INTO coregroup.employee_role (coregroup.employee_role.employee_id, role_id) VALUES ($user_id, $role_id)";
             //$sth = $GLOBALS["DB"]->prepare($sql);
             //$sth->bindParam(":user_id", $user_id, PDO::PARAM_STR);
             //$sth->bindParam(":role_id", $role_id, PDO::PARAM_INT);
@@ -71,7 +72,7 @@ class Role
         
         foreach ($roles as $role_id) {
             $sql = "DELETE t1, t2, t3 FROM roles as t1
-                JOIN user_role as t2 on t1.role_id = t2.role_id
+                JOIN coregroup.employee_role as t2 on t1.role_id = t2.role_id
                 JOIN role_perm as t3 on t1.role_id = t3.role_id
                 WHERE t1.role_id = $role_id";
             //$sth = $GLOBALS["DB"]->prepare($sql);
@@ -85,8 +86,9 @@ class Role
     }
 
     // delete ALL roles for specified user id
-    public static function deleteUserRoles($user_id) {
-        $sql = "DELETE FROM user_role WHERE user_id = $user_id";
+    public static function deleteUserRoles($user_id): mysqli_result|bool
+    {
+        $sql = "DELETE FROM coregroup.employee_role WHERE employee_id = $user_id";
         //$sth = $GLOBALS["DB"]->prepare($sql);
         //return $sth->execute(array(":user_id" => $user_id));
         $conn = $GLOBALS["DB"];
