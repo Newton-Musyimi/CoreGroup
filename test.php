@@ -56,7 +56,7 @@ require_once('security/header.php');
         require_once("security/PrivilegedUser.php");
         $conn = get_db();
         $GLOBALS["DB"] = $conn;
-        $user = PrivilegedUser::getByUsername($_SESSION["username"]);
+        $user = PrivilegedUser::getByUsername($_SESSION['username'], $_SESSION['user_type']);
         $role_id = $user->getRoleId();
         echo $role_id.'<br>';
         $permissions_query = "SELECT * FROM coregroup.permissions;";

@@ -50,7 +50,7 @@ if (isset($_SESSION['logged_in'])) {
                     <input type="hidden" name="user_type" value="client">
                     <tr>
                         <td><label for="password"><strong>PASSWORD:</strong></label><br></td>
-                        <td><input type="password" id="password" name="password" value="g19m80452022"><br><br></td>
+                        <td><input type="password" id="password" name="password" value="g19m80452022" required><br><br></td>
                     </tr>
                     <tr>
                         <td><input type="submit" class="submit" name="submit" value="LOG IN"></td>
@@ -66,12 +66,12 @@ if (isset($_SESSION['logged_in'])) {
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                     <tr>
                         <td><label for="username"><strong>USERNAME:</strong></label><br></td>
-                        <td><input type="text" id="username" name="username" value="newtonmusyimi" required><br></td>
+                        <td><input type="text" id="username" name="username" required><br></td>
                     </tr>
                     <input type="hidden" name="user_type" value="employee">
                     <tr>
                         <td><label for="password"><strong>PASSWORD:</strong></label><br></td>
-                        <td><input type="password" id="password" name="password" value="g19m80452022"><br><br></td>
+                        <td><input type="password" id="password" name="password" required><br><br></td>
                     </tr>
                     <tr>
                         <td><input type="submit" class="submit" name="submit" value="LOG IN"></td>
