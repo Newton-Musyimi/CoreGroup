@@ -23,6 +23,7 @@ global $host;
 </head>
 
 <body id="page-top">
+
     <header value="home">
         <div class="navbar">
             <?php
@@ -41,6 +42,7 @@ global $host;
         <input type = "submit" value ="Create a Ticket">
     </form>
         </div>
+        
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>

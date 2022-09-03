@@ -212,3 +212,9 @@ DROP TABLE `coregroup`.`quotes`;
 -- 31-8-2022
 ALTER TABLE `coregroup`.`invoices`
     ADD COLUMN `quote_status` TINYINT NOT NULL DEFAULT 0 AFTER `wo_id`;
+
+-- 3-9-2022
+CREATE TABLE `coregroup`.`users` (
+                                     `username` VARCHAR(20) NOT NULL,
+                                     `table` VARCHAR(45) NOT NULL,
+                                     PRIMARY KEY (`username`));

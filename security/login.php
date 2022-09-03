@@ -27,6 +27,11 @@ if (isset($_SESSION['logged_in'])) {
     <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
+<style>
+    h1 {
+        border-bottom: 6px solid;
+    }
+</style>
 </head>
 <body id="page-top">
     <header value="login">
@@ -44,8 +49,8 @@ if (isset($_SESSION['logged_in'])) {
             <table>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                     <tr>
-                        <td><label for="username"><strong>USERNAME:</strong></label><br></td>
-                        <td><input type="text" id="username" name="username" value="clientnewton" required><br></td>
+                        <th><label for="username"><strong>USERNAME:</strong></label><br></th>
+                        <td><br><input type="text" id="username" name="username" value="clientnewton" required><br></td>
                     </tr>
                     <input type="hidden" name="user_type" value="client">
                     <tr>
