@@ -26,6 +26,7 @@ global $host;
 
     <header value="home">
         <div class="navbar">
+            <h1>Core Group Ltd</h1>
             <?php
             getHeader();
             ?>

@@ -218,3 +218,23 @@ CREATE TABLE `coregroup`.`users` (
                                      `username` VARCHAR(20) NOT NULL,
                                      `table` VARCHAR(45) NOT NULL,
                                      PRIMARY KEY (`username`));
+
+-- 5-9-2022
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `priority` `priority` VARCHAR(7) NULL ;
+
+ALTER TABLE `coregroup`.`devices`
+    CHANGE COLUMN `model` `model` VARCHAR(20) NULL ,
+    CHANGE COLUMN `location` `location` VARCHAR(50) NULL ;
+
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `dropoff_date` `dropoff_date` TIMESTAMP NULL ;
+
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `status` `status` VARCHAR(11) NOT NULL ;
+
+ALTER TABLE `coregroup`.`devices`
+    CHANGE COLUMN `name` `device_name` VARCHAR(50) NULL DEFAULT NULL ;
+
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `dropoff_date` `dropoff_date` TIMESTAMP NULL DEFAULT NOW() ;

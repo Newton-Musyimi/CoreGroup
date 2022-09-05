@@ -23,11 +23,62 @@ global $host;
 
 <body id="page-top">
 <header>
+    <h1>Customer Portal</h1>
+    <img src="assets/images/Picture1.png">
     <?php
     getHeader();
     ?>
 </header>
 <div class="content-body">
+    <form action="" method ="POST">
+        <input type="submit" value="ADD REPAIR JOB">
+    </form>
+<table>
+    <tr>
+       <th>Job Code</th> 
+       <th>Device</th> 
+       <th>Cost</th> 
+       <th>Status</th> 
+       <th>Scheduled</th> 
+       <th>Assigned To</th> 
+       <th>View</th> 
+    </tr>
+        <td>1</td>
+        <td>inspiron 15</td>
+        <td>R 350.00</td>
+        <td>Completed</td>
+        <td>6/8/2022</td>
+        <td><a href="#">Assigned To</a></td>
+        <td><a href="#">View</a></td>
+    <tr>
+        <td>2</td>
+        <td>inspiron 15</td>
+        <td>R 350.00</td>
+        <td>In Progress</td>
+        <td>6/9/2022</td>
+        <td><a href="#">Assigned To</a></td>
+        <td><a href="#">View</a></td> 
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Acer</td>
+        <td>R 30.00</td>
+        <td>Cancelled</td>
+        <td>5/9/2022</td>
+        <td><a href="#">Assigned To</a></td>
+        <td><a href="#">View</a></td> 
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Acer</td>
+        <td>R 30.00</td>
+        <td>Cancelled</td>
+        <td>5/9/2022</td>
+        <td><a href="#">Assigned To</a></td>
+        <td><a href="#">View</a></td> 
+
+    </tr>
+    </table>
 
 </div>
 <footer style="padding-bottom: 32px;">
