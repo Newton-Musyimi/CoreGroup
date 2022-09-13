@@ -1,0 +1,5 @@
+[{"device_id":1, "owner_id":1, "description":"", "category":"laptop", "brand":"dell", "model":"", "serial_number":0, "location":"", "device_name":"work laptop"},
+ {"device_id":2, "owner_id":1, "description":"", "category":"laptop", "brand":"dell", "model":"inspiron", "serial_number":0, "location":"", "device_name":"personal laptop"},
+ {"device_id":3, "owner_id":1, "description":"", "category":"desktop", "brand":"proline", "model":"", "serial_number":0, "location":"", "device_name":"work tower"},
+ {"device_id":4, "owner_id":1, "description":"", "category":"monitor", "brand":"noc", "model":"", "serial_number":0, "location":"", "device_name":"work monitor"},
+ {"device_id":5, "owner_id":1, "description":"", "category":"laptop", "brand":"macbook", "model":"pro", "serial_number":0, "location":"", "device_name":"personal macbook"}]

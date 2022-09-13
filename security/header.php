@@ -129,8 +129,6 @@ function getHeader(): void
     <nav class=\"top-nav\">
         <ul>
             {$links['home']}
-            {$links['test']}
-            {$links['workorders']}
             {$links['login']}
             {$links['signup']}
         </ul>

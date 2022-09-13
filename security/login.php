@@ -27,6 +27,11 @@ if (isset($_SESSION['logged_in'])) {
     <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
+<style>
+    h1 {
+        border-bottom: 6px solid;
+    }
+</style>
 </head>
 <body id="page-top">
     <header value="login">
@@ -34,51 +39,21 @@ if (isset($_SESSION['logged_in'])) {
         getHeader();
         ?>
     </header>
-    <div class='tab'>
-        <button class="tablinks" id="defaultOpen" onclick="openTab(event, 'clientLoginForm')">Client Login</button>
-        <button class="tablinks" onclick="openTab(event, 'employeeLoginForm')">Employee Login</button>
-    </div>
-    <div id='clientLoginForm' class='tabcontent'>
-        <div class="content-body">
-            <h1>Client Log In</h1>
-            <table>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                    <tr>
-                        <td><label for="username"><strong>USERNAME:</strong></label><br></td>
-                        <td><input type="text" id="username" name="username" value="clientnewton" required><br></td>
-                    </tr>
-                    <input type="hidden" name="user_type" value="client">
-                    <tr>
-                        <td><label for="password"><strong>PASSWORD:</strong></label><br></td>
-                        <td><input type="password" id="password" name="password" value="g19m80452022" required><br><br></td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" class="submit" name="submit" value="LOG IN"></td>
-                    </tr>
-                </form>
-            </table>
-        </div>
-    </div>
-    <div id='employeeLoginForm' class='tabcontent'>
-        <div class="content-body">
-            <h1>Employee Log In</h1>
-            <table>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                    <tr>
-                        <td><label for="username"><strong>USERNAME:</strong></label><br></td>
-                        <td><input type="text" id="username" name="username" required><br></td>
-                    </tr>
-                    <input type="hidden" name="user_type" value="employee">
-                    <tr>
-                        <td><label for="password"><strong>PASSWORD:</strong></label><br></td>
-                        <td><input type="password" id="password" name="password" required><br><br></td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" class="submit" name="submit" value="LOG IN"></td>
-                    </tr>
-                </form>
-            </table>
-        </div>
+    <div class="content-body">
+        <h3>User Log In</h3>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                
+                    <label for="username"><strong>USERNAME:</strong></label><br>
+                    <br><input type="text" id="username" name="username" value="clientnewton" required><br>
+                
+                <input type="hidden" name="user_type" value="client">
+                
+                    <label for="password"><strong>PASSWORD:</strong></label>
+                    <input type="password" id="password" name="password" value="g19m80452022" required><br><br>
+                
+                    <input type="submit" class="submit" name="submit" value="LOG IN">
+            </form>
+        
     </div>
 
     <?php

@@ -13,11 +13,11 @@ INSERT INTO `coregroup`.`role_perm` (`role_id`, `perm_id`) VALUES (1, 2);
 INSERT INTO `coregroup`.`role_perm` (`role_id`, `perm_id`) VALUES (1, 3);
 INSERT INTO `coregroup`.`user_role`  (`user_id`, `role_id`) VALUES (1, 1);
 
-//-- Language: sql
+-- Language: sql
 INSERT INTO `coregroup`.`employees` (`employee_id`, `first_name`, `last_name`, `email`, `title`, `mobile`, `address`)
 VALUES ('1', 'first', 'last', 'email', 'title', 'mobile', 'address');
 
-//
+--
 ALTER TABLE `coregroup`.`users`
 DROP FOREIGN KEY `employeeid_fk`,
 DROP FOREIGN KEY `clientid_fk`;
@@ -31,7 +31,7 @@ ALTER TABLE `coregroup`.`workorders`
 DROP INDEX `client_fk_idx` ;
 ;
 
-//-make client id auto-inc then run below code:
+-- make client id auto-inc then run below code:
 ALTER TABLE `coregroup`.`workorders`
     ADD INDEX `clientid_fk_idx` (`client_id` ASC) VISIBLE;
 ;
@@ -41,7 +41,7 @@ ALTER TABLE `coregroup`.`workorders`
             REFERENCES `coregroup`.`clients` (`client_id`)
             ON DELETE CASCADE
             ON UPDATE CASCADE;
-//- update based on lecturer corrections
+-- update based on lecturer corrections
 ALTER TABLE `coregroup`.`payments`
     DROP FOREIGN KEY `invoice_id_fk`;
 ALTER TABLE `coregroup`.`payments`
@@ -209,3 +209,32 @@ ALTER TABLE `coregroup`.`invoices`
 
 DROP TABLE `coregroup`.`quotes`;
 
+-- 31-8-2022
+ALTER TABLE `coregroup`.`invoices`
+    ADD COLUMN `quote_status` TINYINT NOT NULL DEFAULT 0 AFTER `wo_id`;
+
+-- 3-9-2022
+CREATE TABLE `coregroup`.`users` (
+                                     `username` VARCHAR(20) NOT NULL,
+                                     `table` VARCHAR(45) NOT NULL,
+                                     PRIMARY KEY (`username`));
+
+-- 5-9-2022
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `priority` `priority` VARCHAR(7) NULL ;
+
+ALTER TABLE `coregroup`.`devices`
+    CHANGE COLUMN `model` `model` VARCHAR(20) NULL ,
+    CHANGE COLUMN `location` `location` VARCHAR(50) NULL ;
+
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `dropoff_date` `dropoff_date` TIMESTAMP NULL ;
+
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `status` `status` VARCHAR(11) NOT NULL ;
+
+ALTER TABLE `coregroup`.`devices`
+    CHANGE COLUMN `name` `device_name` VARCHAR(50) NULL DEFAULT NULL ;
+
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `dropoff_date` `dropoff_date` TIMESTAMP NULL DEFAULT NOW() ;
