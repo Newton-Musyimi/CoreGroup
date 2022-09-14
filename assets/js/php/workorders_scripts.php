@@ -80,6 +80,19 @@ function getCancelledValue(){
     }
 }
 
+function getAssignedTechnicians($workorder_id){
+    global $client_id, $conn;
+    $query = "SELECT employees.username, assigned_technicians.employee_id FROM employees 
+    JOIN assigned_technicians ON assigned_technicians.employee_id = employees.employee_id
+    WHERE assigned_technicians.wo_id = $workorder_id;";
+    $result = mysqli_query($conn, $query) or die("Could not query for client workorder with id number:$client_id! Contact admin for assistance: " . $conn->error);
+    $list = "";
+    while($row = mysqli_fetch_array($result)){
+        $list .= "<li>{$row['username']}</li>";
+    }
+    return $list;
+}
+
 function getWorkorderTable(){
     global $client_id, $conn;
     $query = "SELECT `workorders`.`wo_id`, `workorders`.`status`, `workorders`.`date_started`, `devices`.`device_name` AS name
@@ -95,9 +108,34 @@ function getWorkorderTable(){
         <td>0.00</td>
         <td>{$row['status']}</td>
         <td>$date</td>
-        <td><a href=\"#\">Assigned To</a></td>
+        <td>
+            <button class='accordion'>Assigned Technicians</button>
+            <div class='panel'>
+            <ul>".getAssignedTechnicians($row['wo_id'])."</ul>
+            </div>
+        </td>
         <td><a href=\"#\">View</a></td>
     </tr>";
     }
 
+}
+
+function getEmployees(){
+    global $conn;
+    $query = "SELECT * FROM employees;";
+    $result = mysqli_query($conn, $query) or die("Could not query employee details! Contact admin for assistance: " . $conn->error);
+    echo "<ul>";
+    while($row = mysqli_fetch_array($result)){
+        echo "<li>
+            {$row['first_name']} {$row['last_name']}&emsp;
+            {$row['username']}&emsp;
+            {$row['email']}&emsp;
+            {$row['mobile']}&emsp;
+            {$row['password']}&emsp;
+            {$row['employee_id']}
+   </li>";
+
+
+    }
+    echo "</ul>";
 }

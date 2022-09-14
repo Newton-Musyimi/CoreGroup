@@ -234,7 +234,14 @@ ALTER TABLE `coregroup`.`workorders`
     CHANGE COLUMN `status` `status` VARCHAR(11) NOT NULL ;
 
 ALTER TABLE `coregroup`.`devices`
-    CHANGE COLUMN `name` `device_name` VARCHAR(50) NULL DEFAULT NULL ;
+    ADD COLUMN `device_name` VARCHAR(50) NULL DEFAULT NULL ;
 
 ALTER TABLE `coregroup`.`workorders`
     CHANGE COLUMN `dropoff_date` `dropoff_date` TIMESTAMP NULL DEFAULT NOW() ;
+
+UPDATE `coregroup`.`employees` SET `username` = 'mjstrachan' WHERE (`employee_id` = '2');
+UPDATE `coregroup`.`employees` SET `username` = ' johndoe' WHERE (`employee_id` = '3');
+UPDATE `coregroup`.`employees` SET `username` = 'william' WHERE (`employee_id` = '4');
+UPDATE `coregroup`.`employees` SET `username` = 'akhonabastile' WHERE (`employee_id` = '11');
+UPDATE `coregroup`.`employees` SET `username` = 'sandramuyodi' WHERE (`employee_id` = '14');
+UPDATE `coregroup`.`employees` SET `username` = 'lindabundy' WHERE (`employee_id` = '15');
