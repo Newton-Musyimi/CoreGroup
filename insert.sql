@@ -239,9 +239,22 @@ ALTER TABLE `coregroup`.`devices`
 ALTER TABLE `coregroup`.`workorders`
     CHANGE COLUMN `dropoff_date` `dropoff_date` TIMESTAMP NULL DEFAULT NOW() ;
 
+-- 13-9-2022
 UPDATE `coregroup`.`employees` SET `username` = 'mjstrachan' WHERE (`employee_id` = '2');
 UPDATE `coregroup`.`employees` SET `username` = ' johndoe' WHERE (`employee_id` = '3');
 UPDATE `coregroup`.`employees` SET `username` = 'william' WHERE (`employee_id` = '4');
 UPDATE `coregroup`.`employees` SET `username` = 'akhonabastile' WHERE (`employee_id` = '11');
 UPDATE `coregroup`.`employees` SET `username` = 'sandramuyodi' WHERE (`employee_id` = '14');
 UPDATE `coregroup`.`employees` SET `username` = 'lindabundy' WHERE (`employee_id` = '15');
+
+-- 14-9-2022
+CREATE TABLE `coregroup`.`plain_text_pass` (
+                                               `username` VARCHAR(50) NOT NULL,
+                                               `password` VARCHAR(255) NULL,
+                                               PRIMARY KEY (`username`),
+                                               CONSTRAINT `username_fk`
+                                                   FOREIGN KEY (`username`)
+                                                       REFERENCES `coregroup`.`users` (`username`)
+                                                       ON DELETE NO ACTION
+                                                       ON UPDATE NO ACTION);
+

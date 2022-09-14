@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("php/config.php");
 require_once('php/workorders_scripts.php')
 ?>
 <!DOCTYPE html>
@@ -33,15 +34,19 @@ require_once('php/workorders_scripts.php')
             background-color: white;
             overflow: hidden;
         }
+        hr{
+            border: 1px solid black;
+
+        }
     </style>
     <link rel="stylesheet" href="<?php echo "http://".$_SERVER['HTTP_HOST'].'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
 <body>
     <ul>
-        <li>pending:<span><?php getPendingValue(); ?></span></li>
-        <li>In-Progress:<span><?php getInProgressValue(); ?></span></li>
-        <li>Completed:<span><?php getCompletedValue(); ?></span></li>
-        <li>Cancelled:<span><?php getCancelledValue(); ?></span></li>
+        <li>pending:<span><?php getPendingValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
+        <li>In-Progress:<span><?php getInProgressValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
+        <li>Completed:<span><?php getCompletedValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
+        <li>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
     </ul>
     <table>
         <tr>
@@ -53,7 +58,7 @@ require_once('php/workorders_scripts.php')
             <th>Assigned To</th>
             <th>View</th>
         </tr>
-        <?php getWorkorderTable(); ?>
+        <?php getWorkorderTable(); //FOUND IN assets/js/php/workorders_scripts.php?>
 
 
     </table>
@@ -61,6 +66,27 @@ require_once('php/workorders_scripts.php')
     <?php
     getEmployees();
     ?>
+    <br>
+    <hr>
+    <form action="" method="POST">
+        <input type="text" name="username" placeholder="username">
+        <input type="text" name="password" placeholder="password">
+        <input type="submit" value="CREATE PASSWORD">
+    </form>
+    // submit form with ajax without jquery
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e){
+            e.preventDefault();
+            var form = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'assets/js/php/workorders_scripts.php?pass=\'true\', true);
+            xhr.onload = function(){
+                console.log(this.responseText);
+            }
+            xhr.send(form);
+        });
+    </script>
+
 
     <p id="message"></p>
     <script>

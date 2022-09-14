@@ -1,5 +1,4 @@
 <?php
-require_once("config.php");
 $conn = get_db();
 $client_id = $_SESSION['logged_in'];
 $query = "SELECT `workorders`.`wo_id`,

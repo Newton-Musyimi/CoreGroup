@@ -5,6 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.
 */
 require_once('security/admin/config.php');
 require_once('security/header.php');
+require_once ('assets/js/php/workorders_scripts.php');
 global $host;
 //require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
@@ -22,9 +23,10 @@ global $host;
 </head>
 
 <body id="page-top">
+<img src="assets/images/Picture1.png">
 <header>
     <h1>Customer Portal</h1>
-    <img src="assets/images/Picture1.png">
+   
     <?php
     getHeader();
     ?>
@@ -41,43 +43,9 @@ global $host;
        <th>Status</th> 
        <th>Scheduled</th> 
        <th>Assigned To</th> 
-       <th>View</th> 
+       <th>View</th>
     </tr>
-        <td>1</td>
-        <td>inspiron 15</td>
-        <td>R 350.00</td>
-        <td>Completed</td>
-        <td>6/8/2022</td>
-        <td><a href="#">Assigned To</a></td>
-        <td><a href="#">View</a></td>
-    <tr>
-        <td>2</td>
-        <td>inspiron 15</td>
-        <td>R 350.00</td>
-        <td>In Progress</td>
-        <td>6/9/2022</td>
-        <td><a href="#">Assigned To</a></td>
-        <td><a href="#">View</a></td> 
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Acer</td>
-        <td>R 30.00</td>
-        <td>Cancelled</td>
-        <td>5/9/2022</td>
-        <td><a href="#">Assigned To</a></td>
-        <td><a href="#">View</a></td> 
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Acer</td>
-        <td>R 30.00</td>
-        <td>Cancelled</td>
-        <td>5/9/2022</td>
-        <td><a href="#">Assigned To</a></td>
-        <td><a href="#">View</a></td> 
-
-    </tr>
+    <?php getWorkorderTable(); ?>
     </table>
 
 </div>
