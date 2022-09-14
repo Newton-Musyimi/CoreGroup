@@ -42,4 +42,4 @@ global $host;
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>
 
-</html>``````````````````````````
+</html>

@@ -27,17 +27,7 @@ require_once('security/header.php');
     ?>
 </header>
 <div class="content-body">
-    <div class='tab'>
-        <button class='tablinks' id="defaultOpen" onclick='openTab(event, "Profile")'>My Profile</button>
-        <button class='tablinks' onclick='openTab(event, "Devices")'>Devices</button>
-    </div>
-    <div id="Profile" class="tabcontent">
-        <h3>My Profile</h3>
 
-    </div>
-    <div id='Devices' class='tabcontent'>
-        <h3>Devices</h3>
-    </div>
 </div>
 <footer style="padding-bottom: 32px;">
     <div class="container my-auto">

@@ -25,23 +25,8 @@ require_once('security/header.php');
         getHeader();
         ?>
     </header>
+    <div class="content-body">
 
-    <div class='tab'>
-        <button class='tablinks' id="defaultOpen" onclick='openTab(event, "Dashboard")'>Dashboard</button>
-        <button class='tablinks' onclick='openTab(event, "Reports")'>Reports</button>
-        <button class='tablinks' onclick='openTab(event, "Settings")'>Settings</button>
-    </div>
-    <div id="Dashboard" class="tabcontent">
-        <h3>Dashboard</h3>
-
-    </div>
-    <div id='Reports' class='tabcontent'>
-        <h3>Reports</h3>
-        <p>Reports</p>
-    </div>
-    <div id='Settings' class='tabcontent'>
-        <h3>Settings</h3>
-        <p>Settings</p>
     </div>
 
     <footer style="padding-bottom: 32px;">
