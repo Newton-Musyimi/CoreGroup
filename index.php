@@ -17,8 +17,8 @@ global $host;
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Core Group</title>
     <meta http-equiv="Cache-control" content="no-store">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
+    <link rel="icon" type="assets/images/favicon_io/favicon-16x16.png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
+    <link rel="icon" type="assets/images/favicon_io/favicon-32x32.png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/homepage.css';?>">
 </head>
 
@@ -26,22 +26,25 @@ global $host;
 
     <header value="home">
         <div class ="navbar">
-            <?php
-            getHeader();
-            ?>
-              <div class="logo">
+        <div class="logo">
                 <img src="assets/images/Picture1.png" alt="Core group">
                 <h3>Core Group</h3>
                 <p>Because we care.....</p>
+            <?php
+            getHeader();
+            ?>
+          </div>    
         </div>
     </header>
+    <div class="middle-page">
+
+    </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
         </div>
     </footer>
     <div class= "bottom-page">
-        <p>Baddies only</p>
         <form action="security/login.php" method="POST">
         <input type = "submit" value ="Create a Ticket">
     </form>

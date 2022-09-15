@@ -35,12 +35,17 @@ if (isset($_SESSION['logged_in'])) {
 </head>
 <body id="page-top">
     <header value="login">
+    <div class="logo">
+                <img src="assets/images/picture1.png" alt="logo">                      
+                <p>Because we care....</p>
+            </div>
         <?php
         getHeader();
         ?>
     </header>
     <div class="content-body">
-        <h3>User Log In</h3>
+    <h3>User Log In</h3>       
+       
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 
                     <label for="username"><strong>USERNAME:</strong></label><br>
@@ -48,7 +53,7 @@ if (isset($_SESSION['logged_in'])) {
                 
                 <input type="hidden" name="user_type" value="client">
                 
-                    <label for="password"><strong>PASSWORD:</strong></label>
+                    <label for="password"><strong>PASSWORD:</strong></label><br>
                     <input type="password" id="password" name="password" value="g19m80452022" required><br><br>
                 
                     <input type="submit" class="submit" name="submit" value="LOG IN">

@@ -36,3 +36,7 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+input[type=submit]{
+  width: 100%;
+}

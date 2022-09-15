@@ -32,7 +32,7 @@ global $host;
     ?>
 </header>
 <div class="content-body">
-    <form action="" method ="POST">
+    <form action="helpdesk.php" method ="POST">
         <input type="submit" value="ADD REPAIR JOB">
     </form>
 <table>
