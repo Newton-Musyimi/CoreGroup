@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Varius changes pushed 14th Sunday August by Newton">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/employee_profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpdesk.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/magic.php" beforeDir="false" />
-    </list>
+    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Varius changes pushed 14th Sunday August by Newton" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

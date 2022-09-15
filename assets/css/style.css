@@ -88,7 +88,33 @@ nav ul{
     padding: 0;
     width: 100%;
 }
-
+.navbar ul li a{
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid #10558d;
+    color: rgb(241, 237, 237);
+    font-size: 16px;
+    position: relative;
+}
+.navbar .logo{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.navbar .logo img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.navbar .logo h3{
+    color: #ffffff;
+    margin: 10px 0 5px;
+}
+.navbar .logo p{
+    color: rgb(206, 240, 253);
+    font-size: 14px;
+}
 footer{
     position: fixed;
     left: 0;
@@ -185,3 +211,4 @@ hr{
     border: 1px solid black;
 
 }
+

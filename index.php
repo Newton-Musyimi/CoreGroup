@@ -19,17 +19,20 @@ global $host;
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
-    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
+    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/homepage.css';?>">
 </head>
 
 <body id="page-top">
 
     <header value="home">
-        <div class="navbar">
-            <h1>Core Group Ltd</h1>
+        <div class ="navbar">
             <?php
             getHeader();
             ?>
+              <div class="logo">
+                <img src="assets/images/Picture1.png" alt="Core group">
+                <h3>Core Group</h3>
+                <p>Because we care.....</p>
         </div>
     </header>
     <footer style="padding-bottom: 32px;">

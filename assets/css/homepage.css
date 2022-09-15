@@ -1,0 +1,121 @@
+.tab {
+    overflow: hidden;
+    background-color: #a3dc4ff1;
+    border: 1px solid #0000;
+    ;
+}
+
+body, footer, header, head{
+    font-family:Arial, Helvetica, sans-serif ;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab button:hover {
+    background-color: #048337;
+}
+
+.tab button.active {
+    background-color: #048337;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #0000;
+    background-color: #FFFF;
+    border-top: none;
+}
+
+.navbar {
+    overflow: hidden;
+    border: 3px solid #0000;
+    background-color: #a3dc4ff1;
+    height: 200px;
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 40px;
+    height:100%;
+}
+
+    
+.navbar div{
+    padding: 8px;
+    font-size: 24px;
+    display: block;
+    
+}
+header,body {
+    margin-left: 200px;
+    font-size: 18px;
+}
+
+nav button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+}
+
+nav button:hover {
+    background-color: #048337;
+    width: 100%;
+}
+
+nav button.active {
+  color: #a3dc4f;
+    width: 100%;
+}
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+input[type=submit] :active{
+    background-color: #a3dc4f;
+    box-shadow:  0 5px #FFFF;
+    transform: translateY(4px);
+}
+
+nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #cccccc;
+    color: black;
+    text-align: left;
+
+}
+
+.bottom-page{
+    background-color: #a3dc4f;   
+}
