@@ -3,9 +3,9 @@ session_start();
 /*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 */
-
 require_once('security/admin/config.php');
 require_once('security/header.php');
+require_once ('assets/js/php/workorders_scripts.php');
 global $host;
 //require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
@@ -23,12 +23,30 @@ global $host;
 </head>
 
 <body id="page-top">
+<img src="assets/images/Picture1.png" alt="logo">
 <header>
+    <h1>Customer Portal</h1>
+
     <?php
     getHeader();
     ?>
 </header>
 <div class="content-body">
+    <form action="helpdesk.php" method ="POST">
+        <input type="submit" value="ADD REPAIR JOB">
+    </form>
+    <table>
+        <tr>
+            <th>Job Code</th>
+            <th>Device</th>
+            <th>Cost</th>
+            <th>Status</th>
+            <th>Scheduled</th>
+            <th>Assigned To</th>
+            <th>View</th>
+        </tr>
+        <?php getWorkorderTable(); ?>
+    </table>
 
 </div>
 <footer style="padding-bottom: 32px;">
@@ -36,11 +54,7 @@ global $host;
         <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
     </div>
 </footer>
-<script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/jquery.min.js';?>"></script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
-<script src="<?php echo $host.'/SysDev/CoreGroup/https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js';?>"></script>
-<script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/logout.js';?>"></script>
-<script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>
 
 </html>

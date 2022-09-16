@@ -31,15 +31,14 @@ global $host;
 <div class="content-body">
     <div class="top-content">
     <h1>Create a ticket</h1>
-    </div>
 
-    <h2>Add Work Order</h3>
+
     <input type="radio" name="maintenance" id="maintenance" value="maintenance">Maintenance</label>
             <label for ="maintenance"></label><br><br>
             <input type="radio" name="repair" id="repair" value="repair">Repair</label>
             <label for ="repair"></label><br><br>
     <h3><strong>Device</strong></h3>
-        <form action = "client_workorders.php" method="POST">
+        <form action = "workorders.php" method="POST">
             <label for= "devicetype"><strong>Device Type</strong></label><br><br>
             <select name="devicetype" id="devicetype">
                 <option>PC</option>
@@ -84,6 +83,7 @@ global $host;
             <input type="radio" name="delivery" id="delivery" value="Delivery">Delivery</label>
             <label for ="delivery"></label><br><br>
             <input type = "submit" name="submit" id="submit">
+        </form>
 
 </div>
 <footer style="padding-bottom: 32px;">
@@ -91,11 +91,7 @@ global $host;
         <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
     </div>
 </footer>
-<script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/jquery.min.js';?>"></script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
-<script src="<?php echo $host.'/SysDev/CoreGroup/https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js';?>"></script>
-<script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/logout.js';?>"></script>
-<script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>
 
 </html>
