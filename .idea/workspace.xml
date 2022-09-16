@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Varius changes pushed 14th Sunday August by Newton" />
+    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Added the accordion control code into the application main js file i.e app.js">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c925fcae-0095-46a4-aa14-cc266158ada3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c925fcae-0095-46a4-aa14-cc266158ada3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f7857c9c-435d-428b-943c-40dd31d6cfee.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f7857c9c-435d-428b-943c-40dd31d6cfee.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/Thumbs.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/php/workorders_scripts.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/php/workorders_scripts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_workorders.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpdesk.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workorders.php" beforeDir="false" afterPath="$PROJECT_DIR$/workorders.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +42,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/EMPLOYEES.csv" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/assets/js/index.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/assets/js/php/config.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/assets/js/php/employee_profile.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/assets/js/php/workorders_scripts.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/employees.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/index.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/insert.sql" root0="FORCE_HIGHLIGHTING" />
@@ -44,7 +63,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2Cqxi3Yle3gZnPOmqkpYKVbSBt7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -54,7 +73,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -103,6 +127,7 @@
       <workItem from="1662381483831" duration="7850000" />
       <workItem from="1663081020345" duration="7094000" />
       <workItem from="1663112880715" duration="1031000" />
+      <workItem from="1663340503022" duration="3491000" />
     </task>
     <task id="LOCAL-00001" summary="PHPStorm configuration files">
       <created>1659551907951</created>
@@ -167,6 +192,7 @@
     <MESSAGE value="Fixed broken links using the server's path.&#10;Fixed the test page that demonstrates how the Role and PrivilegedUser classes work.&#10;Added a permission via SQL using a PrivilegedUser instance.&#10;Created a header file using PHP.&#10;Updated .gitignore to allow the 2 classes above." />
     <MESSAGE value="Fixed broken links using the server's path.&#10;Editing the header file to reflect log in status." />
     <MESSAGE value="Varius changes pushed 14th Sunday August by Newton" />
-    <option name="LAST_COMMIT_MESSAGE" value="Varius changes pushed 14th Sunday August by Newton" />
+    <MESSAGE value="Added the accordion control code into the application main js file i.e app.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the accordion control code into the application main js file i.e app.js" />
   </component>
 </project>
