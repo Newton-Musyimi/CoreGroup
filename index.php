@@ -25,15 +25,15 @@ global $host;
 <body id="page-top">
 
     <header value="home">
-        <div class ="navbar">
-        <div class="logo">
-                <img src="assets/images/Picture1.png" alt="Core group">
-                <h3>Core Group</h3>
-                <p>Because we care.....</p>
+        <div class ="navbar"> <!-- correction required here - the navbar class shouldn't be declared here because it's clashing with header.php -->
+        <div class="logo"> <!-- THIS -->
+                <img src="assets/images/Picture1.png" alt="Core group"> <!-- THIS -->
+        </div>
+                <h3>Core Group</h3> <!-- THIS -->
+                <p>Because we care.....</p> <!-- THIS --> 
             <?php
             getHeader();
             ?>
-          </div>    
         </div>
     </header>
     <div class="middle-page">
@@ -46,9 +46,9 @@ global $host;
     </footer>
     <div class= "bottom-page">
         <form action="security/login.php" method="POST">
-        <input type = "submit" value ="Create a Ticket">
-    </form>
-        </div>
+            <input type = "submit" value ="Create a Ticket">
+        </form>
+    </div>
         
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
