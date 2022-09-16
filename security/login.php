@@ -92,7 +92,7 @@ if (isset($_SESSION['logged_in'])) {
         $_SESSION['logged_in'] = $id;
         $_SESSION['username'] = $username_query;
         $_SESSION['user_type'] = "client";
-        header("location:$host/SysDev/CoreGroup/client_workorders.php");
+        header("location:$host/SysDev/CoreGroup/workorders.php");
     }
 
     function employeeLogIn(): void
