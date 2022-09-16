@@ -89,7 +89,7 @@ if (isset($_SESSION['logged_in'])) {
         mysqli_close($conn);
         $_SESSION['logged_in'] = $id;
         $_SESSION['username'] = $username_query;
-        $_SESSION['user_type'] = "client";
+        $_SESSION['user_table'] = "clients";
         header("location:$host/SysDev/CoreGroup/workorders.php");
     }
 
@@ -132,7 +132,7 @@ if (isset($_SESSION['logged_in'])) {
         mysqli_close($conn);
         $_SESSION['logged_in'] = $id;
         $_SESSION['username'] = $username_query;
-        $_SESSION['user_type'] = "employee";
+        $_SESSION['user_table'] = "employees";
         header("location:$host/SysDev/CoreGroup/dashboard.php");
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
