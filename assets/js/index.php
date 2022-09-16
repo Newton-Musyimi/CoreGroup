@@ -73,8 +73,9 @@ require_once('php/workorders_scripts.php')
         <input type="text" name="password" placeholder="password">
         <input type="submit" value="CREATE PASSWORD">
     </form>
-    // submit form with ajax without jquery
+
     <script>
+        // submit form with ajax without jquery
         document.querySelector('form').addEventListener('submit', function(e){
             e.preventDefault();
             var form = new FormData(this);
