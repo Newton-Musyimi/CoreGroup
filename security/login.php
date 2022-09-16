@@ -49,9 +49,7 @@ if (isset($_SESSION['logged_in'])) {
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 
                     <label for="username"><strong>USERNAME:</strong></label><br>
-                    <br><input type="text" id="username" name="username" value="clientnewton" required><br>
-                
-                <input type="hidden" name="user_type" value="client">
+                    <br><input type="text" id="username" name="username" required><br>
                 
                     <label for="password"><strong>PASSWORD:</strong></label><br>
                     <input type="password" id="password" name="password" value="g19m80452022" required><br><br>
@@ -138,7 +136,12 @@ if (isset($_SESSION['logged_in'])) {
         header("location:$host/SysDev/CoreGroup/dashboard.php");
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        if($_POST['user_type'] == 'client'){
+        $conn = get_db();
+        $username = $_POST['username'];
+        $query = "SELECT `table` FROM `users` WHERE `username` = '$username';";
+        $result = mysqli_query($conn, $query) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
+        $row = mysqli_fetch_array($result);
+        if($row['table'] == 'clients'){
             clientLogIn();
         }else{
             employeeLogIn();
