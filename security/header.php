@@ -50,6 +50,7 @@ function getAdminHeader(): void
 {
     global $links;
     echo "<div class=\"navbar\">
+    <!-- //MOVE  THIS  HERE -->
     <nav class=\"top-nav\">
         <ul>
             {$links['dashboard']}
@@ -66,6 +67,7 @@ function getReceptionistHeader(): void
 {
     global $links;
     echo "<div class=\"navbar\">
+    <!-- //MOVE  THIS  HERE -->
     <nav class=\"top-nav\">
         <ul>
             {$links['helpdesk']}
@@ -83,6 +85,7 @@ function getClientHeader(): void
 {
     global $links;
     echo "<div class=\"navbar\">
+    <!-- //MOVE THIS HERE -->
     <nav class=\"top-nav\">
         <ul>
             {$links['workorders']}
@@ -96,6 +99,7 @@ function getEmployeeHeader(): void
 {
     global $links;
     echo "<div class=\"navbar\">
+    <!-- //MOVE THIS HERE -->
     <nav class=\"top-nav\">
         <ul>
             {$links['workorders']}
@@ -123,6 +127,7 @@ function getHeader(): void
         //echo getCommon();
     }else{
         echo "<div class=\"navbar\">
+        <!-- //MOVE  THIS HERE -->
     <nav class=\"top-nav\">
         <ul>
             {$links['home']}
