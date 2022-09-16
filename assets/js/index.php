@@ -68,7 +68,7 @@ require_once('php/workorders_scripts.php')
     ?>
     <br>
     <hr>
-    <form action="" method="POST">
+    <form action="" method="POST" style="width:50%;">
         <input type="text" name="username" placeholder="username">
         <input type="text" name="password" placeholder="password">
         <input type="submit" value="CREATE PASSWORD">
@@ -80,7 +80,7 @@ require_once('php/workorders_scripts.php')
             e.preventDefault();
             var form = new FormData(this);
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'assets/js/php/workorders_scripts.php?pass=\'true\', true);
+            xhr.open('POST', 'php/add_pass.php', true);
             xhr.onload = function(){
                 console.log(this.responseText);
             }
