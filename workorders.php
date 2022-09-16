@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.
 */
 require_once('security/admin/config.php');
 require_once('security/header.php');
-require_once ('assets/js/php/workorders_scripts.php');
+require_once('assets/php/workorders_scripts.php');
 global $host;
 //require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
@@ -32,20 +32,17 @@ global $host;
     ?>
 </header>
 <div class="content-body">
+    <ul>
+        <li>pending:<span><?php getPendingValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
+        <li>In-Progress:<span><?php getInProgressValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
+        <li>Completed:<span><?php getCompletedValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
+        <li>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
+    </ul>
     <form action="helpdesk.php" method ="POST">
         <input type="submit" value="ADD REPAIR JOB">
     </form>
     <table>
-        <tr>
-            <th>Job Code</th>
-            <th>Device</th>
-            <th>Cost</th>
-            <th>Status</th>
-            <th>Scheduled</th>
-            <th>Assigned To</th>
-            <th>View</th>
-        </tr>
-        <?php getWorkorderTable(); ?>
+        <?php getWorkorderTable(); //FOUND IN assets/js/php/workorders_scripts.php?>
     </table>
 
 </div>
