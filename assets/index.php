@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("php/config.php");
-require_once('php/workorders_scripts.php')
+require_once('php/workorders_scripts.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,22 +43,13 @@ require_once('php/workorders_scripts.php')
 </head>
 <body>
     <ul>
-        <li>pending:<span><?php getPendingValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
-        <li>In-Progress:<span><?php getInProgressValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
-        <li>Completed:<span><?php getCompletedValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
-        <li>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
+        <li>pending:<span><?php getPendingValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+        <li>In-Progress:<span><?php getInProgressValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+        <li>Completed:<span><?php getCompletedValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+        <li>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
     </ul>
     <table>
-        <tr>
-            <th>Job Code</th>
-            <th>Device</th>
-            <th>Cost</th>
-            <th>Status</th>
-            <th>Scheduled</th>
-            <th>Assigned To</th>
-            <th>View</th>
-        </tr>
-        <?php getWorkorderTable(); //FOUND IN assets/js/php/workorders_scripts.php?>
+        <?php getWorkorderTable(); //FOUND IN assets/php/workorders_scripts.php?>
 
 
     </table>
@@ -106,6 +97,6 @@ require_once('php/workorders_scripts.php')
             });
         }
     </script>
-    <script src="delete_linda.js"></script>
+    <script src="js/delete_linda.js"></script>
 </body>
 </html>
