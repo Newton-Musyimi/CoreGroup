@@ -9,7 +9,7 @@ require_once('header.php');
 if (isset($_SESSION['logged_in'])) {
     global $host;
     if($_SESSION['role']=='CLIENT' || $_SESSION['role']=='RECEPTIONIST'){
-        header("location: helpdesk.php");
+        header("location: ticketing.php");
     }else if($_SESSION['role']=='ADMINISTRATOR'){
         header("location:$host/SysDev/CoreGroup/dashboard.php");
     }else{

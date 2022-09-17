@@ -38,7 +38,7 @@ global $host;
         <li>Completed:<span><?php getCompletedValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
         <li>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
     </ul>
-    <form action="helpdesk.php" method ="POST">
+    <form action="ticketing.php" method ="POST">
         <input type="submit" value="ADD REPAIR JOB">
     </form>
     <table>

@@ -6,7 +6,8 @@ $workorders = "<li><a href=\"$host/SysDev/CoreGroup/workorders.php\" class=\"nav
 $login = "<li><a href=\"$host/SysDev/CoreGroup/security/login.php\" class=\"nav-item\"><button>Login</button></a> </li>";
 $logout = "<li><a href=\"$host/SysDev/CoreGroup/security/logout.php\" class=\"nav-item\"><button>Logout</button></a> </li>";
 $signup = "<li><a href=\"$host/SysDev/CoreGroup/security/signup.php\" class=\"nav-item\"><button>Signup</button></a> </li>";
-$helpdesk = "<li><a href=\"$host/SysDev/CoreGroup/helpdesk.php\" class=\"nav-item\"><button>Helpdesk</button></a> </li>";
+$ticketing = "<li><a href=\"$host/SysDev/CoreGroup/ticketing.php\" class=\"nav-item\"><button>Helpdesk</button></a> </li>";
+$helpdesk = "<li><a href=\"$host/SysDev/CoreGroup/ticketing.php\" class=\"nav-item\"><button>Helpdesk</button></a> </li>";
 $home = "<li><a href=\"$host/SysDev/CoreGroup/\" class=\"nav-item\"><button>Home</button></a> </li>";
 $profile = "<li><a href=\"$host/SysDev/CoreGroup/profile.php\" class=\"nav-item\"><button>Profile</button></a> </li>";
 $employees = "<li><a href=\"$host/SysDev/CoreGroup/employees.php\" class=\"nav-item\"><button>Employees</button></a> </li>";
@@ -21,7 +22,8 @@ $links = array(
     'helpdesk' => $helpdesk,
     'home' => $home,
     'profile' => $profile,
-    'employees' => $employees
+    'employees' => $employees,
+    'ticketing' => $ticketing
 );
 /*
 function getCommon(): string

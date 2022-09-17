@@ -4,20 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Made the login page responsive to the type of user trying to log in.&#10;- A query is run to check in which table the user belongs to - coregroup.users&#10;- The password is checked against the pass word stored in their respective table - coregroup.clients or coregroup.employees&#10;- If login is successfull, the user is sent to the workorders page i.e workorders.php">
-      <change afterPath="$PROJECT_DIR$/assets/php/workorders_scripts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c925fcae-0095-46a4-aa14-cc266158ada3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c925fcae-0095-46a4-aa14-cc266158ada3.xml" afterDir="false" />
+    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="PhpStorm workspace files">
+      <change afterPath="$PROJECT_DIR$/ticketing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c925fcae-0095-46a4-aa14-cc266158ada3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f7857c9c-435d-428b-943c-40dd31d6cfee.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/php/add_pass.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/add_pass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/php/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/php/employee_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/employee_profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/php/fire_linda.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/fire_linda.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/php/workorders_scripts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wireframes/CoreGroup.bmpr" beforeDir="false" afterPath="$PROJECT_DIR$/Wireframes/CoreGroup.bmpr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/favicon_io/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/favicon_io/Thumbs.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpdesk.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/security/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/security/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/signup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/workorders.php" beforeDir="false" afterPath="$PROJECT_DIR$/workorders.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,10 +40,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/EMPLOYEES.csv" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/assets/index.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/assets/php/config.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/assets/php/employee_profile.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/assets/php/workorders_scripts.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/employees.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/index.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/insert.sql" root0="FORCE_HIGHLIGHTING" />
@@ -70,16 +65,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\core\SysDev\CoreGroup\Sample Data" />
@@ -128,7 +123,8 @@
       <workItem from="1662381483831" duration="7850000" />
       <workItem from="1663081020345" duration="7094000" />
       <workItem from="1663112880715" duration="1031000" />
-      <workItem from="1663340503022" duration="12457000" />
+      <workItem from="1663340503022" duration="12874000" />
+      <workItem from="1663403273278" duration="1437000" />
     </task>
     <task id="LOCAL-00001" summary="PHPStorm configuration files">
       <created>1659551907951</created>
@@ -228,7 +224,70 @@
       <option name="project" value="LOCAL" />
       <updated>1663346176256</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add employee password php script">
+      <created>1663354491000</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1663354491000</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Refactored">
+      <created>1663354510191</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1663354510191</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Refactored">
+      <created>1663354544226</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1663354544226</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Spoted errors">
+      <created>1663354599635</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1663354599635</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added error correction locations">
+      <created>1663354621641</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1663354621641</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Session to reflect user table instead of type">
+      <created>1663354666440</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1663354666440</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Dynamic navigation and corrections">
+      <created>1663354706414</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1663354706414</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added">
+      <created>1663354719610</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1663354719610</updated>
+    </task>
+    <task id="LOCAL-00023" summary="PhpStorm workspace files">
+      <created>1663354741612</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1663354741612</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +322,14 @@
     <MESSAGE value="PhpStorm files" />
     <MESSAGE value="Added code to create passwords for employees" />
     <MESSAGE value="Made the login page responsive to the type of user trying to log in.&#10;- A query is run to check in which table the user belongs to - coregroup.users&#10;- The password is checked against the pass word stored in their respective table - coregroup.clients or coregroup.employees&#10;- If login is successfull, the user is sent to the workorders page i.e workorders.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the login page responsive to the type of user trying to log in.&#10;- A query is run to check in which table the user belongs to - coregroup.users&#10;- The password is checked against the pass word stored in their respective table - coregroup.clients or coregroup.employees&#10;- If login is successfull, the user is sent to the workorders page i.e workorders.php" />
+    <MESSAGE value="Add employee password php script" />
+    <MESSAGE value="Refactored" />
+    <MESSAGE value="Spoted errors" />
+    <MESSAGE value="Added error correction locations" />
+    <MESSAGE value="Session to reflect user table instead of type" />
+    <MESSAGE value="Dynamic navigation and corrections" />
+    <MESSAGE value="Added" />
+    <MESSAGE value="PhpStorm workspace files" />
+    <option name="LAST_COMMIT_MESSAGE" value="PhpStorm workspace files" />
   </component>
 </project>
