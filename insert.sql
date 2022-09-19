@@ -258,3 +258,7 @@ CREATE TABLE `coregroup`.`plain_text_pass` (
                                                        ON DELETE NO ACTION
                                                        ON UPDATE NO ACTION);
 
+-- 19-9-2022
+ALTER TABLE `coregroup`.`workorders`
+    ADD COLUMN `request_type` VARCHAR(11) NOT NULL AFTER `client_id`;
+
