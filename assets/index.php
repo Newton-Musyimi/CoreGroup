@@ -70,6 +70,7 @@ require_once('php/workorders_scripts.php');
         <input type="text" name="subject" placeholder="subject">
         <input type="text" name="message" placeholder="message">
         <input type="submit" value="SEND MAIL">
+        <p id="mail_response"></p>
     </form>
 
     <script>
@@ -90,7 +91,7 @@ require_once('php/workorders_scripts.php');
             let xhr = new XMLHttpRequest();
             xhr.open('POST', 'php/send_mail.php', true);
             xhr.onload = function(){
-                console.log(this.responseText);
+                document.getElementById("mail_response").innerText = this.responseText;
             }
             xhr.send(form);
         });
@@ -114,6 +115,5 @@ require_once('php/workorders_scripts.php');
             });
         }
     </script>
-    <script src="js/delete_linda.js"></script>
 </body>
 </html>
