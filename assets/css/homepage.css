@@ -1,66 +1,7 @@
-.tab {
-    overflow: hidden;
-    background-color: #a3dc4ff1;
-    border: 1px solid #0000;
-    ;
-}
+nav {
+    background-color: #a3dc4f;
 
-body, footer, header, head{
-    font-family:Arial, Helvetica, sans-serif ;
 }
-
-.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-}
-
-.tab button:hover {
-    background-color: #048337;
-}
-
-.tab button.active {
-    background-color: #048337;
-}
-
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #0000;
-    background-color: #FFFF;
-    border-top: none;
-}
-
-.navbar {
-    overflow: hidden;
-    border: 3px solid #0000;
-    background-color: #a3dc4ff1;
-    height: 200px;
-    width: 150px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 40px;
-    height:100%;
-}
-
-    
-.navbar div{
-    padding: 8px;
-    font-size: 24px;
-    display: block;
-    
-}
-header,body {
-    margin-left: 200px;
-    font-size: 18px;
-}
-
 nav button {
     background-color: inherit;
     float: left;
@@ -69,82 +10,99 @@ nav button {
     cursor: pointer;
     padding: 14px 16px;
     font-size: 17px;
-}
-
-nav button:hover {
-    background-color: #048337;
     width: 100%;
 }
 
-nav button.active {
-  color: #a3dc4f;
-    width: 100%;
-}
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-input[type=submit] :active{
-    background-color: #a3dc4f;
-    box-shadow:  0 5px #FFFF;
-    transform: translateY(4px);
-}
-
-nav ul{
+.navbar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 100%;
+    overflow: hidden;
+    background-color: #808080;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
 }
-
-footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #cccccc;
-    color: black;
-    text-align: left;
+.navbar li {
+    float: left;
 }
-
-.bottom-page{
-    background-color: #a3dc4f;   
-}
-.home .navbar .logo{
-    margin-bottom: 30px;
+  
+.navbar li a {
+    display: block;
+    color: white;
     text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
-.navbar ul li a{
-    display: block;
-    padding: 13px 30px;
-    color: rgb(241, 237, 237);
-    font-size: 16px;
-    position: absolute;
+
+li a:hover {
+    background-color: #4CAF50;
+    width: 100%;
 }
-.home .navbar .logo img{
-    display: block;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 0 auto;
+.active {
+    background-color: #4CAF50;
+    width:100%;
 }
-.home .navbar .logo h3{
-    color: #ffffff;
-    margin: 10px 0 5px;
+
+h1,h3,p,a{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato';
 }
-.home .navbar .logo p{
-    color: rgb(206, 240, 253);
-    font-size: 14px;
+
+h1{
+  font-size: 2.8em;
+  padding: 10px 0;
+  font-weight: 800;
 }
-.middle-page{
-    background-image:"assets/images/pexels-mateusz-dach-450035.jpg";
+h3{
+    font-size: 2.2em;
+    padding: 10px 0;
+}
+p {
+  font-size: 1.1em;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+.banner {
+  width: 100%;
+  padding:60px 0;
+  text-align: center;
+  background: #a3dc4f;
+  color: white;
+}
+
+
+.btn-bgstroke {
+  font-size: 20px;
+  display: inline-block;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 300;
+  margin-top: 30px; 
+}
+
+.btn-bgstroke:hover {
+  background-color: white;
+  color: #4CAF50;
+}
+.middle{
+  width: 100%;
+  padding:60px 0;
+  text-align: center;
+  background: #808080
+}
+h2{
+  font-size: 2.2em;
+    padding: 10px 0;
+    text-align: left;
+    color: white;
+}
+.middle img{
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
 }
