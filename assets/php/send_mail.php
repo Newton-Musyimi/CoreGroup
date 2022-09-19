@@ -5,15 +5,35 @@ $msg = $_POST['message'];
 $msg = str_replace("\n.", "\n..", $msg);
 $receiver = $_POST['email'];
 $subject = $_POST['subject'];
-if()
 
 // use wordwrap() if lines are longer than 70 characters
 $msg = wordwrap($msg,70, "\r\n", );
 
-// send email
-if(mail($receiver,$subject,$msg)){
-    echo "Email sent successfully!";
-}else{
-    echo "Email failed to send!";
+$url = "http://delta.maliliconstruction.systems/assets/scripts/send_mail.php";
+
+$fields = array(
+    'msg'=>$msg,
+    'receiver'=>$_POST['email'],
+    'subject'=>$_POST['subject']
+);
+
+$postvars='';
+$sep='';
+foreach($fields as $key=>$value)
+{
+    $postvars.= $sep.urlencode($key).'='.urlencode($value);
+    $sep='&';
 }
 
+$ch = curl_init();
+
+curl_setopt($ch,CURLOPT_URL,$url);
+curl_setopt($ch,CURLOPT_POST,count($fields));
+curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+
+$result = curl_exec($ch);
+
+curl_close($ch);
+
+echo $result;
