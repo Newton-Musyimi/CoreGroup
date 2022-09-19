@@ -31,6 +31,11 @@ require_once('security/header.php');
     getHeader();
     ?>
 </header>
+    <script>
+        let current = document.getElementById("helpdesk_button");
+        current.style.backgroundColor="#048337";
+        current.focus();
+    </script>
 <div class="content-body">
 
 </div>

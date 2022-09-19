@@ -36,6 +36,11 @@ if (isset($_SESSION['logged_in'])) {
     <?php
     getHeader();
     ?>
+    <script>
+        let current = document.getElementById("signup_button");
+        current.style.backgroundColor="#048337";
+        current.focus();
+    </script>
 </header>
 <div class="content-body">
     <div class='tab'>

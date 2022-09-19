@@ -31,6 +31,11 @@ tr:hover {background-color: #048337;}
         <?php
         getHeader();
         ?>
+        <script>
+            let current = document.getElementById("employees_button");
+            current.style.backgroundColor="#048337";
+            current.focus();
+        </script>
     </header>
     <div class='tab'>
         <button class="tablinks" id="defaultOpen" onclick="openTab(event, 'Employees')">Employees</button>

@@ -1,16 +1,16 @@
 <?php
 $host = "http://".$_SERVER['HTTP_HOST'];
-$dashboard = "<li><a href=\"$host/SysDev/CoreGroup/dashboard.php\" class=\"nav-item\"><button>Admin</button></a> </li>";
-$test = "<li><a href=\"$host/SysDev/CoreGroup/test.php\" class=\"nav-item\"><button>Test</button></a> </li>";
-$workorders = "<li><a href=\"$host/SysDev/CoreGroup/workorders.php\" class=\"nav-item\"><button>Workorders</button></a> </li>";
-$login = "<li><a href=\"$host/SysDev/CoreGroup/security/login.php\" class=\"nav-item\"><button>Login</button></a> </li>";
-$logout = "<li><a href=\"$host/SysDev/CoreGroup/security/logout.php\" class=\"nav-item\"><button>Logout</button></a> </li>";
-$signup = "<li><a href=\"$host/SysDev/CoreGroup/security/signup.php\" class=\"nav-item\"><button>Signup</button></a> </li>";
-$ticketing = "<li><a href=\"$host/SysDev/CoreGroup/ticketing.php\" class=\"nav-item\"><button>Helpdesk</button></a> </li>";
-$helpdesk = "<li><a href=\"$host/SysDev/CoreGroup/ticketing.php\" class=\"nav-item\"><button>Helpdesk</button></a> </li>";
-$home = "<li><a href=\"$host/SysDev/CoreGroup/\" class=\"nav-item\"><button>Home</button></a> </li>";
-$profile = "<li><a href=\"$host/SysDev/CoreGroup/profile.php\" class=\"nav-item\"><button>Profile</button></a> </li>";
-$employees = "<li><a href=\"$host/SysDev/CoreGroup/employees.php\" class=\"nav-item\"><button>Employees</button></a> </li>";
+$dashboard = "<li><a href=\"$host/SysDev/CoreGroup/dashboard.php\" class=\"nav-item\"><button id=\"dashboard_button\">Admin</button></a> </li>";
+$test = "<li><a href=\"$host/SysDev/CoreGroup/test.php\" class=\"nav-item\"><button id=\"test_button\">Test</button></a> </li>";
+$workorders = "<li><a href=\"$host/SysDev/CoreGroup/workorders.php\" class=\"nav-item\"><button id=\"workorders_button\">Workorders</button></a> </li>";
+$login = "<li><a href=\"$host/SysDev/CoreGroup/security/login.php\" class=\"nav-item\"><button id=\"login_button\">Login</button></a> </li>";
+$logout = "<li><a href=\"$host/SysDev/CoreGroup/security/logout.php\" class=\"nav-item\"><button id=\"logout_button\">Logout</button></a> </li>";
+$signup = "<li><a href=\"$host/SysDev/CoreGroup/security/signup.php\" class=\"nav-item\"><button id=\"signup_button\">Signup</button></a> </li>";
+$ticketing = "<li><a href=\"$host/SysDev/CoreGroup/ticketing.php\" class=\"nav-item\"><button id=\"ticketing_button\">Create Ticket</button></a> </li>";
+$helpdesk = "<li><a href=\"$host/SysDev/CoreGroup/helpdesk.php\" class=\"nav-item\"><button id=\"helpdesk_button\">Helpdesk</button></a> </li>";
+$home = "<li id=\"home_button\"><a href=\"$host/SysDev/CoreGroup/\" class=\"nav-item\"><button id=\"home_button\">Home</button></a> </li>";
+$profile = "<li><a href=\"$host/SysDev/CoreGroup/profile.php\" class=\"nav-item\"><button id=\"profile_button\">Profile</button></a> </li>";
+$employees = "<li><a href=\"$host/SysDev/CoreGroup/employees.php\" class=\"nav-item\"><button id=\"employees_button\">Employees</button></a> </li>";
 
 $links = array(
     'dashboard' => $dashboard,
@@ -55,6 +55,10 @@ function getAdminHeader(): void
     <!-- //MOVE  THIS  HERE -->
     <nav class=\"top-nav\">
         <ul>
+            {$links['home']}
+            <hr>
+            {$links['ticketing']}
+            <hr>
             {$links['dashboard']}
             <hr>
             {$links['employees']}
@@ -76,7 +80,11 @@ function getReceptionistHeader(): void
     <!-- //MOVE  THIS  HERE -->
     <nav class=\"top-nav\">
         <ul>
+            {$links['home']}
+            <hr>
             {$links['helpdesk']}
+            {$links['ticketing']}
+            <hr>
             {$links['employees']}
             {$links['workorders']}
             {$links['profile']}
@@ -94,6 +102,10 @@ function getClientHeader(): void
     <!-- //MOVE THIS HERE -->
     <nav class=\"top-nav\">
         <ul>
+            {$links['home']}
+            <hr>
+            {$links['ticketing']}
+            <hr>
             {$links['workorders']}
             <hr>
             {$links['profile']}
@@ -110,6 +122,8 @@ function getEmployeeHeader(): void
     <!-- //MOVE THIS HERE -->
     <nav class=\"top-nav\">
         <ul>
+            {$links['home']}
+            <hr>
             {$links['workorders']}
             {$links['profile']}
             {$links['logout']}

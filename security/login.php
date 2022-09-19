@@ -42,6 +42,11 @@ if (isset($_SESSION['logged_in'])) {
         <?php
         getHeader();
         ?>
+        <script>
+            let current = document.getElementById("login_button");
+            current.style.backgroundColor="#048337";
+            current.focus();
+        </script>
     </header>
     <div class="content-body">
     <h3>User Log In</h3>       
