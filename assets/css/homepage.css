@@ -106,3 +106,7 @@ h2{
   height: 300px;
   object-fit: contain;
 }
+
+section {
+    background-image: url("/assets/images/hardware-bg.jpg");
+}
