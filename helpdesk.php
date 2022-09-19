@@ -23,6 +23,9 @@ require_once('security/header.php');
 </head>
 
 <body id="page-top">
+    <!-- Code has not been deleted. It has been renamed to ticketing.php and will be linked to this page through a link.
+        This is to allow clients to be automatically directed to the ticketing page without seeing the helpdesk page 
+        which is only supposed to be visible to the secretary and admin-->
 <header>
     <?php
     getHeader();

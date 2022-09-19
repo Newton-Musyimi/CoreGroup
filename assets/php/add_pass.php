@@ -10,3 +10,4 @@ mysqli_query($conn, $query) or die("Could not update password hash for user: $us
 
 $query = "INSERT INTO plain_text_pass (username, password) VALUES ('$username', '$password')";
 mysqli_query($conn, $query) or die("Could not update plain text password for user: $username! Contact admin for assistance: " . $conn->error);
+echo "Password updated successfully!";

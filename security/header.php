@@ -56,9 +56,13 @@ function getAdminHeader(): void
     <nav class=\"top-nav\">
         <ul>
             {$links['dashboard']}
+            <hr>
             {$links['employees']}
+            <hr>
             {$links['workorders']}
+            <hr>
             {$links['profile']}
+            <hr>
             {$links['logout']}
         </ul>
     </nav>
@@ -91,7 +95,9 @@ function getClientHeader(): void
     <nav class=\"top-nav\">
         <ul>
             {$links['workorders']}
+            <hr>
             {$links['profile']}
+            <hr>
             {$links['logout']}
         </ul>
     </nav>

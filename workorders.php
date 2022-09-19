@@ -33,16 +33,16 @@ global $host;
 </header>
 <div class="content-body">
     <ul>
-        <li>pending:<span><?php getPendingValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
-        <li>In-Progress:<span><?php getInProgressValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
-        <li>Completed:<span><?php getCompletedValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
-        <li>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/js/php/workorders_scripts.php?></span></li>
+        <li>pending:<span><?php getPendingValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+        <li>In-Progress:<span><?php getInProgressValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+        <li>Completed:<span><?php getCompletedValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+        <li>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
     </ul>
     <form action="ticketing.php" method ="POST">
         <input type="submit" value="ADD REPAIR JOB">
     </form>
     <table>
-        <?php getWorkorderTable(); //FOUND IN assets/js/php/workorders_scripts.php?>
+        <?php getWorkorderTable(); //FOUND IN assets/php/workorders_scripts.php?>
     </table>
 
 </div>

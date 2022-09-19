@@ -2,6 +2,7 @@
 session_start();
 require_once("php/config.php");
 require_once('php/workorders_scripts.php');
+//phpinfo();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,19 +60,35 @@ require_once('php/workorders_scripts.php');
     ?>
     <br>
     <hr>
-    <form action="" method="POST" style="width:50%;">
+    <form action="" method="POST" style="width:50%;" id="create_pass">
         <input type="text" name="username" placeholder="username">
         <input type="text" name="password" placeholder="password">
         <input type="submit" value="CREATE PASSWORD">
     </form>
+    <form action="" method="POST" style="width:50%;" id="send_mail">
+        <input type="email" name="email" placeholder="email">
+        <input type="text" name="subject" placeholder="subject">
+        <input type="text" name="message" placeholder="message">
+        <input type="submit" value="SEND MAIL">
+    </form>
 
     <script>
         // submit form with ajax without jquery
-        document.querySelector('form').addEventListener('submit', function(e){
+        document.getElementById('create_pass').addEventListener('submit', function(e){
             e.preventDefault();
-            var form = new FormData(this);
-            var xhr = new XMLHttpRequest();
+            let form = new FormData(this);
+            let xhr = new XMLHttpRequest();
             xhr.open('POST', 'php/add_pass.php', true);
+            xhr.onload = function(){
+                console.log(this.responseText);
+            }
+            xhr.send(form);
+        });
+        document.getElementById('send_mail').addEventListener('submit', function(e){
+            e.preventDefault();
+            let form = new FormData(this);
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'php/send_mail.php', true);
             xhr.onload = function(){
                 console.log(this.responseText);
             }
