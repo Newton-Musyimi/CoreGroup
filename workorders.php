@@ -19,11 +19,10 @@ global $host;
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
-    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
+    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/workorder.css';?>">
 </head>
 
 <body id="page-top">
-<img src="assets/images/Picture1.png" alt="logo">
 <header>
     <h1>Customer Portal</h1>
 
@@ -36,16 +35,21 @@ global $host;
         current.focus();
     </script>
 </header>
+
 <div class="content-body">
+    <div class="status">
     <ul>
-        <li>pending:<span><?php getPendingValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
-        <li>In-Progress:<span><?php getInProgressValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
-        <li>Completed:<span><?php getCompletedValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
-        <li>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+        <li style="color:brown";>Pending:<span><?php getPendingValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+        <li style="color:blue";>In-Progress:<span><?php getInProgressValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+        <li style="color:green";>Completed:<span><?php getCompletedValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+        <li style="color:red";>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
     </ul>
+    </div>
+    <div class="border">
     <form action="ticketing.php" method ="POST">
         <input type="submit" value="ADD REPAIR JOB">
     </form>
+    </div>
     <table>
         <?php getWorkorderTable(); //FOUND IN assets/php/workorders_scripts.php?>
     </table>

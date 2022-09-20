@@ -27,17 +27,11 @@ if (isset($_SESSION['logged_in'])) {
     <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
-<style>
-    h1 {
-        border-bottom: 6px solid;
-    }
-</style>
 </head>
 <body id="page-top">
     <header value="login">
     <div class="logo">
-                <img src="assets/images/picture1.png" alt="logo">                      
-                <p>Because we care....</p>
+                
             </div>
         <?php
         getHeader();

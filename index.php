@@ -31,7 +31,7 @@ global $host;
             <h1>Woodstreet Academy</h1>
             <h3>PCRepairs Department</h3>
             <p>We offer a range of PC, laptop, phablet, and phone repairs.</p>
-            <a class="btn-bgstroke">Call To Action</a>
+            <a href="security/signup.php" class="btn-bgstroke">Sign Up</a>
         </section>
         <script>
             let current = document.getElementById("home_button");
@@ -42,12 +42,11 @@ global $host;
     <div class="middle-page">
         <section class="middle">
             <h2>We do all kinds of repair</h2>
-            <img src="assets/images/service-428540_1920.jpg">
+            <p>At Woodstreet Academy we repair all kinds of brands<br> including, Samsung, Iphone, Dell, ACER , HP, Sony, and many more</p>              
+             <image src="assets/images/hardware-bg.jpg">                
+            <a href="ticketing.php" class="btn-bgstroke">Create a ticket</a>
         </section>
-        <div class= "bottom-page">
-            <form action="security/login.php" method="POST">
-                <input type = "submit" value ="Create a Ticket">
-            </form>
+        <div class= "bottom-page">         
         </div>
     </div>
     <footer style="padding-bottom: 32px;">
