@@ -19,29 +19,28 @@ nav button {
     padding: 0;
     overflow: hidden;
     background-color: #808080;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
     top: 0;
 }
 .navbar li {
     float: left;
 }
   
-.navbar li a {
-    display: block;
+.navbar a {
     color: white;
+    float: left;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
-li a:hover {
+.navbar  a:hover {
     background-color: #4CAF50;
-    width: 100%;
+   
 }
-.active {
+.navbar a.active {
     background-color: #4CAF50;
-    width:100%;
+    
+  
 }
 
 h1,h3,p,a{
@@ -104,18 +103,12 @@ h2{
     text-align: left;
     color: white;
     text-align: center;
-}
-
-.middle  img{
-  width: 330px;
-  height: 100%;
-  display: block; /* remove extra space below image */
-}   
+} 
 .middle{
-  height: 300px;
   width: 100%;
-}
-
-img{
-  float:right;
+  background-image: url("assets/images/pexels-mateusz-dach-450035.jpg");
+  background-repeat: no-repeat;
+  height: 800px;
+  background-position: center;
+  background-size: cover;
 }
