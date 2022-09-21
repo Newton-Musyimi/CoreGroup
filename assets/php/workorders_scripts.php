@@ -22,7 +22,14 @@ $row = mysqli_fetch_array($result);
 if (is_array($row)) {
     
 }
-
+if(isset($_POST['wo_id'])){
+    global $conn;
+    $query = "SELECT * FROM `workorders` WHERE `wo_id` = {$_POST['wo_id']}";
+    $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number: {$_POST['wo_id']}! Contact admin for assistance: " . $conn->error);
+    while($row = mysqli_fetch_array($result)){
+        echo "{row['wo_id']}";
+    }
+}
 function getPendingValue(){
     global $user_id, $conn;
     $query = "SELECT 
@@ -132,6 +139,12 @@ function adminWorkorderTable(){
                         <input type='submit' value='View'>
                     </form>
                  </td>
+                 <td>
+                    <button onclick(getWorkorderSummary({$row['wo_id']})) class='work_order_view_button'>
+                        
+                        <input type='submit' value='View'>
+                    </button>
+                 </td>
             </tr>";
     }
 }
@@ -170,6 +183,12 @@ function clientWorkorderTable(){
                         <input type='hidden' name='work_order_id' value='{$row['wo_id']}'>
                         <input type='submit' value='View'>
                     </form>
+                 </td>
+                 <td>
+                    <button onclick=\"getWorkorderSummary({$row['wo_id']})\" class='work_order_view_button'>
+                        
+                        VIEW
+                    </button>
                  </td>
             </tr>";
     }

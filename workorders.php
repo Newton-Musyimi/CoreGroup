@@ -53,6 +53,7 @@ global $host;
     <table>
         <?php getWorkorderTable(); //FOUND IN assets/php/workorders_scripts.php?>
     </table>
+    <div id="workorder_summary"></div>
 
 </div>
 <footer style="padding-bottom: 32px;">
@@ -60,6 +61,18 @@ global $host;
         <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
     </div>
 </footer>
+<script>
+    function getWorkorderSummary(wo_id){
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("workorder_summary").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "assets/php/workorder_summary.php?wo_id="+wo_id, true);
+        xhttp.send();
+    }
+</script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 </body>
 
