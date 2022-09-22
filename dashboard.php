@@ -32,12 +32,46 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart', 'controls']});
-        google.charts.setOnLoadCallback(drawStuff);
+        google.charts.setOnLoadCallback(drawDbtPie);
+        google.charts.setOnLoadCallback(drawDbsPie);
 
-        function drawStuff() {
+
+            /*
+            let programmaticChartDBS  = new google.visualization.ChartWrapper({
+                'chartType': 'PieChart',
+                'containerId': 'pie_chart_div_dbs',
+                'options': {
+                    'width': 300,
+                    'height': 300,
+                    'legend': 'none',
+                    'chartArea': {'left': 15, 'top': 15, 'right': 0, 'bottom': 0},
+                    'pieSliceText': 'value'
+                }
+            });
+
+            let programmaticSliderDBS = new google.visualization.ControlWrapper({
+                'controlType': 'NumberRangeFilter',
+                'containerId': 'ticket_by_filter_DBS',
+                'options': {
+                    'filterColumnLabel': 'Number',
+                    'ui': {'labelStacking': 'vertical'}
+                }
+            });
+            resetDBSRange = function() {
+                programmaticSlider.setState({'lowValue': 0, 'highValue': 50});
+                programmaticSlider.draw();
+            };
+
+
+            changeDBSOptions = function() {
+                programmaticChartDBS.setOption('is3D', true);
+                programmaticChartDBS.draw();
+            };
+
+            function drawDbtPie() {
 
             let dashboard = new google.visualization.Dashboard(
-                document.getElementById('ticket_by'));
+                document.getElementById('dashboard'));
 
             // We omit "let" so that programmaticSlider is visible to changeRange.
             let programmaticSlider = new google.visualization.ControlWrapper({
@@ -49,9 +83,11 @@
                 }
             });
 
-            let programmaticChart  = new google.visualization.ChartWrapper({
+
+
+            let programmaticChartDBT  = new google.visualization.ChartWrapper({
                 'chartType': 'PieChart',
-                'containerId': 'chart_div',
+                'containerId': 'pie_chart_div_dbt',
                 'options': {
                     'width': 300,
                     'height': 300,
@@ -61,32 +97,79 @@
                 }
             });
 
+
+
             let ticketByTypeData = $.ajax({
-                url: "assets/php/dashboard_scripts.php",
+                url: "assets/php/dashboard_scripts.php?ticket_by_type=true",
                 dataType: "json",
                 async: false
             }).responseText;
 
-            console.log(ticketByTypeData);
-            console.log(typeof ticketByTypeData);
+
+
             ticketByTypeData = JSON.parse(ticketByTypeData);
-            console.log(typeof ticketByTypeData);
 
-            let data = new google.visualization.arrayToDataTable(ticketByTypeData);
 
-            dashboard.bind(programmaticSlider, programmaticChart);
-            dashboard.draw(data);
+            let dataTBT = new google.visualization.arrayToDataTable(ticketByTypeData);
+
+
+
+            dashboard.bind(programmaticSlider, programmaticChartDBT);
+            dashboard.draw(dataTBT);
 
             resetRange = function() {
                 programmaticSlider.setState({'lowValue': 0, 'highValue': 50});
                 programmaticSlider.draw();
             };
-
             changeOptions = function() {
-                programmaticChart.setOption('is3D', true);
-                programmaticChart.draw();
+                programmaticChartDBT.setOption('is3D', true);
+                programmaticChartDBT.draw();
             };
         }
+             */
+
+        function drawDbsPie() {
+            let ticketByStatusData = $.ajax({
+                url: "assets/php/dashboard_scripts.php?ticket_by_status=true",
+                dataType: "json",
+                async: false
+            }).responseText;
+            ticketByStatusData = JSON.parse(ticketByStatusData);
+            let dataTbs = new google.visualization.arrayToDataTable(ticketByStatusData);
+
+
+
+            let options = {
+                title: 'Tickets by Status',
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('pie_chart_div_dbs'));
+
+            chart.draw(dataTbs, options);
+        }
+
+        function drawDbtPie() {
+            let ticketByTypeData = $.ajax({
+                url: "assets/php/dashboard_scripts.php?ticket_by_type=true",
+                dataType: "json",
+                async: false
+            }).responseText;
+            ticketByTypeData = JSON.parse(ticketByTypeData);
+            let dataTbt = new google.visualization.arrayToDataTable(ticketByTypeData);
+
+
+
+            let options = {
+                title: 'Tickets by Type',
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('pie_chart_div_dbt'));
+
+            chart.draw(dataTbt, options);
+        }
+
+
+
     </script>
 </head>
 
@@ -105,14 +188,9 @@
     <div class="content-body">
         <div id="dashboard">
             <div id="ticket_by"  style="border: 1px solid #ccc">
-                <div id="ticket_by_filter" "padding-left: 2em; min-width: 250px"></div>
-            <div>
-                <button style="margin: 1em 1em 1em 2em" onclick="resetRange();">Reset</button>
-                <button style="margin: 1em 1em 1em 2em" onclick="changeOptions();">Make the pie chart 3D</button>
+                <div id="pie_chart_div_dbt" style="width: 900px; height: 500px;"></div>
+                <div id="pie_chart_div_dbs" style="width: 900px; height: 500px;"></div>
             </div>
-
-            <div id="chart_div"></div>
-
         </div>
     </div>
 
