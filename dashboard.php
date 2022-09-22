@@ -1,25 +1,26 @@
-<?php
-session_start();
-/*
-require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
-*/
-require_once('security/admin/config.php');
-require_once('security/header.php');
-global $host;
 
-if(isset($_SESSION['username'])) {
-    echo "Welcome to the dashboard, " . $_SESSION['username'] . "!";
-    $conn = get_db();
-    $_GLOBALS['conn'] = $conn;
-    require_once ('assets/php/dashboard_scripts.php');
-} else {
-    header("Location: $host.'/SysDev/CoreGroup/security/login.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="en-gb">
 
 <head>
+    <?php
+    session_start();
+    /*
+    require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
+    */
+    require_once('security/admin/config.php');
+    require_once('security/header.php');
+    global $host;
+
+    if(isset($_SESSION['username'])) {
+
+        $conn = get_db();
+        $_GLOBALS['conn'] = $conn;
+        //require_once ('assets/php/dashboard_scripts.php');
+    } else {
+        header("Location: $host.'/SysDev/CoreGroup/security/login.php");
+    }
+    ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Core Group</title>
@@ -28,17 +29,18 @@ if(isset($_SESSION['username'])) {
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart', 'controls']});
         google.charts.setOnLoadCallback(drawStuff);
 
         function drawStuff() {
 
-            var dashboard = new google.visualization.Dashboard(
+            let dashboard = new google.visualization.Dashboard(
                 document.getElementById('ticket_by'));
 
-            // We omit "var" so that programmaticSlider is visible to changeRange.
-            var programmaticSlider = new google.visualization.ControlWrapper({
+            // We omit "let" so that programmaticSlider is visible to changeRange.
+            let programmaticSlider = new google.visualization.ControlWrapper({
                 'controlType': 'NumberRangeFilter',
                 'containerId': 'ticket_by_filter',
                 'options': {
@@ -47,7 +49,7 @@ if(isset($_SESSION['username'])) {
                 }
             });
 
-            var programmaticChart  = new google.visualization.ChartWrapper({
+            let programmaticChart  = new google.visualization.ChartWrapper({
                 'chartType': 'PieChart',
                 'containerId': 'chart_div',
                 'options': {
@@ -59,9 +61,18 @@ if(isset($_SESSION['username'])) {
                 }
             });
 
-            let ticketByTypeData = <?php echo getTicketByType(); ?>;
+            let ticketByTypeData = $.ajax({
+                url: "assets/php/dashboard_scripts.php",
+                dataType: "json",
+                async: false
+            }).responseText;
 
-            let data = google.visualization.arrayToDataTable(ticketByTypeData);
+            console.log(ticketByTypeData);
+            console.log(typeof ticketByTypeData);
+            ticketByTypeData = JSON.parse(ticketByTypeData);
+            console.log(typeof ticketByTypeData);
+
+            let data = new google.visualization.arrayToDataTable(ticketByTypeData);
 
             dashboard.bind(programmaticSlider, programmaticChart);
             dashboard.draw(data);
@@ -82,6 +93,7 @@ if(isset($_SESSION['username'])) {
 <body id="page-top">
     <header value="admin">
         <?php
+        echo "Welcome to the dashboard, " . $_SESSION['username'] . "!";
         getHeader();
         ?>
         <script>
