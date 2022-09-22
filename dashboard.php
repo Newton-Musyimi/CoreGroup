@@ -28,6 +28,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
+    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/dashboard.css';?>">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -141,6 +142,7 @@
 
             let options = {
                 title: 'Tickets by Status',
+                backgroundColor: 'antiquewhite'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('pie_chart_div_dbs'));
@@ -161,6 +163,7 @@
 
             let options = {
                 title: 'Tickets by Type',
+                backgroundColor: 'antiquewhite'
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('pie_chart_div_dbt'));
@@ -186,11 +189,31 @@
         </script>
     </header>
     <div class="content-body">
-        <div id="dashboard">
-            <div id="ticket_by"  style="border: 1px solid #ccc">
-                <div id="pie_chart_div_dbt" style="width: 900px; height: 500px;"></div>
-                <div id="pie_chart_div_dbs" style="width: 900px; height: 500px;"></div>
+        <div class="container">
+            <div class="column">
+                <div class="row">
+                    <div class="chart" id="pie_chart_div_dbt"></div>
+                    <div class="chart" id="pie_chart_div_dbs"></div>
+                </div>
+                <div class="row chart" style="width:100%; margin:0px;">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="chart" id="technician_by_rating"></div>
+                    <div class="chart" id="overall_rating"></div>
+                </div>
             </div>
+            <div class="column">
+
+            </div>
+
         </div>
     </div>
 
