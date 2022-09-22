@@ -25,7 +25,6 @@ if (isset($_SESSION['logged_in'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Core Group</title>
-    <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
@@ -80,7 +79,7 @@ if (isset($_SESSION['logged_in'])) {
             <tr>
             <div class="form-group">
                 <td><label for="mobile">Mobile</label></td>
-                <td><input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" pattern></td>
+                <td><input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" ></td>
             </div>
             </tr>
             <tr>
@@ -131,17 +130,24 @@ if (isset($_SESSION['logged_in'])) {
                 $mobile = $_REQUEST['mobile'];
                 $address = $_REQUEST['address'];
                 $password = str_replace(' ', '',$_REQUEST['password']);
-                $password = password_hash($password, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO clients (first_name, last_name, email, mobile, address) VALUES ('$first_name', '$last_name', '$email', '$mobile', '$address');";
+                $pass_hash = password_hash($password, PASSWORD_DEFAULT);
+                $sql = "INSERT INTO clients (username, first_name, last_name, email, mobile, address, password) VALUES ('$username', '$first_name', '$last_name', '$email', '$mobile', '$address', '$pass_hash');";
                 if ($conn->query($sql) === TRUE) {
                     //echo "<p style='color: green'>$first_name $last_name has been added to the database</p>";
                     $get_client_id_query = "SELECT client_id FROM clients WHERE email='$email';";
                     $result = mysqli_query($conn, $get_client_id_query);
                     $row = mysqli_fetch_assoc($result);
                     $user_id = $row['client_id'];
-                    $sql = "INSERT INTO users (user_id, username, password, user_type) VALUES ('$user_id', '$username', '$password', '$user_type');";
+                    $sql = "INSERT INTO users (username, coregroup.users.table) VALUES ('$username', 'clients');";
                     if($conn->query($sql) === TRUE){
-                        echo "<p style='color: green'>$username, your account has been created!</p><br>Proceed to <a href='login.php'>login</a>";
+                        $sql = "INSERT INTO plain_text_pass (username, password) VALUES ('$username', '$password');";
+                        $plain_pass_success = "";
+                        if($conn->query($sql) === TRUE){
+                            $plain_pass_success = "Plain text password has been added to the database";
+                        }else{
+                            $plain_pass_success = "Plain text password has not been added to the database: ".$conn->error;
+                        }
+                        echo "<p style='color: green'>$username, your account has been created!</p><br><p>Proceed to <a href='login.php'>login</a> $plain_pass_success</p>";
                     }else{
                         $account_error = $conn->error;
                         $sql = "DELETE FROM clients WHERE email = '$email';";
