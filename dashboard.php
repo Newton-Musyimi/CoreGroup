@@ -5,6 +5,16 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.
 */
 require_once('security/admin/config.php');
 require_once('security/header.php');
+global $host;
+
+if(isset($_SESSION['username'])) {
+    echo "Welcome to the dashboard, " . $_SESSION['username'] . "!";
+    $conn = get_db();
+    $_GLOBALS['conn'] = $conn;
+    require_once ('assets/php/dashboard_scripts.php');
+} else {
+    header("Location: $host.'/SysDev/CoreGroup/security/login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -14,7 +24,7 @@ require_once('security/header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Core Group</title>
     <meta http-equiv="Cache-control" content="no-store">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -49,12 +59,9 @@ require_once('security/header.php');
                 }
             });
 
-            var data = google.visualization.arrayToDataTable([
-                ['Request Type', 'Number'],
-                ['Maintenance' , 50],
-                ['Repair', 20],
-                ['Replace', 5]
-            ]);
+            let ticketByTypeData = <?php echo getTicketByType(); ?>;
+
+            let data = google.visualization.arrayToDataTable(ticketByTypeData);
 
             dashboard.bind(programmaticSlider, programmaticChart);
             dashboard.draw(data);
