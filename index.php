@@ -46,7 +46,7 @@ global $host;
     <div class="middle-page">
         <section class="middle" style="background-image: url('assets/images/pexels-mateusz-dach-450035.jpg')" >
             <h2>We do all kinds of repair</h2>
-            <p>At Woodstreet Academy we repair all kinds of brands: <br><span id="brands"></span></p>
+            <p>At Woodstreet Academy we repair all kinds of brands<br><h2><span id="brands"></span></h2></p>
             <a href="ticketing.php" class="btn-bgstroke">Create a ticket</a>
         </section>
         <div class= "bottom-page">         
@@ -68,14 +68,17 @@ global $host;
         </div>
     </footer>
     <script>
-        let brands_array = ["Samsung", "Iphone", "Dell", "ACER", "HP", "Sony", "and many more"];
-        let i = 0;
-        let speed = 100;
+        let brands_array = ["Samsung", "iPhone", "Dell", "ACER", "HP", "Sony"];
+        let j = 0;
+        let speed = 1000;
         let target = document.getElementById("brands");
         function typeWriter(){
-            if(i < brands_array.length){
-                target.innerHTML += brands_array[i] + " ";
-                i++;
+            if(j >= brands_array.length){
+                j = 0;
+            }
+            if(j < brands_array.length){
+                target.innerHTML = brands_array[j];
+                j++;
                 setTimeout(typeWriter, speed);
             }
         }

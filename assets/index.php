@@ -86,21 +86,7 @@ require_once('php/workorders_scripts.php');
                 }
             });
         }
-        let brands_array = ["Samsung", "Iphone", "Dell", "ACER", "HP", "Sony"];
-        let j = 0;
-        let speed = 1000;
-        let target = document.getElementById("brands");
-        function typeWriter(){
-            if(j >= brands_array.length){
-                j = 0;
-            }
-            if(j < brands_array.length){
-                target.innerHTML = brands_array[j];
-                j++;
-                setTimeout(typeWriter, speed);
-            }
-        }
-        typeWriter();
+
     </script>
 </body>
 </html>
