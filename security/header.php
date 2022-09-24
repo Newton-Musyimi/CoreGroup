@@ -56,17 +56,17 @@ function getAdminHeader(): void
     <nav class=\"top-nav\">
         <ul>
             {$links['home']}
-            <hr>
+            
             {$links['ticketing']}
-            <hr>
+            
             {$links['dashboard']}
-            <hr>
+            
             {$links['employees']}
-            <hr>
+            
             {$links['workorders']}
-            <hr>
+            
             {$links['profile']}
-            <hr>
+            
             {$links['logout']}
         </ul>
     </nav>

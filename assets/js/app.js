@@ -1,22 +1,3 @@
-function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-//make current page button active
-window.onload = function () {
-    document.getElementById("defaultOpen").click();
-}
-
 let acc = document.getElementsByClassName("accordion");
 let i;
 
@@ -32,16 +13,7 @@ for (i = 0; i < acc.length; i++) {
     });
 }
 
-document.querySelector('.work_order_view_button').addEventListener('submit', function(e){
-    e.preventDefault();
-    var form = new FormData(this);
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'php/workorders_scripts.php', true);
-    xhr.onload = function(){
-        console.log(this.responseText);
-    }
-    xhr.send(form);
-});
+
 /*
 let work_order_view_button = document.getElementsByClassName("accordion");
 let j;

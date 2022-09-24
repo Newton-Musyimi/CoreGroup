@@ -27,7 +27,7 @@ if(isset($_POST['wo_id'])){
     $query = "SELECT * FROM `workorders` WHERE `wo_id` = {$_POST['wo_id']}";
     $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number: {$_POST['wo_id']}! Contact admin for assistance: " . $conn->error);
     while($row = mysqli_fetch_array($result)){
-        echo "{row['wo_id']}";
+        echo $row['wo_id'];
     }
 }
 function getPendingValue(){

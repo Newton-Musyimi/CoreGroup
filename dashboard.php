@@ -196,14 +196,26 @@
                     <div class="chart" id="pie_chart_div_dbs"></div>
                 </div>
                 <div class="row chart" style="width:100%; margin:0px;">
-                    <table>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </table>
+                    <div class="completed-card">
+                        <div class="card-body">
+                            Completed
+                        </div>
+                    </div>
+                    <div class="completed-card">
+                        <div class="card-body">
+                            In-Progress
+                        </div>
+                    </div>
+                    <div class="completed-card">
+                        <div class="card-body">
+                            Pending
+                        </div>
+                    </div>
+                    <div class="completed-card">
+                        <div class="card-body">
+                            Cancelled
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="chart" id="technician_by_rating"></div>

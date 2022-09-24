@@ -20,6 +20,7 @@ global $host;
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/workorder.css';?>">
+    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
 
 <body id="page-top">
@@ -72,6 +73,16 @@ global $host;
         xhttp.open("GET", "assets/php/workorder_summary.php?wo_id="+wo_id, true);
         xhttp.send();
     }
+    document.querySelector('.work_order_view_button').addEventListener('submit', function(e){
+        e.preventDefault();
+        var form = new FormData(this);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'php/workorders_scripts.php', true);
+        xhr.onload = function(){
+            console.log(this.responseText);
+        }
+        xhr.send(form);
+    });
 </script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 </body>
