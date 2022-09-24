@@ -27,12 +27,16 @@ global $host;
         <?php
         getHeader();
         ?>
-        <section class="banner">
+        <!--<section class="banner">
             <h1>Woodstreet Academy</h1>
             <h3>PCRepairs Department</h3>
             <p>We offer a range of PC, laptop, phablet, and phone repairs.</p>
-            <a href="security/signup.php" class="btn-bgstroke">Sign Up</a>
-        </section>
+            <?php if(isset($_SESSION['logged_in'])){
+            }else{
+                echo '<a href="security/signup.php" class="btn-bgstroke">Sign Up</a>';
+            } ?>
+
+        </section>-->
         <script>
             let current = document.getElementById("home_button");
             current.style.backgroundColor="#048337";
@@ -42,17 +46,41 @@ global $host;
     <div class="middle-page">
         <section class="middle" style="background-image: url('assets/images/pexels-mateusz-dach-450035.jpg')" >
             <h2>We do all kinds of repair</h2>
-            <p>At Woodstreet Academy we repair all kinds of brands<br> including, Samsung, Iphone, Dell, ACER , HP, Sony, and many more</p>                            
+            <p>At Woodstreet Academy we repair all kinds of brands: <br><span id="brands"></span></p>
             <a href="ticketing.php" class="btn-bgstroke">Create a ticket</a>
         </section>
         <div class= "bottom-page">         
         </div>
+        <section class="banner">
+            <h1>Woodstreet Academy</h1>
+            <h3>PCRepairs Department</h3>
+            <p>We offer a range of PC, laptop, phablet, and phone repairs.</p>
+            <?php if(isset($_SESSION['logged_in'])){
+            }else{
+                echo '<a href="security/signup.php" class="btn-bgstroke">Sign Up</a>';
+            } ?>
+
+        </section>
     </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
         </div>
     </footer>
+    <script>
+        let brands_array = ["Samsung", "Iphone", "Dell", "ACER", "HP", "Sony", "and many more"];
+        let i = 0;
+        let speed = 100;
+        let target = document.getElementById("brands");
+        function typeWriter(){
+            if(i < brands_array.length){
+                target.innerHTML += brands_array[i] + " ";
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        typeWriter();
+    </script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>

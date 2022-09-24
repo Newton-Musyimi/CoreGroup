@@ -31,6 +31,7 @@ require_once('php/workorders_scripts.php');
     ?>
     <br>
     <hr>
+    <p>We work on <span id="brands"></span></p>
     <form action="" method="POST" style="width:50%;" id="create_pass">
         <input type="text" name="username" placeholder="username">
         <input type="text" name="password" placeholder="password">
@@ -85,6 +86,21 @@ require_once('php/workorders_scripts.php');
                 }
             });
         }
+        let brands_array = ["Samsung", "Iphone", "Dell", "ACER", "HP", "Sony"];
+        let j = 0;
+        let speed = 1000;
+        let target = document.getElementById("brands");
+        function typeWriter(){
+            if(j >= brands_array.length){
+                j = 0;
+            }
+            if(j < brands_array.length){
+                target.innerHTML = brands_array[j];
+                j++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        typeWriter();
     </script>
 </body>
 </html>

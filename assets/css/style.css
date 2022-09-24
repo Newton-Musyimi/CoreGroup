@@ -16,7 +16,7 @@ body, footer, header, head{
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    
     transition: 0.3s;
     font-size: 17px;
 }
@@ -37,59 +37,55 @@ body, footer, header, head{
     background-position: center;
     border-top: none;
 }
-
-.navbar {
-    overflow: hidden;
-    border: 3px solid #0000;
-    background-color: #a3dc4ff1;
-    position: fixed;
-    top: 0;
-    left: 0px;
-    padding-top: 40px;
-    height:100%;
-    width: 140px;
-}
-
-.navbar div{
-    padding: 8px;
-    font-size: 24px;
+body {
     display: block;
-    
-}
-header,body {
-    margin-left: 160px;
-    font-size: 18px;
+    margin: 0px;
 }
 
+nav {
+    background-color: #a3dc4f;
+
+}
 nav button {
     background-color: inherit;
     float: left;
-    width: 0;
-    border-radius: 9px;
-    display: block;
+    border: none;
     outline: none;
     cursor: pointer;
-    padding: 15px 15px;
-    font-size: 18px;
-    width: 100%;
-    
-}
-
-nav button:hover {
-    background-color: #f1f1f1;
+    padding: 14px 16px;
+    font-size: 17px;
     width: 100%;
 }
 
-nav button:active button.active{
-    background-color: #048337;    
-    width: 100%;
-}
-
-nav ul{
+.navbar ul {
     list-style-type: none;
     margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #514744;
+    top: 0;
+}
+.navbar li {
+    float: left;
+}
+  
+.navbar a {
+    color: white;
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar  a:hover {
+    background-color: #4CAF50;
+   
+}
+.navbar a.active {
+    background-color: #4CAF50;
     width: 100%;
 }
+
 footer{
     position: relative;
     left: 0;

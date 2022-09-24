@@ -26,7 +26,7 @@ if (isset($_SESSION['logged_in'])) {
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
-    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
+    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/login.css';?>">
 </head>
 <body id="page-top">
     <header value="login">
@@ -42,21 +42,31 @@ if (isset($_SESSION['logged_in'])) {
             current.focus();
         </script>
     </header>
-    <div class="content-body">
-    <h3>User Log In</h3>       
-       
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-                
-                    <label for="username"><strong>USERNAME:</strong></label><br>
-                    <br><input type="text" id="username" name="username" required><br>
-                
-                    <label for="password"><strong>PASSWORD:</strong></label><br>
-                    <input type="password" id="password" name="password" value="g19m80452022" required><br><br>
-                
-                    <input type="submit" class="submit" name="submit" value="LOG IN">
-            </form>
-        
+    <div id="card">
+    <div id="card-content">
+      <div id="card-title">
+        <h2>LOGIN</h2>
+        <div class="underline-title"></div>
+      </div>
+      <form method="post" class="form">
+        <label for="user-email" style="padding-top:13px">
+            &nbsp;Email
+          </label>
+        <input id="username" class="form-content" type="text" name="username" autocomplete="on" required />
+        <div class="form-border"></div>
+        <label for="user-password" style="padding-top:22px">&nbsp;Password
+          </label>
+        <input id="user-password" class="form-content" type="password" name="password" required />
+        <div class="form-border"></div>
+        <a href="#">
+          <legend id="forgot-pass">Forgot password?</legend>
+        </a>
+        <input id="submit-btn" type="submit" name="submit" value="LOGIN" />
+        <a href="#" id="signup">Don't have account yet?</a>
+      </form>
     </div>
+  </div>
+        
 
     <?php
     function standardize($string): string
