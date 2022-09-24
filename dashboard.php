@@ -1,45 +1,46 @@
-<?php
-session_start();
-/*
-require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
-*/
-require_once('security/admin/config.php');
-require_once('security/header.php');
-?>
+
 <!DOCTYPE html>
 <html lang="en-gb">
 
 <head>
+    <?php
+    session_start();
+    /*
+    require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
+    */
+    require_once('security/admin/config.php');
+    require_once('security/header.php');
+    global $host;
+
+    if(isset($_SESSION['username'])) {
+
+        $conn = get_db();
+        $_GLOBALS['conn'] = $conn;
+        //require_once ('assets/php/dashboard_scripts.php');
+    } else {
+        header("Location: $host.'/SysDev/CoreGroup/security/login.php");
+    }
+    ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Core Group</title>
     <meta http-equiv="Cache-control" content="no-store">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
+    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/dashboard.css';?>">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart', 'controls']});
-        google.charts.setOnLoadCallback(drawStuff);
+        google.charts.setOnLoadCallback(drawDbtPie);
+        google.charts.setOnLoadCallback(drawDbsPie);
 
-        function drawStuff() {
 
-            var dashboard = new google.visualization.Dashboard(
-                document.getElementById('ticket_by'));
-
-            // We omit "var" so that programmaticSlider is visible to changeRange.
-            var programmaticSlider = new google.visualization.ControlWrapper({
-                'controlType': 'NumberRangeFilter',
-                'containerId': 'ticket_by_filter',
-                'options': {
-                    'filterColumnLabel': 'Number',
-                    'ui': {'labelStacking': 'vertical'}
-                }
-            });
-
-            var programmaticChart  = new google.visualization.ChartWrapper({
+            /*
+            let programmaticChartDBS  = new google.visualization.ChartWrapper({
                 'chartType': 'PieChart',
-                'containerId': 'chart_div',
+                'containerId': 'pie_chart_div_dbs',
                 'options': {
                     'width': 300,
                     'height': 300,
@@ -49,32 +50,136 @@ require_once('security/header.php');
                 }
             });
 
-            var data = google.visualization.arrayToDataTable([
-                ['Request Type', 'Number'],
-                ['Maintenance' , 50],
-                ['Repair', 20],
-                ['Replace', 5]
-            ]);
+            let programmaticSliderDBS = new google.visualization.ControlWrapper({
+                'controlType': 'NumberRangeFilter',
+                'containerId': 'ticket_by_filter_DBS',
+                'options': {
+                    'filterColumnLabel': 'Number',
+                    'ui': {'labelStacking': 'vertical'}
+                }
+            });
+            resetDBSRange = function() {
+                programmaticSlider.setState({'lowValue': 0, 'highValue': 50});
+                programmaticSlider.draw();
+            };
 
-            dashboard.bind(programmaticSlider, programmaticChart);
-            dashboard.draw(data);
+
+            changeDBSOptions = function() {
+                programmaticChartDBS.setOption('is3D', true);
+                programmaticChartDBS.draw();
+            };
+
+            function drawDbtPie() {
+
+            let dashboard = new google.visualization.Dashboard(
+                document.getElementById('dashboard'));
+
+            // We omit "let" so that programmaticSlider is visible to changeRange.
+            let programmaticSlider = new google.visualization.ControlWrapper({
+                'controlType': 'NumberRangeFilter',
+                'containerId': 'ticket_by_filter',
+                'options': {
+                    'filterColumnLabel': 'Number',
+                    'ui': {'labelStacking': 'vertical'}
+                }
+            });
+
+
+
+            let programmaticChartDBT  = new google.visualization.ChartWrapper({
+                'chartType': 'PieChart',
+                'containerId': 'pie_chart_div_dbt',
+                'options': {
+                    'width': 300,
+                    'height': 300,
+                    'legend': 'none',
+                    'chartArea': {'left': 15, 'top': 15, 'right': 0, 'bottom': 0},
+                    'pieSliceText': 'value'
+                }
+            });
+
+
+
+            let ticketByTypeData = $.ajax({
+                url: "assets/php/dashboard_scripts.php?ticket_by_type=true",
+                dataType: "json",
+                async: false
+            }).responseText;
+
+
+
+            ticketByTypeData = JSON.parse(ticketByTypeData);
+
+
+            let dataTBT = new google.visualization.arrayToDataTable(ticketByTypeData);
+
+
+
+            dashboard.bind(programmaticSlider, programmaticChartDBT);
+            dashboard.draw(dataTBT);
 
             resetRange = function() {
                 programmaticSlider.setState({'lowValue': 0, 'highValue': 50});
                 programmaticSlider.draw();
             };
-
             changeOptions = function() {
-                programmaticChart.setOption('is3D', true);
-                programmaticChart.draw();
+                programmaticChartDBT.setOption('is3D', true);
+                programmaticChartDBT.draw();
             };
         }
+             */
+
+        function drawDbsPie() {
+            let ticketByStatusData = $.ajax({
+                url: "assets/php/dashboard_scripts.php?ticket_by_status=true",
+                dataType: "json",
+                async: false
+            }).responseText;
+            ticketByStatusData = JSON.parse(ticketByStatusData);
+            let dataTbs = new google.visualization.arrayToDataTable(ticketByStatusData);
+
+
+
+            let options = {
+                title: 'Tickets by Status',
+                backgroundColor: 'antiquewhite'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('pie_chart_div_dbs'));
+
+            chart.draw(dataTbs, options);
+        }
+
+        function drawDbtPie() {
+            let ticketByTypeData = $.ajax({
+                url: "assets/php/dashboard_scripts.php?ticket_by_type=true",
+                dataType: "json",
+                async: false
+            }).responseText;
+            ticketByTypeData = JSON.parse(ticketByTypeData);
+            let dataTbt = new google.visualization.arrayToDataTable(ticketByTypeData);
+
+
+
+            let options = {
+                title: 'Tickets by Type',
+                backgroundColor: 'antiquewhite'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('pie_chart_div_dbt'));
+
+            chart.draw(dataTbt, options);
+        }
+
+
+
     </script>
 </head>
 
 <body id="page-top">
     <header value="admin">
         <?php
+        echo "Welcome to the dashboard, " . $_SESSION['username'] . "!";
         getHeader();
         ?>
         <script>
@@ -84,15 +189,30 @@ require_once('security/header.php');
         </script>
     </header>
     <div class="content-body">
-        <div id="dashboard">
-            <div id="ticket_by"  style="border: 1px solid #ccc">
-                <div id="ticket_by_filter" "padding-left: 2em; min-width: 250px"></div>
-            <div>
-                <button style="margin: 1em 1em 1em 2em" onclick="resetRange();">Reset</button>
-                <button style="margin: 1em 1em 1em 2em" onclick="changeOptions();">Make the pie chart 3D</button>
+        <div class="container">
+            <div class="column">
+                <div class="row">
+                    <div class="chart" id="pie_chart_div_dbt"></div>
+                    <div class="chart" id="pie_chart_div_dbs"></div>
+                </div>
+                <div class="row chart" style="width:100%; margin:0px;">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="chart" id="technician_by_rating"></div>
+                    <div class="chart" id="overall_rating"></div>
+                </div>
             </div>
+            <div class="column">
 
-            <div id="chart_div"></div>
+            </div>
 
         </div>
     </div>

@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.caontainer .column {
+    display: flex; /* or inline-flex */
+    flex-direction: column;
+    padding: 20px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100px;
+}
+
+.row {
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    padding: 20px;
+}
+
+.chart {
+    border-radius: 25px;
+    border: #12311b 3px solid;
+    padding: 20px;
+    background-color: antiquewhite;
+    margin: 10px;
+    max-width: 50%;
+}

@@ -262,3 +262,12 @@ CREATE TABLE `coregroup`.`plain_text_pass` (
 ALTER TABLE `coregroup`.`workorders`
     ADD COLUMN `request_type` VARCHAR(11) NOT NULL AFTER `client_id`;
 
+-- 22-9-2022
+ALTER TABLE `coregroup`.`plain_text_pass`
+    DROP FOREIGN KEY `username_fk`;
+ALTER TABLE `coregroup`.`plain_text_pass`
+    ADD CONSTRAINT `username_fk`
+        FOREIGN KEY (`username`)
+            REFERENCES `coregroup`.`users` (`username`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
