@@ -45,13 +45,6 @@ global $host;
     </header>
     <div class="middle-page">
         <section class="middle" style="background-image: url('assets/images/pexels-mateusz-dach-450035.jpg')" >
-            <h2>We do all kinds of repair</h2>
-            <p>At Woodstreet Academy we repair all kinds of brands<br><h2><span id="brands"></span></h2></p>
-            <a href="ticketing.php" class="btn-bgstroke">Create a ticket</a>
-        </section>
-        <div class= "bottom-page">         
-        </div>
-        <section class="banner">
             <h1>Woodstreet Academy</h1>
             <h3>PCRepairs Department</h3>
             <p>We offer a range of PC, laptop, phablet, and phone repairs.</p>
@@ -59,6 +52,15 @@ global $host;
             }else{
                 echo '<a href="security/signup.php" class="btn-bgstroke">Sign Up</a>';
             } ?>
+        </section>
+        <div class= "bottom-page">         
+        </div>
+        <section class="banner">
+
+
+            <h2>We do all kinds of repair</h2>
+            <p>At Woodstreet Academy we repair all kinds of brands<br><h2><span id="brands"></span></h2></p>
+            <a href="ticketing.php" class="btn-bgstroke">Create a ticket</a>
 
         </section>
     </div>

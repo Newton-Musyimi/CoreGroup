@@ -102,8 +102,6 @@ h2{
   padding:60px 0;
   text-align: center;
   color: white;
-  background-image: url("/assets/images/pexels-mateusz-dach-450035.jpg");
-  /*filter: opacity(80%);*/
   filter: contrast(100%);
   background-repeat: no-repeat;
   height: 800px;
