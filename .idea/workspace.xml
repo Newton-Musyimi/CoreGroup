@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="PhpStorm workspace files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/Thumbs.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

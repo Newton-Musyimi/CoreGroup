@@ -44,25 +44,23 @@ global $host;
         </script>
     </header>
     <div class="middle-page">
-        <section class="middle" style="background-image: url('assets/images/pexels-mateusz-dach-450035.jpg')" >
+        <section class="middle" style="background-image: url('assets/images/pexels-mateusz-dach-450035.jpg');" >
             <h1>Woodstreet Academy</h1>
             <h3>PCRepairs Department</h3>
             <p>We offer a range of PC, laptop, phablet, and phone repairs.</p>
-            <?php if(isset($_SESSION['logged_in'])){
-            }else{
-                echo '<a href="security/signup.php" class="btn-bgstroke">Sign Up</a>';
-            } ?>
-        </section>
-        <div class= "bottom-page">         
-        </div>
-        <section class="banner">
 
 
             <h2>We do all kinds of repair</h2>
             <p>At Woodstreet Academy we repair all kinds of brands<br><h2><span id="brands"></span></h2></p>
+            <?php if(isset($_SESSION['logged_in'])){
+            }else{
+                echo '<a href="security/signup.php" class="btn-bgstroke" style="margin-right: 50px;">Sign Up</a>';
+            } ?>
             <a href="ticketing.php" class="btn-bgstroke">Create a ticket</a>
-
         </section>
+        <div class= "bottom-page">         
+        </div>
+        <!-- <section class="banner"></section> -->
     </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
