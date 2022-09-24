@@ -81,10 +81,8 @@ function getReceptionistHeader(): void
     <nav class=\"top-nav\">
         <ul>
             {$links['home']}
-            <hr>
             {$links['helpdesk']}
             {$links['ticketing']}
-            <hr>
             {$links['employees']}
             {$links['workorders']}
             {$links['profile']}
@@ -103,13 +101,9 @@ function getClientHeader(): void
     <nav class=\"top-nav\">
         <ul>
             {$links['home']}
-            <hr>
             {$links['ticketing']}
-            <hr>
             {$links['workorders']}
-            <hr>
             {$links['profile']}
-            <hr>
             {$links['logout']}
         </ul>
     </nav>
@@ -123,7 +117,6 @@ function getEmployeeHeader(): void
     <nav class=\"top-nav\">
         <ul>
             {$links['home']}
-            <hr>
             {$links['workorders']}
             {$links['profile']}
             {$links['logout']}

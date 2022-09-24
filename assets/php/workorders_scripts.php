@@ -122,7 +122,7 @@ function adminWorkorderTable(){
                 <td>0.00</td>
                 <td>{$row['status']}</td>
                 <td>$date</td>
-                <td>{$row['status']}</td>
+                <td>{$row['dropoff_date']}</td>
                 <td>{$row['status']}</td>
                 <td>{$row['status']}</td>
                 <td>{$row['status']}</td>
