@@ -17,7 +17,8 @@
   color: black;
 }
 
-.top-nav a.active {
-  background-color: #aa04a2;
-  color: white;
+.top-nav a.active 
+  {
+    background-color: #4CAF50;
+    width: 100%;
 }

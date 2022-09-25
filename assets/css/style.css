@@ -16,17 +16,16 @@ body, footer, header, head{
     border: none;
     outline: none;
     cursor: pointer;
-    
     transition: 0.3s;
     font-size: 17px;
 }
 
 .tab button:hover {
-    background-color: #048337;
+    background-color: #af6b4c;
 }
 
 .tab button.active {
-    background-color: #048337;
+    background-color: #af6b4c;
 }
 
 .tabcontent {
@@ -43,7 +42,7 @@ body {
 }
 
 nav {
-    background-color: #a3dc4f;
+    background-color: #af6b4c;
 
 }
 nav button {
@@ -62,7 +61,8 @@ nav button {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #514744;
+    background-color:#f0ead6;
+
     top: 0;
 }
 .navbar li {
@@ -78,12 +78,12 @@ nav button {
 }
 
 .navbar  a:hover {
-    background-color: #4CAF50;
+    background-color: #af6b4c;
    
 }
 .navbar a.active {
     background-color: #4CAF50;
-    width: 100%;
+    width: 150%;
 }
 
 footer{
@@ -99,7 +99,7 @@ footer{
 }
 
 .bottom-page{
-    background-color: #a3dc4f;   
+    background-color: #af6b4c;   
 }
 
 table {
@@ -114,7 +114,7 @@ th, td {
 }
 
 td:hover {
-      background-color:  #048337;
+      background-color:  #4CAF50;
     }
 
 
@@ -139,7 +139,7 @@ input[type=submit], input[type=button]{
 }
   
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #4CAF50;
 }
 input[type=submit] :active{
     background-color: #a3dc4f;

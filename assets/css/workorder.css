@@ -1,6 +1,3 @@
-.bottom-page{
-  background-color: #a3dc4f;   
-}
 
 table {
   border-collapse: collapse;
@@ -11,12 +8,8 @@ th, td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+ 
 }
-
-td:hover {
-    background-color:  #048337;
-  }
-
 
 input[type=text],input[type=password], input[type=email]{
   width: 50%;
@@ -29,7 +22,7 @@ input[type=text],input[type=password], input[type=email]{
 }
 
 input[type=submit], input[type=button], .accordion{
-  background-color: #4CAF50;
+  background-color: #f0ead6;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -45,7 +38,7 @@ input[type=submit], input[type=button], .accordion{
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #f0ead6;
 }
 input[type=submit] :active{
   background-color: #a3dc4f;

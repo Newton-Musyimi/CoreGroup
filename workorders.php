@@ -25,8 +25,6 @@ global $host;
 
 <body id="page-top">
 <header>
-    <h1>Customer Portal</h1>
-
     <?php
     getHeader();
     ?>
