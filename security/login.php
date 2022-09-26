@@ -56,7 +56,7 @@ if (isset($_SESSION['logged_in'])) {
         <div class="form-border"></div>
         <label for="user-password" style="padding-top:22px">&nbsp;Password
           </label>
-        <input id="user-password" class="form-content" type="password" name="password" required />
+        <input id="user-password" class="form-content" type="password" name="password" />
         <div class="form-border"></div>
         <a href="#">
           <legend id="forgot-pass">Forgot password?</legend>
@@ -91,14 +91,16 @@ if (isset($_SESSION['logged_in'])) {
             $id = $row['client_id'];
             $username_query = $row['username'];
             $_SESSION['role'] = "CLIENT";
+            $_SESSION['logged_in'] = $id;
+            $_SESSION['username'] = $username_query;
+            $_SESSION['user_table'] = "clients";
         }else{
+            mysqli_close($conn);
             echo '<p>You have entered the wrong password. Try again!</p>';
             exit;
         }
         mysqli_close($conn);
-        $_SESSION['logged_in'] = $id;
-        $_SESSION['username'] = $username_query;
-        $_SESSION['user_table'] = "clients";
+
         header("location:$host/SysDev/CoreGroup/workorders.php");
     }
 
@@ -135,6 +137,7 @@ if (isset($_SESSION['logged_in'])) {
                 $_SESSION['role'] = 'TECHNICIAN';
             }
         }else{
+            mysqli_close($conn);
             echo '<p>You have entered the wrong password. Try again!</p>';
             exit;
         }
@@ -144,6 +147,7 @@ if (isset($_SESSION['logged_in'])) {
         $_SESSION['user_table'] = "employees";
         header("location:$host/SysDev/CoreGroup/dashboard.php");
     }
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $conn = get_db();
         $username = $_POST['username'];

@@ -13,6 +13,24 @@ for (i = 0; i < acc.length; i++) {
     });
 }
 
+let j;
+let wo_view_button = document.getElementsByClassName("work_order_view_button");
+
+for (j = 0; j < wo_view_button.length; j++) {
+    wo_view_button[j].addEventListener("submit", function (e) {
+        e.preventDefault();
+        let form = new FormData(this);
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                document.querySelector('#workorder_summary').innerHTML = xhr.responseText;
+            }
+        }
+        xhr.open('POST', 'assets/php/workorders_scripts.php', true);
+        xhr.send(form);
+    });
+}
+
 
 /*
 let work_order_view_button = document.getElementsByClassName("accordion");

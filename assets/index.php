@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("php/config.php");
+global $host;
 require_once('php/workorders_scripts.php');
 //phpinfo();
 ?>
@@ -11,6 +12,8 @@ require_once('php/workorders_scripts.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon_io/favicon16.png';?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon_io/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo "http://".$_SERVER['HTTP_HOST'].'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
 <body>

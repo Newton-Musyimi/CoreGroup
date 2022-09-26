@@ -1,8 +1,8 @@
 <?php
-define('SERVERNAME', 'is3-dev.ict.ru.ac.za');
-define('USERNAME', 'G19M8045');
-define('PASSWORD', 'G19M8045');
-define('DATABASE', 'coregroup');
+define("SERVERNAME", "localhost");
+define("USERNAME", "g19m8045");
+define("PASSWORD", "G19M8045");
+define("DATABASE", "coregroup");
 $host = "http://".$_SERVER['HTTP_HOST'];
 
 //$conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE) OR die("Could not connect to MySQL: " . mysqli_connect_error() . " Contact IT for assistance!");

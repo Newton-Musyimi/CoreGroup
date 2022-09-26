@@ -1,6 +1,9 @@
 <?php
 // the message
-
+session_start();
+if(!isset($_SESSION['username'])){
+    header("location: security/login.php");
+}
 $msg = $_POST['message'];
 $msg = str_replace("\n.", "\n..", $msg);
 $receiver = $_POST['email'];
