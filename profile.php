@@ -40,23 +40,51 @@ require_once('security/header.php');
         current.style.backgroundColor="#048337";
         current.focus();
     </script>
+    <?php
+    $table = $_SESSION['user_table'];
+    $query = "SELECT * FROM $table WHERE username = '".$_SESSION['username']."'";
+    $conn = get_db();
+    $result = mysqli_query($conn, $query);
+    $title = "";
+    $username = "";
+    $email = "";
+    $mobile = "";
+    $surname = "";
+    $address = "";
+    $firstname = "";
+    $surname = "";
+    if($row = mysqli_fetch_array($result)){
+        if($table === 'employees'){
+            $title = $row['title'];
+        }else{
+            $title = "Client";
+        }
+        $firstname = $row['first_name'];
+        $username = $row['username'];
+        $email = $row['email'];
+        $mobile = $row['mobile'];
+        $surname = $row['last_name'];
+        $address = $row['address'];
+    }
+    ?>
     <div class="banner">
-    <h2>Welcome back Akhona</h2>
+    <h2>Welcome back <?php echo "$firstname $surname";  ?></h2>
     </div>
 </header>
 <div class="content-body">
+
     <form action="" method="POST">
-        <label for="fullname">Full Name:</label>
-        <input type="text" name="fullname" id="fullname" placeholder="Akhona Bastile"><br><br>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" value="<?php echo $username;  ?>"><br><br>
         <label for="email">Email:</label>
-        <input type ="email" name="email" id="name"placeholder="akhonabastile40@gmail.com"><br><br>
+        <input type ="email" name="email" id="email"value="<?php echo $email;  ?>"><br><br>
         <label for="mobile">Mobile:</label>
-        <input type ="text" name="mobile" id="mobile"placeholder="0846665471"><br><br>
+        <input type ="text" name="mobile" id="mobile"value="<?php echo $mobile;  ?>"><br><br>
         <label for="title"> Title: </label>
-        <input type="text" name = "title" id = "title" placeholder="Technician"><br><br>
+        <input type="text" name = "title" id = "title" value="<?php echo $title;  ?>"><br><br>
         <label for="address">Address:</label>
-        <input type="text" name="address" id="address" placeholder="Grahamstown, Eastern Cape"><br><br>
-        <input type="button" value="Update">
+        <input type="text" name="address" id="address" value="<?php echo $address;  ?>"><br><br>
+        <input type="submit" value="Update">
     </form>
 
 

@@ -1,7 +1,13 @@
 <?php
-session_start();
-if(!isset($_SESSION['username'])){
-    header("location: security/login.php");
+if(isset($_POST['wo_id'])){
+    require_once ('config.php');
+    $conn = get_db();
+    $query = "SELECT * FROM `workorders` WHERE `wo_id` = {$_POST['wo_id']}";
+    $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number: {$_POST['wo_id']}! Contact admin for assistance: " . $conn->error);
+    while($row = mysqli_fetch_array($result)){
+        return $row['wo_id'];
+    }
+
 }
 $conn = get_db();
 $user_id = $_SESSION['logged_in'];
@@ -26,14 +32,7 @@ $row = mysqli_fetch_array($result);
 if (is_array($row)) {
     
 }
-if(isset($_POST['wo_id'])){
-    global $conn;
-    $query = "SELECT * FROM `workorders` WHERE `wo_id` = {$_POST['wo_id']}";
-    $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number: {$_POST['wo_id']}! Contact admin for assistance: " . $conn->error);
-    while($row = mysqli_fetch_array($result)){
-        echo $row['wo_id'];
-    }
-}
+
 function getPendingValue(){
     global $user_id, $conn;
     $query = "SELECT 
@@ -102,6 +101,13 @@ function getAssignedTechnicians($workorder_id){
     }
     return $list;
 }
+
+function getCost($wo_id){
+    //TO DO: Add cost to workorder table
+
+    return 0.00;
+}
+
 function adminWorkorderTable(){
     global $user_id, $conn;
     $query = "SELECT `workorders`.*, `devices`.`device_name` AS device_name
@@ -110,27 +116,26 @@ function adminWorkorderTable(){
     $result = mysqli_query($conn, $query) or die("Could not query for client workorder with id number:$user_id! Contact admin for assistance: " . $conn->error);
     echo "<tr>
                 <th>Job Code</th>
+                <th>Client Id</th>
                 <th>Device</th>
                 <th>Cost</th>
                 <th>Status</th>
                 <th>Scheduled</th>
+                <th>Dropoff Date</th>                
                 <th>Assigned To</th>
                 <th>View</th>
             </tr>";
     while($row = mysqli_fetch_array($result)){
         $date = date('D d M Y', strtotime($row['date_started']));
+        $dropOffDate = date('D d M Y', strtotime($row['dropoff_date']));
         echo "<tr>
                 <td>{$row['wo_id']}</td>
                 <td>{$row['client_id']}</td>
                 <td>{$row['device_name']}</td>
-                <td>0.00</td>
+                <td>".getCost($row['wo_id'])."</td>
                 <td>{$row['status']}</td>
                 <td>$date</td>
-                <td>{$row['dropoff_date']}</td>
-                <td>{$row['status']}</td>
-                <td>{$row['status']}</td>
-                <td>{$row['status']}</td>
-                <td>{$row['status']}</td>
+                <td>$dropOffDate</td>
                 <td>
                     <button class='accordion'>Assigned Technicians</button>
                     <div class='panel'>
@@ -142,12 +147,6 @@ function adminWorkorderTable(){
                         <input type='hidden' name='work_order_id' value='{$row['wo_id']}'>
                         <input type='submit' value='View'>
                     </form>
-                 </td>
-                 <td>
-                    <button onclick(getWorkorderSummary({$row['wo_id']})) class='work_order_view_button'>
-                        
-                        <input type='submit' value='View'>
-                    </button>
                  </td>
             </tr>";
     }

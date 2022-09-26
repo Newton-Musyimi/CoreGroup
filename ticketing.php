@@ -19,11 +19,23 @@ global $host;
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Core Group</title>
     <meta http-equiv="Cache-control" content="no-store">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon_io/favicon16.png';?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon_io/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/helpdesk.css';?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        p.pfield-wrapper::after {
+            content: "\00a0\00a0 "; /* keeps spacing consistent */
+        }
+        p.required-field::after {
+            content: "*";
+            float: right;
+
+            margin-left: -3%;
+            color: red;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -114,7 +126,7 @@ global $host;
         <textarea id="descriptionbox" name="descriptionbox" rows="4" cols="50">
         </textarea><br><br>
         <label for ="date"><strong>Please choose a drop-off date</strong></label>
-        <input type="date" name="date" id="date"><br><br>
+        <input type="date" name="date" id="date" min=""><br><br>
 
         <h3><strong>Requests</strong></h3>
         <p>Please state any speacial requests</p>
@@ -135,18 +147,9 @@ global $host;
         <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
     </div>
 </footer>
-    <script>
-        $(function() {
-            $(document).ready(function() {
-                let $dp1 = $("#date");
-                $dp1.datepicker({
-                    changeYear: true,
-                    changeMonth: true,
-                    minDate:0,
-                    dateFormat: "yy-m-dd",
-                    yearRange: "-100:+20",
-            });
-        });
+    <script type='text/javascript'>
+        let today = new Date().toISOString().split('T')[0];
+        document.getElementById("date").setAttribute('min', today);
     </script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 </body>
