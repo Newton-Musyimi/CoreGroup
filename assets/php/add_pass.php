@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['username'])){
+    header("location: security/login.php");
+}
 require_once('config.php');
 $username = $_POST['username'];
 $password = $_POST['password'];

@@ -3,6 +3,9 @@ session_start();
 /*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 */
+if(!isset($_SESSION['username'])){
+    header("location: security/login.php");
+}
 require_once('security/admin/config.php');
 require_once('security/header.php');
 global $host;
@@ -20,6 +23,7 @@ global $host;
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/helpdesk.css';?>">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -131,6 +135,19 @@ global $host;
         <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
     </div>
 </footer>
+    <script>
+        $(function() {
+            $(document).ready(function() {
+                let $dp1 = $("#date");
+                $dp1.datepicker({
+                    changeYear: true,
+                    changeMonth: true,
+                    minDate:0,
+                    dateFormat: "yy-m-dd",
+                    yearRange: "-100:+20",
+            });
+        });
+    </script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 </body>
 

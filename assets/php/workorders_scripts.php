@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['username'])){
+    header("location: security/login.php");
+}
 $conn = get_db();
 $user_id = $_SESSION['logged_in'];
 $query = "SELECT `workorders`.`wo_id`,

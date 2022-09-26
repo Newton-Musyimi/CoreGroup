@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['username'])){
+    header("location: security/login.php");
+}
 $host = "http://".$_SERVER['HTTP_HOST'];
 require_once("config.php");
 $conn = get_db();
@@ -16,12 +20,14 @@ if (is_array($row)) {
     $email = $row['email'];
     $address = $row['address'];
 
-    $profile->id = $id;
-    $profile->name = $name;
-    $profile->position = $position;
-    $profile->mobile = $mobile;
-    $profile->email = $email;
-    $profile->address = $address;
+    $profile = array(
+        "id" => $id,
+        "name" => $name,
+        "position" => $position,
+        "mobile" => $mobile,
+        "email" => $email,
+        "address" => $address
+    );
 
     header('Content-type: application/json');
     echo json_encode($profile);
