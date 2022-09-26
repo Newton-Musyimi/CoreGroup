@@ -1,14 +1,4 @@
 <?php
-if(isset($_POST['wo_id'])){
-    require_once ('config.php');
-    $conn = get_db();
-    $query = "SELECT * FROM `workorders` WHERE `wo_id` = {$_POST['wo_id']}";
-    $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number: {$_POST['wo_id']}! Contact admin for assistance: " . $conn->error);
-    while($row = mysqli_fetch_array($result)){
-        return $row['wo_id'];
-    }
-
-}
 $conn = get_db();
 $user_id = $_SESSION['logged_in'];
 $query = "SELECT `workorders`.`wo_id`,
@@ -143,7 +133,7 @@ function adminWorkorderTable(){
                     </div>
                 </td>
                 <td>
-                    <form class='work_order_view_button'>
+                    <form action ='' class='work_order_view_button' method='post'>
                         <input type='hidden' name='work_order_id' value='{$row['wo_id']}'>
                         <input type='submit' value='View'>
                     </form>
@@ -182,7 +172,7 @@ function clientWorkorderTable(){
                     </div>
                 </td>
                 <td>
-                    <form action='workorder.php' class='work_order_view_button' method='post'>
+                    <form action='workorders.php' class='work_order_view_button' method='post'>
                         <input type='hidden' name='work_order_id' value='{$row['wo_id']}'>
                         <input type='submit' value='View'>
                     </form>

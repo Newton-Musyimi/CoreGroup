@@ -37,13 +37,19 @@ body, footer, header, head{
     border-top: none;
 }
 body {
+    background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+    background-repeat: no-repeat;
     display: block;
     margin: 0px;
 }
 
-nav {
-    background-color: #af6b4c;
+header {
+    background-color: #f0ead6;
 
+}
+
+.navbar .nav-title{
+    float: right;
 }
 nav button {
     background-color: inherit;
@@ -68,22 +74,24 @@ nav button {
 .navbar li {
     float: left;
 }
-  
+
 .navbar a {
     color: white;
     float: left;
     text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
+}
+
+.navbar .nav-title{
+    float: right;
 }
 
 .navbar  a:hover {
     background-color: #af6b4c;
-   
+
 }
 .navbar a.active {
     background-color: #4CAF50;
-    width: 150%;
 }
 
 footer{

@@ -1,8 +1,8 @@
 <?php
-session_start();
 /*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 */
+session_start();
 require_once('security/admin/config.php');
 require_once('security/header.php');
 global $host;
@@ -32,6 +32,7 @@ global $host;
             <h3>PCRepairs Department</h3>
             <p>We offer a range of PC, laptop, phablet, and phone repairs.</p>
             <?php if(isset($_SESSION['logged_in'])){
+            echo '<a href="security/logout.php" class="btn-bgstroke">Sign Up</a>';
             }else{
                 echo '<a href="security/signup.php" class="btn-bgstroke">Sign Up</a>';
             } ?>

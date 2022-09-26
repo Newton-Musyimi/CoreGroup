@@ -27,7 +27,7 @@ if (isset($_SESSION['logged_in'])) {
     <title>Core Group</title>
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
-    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
+    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/security.css';?>">
 </head>
 
 <body id="page-top">
@@ -51,47 +51,47 @@ if (isset($_SESSION['logged_in'])) {
         <h3><strong>Client Sign Up</strong></h3>
         <table>
             <tr>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="form" method="post">
             <input type="hidden" name="client" value="CLIENT">
             <div class="form-group">
                 <td><label for="username">Username</label></td>
-                <td><input type="text" class="form-control" id="username" name="username"  placeholder="Username"></td>
+                <td><input type="text" class="form-content" id="username" name="username"  placeholder="Username"></td>
             </tr>
             <tr>
             </div>
             <div class="form-group">
                 <td><label for="first_name">First Name</label></td>
-                <td><input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" ></td>
+                <td><input type="text" class="form-content" id="first_name" name="first_name" placeholder="First Name" ></td>
             </div>
             </tr>
             <tr>
             <div class="form-group">
                 <td><label for="last_name">Last Name</label></td>
-                <td><input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"></td>
+                <td><input type="text" class="form-content" id="last_name" name="last_name" placeholder="Last Name"></td>
             </div>
             </tr>
             <tr>
             <div class="form-group">
                 <td><label for="email">Email</label></td>
-                <td><input type="email" class="form-control" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></td>
+                <td><input type="email" class="form-content" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></td>
             </div>
             </tr>
             <tr>
             <div class="form-group">
                 <td><label for="mobile">Mobile</label></td>
-                <td><input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" ></td>
+                <td><input type="text" class="form-content" id="mobile" name="mobile" placeholder="Mobile" ></td>
             </div>
             </tr>
             <tr>
             <div class="form-group">
                 <td><label for="address">Address</label></td>
-                <td><input type="text" class="form-control" id="address" name="address" placeholder="Address"></td>
+                <td><input type="text" class="form-content" id="address" name="address" placeholder="Address"></td>
             </div>
             </tr>
             <tr>
             <div class="form-group">
                 <td><label for="password">Password</label></td>
-                <td><input type="password" class="form-control" id="password" name="password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"></td>
+                <td><input type="password" class="form-content" id="password" name="password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"></td>
             </div>
             </tr>
             <tr>

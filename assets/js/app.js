@@ -1,3 +1,22 @@
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+//make current page button active
+window.onload = function () {
+    document.getElementById("defaultOpen").click();
+}
+
 let acc = document.getElementsByClassName("accordion");
 let i;
 
@@ -13,26 +32,33 @@ for (i = 0; i < acc.length; i++) {
     });
 }
 
+let form = document.querySelector('.work_order_view_button').onsubmit = function (evt) {
+    evt.preventDefault();
+    form = new FormData(this);
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            document.querySelector('#workorder_summary').innerHTML = xhr.responseText;
+        }
+    }
+    xhr.open('POST', 'assets/php/workorders_scripts.php', true);
+    xhr.send(form);
+
+    // ajax_stuff_here
+};
+/*
 let j;
 let wo_view_button = document.getElementsByClassName("work_order_view_button");
 
 for (j = 0; j < wo_view_button.length; j++) {
     wo_view_button[j].addEventListener("submit", function (e) {
         e.preventDefault();
-        let form = new FormData(this);
-        let xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                document.querySelector('#workorder_summary').innerHTML = xhr.responseText;
-            }
-        }
-        xhr.open('POST', 'assets/php/workorders_scripts.php', true);
-        xhr.send(form);
+
     });
 }
 
-
 /*
+
 let work_order_view_button = document.getElementsByClassName("accordion");
 let j;
 

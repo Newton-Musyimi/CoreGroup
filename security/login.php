@@ -9,7 +9,7 @@ require_once('header.php');
 if (isset($_SESSION['logged_in'])) {
     global $host;
     if($_SESSION['role']=='CLIENT' || $_SESSION['role']=='RECEPTIONIST'){
-        header("location: ticketing.php");
+        header("location: $host/SysDev/CoreGroup/ticketing.php");
     }else if($_SESSION['role']=='ADMINISTRATOR'){
         header("location:$host/SysDev/CoreGroup/dashboard.php");
     }else{
@@ -26,7 +26,7 @@ if (isset($_SESSION['logged_in'])) {
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
-    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/login.css';?>">
+    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/security.css';?>">
 </head>
 <body id="page-top">
     <header value="login">

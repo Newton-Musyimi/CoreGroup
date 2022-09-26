@@ -1,12 +1,13 @@
 <?php
-session_start();
 /*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 */
+session_start();
+require_once('security/admin/config.php');
 if(!isset($_SESSION['username'])){
     header("location: security/login.php");
 }
-require_once('security/admin/config.php');
+global $conn;
 require_once('security/header.php');
 require_once('assets/php/workorders_scripts.php');
 global $host;
@@ -22,7 +23,7 @@ global $host;
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
-    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/workorder.css';?>">
+
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
 

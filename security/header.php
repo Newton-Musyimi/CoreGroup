@@ -48,7 +48,7 @@ function getCommon(): string
     </div>";
 }
 */
-function getAdminHeader(): void
+function getAdminHeader($role): void
 {
     global $links;
     echo "<div class=\"navbar\">
@@ -68,12 +68,17 @@ function getAdminHeader(): void
             {$links['profile']}
             
             {$links['logout']}
+            <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are an $role</p></li>
+            
         </ul>
+        
     </nav>
+    
+    
 </div>";
 }
 
-function getReceptionistHeader(): void
+function getReceptionistHeader($role): void
 {
     global $links;
     echo "<div class=\"navbar\">
@@ -88,12 +93,13 @@ function getReceptionistHeader(): void
             {$links['profile']}
             {$links['logout']}
         </ul>
+    <p class='nav-title nav-item'>Welcome to the dashboard, {$_SESSION['username']}<br>You are a $role</p>
     </nav>
 </div>";
 
 }
 
-function getClientHeader(): void
+function getClientHeader($role): void
 {
     global $links;
     echo "<div class=\"navbar\">
@@ -106,10 +112,12 @@ function getClientHeader(): void
             {$links['profile']}
             {$links['logout']}
         </ul>
+        <p class='nav-title nav-item'>Welcome to the dashboard, {$_SESSION['username']}<br>You are a $role</p>
     </nav>
+    
 </div>";
 }
-function getEmployeeHeader(): void
+function getEmployeeHeader($role): void
 {
     global $links;
     echo "<div class=\"navbar\">
@@ -121,7 +129,9 @@ function getEmployeeHeader(): void
             {$links['profile']}
             {$links['logout']}
         </ul>
+    <p class='nav-title nav-item'>Welcome to the dashboard, {$_SESSION['username']}<br>You are an $role</p>
     </nav>
+
     </div>";
 }
 function getHeader(): void
@@ -129,15 +139,19 @@ function getHeader(): void
     global $links;
     if(isset($_SESSION['logged_in'])){
         $role = $_SESSION['role'];
-        echo "You are a(n) $role<br>";
+
         if($role == 'ADMINISTRATOR'){
-            getAdminHeader();
+            $role = strtolower($role);
+            getAdminHeader($role);
         }elseif($role == 'RECEPTIONIST'){
-            getReceptionistHeader();
+            $role = strtolower($role);
+            getReceptionistHeader($role);
         }elseif($role == 'CLIENT'){
-            getClientHeader();
+            $role = strtolower($role);
+            getClientHeader($role);
         }else{
-            getEmployeeHeader();
+            $role = strtolower($role);
+            getEmployeeHeader($role);
         }
         //echo getCommon();
     }else{

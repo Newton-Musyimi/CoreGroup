@@ -1,5 +1,5 @@
 nav {
-    background-color: #a3dc4f;
+    background-color: #af6b4c;
 
 }
 nav button {
@@ -18,28 +18,27 @@ nav button {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #514744;
+    background-color:#f0ead6;
+
     top: 0;
 }
 .navbar li {
     float: left;
 }
-  
+
 .navbar a {
     color: white;
     float: left;
     text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
 }
 
 .navbar  a:hover {
-    background-color: #4CAF50;
-   
+    background-color: #af6b4c;
+
 }
 .navbar a.active {
     background-color: #4CAF50;
-    width: 100%;
 }
 
 a {
@@ -48,6 +47,8 @@ a {
   body {
     background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
     background-repeat: no-repeat;
+    display: block;
+    margin: 0px;
   }
   label {
     font-family: "Raleway", sans-serif;

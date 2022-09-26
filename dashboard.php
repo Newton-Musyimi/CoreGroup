@@ -89,7 +89,7 @@
 <body id="page-top">
     <header value="admin">
         <?php
-        echo "Welcome to the dashboard, " . $_SESSION['username'] . "!";
+
         getHeader();
         ?>
         <script>
@@ -131,9 +131,6 @@
                     <div class="chart" id="technician_by_rating"></div>
                     <div class="chart" id="overall_rating"></div>
                 </div>
-            </div>
-            <div class="column">
-
             </div>
 
         </div>
