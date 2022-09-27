@@ -1,0 +1,4 @@
+[{"client_id":1, "first_name":"Newton", "last_name":"Musyimi", "email":"clientnewton@gmail.com", "mobile":"0646617733", "address":"Grahamstown, Eastern Cape", "username":"clientnewton", "password":"$2y$10$JOLVeoPQGFmMJgl52d.vU.IemcsZNAha5MiOFra/o.n8LuVPbsxhq"},
+ {"client_id":5, "first_name":"Tom", "last_name":"Jerry", "email":"tomnjerry@gmail.com", "mobile":"064661", "address":"4 Ferry Street", "username":"tomjerry", "password":"$2y$10$vOOa2FMNQgJPNtBQhPGR7uKZj7B.HsFyLqocpQUMe5P9fWUA6eNaS"},
+ {"client_id":6, "first_name":"Jeffery", "last_name":"Mo", "email":"jeffmo@gmail.com", "mobile":"125879647", "address":"Jeff Str", "username":"jeffery", "password":"$2y$10$nK216W88.obKJ.xSxDjFbuFOuRZqkjYn5VzfcbazZTWC9SCzxmrgi"},
+ {"client_id":7, "first_name":"Kevin", "last_name":"Kimani", "email":"kev@gmail.com", "mobile":"1579654821", "address":"Kim St", "username":"kimani", "password":"$2y$10$DMIOdWa74xrEcKgLDTcwt.9Y8S4zwPzofTmxpYiCs7I1/PBYytNO."}]

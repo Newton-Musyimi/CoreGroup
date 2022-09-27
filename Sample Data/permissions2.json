@@ -1,0 +1,6 @@
+[{"perm_id":1, "perm_desc":"ADD NEW EMPLOYEE"},
+ {"perm_id":2, "perm_desc":"ASSIGN RECEPTIONIST"},
+ {"perm_id":3, "perm_desc":"REMOVE EMPLOYEE"},
+ {"perm_id":4, "perm_desc":"ADD PERMISSION"},
+ {"perm_id":5, "perm_desc":"ASSIGN ROLE PERMISSIONS"},
+ {"perm_id":6, "perm_desc":"ASSIGN ROLE PERMISSIONS"}]
