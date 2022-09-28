@@ -62,7 +62,7 @@ if (isset($_SESSION['logged_in'])) {
           <legend id="forgot-pass">Forgot password?</legend>
         </a>
         <input id="submit-btn" type="submit" name="submit" value="LOGIN" />
-        <a href="#" id="signup">Don't have account yet?</a>
+        <a href="security/login.php" id="signup">Don't have account yet?</a>
       </form>
     </div>
   </div>

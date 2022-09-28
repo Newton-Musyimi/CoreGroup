@@ -6,22 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="files">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_23_2022_11_43_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_23_2022_11_43_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_26_2022_1_41_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_26_2022_1_41_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f7857c9c-435d-428b-943c-40dd31d6cfee.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/security.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/navbar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/security.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/security.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/workorder.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/workorder.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/php/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/php/workorders_scripts.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/workorders_scripts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_devices.php" beforeDir="false" afterPath="$PROJECT_DIR$/client_devices.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/security/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/security/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/security/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/signup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ticketing.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketing.php" afterDir="false" />
@@ -76,7 +68,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "node.js.selected.package.tslint": "(autodetect)"
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -137,6 +133,7 @@
       <workItem from="1663806865536" duration="7499000" />
       <workItem from="1664026321196" duration="704000" />
       <workItem from="1664037570463" duration="111000" />
+      <workItem from="1664357301953" duration="1597000" />
     </task>
     <task id="LOCAL-00001" summary="PHPStorm configuration files">
       <created>1659551907951</created>

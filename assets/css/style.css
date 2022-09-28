@@ -37,10 +37,11 @@ body, footer, header, head{
     border-top: none;
 }
 body {
-    background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+    background: -webkit-linear-gradient(top,  #048337, #f0ead6);
     background-repeat: no-repeat;
     display: block;
     margin: 0px;
+    height: 100%;
 }
 
 header {
@@ -100,7 +101,7 @@ footer{
     bottom: 0;
     height: 0;
     width: 100%;
-    background-color:  #cccccc;
+    background-color:  #f5f5f5;
     color: black;
     text-align: left;
 
@@ -123,6 +124,7 @@ th, td {
 
 td:hover {
       background-color:  #4CAF50;
+      
     }
 
 
@@ -140,7 +142,7 @@ input[type=submit], input[type=button]{
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px 0 15px 150px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -152,7 +154,8 @@ input[type=submit]:hover {
 input[type=submit] :active{
     background-color: #a3dc4f;
     box-shadow:  0 5px #FFFF;
-    transform: translateY(4px);
+    transform: translateY(4px)
+
 }
 img {
     border: 1px solid #ddd;
