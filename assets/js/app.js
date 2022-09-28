@@ -32,20 +32,13 @@ for (i = 0; i < acc.length; i++) {
     });
 }
 
-let form = document.querySelector('.work_order_view_button').onsubmit = function (evt) {
-    evt.preventDefault();
-    form = new FormData(this);
-    let xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            document.querySelector('#workorder_summary').innerHTML = xhr.responseText;
-        }
-    }
-    xhr.open('POST', 'assets/php/workorders_scripts.php', true);
-    xhr.send(form);
+let today = new Date().toISOString().split('T')[0];
+let dateToday = document.getElementsByClassName("date-today");
 
-    // ajax_stuff_here
-};
+for (i = 0; i < dateToday.length; i++) {
+    dateToday[i].setAttribute('min', today);
+}
+
 /*
 let j;
 let wo_view_button = document.getElementsByClassName("work_order_view_button");
