@@ -1,0 +1,4 @@
+[{"role_id":1, "role_name":"ADMINISTRATOR"},
+ {"role_id":4, "role_name":"CLIENT"},
+ {"role_id":2, "role_name":"RECEPTIONIST"},
+ {"role_id":3, "role_name":"TECHNICIAN"}]
