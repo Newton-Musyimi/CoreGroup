@@ -50,7 +50,7 @@ nav button {
 }
 
 .navbar  a:hover {
-    background-color: #af6b4c;
+    background-color: #048337;
 
 }
 .navbar a.active {
@@ -61,7 +61,7 @@ a {
     text-decoration: none;
   }
   body {
-    background: -webkit-linear-gradient(bottom, #2dbd6e, #a6f77b);
+    background: -webkit-linear-gradient(top,  #048337, #f0ead6);
     background-repeat: no-repeat;
     display: block;
     margin: 0px;
@@ -96,6 +96,7 @@ a {
   }
   #card-content {
     padding: 12px 44px;
+    height: auto;
   }
   #card-title {
     font-family: "Raleway Thin", sans-serif;
@@ -111,8 +112,9 @@ a {
     margin-top: 16px;
     text-align: center;
   }
+
   #submit-btn {
-    background: -webkit-linear-gradient(right, #a6f77b, #2dbd6e);
+    background: -webkit-linear-gradient(right, #7bf78c, #048337);
     border: none;
     border-radius: 21px;
     box-shadow: 0px 1px 8px #24c64f;
@@ -129,14 +131,14 @@ a {
     box-shadow: 0px 1px 18px #24c64f;
   }
   .form {
-    align-items: left;
     display: flex;
     flex-direction: column;
+    height: auto;
   }
   .form-border {
     background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
     height: 1px;
-    width: 100%;
+    width: 80%;
   }
   .form-content {
     background: #fbfbfb;
@@ -148,6 +150,6 @@ a {
     background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
     height: 2px;
     margin: -1.1rem auto 0 auto;
-    width: 89px;
+    width: 100%;
   }
-  
+

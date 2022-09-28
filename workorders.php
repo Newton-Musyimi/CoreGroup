@@ -41,13 +41,12 @@ global $host;
 
 <div class="content-body">
     <div class="status">
-        <div id="workorder_summary"></div>
-    <ul>
-        <li style="color:brown";>Pending:<span><?php getPendingValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
-        <li style="color:blue";>In-Progress:<span><?php getInProgressValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
-        <li style="color:green";>Completed:<span><?php getCompletedValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
-        <li style="color:red";>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
-    </ul>
+            <ul>
+                <li style="color:brown";>Pending:<span><?php getPendingValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+                <li style="color:blue";>In-Progress:<span><?php getInProgressValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+                <li style="color:green";>Completed:<span><?php getCompletedValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+                <li style="color:red";>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
+            </ul>
     </div>
     <div class="border">
     <form action="ticketing.php" method ="POST">

@@ -1,4 +1,47 @@
-/* Style the tab */
+html,
+body {
+  margin: 0px;
+  height: 100%;
+
+}
+
+.nav-title p {
+    display: block;
+    margin:  0px;
+}
+
+body, #ticket_body {
+    background: -webkit-linear-gradient(top,  #ffff, #ffff);
+    background-repeat: no-repeat;
+    display: block;
+    margin: 0px;
+}
+
+.content-body{
+padding: 2vh 2vh 2vh 2vh;
+}
+
+.grid-item1 { grid-area: header; }
+.grid-item2 { grid-area: main; }
+.grid-item3 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'main main main main main main'
+    'footer footer footer footer footer footer';
+}
+h3{
+    border-bottom: 2px solid black;
+  
+}
+
+.top-content{
+    margin-left: 10px; 
+        
+}
+ /* Style the tab */
 .tab {
     overflow: hidden;
     background-color: #a3dc4ff1;
@@ -21,7 +64,7 @@ body, footer, header, head{
 }
 
 .tab button:hover {
-    background-color: #af6b4c;
+    background-color: #048337;
 }
 
 .tab button.active {
@@ -35,13 +78,6 @@ body, footer, header, head{
     background-color: #FFFF;
     background-position: center;
     border-top: none;
-}
-body {
-    background: -webkit-linear-gradient(top,  #048337, #f0ead6);
-    background-repeat: no-repeat;
-    display: block;
-    margin: 0px;
-    height: 100%;
 }
 
 header {
@@ -88,7 +124,7 @@ nav button {
 }
 
 .navbar  a:hover {
-    background-color: #af6b4c;
+    background-color: #048337;
 
 }
 .navbar a.active {
@@ -122,11 +158,11 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
-td:hover {
-      background-color:  #4CAF50;
+tr:hover {
+      background-color:  #048337;
       
     }
-
+    tr:nth-child(even):hover {background-color: #048337;}
 
 input[type=text],input[type=password], input[type=email]{
     width: 50%;
@@ -142,7 +178,6 @@ input[type=submit], input[type=button]{
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
-    margin: 8px 0 15px 150px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -192,3 +227,57 @@ hr{
     width: 100%;
 }
 
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* The work order summary table*/
+
+.table1, .table2, .table3, .table4{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}

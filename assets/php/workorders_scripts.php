@@ -23,6 +23,44 @@ if (is_array($row)) {
     
 }
 
+function getWorkorderSummary($wo_id){
+    global $conn;
+    $query = "SELECT `workorders`.*, `devices`.`device_name` AS device_name
+                        FROM `coregroup`.`workorders` JOIN coregroup.devices ON workorders.device_id = devices.device_id WHERE wo_id = $wo_id;";
+    $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number:$wo_id! Contact admin for assistance: " . $conn->error);
+    echo "<table
+><tr>
+                <th>Job Code</th>
+                <th>Client Id</th>
+                <th>Device</th>
+                <th>Cost</th>
+                <th>Status</th>
+                <th>Scheduled</th>
+                <th>Dropoff Date</th>                
+                <th>Assigned To</th>
+            </tr>";
+    $row = mysqli_fetch_array($result);
+    $date = date('D d M Y', strtotime($row['date_started']));
+    $dropOffDate = date('D d M Y', strtotime($row['dropoff_date']));
+    echo "<tr>
+                <td>{$row['wo_id']}</td>
+                <td>{$row['client_id']}</td>
+                <td>{$row['device_name']}</td>
+                <td>".getCost($row['wo_id'])."</td>
+                <td>{$row['status']}</td>
+                <td>$date</td>
+                <td>$dropOffDate</td>
+                <td>
+                    <button class='accordion'>Assigned Technicians</button>
+                    <div class='panel'>
+                    <ul>".getAssignedTechnicians($row['wo_id'])."</ul>
+                    </div>
+                </td>
+            </tr>
+            </table>";
+
+}
+
 function getPendingValue(){
     global $user_id, $conn;
     $query = "SELECT 
@@ -81,13 +119,13 @@ function getCancelledValue(){
 
 function getAssignedTechnicians($workorder_id){
     global $conn;
-    $query = "SELECT employees.username, assigned_technicians.employee_id FROM employees 
+    $query = "SELECT employees.username, assigned_technicians.employee_id AS id FROM employees 
     JOIN assigned_technicians ON assigned_technicians.employee_id = employees.employee_id
     WHERE assigned_technicians.wo_id = $workorder_id;";
     $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number:$workorder_id! Contact admin for assistance: " . $conn->error);
     $list = "";
     while($row = mysqli_fetch_array($result)){
-        $list .= "<li>{$row['username']}</li>";
+        $list .= "<a href=\"employee_profile.php?employee_id={$row['id']}\"><li>{$row['username']}</li></a>";
     }
     return $list;
 }
@@ -133,7 +171,7 @@ function adminWorkorderTable(){
                     </div>
                 </td>
                 <td>
-                    <form action ='' class='work_order_view_button' method='post'>
+                    <form action ='workorder_summary.php' method='post'>
                         <input type='hidden' name='work_order_id' value='{$row['wo_id']}'>
                         <input type='submit' value='View'>
                     </form>
@@ -172,16 +210,10 @@ function clientWorkorderTable(){
                     </div>
                 </td>
                 <td>
-                    <form action='workorders.php' class='work_order_view_button' method='post'>
+                    <form action ='workorder_summary.php' method='post'>
                         <input type='hidden' name='work_order_id' value='{$row['wo_id']}'>
                         <input type='submit' value='View'>
                     </form>
-                 </td>
-                 <td>
-                    <button onclick=\"getWorkorderSummary({$row['wo_id']})\" class='work_order_view_button'>
-                        
-                        VIEW
-                    </button>
                  </td>
             </tr>";
     }

@@ -30,17 +30,23 @@ global $host;
         <?php
         getHeader();
         ?>
-        <h3>Hello Mike</h3>
-        <h1>All Inventory Information</h1>
+        <script>
+            let current = document.getElementById("inventory_button");
+            current.style.backgroundColor="#048337";
+            current.focus();
+        </script>      
     </header>
     <div class="content-body">
-    <table>
+        <h3>Hello Mike</h3>
+        <h1>All Inventory Information</h1>
+        <table>
             <tr>
+                <th>Product Id</th>
                 <th>Name</th>
                 <th>Unit Price</th>
+                <th>Unit Cost</th>
                 <th>No. in Stock</th>
-                <th>ReOrder Level</th>
-                <th>Quntity ReOder</th> 
+                <th>View</th>
             </tr>
             <tr>
                 <td>20mm Screw</td>
@@ -56,7 +62,7 @@ global $host;
                 <td>Red</td>
                 <td>20</td>
             </tr>
-    </table>
+        </table>
     </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">

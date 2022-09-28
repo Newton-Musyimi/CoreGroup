@@ -4,11 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Disable access to the system unless user is logged in">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f7857c9c-435d-428b-943c-40dd31d6cfee.xml" beforeDir="false" />
+    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Added username input code to the add employee modal">
+      <change afterPath="$PROJECT_DIR$/device_summary.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/devices.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/employee_profile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security/employee_signup.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/workorder_summary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_27_2022_10_12_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_27_2022_10_12_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.php" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sample Data/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/Sample Data/Thumbs.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sample Data/clients.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sample Data/clients2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sample Data/employees2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Sample Data/employees2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sample Data/inventory.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Sample Data/inventory.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sample Data/users2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Sample Data/users2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sample Data/workorders2.json" beforeDir="false" afterPath="$PROJECT_DIR$/Sample Data/workorders2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/security.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/security.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/Thumbs.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/php/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/php/workorders_scripts.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/workorders_scripts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client_devices.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/employees.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/signup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff_information.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workorders.php" beforeDir="false" afterPath="$PROJECT_DIR$/workorders.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,19 +56,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/security/delete_account.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/security/Role.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/EMPLOYEES.csv" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/employees.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/index.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pdf_test.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/template.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/insert.sql" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pdf_test.html" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/EMPLOYEES.csv" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pdf_test.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/security/Role.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/security/admin/config.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/security/delete_account.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/security/header.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/security/login.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/security/signup.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/security/header.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/employees.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/security/admin/config.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/template.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -57,21 +82,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\core\SysDev\CoreGroup\Sample Data" />
       <recent name="\\is3-dev.ict.ru.ac.za\SysDev\CoreGroup" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\is3-dev.ict.ru.ac.za\SysDev\CoreGroup\security" />
       <recent name="\\is3-dev.ict.ru.ac.za\SysDev\CoreGroup\assets" />
       <recent name="\\is3-dev.ict.ru.ac.za\SysDev\CoreGroup\assets\php" />
-      <recent name="\\is3-dev.ict.ru.ac.za\SysDev\CoreGroup\security" />
       <recent name="C:\wamp64\www\core\SysDev\CoreGroup\security" />
       <recent name="C:\wamp64\www\core\SysDev\CoreGroup" />
     </key>
@@ -122,6 +151,7 @@
       <workItem from="1664026321196" duration="704000" />
       <workItem from="1664037570463" duration="111000" />
       <workItem from="1664357301953" duration="1597000" />
+      <workItem from="1664366061912" duration="18843000" />
     </task>
     <task id="LOCAL-00001" summary="PHPStorm configuration files">
       <created>1659551907951</created>
@@ -298,7 +328,21 @@
       <option name="project" value="LOCAL" />
       <updated>1664157126443</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Make all dates only accessible from the present day to a future date">
+      <created>1664380097257</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1664380097257</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Make all dates only accessible from the present day to a future date">
+      <created>1664380143189</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1664380143189</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,7 +364,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="PHPStorm configuration files" />
@@ -344,6 +387,8 @@
     <MESSAGE value="PhpStorm workspace files" />
     <MESSAGE value="files" />
     <MESSAGE value="Disable access to the system unless user is logged in" />
-    <option name="LAST_COMMIT_MESSAGE" value="Disable access to the system unless user is logged in" />
+    <MESSAGE value="Make all dates only accessible from the present day to a future date" />
+    <MESSAGE value="Added username input code to the add employee modal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added username input code to the add employee modal" />
   </component>
 </project>

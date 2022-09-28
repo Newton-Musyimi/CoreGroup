@@ -73,7 +73,7 @@ if (isset($_SESSION['logged_in'])) {
     {
         $string = str_replace(' ', '', $string);
         $string = stripslashes($string);
-        return ucfirst($string);
+        return strtolower($string);
     }
 
     function clientLogIn(): void
@@ -81,7 +81,7 @@ if (isset($_SESSION['logged_in'])) {
         global $host;
         $conn = get_db();
         $username = standardize($_POST['username']);
-        $password = str_replace(' ', '', $_POST['password']);
+        $password = $_POST['password'];
         $query = "SELECT `client_id`, `username`, `password` FROM `clients` WHERE `username` = '$username';";
         $result = mysqli_query($conn, $query) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
         //echo "<p class='access_form'>Log in <span style='color:green;'>Success!</span> Username entered is okay.</p> ";
@@ -145,7 +145,7 @@ if (isset($_SESSION['logged_in'])) {
         $_SESSION['logged_in'] = $id;
         $_SESSION['username'] = $username_query;
         $_SESSION['user_table'] = "employees";
-        header("location:$host/SysDev/CoreGroup/dashboard.php");
+        header("location:$host/SysDev/CoreGroup/workorders.php");
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){

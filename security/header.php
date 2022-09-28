@@ -11,6 +11,8 @@ $helpdesk = "<li><a href=\"$host/SysDev/CoreGroup/helpdesk.php\" class=\"nav-ite
 $home = "<li id=\"home_button\"><a href=\"$host/SysDev/CoreGroup/\" class=\"nav-item\"><button id=\"home_button\">Home</button></a> </li>";
 $profile = "<li><a href=\"$host/SysDev/CoreGroup/profile.php\" class=\"nav-item\"><button id=\"profile_button\">Profile</button></a> </li>";
 $employees = "<li><a href=\"$host/SysDev/CoreGroup/employees.php\" class=\"nav-item\"><button id=\"employees_button\">Employees</button></a> </li>";
+$inventory = "<li><a href=\"$host/SysDev/CoreGroup/inventory.php\" class=\"nav-item\"><button id=\"inventory_button\">Inventory</button></a> </li>";
+$devices = "<li><a href=\"$host/SysDev/CoreGroup/devices.php\" class=\"nav-item\"><button id=\"devices_button\">Devices</button></a> </li>";
 
 $links = array(
     'dashboard' => $dashboard,
@@ -23,7 +25,9 @@ $links = array(
     'home' => $home,
     'profile' => $profile,
     'employees' => $employees,
-    'ticketing' => $ticketing
+    'ticketing' => $ticketing,
+    'inventory'=> $inventory,
+    'devices'=> $devices
 );
 /*
 function getCommon(): string
@@ -66,6 +70,10 @@ function getAdminHeader($role): void
             {$links['workorders']}
             
             {$links['profile']}
+
+            {$links['devices']}
+
+            {$links['inventory']}
             
             {$links['logout']}
             <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are an $role</p></li>
@@ -90,10 +98,12 @@ function getReceptionistHeader($role): void
             {$links['ticketing']}
             {$links['employees']}
             {$links['workorders']}
+            {$links['devices']}
             {$links['profile']}
+            {$links['inventory']}
             {$links['logout']}
+            <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are a $role</p></li>
         </ul>
-    <p class='nav-title nav-item'>Welcome to the dashboard, {$_SESSION['username']}<br>You are a $role</p>
     </nav>
 </div>";
 
@@ -109,10 +119,12 @@ function getClientHeader($role): void
             {$links['home']}
             {$links['ticketing']}
             {$links['workorders']}
+            {$links['devices']}
             {$links['profile']}
+            {$links['inventory']}
             {$links['logout']}
+            <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are a $role</p></li>
         </ul>
-        <p class='nav-title nav-item'>Welcome to the dashboard, {$_SESSION['username']}<br>You are a $role</p>
     </nav>
     
 </div>";
@@ -127,9 +139,11 @@ function getEmployeeHeader($role): void
             {$links['home']}
             {$links['workorders']}
             {$links['profile']}
+            {$links['devices']}
+            {$links['inventory']}
             {$links['logout']}
+            <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are an $role</p></li>
         </ul>
-    <p class='nav-title nav-item'>Welcome to the dashboard, {$_SESSION['username']}<br>You are an $role</p>
     </nav>
 
     </div>";

@@ -1,12 +1,15 @@
 <?php
 session_start();
-global $host;
+if(!isset($_SESSION['username'])){
+    header("location: security/login.php");
+}
 /*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
 */
 
 require_once('security/admin/config.php');
 require_once('security/header.php');
+global $host;
 //require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
 <!DOCTYPE html>
@@ -27,16 +30,15 @@ require_once('security/header.php');
         <?php
         getHeader();
         ?>
+        <script>
+            let current = document.getElementById("template_button");
+            current.style.backgroundColor="#048337";
+            current.focus();
+        </script>
     </header>
     <div class="content-body">
-        <table>
-            <tr>
-                <th>Device ID</th>
-                <th>Device</th>
-                <th>No. in Stock</th>
-                <th>ReOrder Level</th>
-                <th>Quntity ReOder</th> 
-            </tr>
+        
+
     </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">

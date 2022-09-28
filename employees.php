@@ -24,50 +24,7 @@ tr:hover {background-color: #048337;}
     <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
-    <style>
-        body {font-family: Arial, Helvetica, sans-serif;}
 
-        /* The Modal (background) */
-
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            padding-top: 100px; /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-
-        /* Modal Content */
-        .modal-content {
-
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        /* The Close Button */
-        .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body id="page-top">
@@ -141,24 +98,28 @@ tr:hover {background-color: #048337;}
             </div>
 
             <div class="form-group">
+                <label for="username">Username</label><br>
+                <input type="text" class="form-control" id="username" name="username" placeholder="username" required><br>
+            </div>
+            <div class="form-group">
                 <label for="first_name">First Name</label><br>
-                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name"><br>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required><br>
             </div>
             <div class="form-group">
                 <label for="last_name">Last Name</label><br>
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"><br>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required><br>
             </div>
             <div class="form-group">
                 <label for="email">Email</label><br>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email"><br>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required><br>
             </div>
             <div class="form-group">
                 <label for="mobile">Mobile</label><br>
-                <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile"><br>
+                <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" required><br>
             </div>
             <div class="form-group">
                 <label for="address">Address</label><br>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Address"><br>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address" required><br>
             </div><br>
             <button type="submit" class="btn btn-primary">Submit</button><br>
 
@@ -195,9 +156,10 @@ tr:hover {background-color: #048337;}
         $email = $_REQUEST['email'];
         $mobile = $_REQUEST['mobile'];
         $address = $_REQUEST['address'];
+        $username = standardize($_REQUEST['username']);
         if(valid()){
             
-            $sql = "INSERT INTO employees (title, first_name, last_name, email, mobile, address) VALUES ('$title', '$first_name', '$last_name', '$email', '$mobile', '$address');";
+            $sql = "INSERT INTO employees (title, first_name, last_name, email, mobile, address, username) VALUES ('$title', '$first_name', '$last_name', '$email', '$mobile', '$address', '$username');";
             if ($conn->query($sql) === TRUE) {
                 echo "<p style='color: green'>$first_name $last_name has been added to the database</p>";
             } else {

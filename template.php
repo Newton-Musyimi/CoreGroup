@@ -30,6 +30,11 @@ global $host;
         <?php
         getHeader();
         ?>
+        <script>
+            let current = document.getElementById("template_button");
+            current.style.backgroundColor="#048337";
+            current.focus();
+        </script>
     </header>
     <div class="content-body">
 
