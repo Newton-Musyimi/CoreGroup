@@ -68,7 +68,7 @@ require_once('security/header.php');
     }
     ?>
     <div class="banner">
-    <h2>Welcome back <?php echo "$firstname $surname";  ?></h2>
+    <h2> Welcome back <?php echo "$firstname $surname";  ?></h2>
     </div>
 </header>
 <div class="content-body">

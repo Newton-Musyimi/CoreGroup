@@ -112,7 +112,7 @@ global $host;
             <label for="issue2">Screen Damage</label><br><br>
 
             &emsp;<input type="checkbox" name="issue3" id ="issue3">
-            <label for="issue3">Hardware(eg. body damage, cracked camera,keyboard, sensor) </label><br><br>
+            <label for="issue3">Hardware (eg. body damage, cracked camera,keyboard, sensor) </label><br><br>
 
             &emsp;<input type="checkbox" name="issue1" id ="issue1">
             <label for="issue4">Battery and charging</label><br><br>

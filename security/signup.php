@@ -46,58 +46,52 @@ if (isset($_SESSION['logged_in'])) {
         <button class='tablinks' id="defaultOpen" onclick='openTab(event, "ClientSignUp")'>Client Sign Up</button>
         <button class='tablinks' onclick='openTab(event, "EmployeeSignUp")'>Employee Sign Up</button>
     </div>
-
+    <div id="card2">
+    <div id="card-content">
+    <div id="card-title">
+        <h2>SIGN-UP</h2>
+        <div class="underline-title"></div>
+      </div>
     <div id="ClientSignUp" class="tabcontent">
-        <h3><strong>Client Sign Up</strong></h3>
-        <table>
-            <tr>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="form" method="post">
             <input type="hidden" name="client" value="CLIENT">
             <div class="form-group">
-                <td><label for="username">Username</label></td>
-                <td><input type="text" class="form-content" id="username" name="username"  placeholder="Username"></td>
-            </tr>
-            <tr>
+                <label for="username">Username</label><br>
+                <input type="text" class="form-content" id="username" name="username"  placeholder="Username"><br><br>
+                <div class="form-border"></div>
             </div>
             <div class="form-group">
-                <td><label for="first_name">First Name</label></td>
-                <td><input type="text" class="form-content" id="first_name" name="first_name" placeholder="First Name" ></td>
+                <label for="first_name">First Name</label><br>
+                <input type="text" class="form-content" id="first_name" name="first_name" placeholder="First Name" >
+                <div class="form-border"></div>
             </div>
-            </tr>
-            <tr>
             <div class="form-group">
-                <td><label for="last_name">Last Name</label></td>
-                <td><input type="text" class="form-content" id="last_name" name="last_name" placeholder="Last Name"></td>
+                <label for="last_name">Last Name</label><br>
+                <input type="text" class="form-content" id="last_name" name="last_name" placeholder="Last Name"><br><br>
+                <div class="form-border"></div>
             </div>
-            </tr>
-            <tr>
             <div class="form-group">
-                <td><label for="email">Email</label></td>
-                <td><input type="email" class="form-content" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></td>
+                <label for="email">Email</label><br>
+                <input type="email" class="form-content" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br><br>
+                <div class="form-border"></div>
             </div>
-            </tr>
-            <tr>
             <div class="form-group">
-                <td><label for="mobile">Mobile</label></td>
-                <td><input type="text" class="form-content" id="mobile" name="mobile" placeholder="Mobile" ></td>
+                <label for="mobile">Mobile</label><br>
+                <input type="text" class="form-content" id="mobile" name="mobile" placeholder="Mobile"><br><br>
+                <div class="form-border"></div>
             </div>
-            </tr>
-            <tr>
             <div class="form-group">
-                <td><label for="address">Address</label></td>
-                <td><input type="text" class="form-content" id="address" name="address" placeholder="Address"></td>
+                <label for="address">Address</label><br>
+                <input type="text" class="form-content" id="address" name="address" placeholder="Address"><br><br>
+                <div class="form-border"></div>
             </div>
-            </tr>
-            <tr>
             <div class="form-group">
-                <td><label for="password">Password</label></td>
-                <td><input type="password" class="form-content" id="password" name="password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"></td>
+                <label for="password">Password</label><br>
+                <input type="password" class="form-content" id="password" name="password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"><br><br>
+                <div class="form-border"></div>
             </div>
-            </tr>
-            <tr>
-            <td><button type="submit" class="btn btn-primary">Submit</button></td>
-            </tr>
-        </table>
+            <button type="submit" class="btn btn-primary">Submit</button><br><br>
+    
             <?php
             function checkUsername($username): bool
             {
@@ -167,29 +161,27 @@ if (isset($_SESSION['logged_in'])) {
     </div>
     <div id='EmployeeSignUp' class='tabcontent'>
         <h3>Employee Sign Up</h3>
-        <table>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
-            <tr>
-                <td><label for="employee_id">Employee ID</label></td>
-                <td><input type="number" class="form-control" id="employee_id" name="employee_id"  placeholder="Employee ID"><td>
-            </tr>
+                <label for="employee_id">Employee ID</label>
+                <input type="number" class="form-control" id="employee_id" name="employee_id"  placeholder="Employee ID">
+            
             </div>
             <div class="form-group">
-                <tr>
-                <td><label for="username">Username</label></td>
-                <td><input type="text" class="form-control" id="username" name="username"  placeholder="Username"></td>
-            </tr>
+                
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username"  placeholder="Username">
+            
             </div>
             <div class="form-group">
-            <tr>
-                <td><label for="password">Password</label></td>
-                <td><input type="password" class="form-control" id="password" name="password" placeholder="Password"></td>
-            </tr>
+            
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            
             </div>
-            <tr>
-                <td><button type="submit" class="btn btn-primary">Submit</button></td>
-            </tr>
+            
+                <button type="submit" class="btn btn-primary">Submit</button>
+            
             <?php
             function checkEmployment($conn, $employee_id): bool
             {

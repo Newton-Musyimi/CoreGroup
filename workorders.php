@@ -51,7 +51,7 @@ global $host;
     </div>
     <div class="border">
     <form action="ticketing.php" method ="POST">
-        <input type="submit" value="ADD REPAIR JOB">
+        <input type="submit" value=" ADD REPAIR JOB">
     </form>
     </div>
     <table>

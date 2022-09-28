@@ -29,7 +29,14 @@ require_once('security/header.php');
         ?>
     </header>
     <div class="content-body">
-
+        <table>
+            <tr>
+                <th>Device ID</th>
+                <th>Device</th>
+                <th>No. in Stock</th>
+                <th>ReOrder Level</th>
+                <th>Quntity ReOder</th> 
+            </tr>
     </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">

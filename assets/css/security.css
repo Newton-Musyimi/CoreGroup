@@ -1,3 +1,19 @@
+.tab button:hover {
+  background-color: #af6b4c;
+}
+
+.tab button.active {
+  background-color: #af6b4c;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #0000;
+  background-color: #FFFF;
+  background-position: center;
+  border-top: none;
+}
 nav {
     background-color: #af6b4c;
 
@@ -66,6 +82,15 @@ a {
     border-radius: 8px;
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
     height: 410px;
+    margin: 6rem auto 8.1rem auto;
+    width: 329px;
+  }
+
+  #card2 {
+    background: #fbfbfb;
+    border-radius: 8px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+    height: 750px;
     margin: 6rem auto 8.1rem auto;
     width: 329px;
   }
