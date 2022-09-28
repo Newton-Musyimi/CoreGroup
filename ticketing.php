@@ -22,7 +22,6 @@ global $host;
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon_io/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon_io/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
-    <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/helpdesk.css';?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
         p.pfield-wrapper::after {
@@ -38,8 +37,8 @@ global $host;
     </style>
 </head>
 
-<body id="page-top">
-<header>
+<body class="grid-container" id="page-top">
+<header class="grid-item1">
     <?php
     getHeader();
     ?>
@@ -49,8 +48,7 @@ global $host;
         current.focus();
     </script>
 </header>
-<div class="content-body">
-    <div class="top-content">
+<div class="grid-item2 content-body" id="ticket_body" >
     <h1>Create a ticket</h1>
 
     <form action = "workorders.php" method="POST">
@@ -105,6 +103,7 @@ global $host;
 
         <div id="ticket_checkbox_group">
 
+            <p><strong>Please check a box that applies to you:</strong></p>
             &emsp;<input type="checkbox" name="issue1" id = "issue1">
             <label for="issue1">Slow/Unresponsive</label><br><br>
 
@@ -124,18 +123,17 @@ global $host;
             <label for="issue5">Functionality</label><br><br>
 
             &emsp;<input type="checkbox" name="issue6" id ="issue6">
-            <label for="issue6">Other(Please help!!!!!)</label><br><br>
+            <label for="issue6">Other(Please help!)</label><br><br>
         </div>
 
-        <label for ="textbox"><strong>Describe your problem here!!!</strong></label><br><br>
+        <label for ="textbox"><strong>Describe your problem here:</strong></label><br><br>
         <textarea id="descriptionbox" name="descriptionbox" rows="4" cols="50">
         </textarea><br><br>
         <label for ="date"><strong>Please choose a drop-off date</strong></label>
-        <input type="date" name="date" id="date" min=""><br><br>
+        <input type="date" name="date" id="date" class="date-today" min=""><br><br>
 
         <h3><strong>Requests</strong></h3>
         <p>Please state any speacial requests</p>
-        <label for ="textbox"><strong>Describe your problem here!!!</strong></label><br><br>
         <textarea id="requestbox" name="requestbox" rows="4" cols="50">
         </textarea>
         <p>Please select how you would like to reieve your device after maintenance/repair</p>
@@ -145,17 +143,12 @@ global $host;
         <label for ="delivery"></label><br><br>
         <input type = "submit" name="submit" id="submit">
     </form>
-
 </div>
-<footer style="padding-bottom: 32px;">
+<footer class="grid-item3" style="padding-bottom: 32px;">
     <div class="container my-auto">
         <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
     </div>
 </footer>
-    <script type='text/javascript'>
-        let today = new Date().toISOString().split('T')[0];
-        document.getElementById("date").setAttribute('min', today);
-    </script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 </body>
 
