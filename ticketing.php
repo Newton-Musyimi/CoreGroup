@@ -50,8 +50,17 @@ global $host;
 </header>
 <div class="grid-item2 content-body" id="ticket_body" >
     <h1>Create a ticket</h1>
-
-    <form action = "workorders.php" method="POST">
+    <div id="ticketing_button_group">
+        <form action ='ticketing.php' method='post'>
+            <input type='hidden' name='ticket_device_type' value='new'>
+            <input type='submit' value='New Device'>
+        </form>
+        <form action ='ticketing.php' method='post'>
+            <input type='hidden' name='ticket_device_type' value='existing'>
+            <input type='submit' value='Existing  Device'>
+        </form>
+    </div>
+    <form action="<?php echo htmlspecialchars('workorder_summary.php'); ?>" method="POST">
         <p>Please select the type of ticket you want to open:</p>
 
         <label for ="maintenance">Maintenance/Check-Up</label>
@@ -63,7 +72,120 @@ global $host;
 
 
         <h3><strong>Device</strong></h3>
+
+        <?php
+        $client_id = "";
+        $id = 0;
+        if ($_SESSION['role'] == 'CLIENT'){
+            $id = $_SESSION['logged_in'];
+        }
+        function getClientIds(){
+            $conn = get_db();
+            $query = "SELECT client_id, username FROM clients;";
+            $result = mysqli_query($conn, $query);
+            $ids = "";
+            while($row = mysqli_fetch_array($result)){
+                $ids .= "<option value=\"{$row['client_id']}\">{$row['username']}</option>";
+            }
+            return $ids;
+        }
+        function newDeviceInput(){
+            if($_SESSION['role'] == 'CLIENT'){
+                global $id;
+                echo "
+                <div class=\"form-group\">
+                <label for= \"client_id\"><strong>Username: {$_SESSION['username']} </strong></label>
+                    <input type=\"hidden\" name=\"client_id\" id=\"client_id\" value=\"$id\"><br><br>
         
+                </div>";
+            }else{
+                echo "
+                <div class=\"form-group\">
+                    <label for= \"client_id\"><strong>Client Id</strong></label><br><br>
+                    <select name=\"client_id\" id=\"client_id\" required>".
+                    getClientIds()
+                    ."
+                    </select><br><br>
+
+                </div>";
+            }
+
+        echo "
+                <div class=\"form-group\">
+                    <label for=\"device_name\">Device Name</label><br>
+                    <input type=\"text\" name=\"device_name\" id=\"device_name\"><br><br>
+                </div>
+                <label for= \"devicetype\"><strong>Device Type</strong></label><br><br>
+                <select name=\"category\" id=\"devicetype\" required>
+                    <option value=\"Desktop\">PC</option>
+                    <option value=\"Laptop\">Laptop</option>
+                </select><br><br>
+
+                <div id=\"ticket_brand_group\">
+                    <label for =\"devicebrand\"><strong>Device Brand</strong></label><br><br>
+                    <select name=\"devicebrand\" id=\"devicebrand\" required>
+                        <option value=\"Other\">Other...</option>
+                        <option value=\"Dell\">Dell</option>
+                        <option value=\"Apple\">Apple</option>
+                        <option value=\"HP\">HP</option>
+                        <option value=\"Lenovo\">Lenovo</option>
+                        <option value=\"Acer\">Acer</option>
+                        <option value=\"Asus\">Asus</option>
+                        <option value=\"Huawei\">Huawei</option>
+                        <option value=\"Google\">Google</option>
+                        <option value=\"LG\">LG</option>
+                        <option value=\"Fujitsu\">Fujitsu</option>
+                        <option value=\"NEC\">NEC</option>
+                        <option value=\"Proline\">Proline</option>
+                        <option value=\"Microsoft\">Microsoft</option>
+                        <option value=\"NOC\">NOC</option>
+                        <option value=\"Samsung\">Samsung</option>
+                        <option value=\"Panasonic\">Panasonic</option>
+                        <option value=\"Brother\">Brother</option>
+                        <option value=\"Xerox\">Xerox</option>
+                    </select><br><br>
+                </div>
+
+
+                <label for=\"modelname\"><strong>Model Name</strong>(eg. MacBook Pro, HP L110, Dell Inspiron 15)</label><br>
+                <input type = \"text\" name = \"modelname\" id = \"modelname\"><br>
+                <label for =\"serial number\"><strong>Serial Number</strong></label><br>
+                <input type= \"text\" name = \"serialnumber\" id = \"serialnumber\"><br>  ";
+        }
+        function getDevices(){
+            if ($_SESSION['role'] == 'CLIENT'){
+                $id = $_SESSION['logged_in'];
+                $query = "SELECT device_id, device_name FROM devices WHERE owner_id = $id";
+            }else{
+                $query = "SELECT device_id, device_name FROM devices";
+            }
+            $conn = get_db();
+            $result = mysqli_query($conn, $query);
+            $devices = "";
+            while($row = mysqli_fetch_array($result)){
+                $devices .= "<option value=\"{$row['device_id']}\">{$row['device_name']}</option>";
+            }
+            return $devices;
+        }
+        if(isset($_REQUEST['ticket_device_type'])){
+            if($_REQUEST['ticket_device_type'] == 'new'){
+                echo newDeviceInput();
+            }else{
+                echo "
+                <div class=\"form-group\">
+                    <label for= \"device_id\"><strong>Select Device: </strong></label>
+                    <select name=\"device_id\" id=\"device_id\" required>".
+                    getDevices()
+                    ."
+                    </select><br><br>
+
+                </div>";
+            }
+        }else{
+            echo newDeviceInput();
+        }
+        ?>
+
 
         <div id="ticket_checkbox_group">
 
