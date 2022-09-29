@@ -37,6 +37,53 @@ global $host;
         </script>
     </header>
     <div class="content-body">
+        <h1>Device Summary</h1>
+        <div class="grid-container">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method ="POST">
+        <table class="table1" style="margin-bottom:30px;">
+            <tr>
+                <th>IMAGE:</th>
+                <td><img src="assets/images/hardware-bg.jpg" class="site_images" ></td>
+            </tr>
+            <tr>
+                <th>Device ID:</th>
+                <td>1</td>
+            </tr> 
+            <tr>
+                <th>Owner ID:</th>
+                <td>3</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td><input type="text" name="description" value="descript" /></td>
+            </tr>
+            <tr>
+                <th>Category:</th>
+                <td>desktop </td>
+            </tr>
+            <tr>
+                <th>Brand:</th>
+                <td>APPLE</td>
+            </tr>
+            <tr>
+                <th>Model:</th>
+                <td>MacBook Pro</td>
+            </tr>
+            <tr>
+                <th>Serial Number:</th>
+                <td>0000900753</td>
+            </tr>
+            <tr>
+                <th>Location:</th>
+                <td><input type="text" name="location" value="location" /></td>
+            </tr>
+            <tr>
+                <th>Device Name:</th>
+                <td><input type="text"  name="device_name" value="device name" /></td>
+            </tr>
+        </table>
+        </form>
+           
         
 
     </div>

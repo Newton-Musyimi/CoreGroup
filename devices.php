@@ -39,53 +39,60 @@ require_once('security/header.php');
         </div>
         <table>
             <tr>
+                <th>Device Image</th>
                 <th>Device ID</th>
                 <th>Device</th>
                 <th>Type</th>
                 <th>Assigned To</th>
                 <th>View</th>
             </tr>
+            <tr>
+                <td><img src="assets/images/hardware-bg.jpg" class="site_images" ></td>
                 <td>1.</td>
                 <td>Inspiron 15</td>
                 <td>Laptop</td>
                 <td>Assigned To</td>
                 <td>
-                    <form action="devices.php" method="post">
+                    <form action="device_summary.php" method="post">
                         <input type="hidden" name="work_order_id" value="1">
                         <input type="submit" value="View">
                     </form>
                 </td>
+            </tr>
             <tr>
+                <td><img src="assets/images/hardware-bg.jpg" class="site_images" ></td>
                 <td>2.</td>
                 <td>Dell</td>
                 <td>Desktop</td>
                 <td>Assigned To</td>
                 <td>
-                    <form action="devices.php" method="post">
+                    <form action="device_summary.php" method="post">
                         <input type="hidden" name="work_order_id" value="1">
                         <input type="submit" value="View">
                     </form>
                 </td>
             </tr>
             <tr>
+                <td><img src="assets/images/hardware-bg.jpg" class="site_images" ></td>
                 <td>3.</td>
                 <td>Macbook Pro</td>
                 <td>Laptop</td>
                 <td>Assigned To</td>
                 <td>
-                    <form action="devices.php" method="post">
+                    <form action="device_summary.php" method="post">
                         <input type="hidden" name="work_order_id" value="1">
                         <input type="submit" value="View">
                     </form>
                 </td>
             </tr>
             <tr>
+                <td><img src="assets/images/hardware-bg.jpg" class="site_images" ></td>
                 <td>4.</td>
                 <td>NOC</td>
                 <td>Monitor</td>
                 <td>Assigned To</td>
                 <td>
-                    <form action="devices.php" method="post">
+                    <form action="device_summary.php" method="post">
                         <input type="hidden" name="work_order_id" value="1">
                         <input type="submit" value="View">
                     </form>

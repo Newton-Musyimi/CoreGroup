@@ -37,6 +37,7 @@ h3{
   
 }
 
+
 .top-content{
     margin-left: 10px; 
         
@@ -64,11 +65,11 @@ body, footer, header, head{
 }
 
 .tab button:hover {
-    background-color: #048337;
+    background-color: #af6b4c;
 }
 
 .tab button.active {
-    background-color: #af6b4c;
+    background-color: #048337;
 }
 
 .tabcontent {
@@ -124,7 +125,7 @@ nav button {
 }
 
 .navbar  a:hover {
-    background-color: #048337;
+    background-color: #af6b4c;
 
 }
 .navbar a.active {
@@ -192,10 +193,8 @@ input[type=submit] :active{
     transform: translateY(4px)
 
 }
-img {
+.site_images {
     border: 1px solid #ddd;
-    border-radius: 50%;
-    padding: 5px;
     width: 150px;
   }
 
