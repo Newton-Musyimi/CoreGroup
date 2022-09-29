@@ -31,78 +31,61 @@ global $host;
         getHeader();
         ?>
         <script>
-            let current = document.getElementById("template_button");
+            let current = document.getElementById("orders_button");
             current.style.backgroundColor="#048337";
             current.focus();
         </script>
     </header>
     <div class="content-body">
-    </div>
-    <table>
-       
-        <table id="side_table" >
+        <table id="order_details">
             <tr>
-                <th>Quote Date</th>
-                <td>24 August 2022<td>
+                <th>Order Id:</th>
+                <th>Product Id:</th>
+                <th>Ordered by:</th>
+                <th>Date Ordered:</th>
+                <th>WorkOrder Id:</th>
+                <th>Quantity:</th>
+                <th>Cost:</th>
+                <th>Order Status:</th>
+                <th>Date Collected:</th>
+                <th>Collected:</th>
             </tr>
             <tr>
-                <th>Quote Number</th>
-                <td>QU AA0001<td>
-            </tr>
-            <tr>
-                <th>Reference</th>
-                <td>JoeSoap@gmail.com // MikeOxlong@gmail.com<td>
-            </tr>
-
-        <table style="margin-top: 150px;">
-            <tr>
-                <th>Description</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Vat</th>
-                <th>Amount ZAR</th>
-            </tr>
-            <tr>
-                <td>Samsung A22 Glass Screen</td>
                 <td>1</td>
-                <td>250</td>
-                <td>15%</td>
-                <td>250.00</td>
-            </tr>
-            <tr>
-                <td>Glue Binding</td>
+                <td>1</td>
+                <td>Newton</td>
+                <td>20/9/2022</td>
                 <td>1</td>
                 <td>10</td>
-                <td>15%</td>
-                <td>10.00</td>
+                <td>R1500</td>
+                <td>Ongoing</td>
+                <td>30/10/2022</td>
+                <td>Not Collectd</td>
             </tr>
             <tr>
-                <td>2mm Screws</td>
                 <td>2</td>
-                <td>50</td>
-                <td>15%</td>
-                <td>100.00</td>
-            </tr>
-        </table>
-        <h4>Invoice Total:</h4>
-        
-        <table>
-        <tr>
-                <td>Subtotal</td>
-                <td>360.00<td>
+                <td>2</td>
+                <td>Newton</td>
+                <td>20/9/2022</td>
+                <td>2</td>
+                <td>700</td>
+                <td>R500</td>
+                <td>Ongoing</td>
+                <td>30/10/2022</td>
+                <td>Collectd</td>
             </tr>
             <tr>
-                <td>Total standard Sales Tax</td>
-                <td>54.00<td>
-            </tr>
-            <tr>
-                <td>Discounts</td>
-                <td>0.00<td>
-            </tr>
-            <tr>
-                <th>TOTAL ZAR</th>
-                <td>414.00</td> 
-            </tr>
+                <td>3</td>
+                <td>3</td>
+                <td>Sandra</td>
+                <td>20/9/2022</td>
+                <td>3</td>
+                <td>90</td>
+                <td>R1700</td>
+                <td>Ongoing</td>
+                <td>30/10/2022</td>
+                <td>Collectd</td>
+            </tr>   
         </table>
 
     </div>

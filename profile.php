@@ -67,12 +67,12 @@ require_once('security/header.php');
         $address = $row['address'];
     }
     ?>
-    <div class="banner">
-    <h2> Welcome back <?php echo "$firstname $surname";  ?></h2>
-    </div>
+    
 </header>
 <div class="content-body">
-
+    <div class="banner">
+        <h2 id= "profile_title" > Welcome back <?php echo "$firstname $surname";  ?></h2>
+    </div>
     <form action="" method="POST">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" value="<?php echo $username;  ?>"><br><br>

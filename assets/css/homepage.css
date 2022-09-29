@@ -5,6 +5,11 @@ nav {
   background-color: #af6b4c;
 
 }
+.nav-title p {
+  display: block;
+  margin:  0px;
+  color:white;
+}
 nav button {
   background-color: inherit;
   float: left;
@@ -14,6 +19,7 @@ nav button {
   padding: 14px 16px;
   font-size: 17px;
   width: 100%;
+  color: white;
 }
 
 .navbar ul {
@@ -21,9 +27,9 @@ nav button {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color:#f0ead6;
-
+  background-color: black;
   top: 0;
+ 
 }
 .navbar li {
   float: left;
@@ -45,6 +51,10 @@ nav button {
   width: 100%;
 }
 
+span, #brands{
+  color:#af6b4c;
+}
+
 h1,h3,p,a{
   margin: 0;
   padding: 0;
@@ -63,10 +73,17 @@ h3{
 p {
   font-size: 1.1em;
   font-weight: 100;
-  letter-spacing: 5px;
+  letter-spacing: 2px;
 }
 
-.banner {
+section, .banner1 {
+  width: 100%;
+  padding:60px 0;
+  text-align: center;
+  background: white;
+  color: #af6b4c;
+}
+section, .banner2 {
   width: 100%;
   padding:60px 0;
   text-align: center;
@@ -103,9 +120,7 @@ h2{
   color: seashell;
   filter: contrast(100%);
   background-repeat: no-repeat;
-  height: 800px;
+  height: 300px;
   background-position: center;
   background-size: cover;
-
 }
-

@@ -44,29 +44,38 @@ global $host;
             current.focus();
         </script>
     </header>
+    <section class="banner1">
+        <h1>Woodstreet Academy</h1>
+        <h3>PCRepairs Department</h3>
+        <p>At Woodstreet Academy we repair all kinds of brands<br><h2><span id="brands"></span></h2></p>
+    </section>
     <div class="middle-page">
         <section class="middle" style="background-image: url('assets/images/pexels-mateusz-dach-450035.jpg');" >
-            <h1>Woodstreet Academy</h1>
-            <h3>PCRepairs Department</h3>
-            <p>We offer a range of PC, laptop, phablet, and phone repairs.</p>
-
-
             <h2>We do all kinds of repair</h2>
-            <p>At Woodstreet Academy we repair all kinds of brands<br><h2><span id="brands"></span></h2></p>
-            <?php if(isset($_SESSION['logged_in'])){
-            }else{
-                echo '<a href="security/signup.php" class="btn-bgstroke" style="margin-right: 50px;">Sign Up</a>';
-            } ?>
+            <p>We offer a range of PC and laptop repairs.</p>
             <a href="ticketing.php" class="btn-bgstroke">Create a ticket</a>
+        </section>
+        <section class="banner2 ">
+            
+            <h2>About us</h2>
+            <h4>What do we do?</h4>
+            <p>We help student in PC and/or laptop repairs, so they can use their devices to excel in school.</p>
+            <h4>How do we do it</h4>
+            <p>Our work is done in a fully equipped technical workshop by highly trained technicians that love what they do.<br>
+            We have well trained staff who will provide students with excellent service
+            </p>
+
         </section>
         <div class= "bottom-page">         
         </div>
         <!-- <section class="banner"></section> -->
     </div>
+    
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
         </div>
+        
     </footer>
     <script>
         let brands_array = ["Samsung", "iPhone", "Dell", "ACER", "HP", "Sony"];

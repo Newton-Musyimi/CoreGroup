@@ -63,11 +63,9 @@ nav button {
     background-color: #af6b4c;
     width: 100%;
 }
-
-.h2 {
-    text-align: 150px;
+h2{
+margin-right: 150px;
 }
-
 
 input[type=text],input[type=password], input[type=email]{
     width: 50%;

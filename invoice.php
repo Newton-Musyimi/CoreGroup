@@ -37,24 +37,22 @@ global $host;
         </script>
     </header>
     <div class="content-body">
-    </div>
-    <table>
-       
-        <table id="side_table" >
+        <table id="side_table">
             <tr>
-                <th>Quote Date</th>
+                <th>Invoice Date</th>
                 <td>24 August 2022<td>
             </tr>
             <tr>
-                <th>Quote Number</th>
-                <td>QU AA0001<td>
+                <th>Invoice Number</th>
+                <td>IVN AA0001<td>
             </tr>
             <tr>
                 <th>Reference</th>
                 <td>JoeSoap@gmail.com // MikeOxlong@gmail.com<td>
             </tr>
 
-        <table style="margin-top: 150px;">
+        </table>
+        <table style="margin-top:150px;">
             <tr>
                 <th>Description</th>
                 <th>Quantity</th>
@@ -104,7 +102,6 @@ global $host;
                 <td>414.00</td> 
             </tr>
         </table>
-
     </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
