@@ -154,7 +154,9 @@ global $host;
                 </tr>
                 <tr>
                     <th>Job Status:</th>
-                    <td></td>
+                    <td><form action="" method="POST">
+                        <input type = "submit" id="jobstatus" name="jobstatus" Value="">
+                    </form></td>
                 </tr>
             </table>  
         </div>             
@@ -168,7 +170,7 @@ global $host;
             //getWorkorderSummary($id);
         }
         if (isset($_REQUEST['documentation'])){
-
+            echo "<p>Document sucessfully uploaded. style=' color:green;'</p>";
         }
         ?>
     </div>

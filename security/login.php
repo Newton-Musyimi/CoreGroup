@@ -50,7 +50,7 @@ if (isset($_SESSION['logged_in'])) {
       </div>
       <form method="post" class="form">
         <label for="user-email" style="padding-top:13px">
-            &nbsp;Email
+            &nbsp;Username
           </label>
         <input id="username" class="form-content" type="text" name="username" autocomplete="on" required />
         <div class="form-border"></div>

@@ -111,42 +111,42 @@ require_once('security/header.php');
 
             </div>
             <label for= "devicetype"><strong>Device Type</strong></label><br><br>
-        <select name="category" id="devicetype" required>
-            <option value="PC">PC</option>
-            <option value="Laptop">Laptop</option>
-            <option value="Printer">Printer</option>
-        </select><br><br>
-
-        <div id="ticket_brand_group">
-            <label for ="devicebrand"><strong>Device Brand</strong></label><br><br>
-            <select name="devicebrand" id="devicebrand" required>
-                <option value="Other">Other...</option>
-                <option value="Dell">Dell</option>
-                <option value="Apple">Apple</option>
-                <option value="HP">HP</option>
-                <option value="Lenovo">Lenovo</option>
-                <option value="Acer">Acer</option>
-                <option value="Asus">Asus</option>
-                <option value="Huawei">Huawei</option>
-                <option value="Google">Google</option>
-                <option value="LG">LG</option>
-                <option value="Fujitsu">Fujitsu</option>
-                <option value="NEC">NEC</option>
-                <option value="Proline">Proline</option>
-                <option value="Microsoft">Microsoft</option>
-                <option value="NOC">NOC</option>
-                <option value="Samsung">Samsung</option>
-                <option value="Panasonic">Panasonic</option>
-                <option value="Brother">Brother</option>
-                <option value="Xerox">Xerox</option>
+            <select name="category" id="devicetype" required>
+                <option value="PC">PC</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Printer">Printer</option>
             </select><br><br>
-        </div>
+
+            <div id="ticket_brand_group">
+                <label for ="devicebrand"><strong>Device Brand</strong></label><br><br>
+                <select name="devicebrand" id="devicebrand" required>
+                    <option value="Other">Other...</option>
+                    <option value="Dell">Dell</option>
+                    <option value="Apple">Apple</option>
+                    <option value="HP">HP</option>
+                    <option value="Lenovo">Lenovo</option>
+                    <option value="Acer">Acer</option>
+                    <option value="Asus">Asus</option>
+                    <option value="Huawei">Huawei</option>
+                    <option value="Google">Google</option>
+                    <option value="LG">LG</option>
+                    <option value="Fujitsu">Fujitsu</option>
+                    <option value="NEC">NEC</option>
+                    <option value="Proline">Proline</option>
+                    <option value="Microsoft">Microsoft</option>
+                    <option value="NOC">NOC</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Panasonic">Panasonic</option>
+                    <option value="Brother">Brother</option>
+                    <option value="Xerox">Xerox</option>
+                </select><br><br>
+            </div>
 
 
-        <label for="modelname"><strong>Model Name</strong>(eg. MacBook Pro, HP L110, Dell Inspiron 15)</label><br>
-        <input type = "text" name = "modelname" id = "modelname"><br>
-        <label for ="serial number"><strong>Serial Number</strong></label><br>
-        <input type= "text" name = "serialnumber" id = "serialnumber"><br>
+            <label for="modelname"><strong>Model Name</strong>(eg. MacBook Pro, HP L110, Dell Inspiron 15)</label><br>
+            <input type = "text" name = "modelname" id = "modelname"><br>
+            <label for ="serial number"><strong>Serial Number</strong></label><br>
+            <input type= "text" name = "serialnumber" id = "serialnumber"><br>
 
 
             <div class="form-group">

@@ -13,6 +13,8 @@ $profile = "<li><a href=\"$host/SysDev/CoreGroup/profile.php\" class=\"nav-item\
 $employees = "<li><a href=\"$host/SysDev/CoreGroup/employees.php\" class=\"nav-item\"><button id=\"employees_button\">Employees</button></a> </li>";
 $inventory = "<li><a href=\"$host/SysDev/CoreGroup/inventory.php\" class=\"nav-item\"><button id=\"inventory_button\">Inventory</button></a> </li>";
 $devices = "<li><a href=\"$host/SysDev/CoreGroup/devices.php\" class=\"nav-item\"><button id=\"devices_button\">Devices</button></a> </li>";
+$orders = "<li><a href=\"$host/SysDev/CoreGroup/orders.php\" class=\"nav-item\"><button id=\"orders_button\">Orders</button></a> </li>";
+
 
 $links = array(
     'dashboard' => $dashboard,
@@ -27,7 +29,8 @@ $links = array(
     'employees' => $employees,
     'ticketing' => $ticketing,
     'inventory'=> $inventory,
-    'devices'=> $devices
+    'devices'=> $devices,
+    'orders'=> $orders
 );
 /*
 function getCommon(): string
@@ -59,22 +62,15 @@ function getAdminHeader($role): void
     <!-- //MOVE  THIS  HERE -->
     <nav class=\"top-nav\">
         <ul>
-            {$links['home']}
-            
-            {$links['ticketing']}
-            
-            {$links['dashboard']}
-            
-            {$links['employees']}
-            
-            {$links['workorders']}
-            
+            {$links['home']}           
+            {$links['ticketing']}            
+            {$links['dashboard']}            
+            {$links['employees']}            
+            {$links['workorders']}           
             {$links['profile']}
-
             {$links['devices']}
-
-            {$links['inventory']}
-            
+            {$links['orders']}
+            {$links['inventory']}            
             {$links['logout']}
             <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are an $role</p></li>
             
@@ -99,6 +95,7 @@ function getReceptionistHeader($role): void
             {$links['employees']}
             {$links['workorders']}
             {$links['devices']}
+            {$links['orders']}
             {$links['profile']}
             {$links['inventory']}
             {$links['logout']}
@@ -121,7 +118,6 @@ function getClientHeader($role): void
             {$links['workorders']}
             {$links['devices']}
             {$links['profile']}
-            {$links['inventory']}
             {$links['logout']}
             <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are a $role</p></li>
         </ul>
@@ -137,9 +133,11 @@ function getEmployeeHeader($role): void
     <nav class=\"top-nav\">
         <ul>
             {$links['home']}
+            {$links['ticketing']}
             {$links['workorders']}
             {$links['profile']}
             {$links['devices']}
+            {$links['orders']}
             {$links['inventory']}
             {$links['logout']}
             <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are an $role</p></li>

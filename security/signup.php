@@ -48,7 +48,7 @@ if (isset($_SESSION['logged_in'])) {
     <div id="card2">
         <div id="card-content">
             <div id="card-title">
-                <h2>CLIENT SIGN-UP</h2>
+                <h2>CLIENT<br>SIGN-UP</h2>
                 <div class="underline-title">
 
                 </div>
@@ -89,6 +89,12 @@ if (isset($_SESSION['logged_in'])) {
                     <div class="form-group">
                         <label for="password">Password</label><br>
                         <input type="password" class="form-content" id="password" name="password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"><br><br>
+                        <div class="form-border"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label><br>
+                        <input type="password" class="form-content" onchange="confirmPass(this)" id="confirm-password" name="confirm-password" placeholder="confirm-password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must be entered exactly the same as the password above"><br><br>
+                        <p id="confirm-password-error"></p>
                         <div class="form-border"></div>
                     </div>
 
@@ -178,6 +184,8 @@ if (isset($_SESSION['logged_in'])) {
         <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
     </div>
 </footer>
+<script>
+</script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>
