@@ -157,13 +157,15 @@ global $host;
                 $id = $_SESSION['logged_in'];
                 $query = "SELECT device_id, device_name FROM devices WHERE owner_id = $id";
             }else{
-                $query = "SELECT device_id, device_name FROM devices";
+                $query = "SELECT device_id, device_name, clients.username AS username 
+                            FROM devices 
+                                JOIN clients ON clients.client_id = devices.owner_id;";
             }
             $conn = get_db();
             $result = mysqli_query($conn, $query);
             $devices = "";
             while($row = mysqli_fetch_array($result)){
-                $devices .= "<option value=\"{$row['device_id']}\">{$row['device_name']}</option>";
+                $devices .= "<option value=\"{$row['device_id']}\">{$row['device_name']} - {$row['username']}</option>";
             }
             return $devices;
         }
