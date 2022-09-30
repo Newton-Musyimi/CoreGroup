@@ -60,7 +60,7 @@ global $host;
             <input type='submit' value='Existing  Device'>
         </form>
     </div>
-    <form action="<?php echo htmlspecialchars('workorder_summary.php'); ?>" method="POST">
+    <form action="<?php echo htmlspecialchars('ticketing.php'); ?>" method="POST">
         <p>Please select the type of ticket you want to open:</p>
 
         <label for ="maintenance">Maintenance/Check-Up</label>
@@ -97,7 +97,8 @@ global $host;
                 <label for= \"client_id\"><strong>Username: {$_SESSION['username']} </strong></label>
                     <input type=\"hidden\" name=\"client_id\" id=\"client_id\" value=\"$id\"><br><br>
         
-                </div>";
+                </div>
+                    <input type=\"hidden\" name=\"submit_type\" id=\"submit_type\" value=\"new\"><br><br>";
             }else{
                 echo "
                 <div class=\"form-group\">
@@ -157,7 +158,7 @@ global $host;
                 $id = $_SESSION['logged_in'];
                 $query = "SELECT device_id, device_name FROM devices WHERE owner_id = $id";
             }else{
-                $query = "SELECT device_id, device_name, clients.username AS username 
+                $query = "SELECT device_id, device_name, clients.username AS username , clients.client_id
                             FROM devices 
                                 JOIN clients ON clients.client_id = devices.owner_id;";
             }
@@ -165,18 +166,20 @@ global $host;
             $result = mysqli_query($conn, $query);
             $devices = "";
             while($row = mysqli_fetch_array($result)){
-                $devices .= "<option value=\"{$row['device_id']}\">{$row['device_name']} - {$row['username']}</option>";
+                $devices .= "<option value=\"{$row['device_id']}+{$row['client_id']}\">{$row['device_name']} - {$row['username']}</option>";
             }
+            mysqli_close($conn);
             return $devices;
         }
-        if(isset($_REQUEST['ticket_device_type'])){
+        if(isset($_REQUEST['ticket_device_type']) && !isset($_REQUEST['submit'])){
             if($_REQUEST['ticket_device_type'] == 'new'){
                 echo newDeviceInput();
             }else{
                 echo "
+                <input type=\"hidden\" name=\"submit_type\" id=\"submit_type\" value=\"saved\"><br><br>
                 <div class=\"form-group\">
-                    <label for= \"device_id\"><strong>Select Device: </strong></label>
-                    <select name=\"device_id\" id=\"device_id\" required>".
+                    <label for= \"device_client\"><strong>Select Device: </strong></label>
+                    <select name=\"device_client\" id=\"device_client\" required>".
                     getDevices()
                     ."
                     </select><br><br>
@@ -192,25 +195,25 @@ global $host;
         <div id="ticket_checkbox_group">
 
             <p><strong>Please check a box that applies to you:</strong></p>
-            &emsp;<input type="checkbox" name="issue1" id = "issue1">
+            &emsp;<input type="checkbox" name="performance" id = "issue1">
             <label for="issue1">Slow/Unresponsive</label><br><br>
 
-            &emsp;<input type="checkbox" name="issue2" id ="issue2">
+            &emsp;<input type="checkbox" name="screen" id ="issue2">
             <label for="issue2">Screen Damage</label><br><br>
 
-            &emsp;<input type="checkbox" name="issue3" id ="issue3">
+            &emsp;<input type="checkbox" name="hardware" id ="issue3">
             <label for="issue3">Hardware (eg. body damage, cracked camera,keyboard, sensor) </label><br><br>
 
-            &emsp;<input type="checkbox" name="issue1" id ="issue1">
-            <label for="issue4">Battery and charging</label><br><br>
-
-            &emsp;<input type="checkbox" name="issue4" id ="issue4">
+            &emsp;<input type="checkbox" name="networking" id ="issue4">
             <label for="issue4">Network</label><br><br>
 
-            &emsp;<input type="checkbox" name="issue5" id ="issue5">
+            &emsp;<input type="checkbox" name="functionality" id ="issue5">
             <label for="issue5">Functionality</label><br><br>
 
-            &emsp;<input type="checkbox" name="issue6" id ="issue6">
+            &emsp;<input type="checkbox" name="power" id ="issue1">
+            <label for="issue4">Battery and charging</label><br><br>
+
+            &emsp;<input type="checkbox" name="other" id ="issue6">
             <label for="issue6">Other(Please help!)</label><br><br>
         </div>
 
@@ -221,15 +224,116 @@ global $host;
         <input type="date" name="date" id="date" class="date-today" min=""><br><br>
 
         <h3><strong>Requests</strong></h3>
-        <p>Please state any speacial requests</p>
-        <textarea id="requestbox" name="requestbox" rows="4" cols="50">
+        <p>Please state any special requests</p>
+        <textarea id="requestbox" name="request_box" rows="4" cols="50">
         </textarea>
-        <p>Please select how you would like to reieve your device after maintenance/repair</p>
-        <input type="radio" name="collection" id="collection" value="Collection">Collection</label>
-        <label for ="delivery"></label><br><br>
-        <input type="radio" name="delivery" id="delivery" value="Delivery">Delivery</label>
-        <label for ="delivery"></label><br><br>
+        <div>
+            <p>Please select how you would like to receive your device after maintenance/repair</p>
+            <input type="radio" name="dispatch" id="collection" value="Collection" required>
+            <label for ="delivery">Collection</label><br><br>
+            <input type="radio" name="dispatch" id="delivery" value="Delivery">
+            <label for ="delivery">Delivery</label><br><br>
+        </div>
+
         <input type = "submit" name="submit" id="submit">
+        <?php
+        function addDevice($client_id, $description, $category, $brand, $model, $serial, $location, $device_name){
+            $conn = get_db();
+            $dev_id = 0;
+            $query = "INSERT INTO `coregroup`.`devices`
+                        (`owner_id`,
+                        `description`,
+                        `category`,
+                        `brand`,
+                        `model`,
+                        `serial_number`,
+                        `location`,
+                        `device_name`)
+                        VALUES(
+                            $client_id,
+                            '$description',
+                            '$category',
+                            '$brand',
+                            '$model',
+                            '$serial',
+                            '$location',
+                            '$device_name');
+                            ";
+            if(mysqli_query($conn, $query) OR DIE ("Could not add device! ".$conn->error)){
+                $query = "SELECT device_id FROM devices WHERE owner_id = $client_id ORDER BY device_id DESC;";
+                $result = mysqli_query($conn, $query) OR DIE ("Could not get device! ".$conn->error);
+                $row = mysqli_fetch_array($result);
+                $dev_id = $row['device_id'];
+            }
+            mysqli_close($conn);
+            return $dev_id;
+        }
+
+        function addWorkOrder($client_id, $dev_id, $request_type, $requested_by, $dispatch_method, $dropoff){
+            $conn = get_db();
+            $wo_id = 0;
+            $query = "INSERT INTO `coregroup`.`workorders`
+                                (`requested_by`,
+                                `client_id`,
+                                `request_type`,
+                                `dropoff_date`,
+                                `dispatch_method`,
+                                `device_id`)
+                                VALUES(
+                                    '$requested_by',
+                                    '$client_id',
+                                    '$request_type',
+                                    '$dropoff',
+                                    '$dispatch_method',
+                                    '$dev_id');
+                                    ";
+            if(mysqli_query($conn, $query) OR DIE ("Could not add workorder! ".$conn->error)){
+                $query = "SELECT wo_id FROM workorders WHERE client_id = $client_id AND device_id = $dev_id ORDER BY wo_id DESC;";
+                $result = mysqli_query($conn, $query) OR DIE ("Could not get workorder! ".$conn->error);
+                $row = mysqli_fetch_array($result);
+                $wo_id = $row['wo_id'];
+            }
+            mysqli_close($conn);
+            return $wo_id;
+        }
+
+        if(isset($_REQUEST['submit_type'])){
+
+            $description  = $_REQUEST['descriptionbox'];;
+            $request_type = $_REQUEST['request_type'];
+            $requested_by = $_SESSION['username'];
+            $dispatch_method = $_REQUEST['dispatch'];
+            $dropoff = $_REQUEST['date'];
+            $wo_id = 0;
+            if($_REQUEST['submit_type'] === 'new'){
+                $client_id = $_REQUEST['client_id'];
+                $category = $_REQUEST['category'];
+                $brand = $_REQUEST['devicebrand'];
+                $model = $_REQUEST['modelname'];
+                $serial_number = $_REQUEST['serialnumber'];
+                $location = $_REQUEST['client'];
+                $device_name = $_REQUEST['device_name'];
+                $dev_id = intval(addDevice($client_id, $description, $category, $brand, $model, $serial_number, $location, $device_name));
+                if($dev_id !== 0){
+                    $wo_id = intval(addWorkOrder($client_id, $dev_id, $request_type, $requested_by, $dispatch_method, $dropoff));
+                }else{
+                    exit;
+                }
+            }else{
+                $string = $_REQUEST['device_client'];
+                $device_client = explode("+", $string);
+                $client_id = intval($device_client[1]);
+                $dev_id = intval($device_client[0]);
+                $wo_id = intval(addWorkOrder($client_id, $dev_id, $request_type, $requested_by, $dispatch_method, $dropoff));
+            }
+            if($wo_id !== 0){
+                $url = $host."/SysDev/CoreGroup/workorder_summary.php?work_order_id=$wo_id";
+                echo "<script>window.location.replace(\"$url\");</script>";
+            }else{
+
+            }
+        }
+        ?>
     </form>
 </div>
 <footer class="grid-item3" style="padding-bottom: 32px;">
