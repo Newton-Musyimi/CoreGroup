@@ -23,7 +23,7 @@ if (is_array($row)) {
     
 }
 
-function getWorkorderSummary($wo_id){
+/*function getWorkorderSummary($wo_id){
     global $conn;
     $query = "SELECT `workorders`.*, `devices`.`device_name` AS device_name
                         FROM `coregroup`.`workorders` JOIN coregroup.devices ON workorders.device_id = devices.device_id WHERE wo_id = $wo_id;";
@@ -40,7 +40,12 @@ function getWorkorderSummary($wo_id){
                 <th>Assigned To</th>
             </tr>";
     $row = mysqli_fetch_array($result);
-    $date = date('D d M Y', strtotime($row['date_started']));
+    if(strlen($row['date_started']) < 4){
+        $date = "Not Started";
+    }else{
+        $date = date('D d M Y', strtotime($row['date_started']));
+    }
+    echo $date;
     $dropOffDate = date('D d M Y', strtotime($row['dropoff_date']));
     echo "<tr>
                 <td>{$row['wo_id']}</td>
@@ -59,8 +64,46 @@ function getWorkorderSummary($wo_id){
             </tr>
             </table>";
 
-}
+} */
+function getByWorkorderId($wo_id){
+    global $conn;
+    $query = "SELECT `workorders`.*, `devices`.`device_name` AS device_name
+                        FROM `coregroup`.`workorders` JOIN coregroup.devices ON workorders.device_id = devices.device_id WHERE wo_id = $wo_id;";
+    $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number:$wo_id! Contact admin for assistance: " . $conn->error);
+    $row = mysqli_fetch_array($result);
+    if ($row = mysqli_fetch_array($result)) {
+        if(strlen($row['date_started']) < 4){
+            $date = "Not Started";
+        }else{
+            $date = date('D d M Y', strtotime($row['date_started']));
+        }
+        $dropOffDate = date('D d M Y', strtotime($row['dropoff_date']));
 
+        $techs = getAssignedTechnicians($wo_id);
+        $cost = getCost($wo_id);
+        $workOrder = array(
+            'status' => $row['status'],
+            'priority' => $row['priority'],
+            'requested_by' => $row['requested_by'],
+            'client_id' => $row['client_id'],
+            'request_type' => $row['request_type'],
+            'dropoff_date' => $dropOffDate,
+            'date_started' => $date,
+            'date_completed' => $row['date_completed'],
+            'dispatch_method' => $row['dispatch_method'],
+            'dispatch_status' => $row['dispatch_status'],
+            'dispatch_date' => $row['dispatch_date'],
+            'device_id'=> $row['device_id'],
+            'client_comments'=> $row['client_comments'],
+            'techs'=> $techs,
+            'cost' => $cost
+        );
+        return $workOrder;
+    } else {
+        return false;
+    }
+
+}
 function getPendingValue(){
     global $user_id, $conn;
     $query = "SELECT 

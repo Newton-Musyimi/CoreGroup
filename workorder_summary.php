@@ -57,14 +57,28 @@ global $host;
         
 </header>
     <div class="content-body">
-        
+        <?php
+
+
+        if(!isset($_REQUEST['work_order_id'])){
+            echo "<p class='access_form'>Failed To Get Workorder: <span style='color:red;'>No Workorder ID Selected!</span> Go back to <a href='workorders.php'>Workorders Page</a> and Select a Workorder to 'View'</p>";
+        }else{
+            require_once("assets/php/Workorder.php");
+            $id = $_REQUEST['work_order_id'];
+            $workorder = (new Workorder)->getByWorkorderId($id);
+
+        }
+        if (isset($_REQUEST['documentation'])){
+            echo "<p>Document sucessfully uploaded. style=' color:green;'</p>";
+        }
+        ?>
         <h1>WorkOrder Summary</h1>
         <h2>Work Order number:</h2> 
         <div class="grid-container">
             <table class="table1" style="margin-bottom:30px;">
                 <tr>
                     <th>Date:</th>
-                    <td></td>
+                    <td><?php echo $workorder['date_started'];?></td>
                 </tr>   
                 <tr>
                     <th>Time:</th>
@@ -76,15 +90,15 @@ global $host;
                 </tr>
                 <tr>
                     <th>Type:</th>
-                    <td></td>
+                    <td><?php echo $workorder['request_type'];?></td>
                 </tr>
                 <tr>
                     <th>Ticket Number:</th>
-                    <td></td>
+                    <td><?php echo $id;?></td>
                 </tr>
                 <tr>
                     <th>Customer Name:</th>
-                    <td></td>
+                    <td><?php echo $workorder['client_id'];?></td>
                 </tr> 
             </table>
             <table class="table2" style="margin-bottom:30px;"> 
@@ -105,31 +119,37 @@ global $host;
                     <td></td>
                 </tr>
                 <tr>
-                    <th>Assigned to:</th>
-                    <td><form action="" method="POST"><select name="assignedto" id="assignedto">
-                        <option value="tech1">Akhona Bastile</option>
-                        <option value="tech2">Sandra Muyodi</option>
-                        <option value="tech3">Newton Musyimi</option>
-                        <option value="tech4">Matthew Strachan</option>   
-                    </form></td>
+                    <th><?php echo $workorder['techs'];?></th>
+                    <td>
+                        <form action="" method="POST">
+                            <select name="assignedto" id="assignedto">
+                                <option value="tech1">Akhona Bastile</option>
+                                <option value="tech2">Sandra Muyodi</option>
+                                <option value="tech3">Newton Musyimi</option>
+                                <option value="tech4">Matthew Strachan</option>
+                            </select>
+                            <input type="hidden" value="<?php echo $id;?>">
+                            <input type="submit" name="add_assignee" value="Add Assignee">
+                        </form>
+                    </td>
                 </tr>
             </table>
             <table class="table3" style="margin-bottom:30px;">
                 <tr>
                     <th>Requested by:</th>
-                    <td></td>
+                    <td><?php echo $workorder['request_type'];?></td>
                 </tr>
                 <tr>
                     <th>Date started:</th>
-                    <td></td>
+                    <td><?php echo $workorder['date_started'];?></td>
                 </tr>   
                 <tr>
                     <th>Date completed</th>
-                    <td></td>
+                    <td><?php echo $workorder['date_completed'];?></td>
                 </tr>
                 <tr>
                     <th>Comments</th>
-                    <td></td>
+                    <td><?php echo $workorder['client_comments'];?></td>
                 </tr>
             </table>
             <table class="table4" style="margin-bottom:30px;"> 
@@ -150,29 +170,17 @@ global $host;
                 </tr>
                 <tr>
                     <th>Dispatch:</th>
-                    <td></td>
+                    <td><?php echo $workorder['dispatch_status'];?></td>
                 </tr>
                 <tr>
-                    <th>Job Status:</th>
+                    <th>Job Status: <?php echo $workorder['status'];?></th>
                     <td><form action="" method="POST">
                         <input type = "submit" id="jobstatus" name="jobstatus" Value="">
                     </form></td>
                 </tr>
             </table>  
         </div>             
-        <?php
-        $id = "";
-        if(!isset($_REQUEST['work_order_id'])){
-            echo "<p class='access_form'>Failed To Get Workorder: <span style='color:red;'>No Workorder ID Selected!</span> Go back to <a href='workorders.php'>Workorders Page</a> and Select a Workorder to 'View'</p>";
-        }else{
-            $id = $_REQUEST['work_order_id'];
-            //$conn = get_db();
-            //getWorkorderSummary($id);
-        }
-        if (isset($_REQUEST['documentation'])){
-            echo "<p>Document sucessfully uploaded. style=' color:green;'</p>";
-        }
-        ?>
+
     </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
