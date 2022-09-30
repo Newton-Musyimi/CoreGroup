@@ -63,4 +63,21 @@ ADD COLUMN `overtime_pay` DECIMAL(6,2) NULL AFTER `normal_pay`;
 ALTER TABLE `coregroup`.`employees`
     CHANGE COLUMN `username` `username` VARCHAR(20) NULL ;
 
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `status` `status` VARCHAR(11) NOT NULL DEFAULT 'pending' ;
+
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `dropoff_date` `dropoff_date` TIMESTAMP NOT NULL ;
+
+ALTER TABLE `coregroup`.`workorders`
+DROP FOREIGN KEY `clientid_fk`;
+ALTER TABLE `coregroup`.`workorders`
+    CHANGE COLUMN `client_id` `client_id` INT UNSIGNED NULL ;
+ALTER TABLE `coregroup`.`workorders`
+    ADD CONSTRAINT `clientid_fk`
+        FOREIGN KEY (`client_id`)
+            REFERENCES `coregroup`.`clients` (`client_id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
+
 
