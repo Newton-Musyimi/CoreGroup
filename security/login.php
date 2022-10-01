@@ -162,13 +162,14 @@ if (isset($_SESSION['logged_in'])) {
     }
 
     ?>
-    <footer style="padding-bottom: 32px;">
+  
+    <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
+    <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
+</body>
+ <footer style="padding: 5px 0 5px 5px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
         </div>
     </footer>
-    <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
-    <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
-</body>
 
 </html>

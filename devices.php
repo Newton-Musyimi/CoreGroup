@@ -35,7 +35,7 @@ require_once('security/header.php');
     </header>
     <div class="content-body">
         <div>
-        <button id="add_device_button">Add Device</button>
+        <button type= "button" name = "add_device_button" id="add_device_button">Add Device</button>
         </div>
         <table>
             <tr>

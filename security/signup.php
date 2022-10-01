@@ -43,7 +43,7 @@ if (isset($_SESSION['logged_in'])) {
 </header>
 <div class="content-body">
     <form action="employee_signup.php" method ="POST">
-        <input type="submit" value="EMPLOYEE SIGNUP">
+        <input type="submit" value="EMPLOYEE SIGNUP" id = emp_sign_up_button>
     </form>
     <div id="card2">
         <div id="card-content">
@@ -179,7 +179,7 @@ if (isset($_SESSION['logged_in'])) {
 </div>
 
 
-<footer style="padding-bottom: 32px;">
+<footer style="padding: 5px 0 5px 5px;">
     <div class="container my-auto">
         <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
     </div>

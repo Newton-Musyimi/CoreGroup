@@ -14,54 +14,55 @@
   background-position: center;
   border-top: none;
 }
-nav {
-    background-color: #af6b4c;
-
+.nav-title p {
+  display: block;
+  margin:0px;
+  color:black;
+  
 }
 nav button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 100%;
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 20px;
+  width: 100%;
+  color: black;
 }
 
 .navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color:#f0ead6;
-
-    top: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #d2c4a7;
+  top: 0;
+ 
 }
 .navbar li {
-    float: left;
+  float: left;
 }
 
 .navbar a {
-    color: white;
-    float: left;
-    text-align: center;
-    text-decoration: none;
+  color: white;
+  float: left;
+  text-align: center;
+  text-decoration: none;
 }
 
 .navbar  a:hover {
-    background-color: #048337;
+  background-color: #af6b4c;
+ 
+}
 
-}
-.navbar a.active {
-    background-color: #4CAF50;
-}
 
 a {
     text-decoration: none;
   }
   body {
-    background: -webkit-linear-gradient(top,  #fbfbfb, #048337);
+    background: -webkit-linear-gradient(bottom,  #fbfbfb, #fff5ee);
     background-repeat: no-repeat;
     display: block;
     margin: 0px;
@@ -69,13 +70,14 @@ a {
   label {
     font-family: "Raleway", sans-serif;
     font-size: 11pt;
+    text-align-last: center;
   }
   #forgot-pass {
     color: #2dbd6e;
     font-family: "Raleway", sans-serif;
     font-size: 10pt;
     margin-top: 3px;
-    text-align: right;
+    text-align: center;
   }
   #card {
     background: #fbfbfb;
@@ -114,10 +116,10 @@ a {
   }
 
   #submit-btn {
-    background: -webkit-linear-gradient(right, #7bf78c, #048337);
+    background: #048337;
     border: none;
     border-radius: 21px;
-    box-shadow: 0px 1px 8px #24c64f;
+    box-shadow: 5px 1px 8px #d2c4a7;
     cursor: pointer;
     color: white;
     font-family: "Raleway SemiBold", sans-serif;
@@ -128,7 +130,7 @@ a {
     width: 153px;
   }
   #submit-btn:hover {
-    box-shadow: 0px 1px 18px #24c64f;
+    box-shadow: 0px 1px 18px #a7d2b4fb;
   }
   .form {
     display: flex;
@@ -152,4 +154,6 @@ a {
     margin: -1.1rem auto 0 auto;
     width: 100%;
   }
-
+  footer {
+    color: #af6b4c;
+}

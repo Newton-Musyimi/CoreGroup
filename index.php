@@ -51,18 +51,18 @@ global $host;
     </section>
     <div class="middle-page">
         <section class="middle" style="background-image: url('assets/images/pexels-mateusz-dach-450035.jpg');" >
-            <h2>We do all kinds of repair</h2>
-            <p>We offer a range of PC and laptop repairs.</p>
+          
             <a href="ticketing.php" class="btn-bgstroke">Create a ticket</a>
         </section>
         <section class="banner2 ">
             
-            <h2>About us</h2>
+            <h3>About us</h3>
             <h4>What do we do?</h4>
-            <p>We help student in PC and/or laptop repairs, so they can use their devices to excel in school.</p>
-            <h4>How do we do it</h4>
-            <p>Our work is done in a fully equipped technical workshop by highly trained technicians that love what they do.<br>
-            We have well trained staff who will provide students with excellent service
+            <p>We help students with their PC and laptop repairs to use their devices to excel in school.
+            <h4>How do we do it?</h4>
+            <p>We operate in a fully equipped technical workshop by highly trained technicians that love what they do.<br>
+                Our well-trained staff will provide students with excellent service.
+
             </p>
 
         </section>
@@ -71,7 +71,7 @@ global $host;
         <!-- <section class="banner"></section> -->
     </div>
     
-    <footer style="padding-bottom: 32px;">
+    <footer style="padding: 5px 0 5px 5px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
         </div>

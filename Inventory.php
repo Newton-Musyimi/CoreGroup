@@ -37,8 +37,8 @@ global $host;
         </script>      
     </header>
     <div class="content-body">
-        <h3>Hello Mike</h3>
-        <h1>All Inventory Information</h1>
+        <h3>All Inventory Information</h3>
+        <h1></h1>
         <div class="border">
         <div>
             <button id="add_order_button">Add Order</button>
@@ -142,5 +142,7 @@ global $host;
     </script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 </body>
+
+
 
 </html>

@@ -8,8 +8,48 @@ body {
 .nav-title p {
     display: block;
     margin:  0px;
-    color:white;
+    color:black;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+
+  nav button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 20px;
+    width: 100%;
+    color: black;
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #d2c4a7;
+    top: 0;
+   
+  }
+  .navbar li {
+    float: left;
+  }
+  
+  .navbar a {
+    color: white;
+    float: left;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .navbar  a:hover {
+    background-color: #af6b4c;
+   
+  }
 
 body, #ticket_body {
     background: -webkit-linear-gradient(top,  #ffff, #ffff);
@@ -53,7 +93,7 @@ h3{
     ;
 }
 
-body, footer, header, head{
+body, header, head{
     font-family:Arial, Helvetica, sans-serif ;
 }
 
@@ -99,56 +139,9 @@ header {
     font-weight: bold;
     }
 
-.navbar .nav-title{
-    float: right;
-}
-nav button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 100%;
-    color: white;
-}
-
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color:black;
-
-    top: 0;
-}
-.navbar li {
-    float: left;
-}
-
-.navbar a {
-    color: white;
-    float: left;
-    text-align: center;
-    text-decoration: none;
-}
-
-.navbar .nav-title{
-    float: right;
-}
-
-.navbar  a:hover {
-    background-color: #af6b4c;
-
-}
-.navbar a.active {
-    background-color: #4CAF50;
-}
-
 footer{
-    background-color:  black;
-    color: white;
+    background-color:  #fff5ee;
+    color: #af6b4c;
     text-align: left;
     
    bottom: 0;
@@ -196,22 +189,23 @@ input[type=text],input[type=password], input[type=email]{
     box-sizing: border-box;
   }
   
-input[type=submit], input[type=button]{
-    background-color: #4CAF50;
+input[type=submit], input[type=button], add_device_button {
+    background-color: #2a802d;
     color: white;
     padding: 14px 20px;
     border: none;
+    margin: 10px 5px 5px 5px ;
     border-radius: 4px;
-    cursor: pointer;
-    
-  
+    cursor: pointer;   
 }
+
+
   
 input[type=submit]:hover {
     background-color: #4CAF50;
 }
 input[type=submit] :active{
-    background-color: #a3dc4f;
+    background-color: #4CAF50;
     box-shadow:  0 5px #FFFF;
     transform: translateY(4px)
 
@@ -315,7 +309,10 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     display: inline;
     
   }
-  li a {
-    display: block;
-    padding: 8px;
+ 
+  footer{
+      height: 0;
+      padding: 5px 0 5px 5px;
+      font-family: 'Times New Roman', Times, serif;
+      font-size:medium;
   }
