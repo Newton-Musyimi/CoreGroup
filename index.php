@@ -15,7 +15,7 @@ global $host;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Core Group</title>
+    <title>Woodstreet Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="assets/images/favicon_io/favicon-16x16.png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="assets/images/favicon_io/favicon-32x32.png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
@@ -51,8 +51,8 @@ global $host;
     </section>
     <div class="middle-page">
         <section class="middle" style="background-image: url('assets/images/pexels-mateusz-dach-450035.jpg');" >
-          
-            <a href="ticketing.php" class="btn-bgstroke">Create a ticket</a>
+            <h2 id="image_text">Would you like to</h2>
+            <a href="ticketing.php" class="btn-bgstroke">Create a ticket?</a>
         </section>
         <section class="banner2 ">
             
@@ -73,7 +73,7 @@ global $host;
     
     <footer style="padding: 5px 0 5px 5px;">
         <div class="container my-auto">
-            <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
+            <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>
         </div>
         
     </footer>

@@ -19,7 +19,7 @@ global $host;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Core Group</title>
+    <title>Woodstreet Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
@@ -124,9 +124,12 @@ global $host;
                         <form action="" method="POST">
                             <select name="assignedto" id="assignedto">
                                 <option value="tech1">Akhona Bastile</option>
-                                <option value="tech2">Sandra Muyodi</option>
-                                <option value="tech3">Newton Musyimi</option>
-                                <option value="tech4">Matthew Strachan</option>
+                                <?php
+                                $conn = get_db();
+                                $query = "SELECT employee_id, first_name, last_name FROM employees WHERE title = TECHNICIAN;";
+                                $
+                                ?>
+
                             </select>
                             <input type="hidden" value="<?php echo $id;?>">
                             <input type="submit" name="add_assignee" value="Add Assignee">
@@ -184,7 +187,7 @@ global $host;
     </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
-            <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
+            <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>
         </div>
     </footer>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>

@@ -17,7 +17,7 @@ global $host;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Core Group</title>
+    <title>Woodstreet Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon_io/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon_io/favicon.png';?>">
@@ -338,7 +338,7 @@ global $host;
 </div>
 <footer class="grid-item3" style="padding-bottom: 32px;">
     <div class="container my-auto">
-        <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
+        <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>
     </div>
 </footer>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>

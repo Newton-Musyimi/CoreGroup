@@ -160,7 +160,7 @@ if (isset($_SESSION['logged_in'])) {
 
 <footer style="padding-bottom: 32px;">
     <div class="container my-auto">
-        <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
+        <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>
     </div>
 </footer>
 <script>

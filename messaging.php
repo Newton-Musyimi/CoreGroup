@@ -18,7 +18,7 @@ global $host;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Core Group</title>
+    <title>Woodstreet Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
@@ -37,11 +37,20 @@ global $host;
         </script>
     </header>
     <div class="content-body">
-            
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+
     </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
-            <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
+            <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>
         </div>
     </footer>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>

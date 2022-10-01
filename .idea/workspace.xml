@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Added username input code to the add employee modal">
-      <change afterPath="$PROJECT_DIR$/assets/php/Workorder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c925fcae-0095-46a4-aa14-cc266158ada3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c925fcae-0095-46a4-aa14-cc266158ada3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_23_2022_11_43_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_23_2022_11_43_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/php/Invoice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c925fcae-0095-46a4-aa14-cc266158ada3.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sample Data/inventory.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Sample Data/inventory.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/php/workorders_scripts.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/workorders_scripts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketing.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workorder_summary.php" beforeDir="false" afterPath="$PROJECT_DIR$/workorder_summary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sample Data/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/Sample Data/Thumbs.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/Thumbs.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messaging.php" beforeDir="false" afterPath="$PROJECT_DIR$/messaging.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +37,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/EMPLOYEES.csv" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/assets/css/dashboard.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/assets/css/homepage.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/assets/css/style.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/assets/css/workorder.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/assets/index.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/dashboard.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/employees.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/index.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/insert.sql" root0="FORCE_HIGHLIGHTING" />
@@ -50,6 +55,7 @@
     <setting file="file://$PROJECT_DIR$/security/login.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/security/signup.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/template.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/workorders.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -136,6 +142,8 @@
       <workItem from="1664475405016" duration="100000" />
       <workItem from="1664475558992" duration="10807000" />
       <workItem from="1664559038102" duration="13468000" />
+      <workItem from="1664644029376" duration="500000" />
+      <workItem from="1664644589842" duration="4671000" />
     </task>
     <task id="LOCAL-00001" summary="PHPStorm configuration files">
       <created>1659551907951</created>
