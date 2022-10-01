@@ -49,14 +49,19 @@ if (isset($_SESSION['logged_in'])) {
         <div class="underline-title"></div>
       </div>
       <form method="post" class="form">
+
         <label for="user-email" style="padding-top:13px">
-            &nbsp;Username
-          </label>
+        &nbsp;Username
+        </label>
         <input id="username" class="form-content" type="text" name="username" autocomplete="on" required />
         <div class="form-border"></div>
-        <label for="user-password" style="padding-top:22px">&nbsp;Password
-          </label>
-        <input id="user-password" class="form-content" type="password" name="password" />
+            <label for="user-password" style="padding-top:22px">&nbsp;Password
+            </label>
+            <input id="user-password" class="form-content" type="password" name="password" />
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="showPass" onclick="showPassword()">
+          <label class="form-check-label" for="formCheck-1">Show Password</label>
+        </div>
         <div class="form-border"></div>
         <a href="#">
           <legend id="forgot-pass">Forgot password?</legend>
@@ -162,6 +167,17 @@ if (isset($_SESSION['logged_in'])) {
     }
 
     ?>
+
+    <script>
+        function showPassword() {
+            var x = document.getElementById("user-password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
   
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>

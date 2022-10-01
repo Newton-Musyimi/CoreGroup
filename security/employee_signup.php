@@ -70,6 +70,10 @@ if (isset($_SESSION['logged_in'])) {
                     <div class="form-group">
                         <label for="password">Password</label><br>
                         <input type="password" class="form-content" id="password" name="password" placeholder="Password"><br><br>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="showPass" onclick="showPassword()">
+                            <label class="form-check-label" for="formCheck-1">Show Password</label>
+                        </div>
                         <div class="form-border"></div>
                     </div>
 
@@ -159,6 +163,16 @@ if (isset($_SESSION['logged_in'])) {
         <div class="text-center my-auto copyright"><span>Copyright © Core Group 2022</span></div>
     </div>
 </footer>
+<script>
+    function showPassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>

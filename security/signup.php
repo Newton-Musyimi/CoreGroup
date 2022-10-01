@@ -94,6 +94,10 @@ if (isset($_SESSION['logged_in'])) {
                     <div class="form-group">
                         <label for="confirm-password">Confirm Password</label><br>
                         <input type="password" class="form-content" onchange="confirmPass(this)" id="confirm-password" name="confirm-password" placeholder="confirm-password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must be entered exactly the same as the password above"><br><br>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="showPass" onclick="showPassword()">
+                            <label class="form-check-label" for="formCheck-1">Show Password</label>
+                        </div>
                         <p id="confirm-password-error"></p>
                         <div class="form-border"></div>
                     </div>
@@ -185,6 +189,20 @@ if (isset($_SESSION['logged_in'])) {
     </div>
 </footer>
 <script>
+    function showPassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+        var y = document.getElementById("confirm-password");
+        if (y.type === "password") {
+            y.type = "text";
+        } else {
+            y.type = "password";
+        }
+    }
 </script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
