@@ -37,7 +37,7 @@ global $host;
         </script>
     </header>
     <div class="content-body">
-        
+            
     </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">

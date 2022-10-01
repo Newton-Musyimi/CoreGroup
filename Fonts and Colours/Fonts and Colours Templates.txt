@@ -1,8 +1,10 @@
+Nav Bar
 Nav Bar background: #d2c4a7
 Nav bar Selected: #4, 131, 55
 Nav Bar Hover: #af6b4c
 
 
-
+Footer
+font-family: 'Times New Roman', Times, serif;
 Footer Text Colour: #af6b4c
 Footer Color Background colour: fff5ee

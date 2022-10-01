@@ -14,7 +14,7 @@ $employees = "<li><a href=\"$host/SysDev/CoreGroup/employees.php\" class=\"nav-i
 $inventory = "<li><a href=\"$host/SysDev/CoreGroup/inventory.php\" class=\"nav-item\"><button id=\"inventory_button\">Inventory</button></a> </li>";
 $devices = "<li><a href=\"$host/SysDev/CoreGroup/devices.php\" class=\"nav-item\"><button id=\"devices_button\">Devices</button></a> </li>";
 $orders = "<li><a href=\"$host/SysDev/CoreGroup/orders.php\" class=\"nav-item\"><button id=\"orders_button\">Orders</button></a> </li>";
-
+$chatroom= "<li><a href=\"$host/SysDev/CoreGroup/chatroom.php\" class=\"nav-item\"><button id=\"chatroom_button\">Chat to a technician</button></a> </li>";
 
 $links = array(
     'dashboard' => $dashboard,
@@ -30,7 +30,8 @@ $links = array(
     'ticketing' => $ticketing,
     'inventory'=> $inventory,
     'devices'=> $devices,
-    'orders'=> $orders
+    'orders'=> $orders,
+    'chatroom'=> $chatroom
 );
 /*
 function getCommon(): string
@@ -118,6 +119,7 @@ function getClientHeader($role): void
             {$links['workorders']}
             {$links['devices']}
             {$links['profile']}
+            {$links['chatroom']}
             {$links['logout']}
             <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are a $role</p></li>
         </ul>

@@ -30,12 +30,14 @@ global $host;
         <?php
         getHeader();
         ?>
-        <script>
-            let current = document.getElementById("template_button");
-            current.style.backgroundColor="#048337";
-            current.focus();
-        </script>
+     
     </header>
+
+    <h1>Woodstreet Academy</h1>
+    <p>admin@woodstreet.co.za</p>
+    <p>49 Bastile Drive</p>
+    <p>046 566 8795</p>
+
     <div class="content-body">
         <table id="side_table">
             <tr>
@@ -50,6 +52,10 @@ global $host;
                 <th>Reference</th>
                 <td>JoeSoap@gmail.com // MikeOxlong@gmail.com<td>
             </tr>
+            <tr>
+                <th>Balance Due</th>
+                <td><strong>R 414.00</strong><td>
+            </tr>
 
         </table>
         <table style="margin-top:150px;">
@@ -58,28 +64,28 @@ global $host;
                 <th>Quantity</th>
                 <th>Unit Price</th>
                 <th>Vat</th>
-                <th>Amount ZAR</th>
+                <th id= "inv_sum">Amount ZAR</th>
             </tr>
             <tr>
                 <td>Samsung A22 Glass Screen</td>
                 <td>1</td>
                 <td>250</td>
                 <td>15%</td>
-                <td>250.00</td>
+                <td id= "inv_sum">250.00</td>
             </tr>
             <tr>
                 <td>Glue Binding</td>
                 <td>1</td>
                 <td>10</td>
                 <td>15%</td>
-                <td>10.00</td>
+                <td id= "inv_sum">10.00</td>
             </tr>
             <tr>
                 <td>2mm Screws</td>
                 <td>2</td>
                 <td>50</td>
                 <td>15%</td>
-                <td>100.00</td>
+                <td id= "inv_sum">100.00</td>
             </tr>
         </table>
         <h4>Invoice Total:</h4>
@@ -87,19 +93,19 @@ global $host;
         <table>
         <tr>
                 <td>Subtotal</td>
-                <td>360.00<td>
+                <td id= "inv_sum">360.00<td>
             </tr>
             <tr>
                 <td>Total standard Sales Tax</td>
-                <td>54.00<td>
+                <td id= "inv_sum">54.00<td>
             </tr>
             <tr>
                 <td>Discounts</td>
-                <td>0.00<td>
+                <td id= "inv_sum">0.00<td>
             </tr>
             <tr>
                 <th>TOTAL ZAR</th>
-                <td>414.00</td> 
+                <td id= "inv_sum"><strong>R 414.00</strong></td> 
             </tr>
         </table>
     </div>
