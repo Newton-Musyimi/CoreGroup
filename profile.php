@@ -11,31 +11,34 @@ require_once('security/header.php');
 //require_once('/SysDev/CoreGroup/security/admin/config.php');
 ?>
 <!DOCTYPE html>
-<html lang="en-gb">
+<html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Wood Street Academy</title>
-    <meta http-equiv="Cache-control" content="no-store">
+    <title>Profile - Wood Street Academy</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Nunito.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<style>
-    label {
-        display: inline-block;
-        width: 150px;
-        text-align: center;
-      }
-      
-</style>
 
 <body id="page-top">
-<header>
+    <header>
     <?php
     getHeader();
     ?>
+    <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+            <button class="btn btn-primary py-0" type="button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </form>
     <script>
         let current = document.getElementById("profile_button");
         current.style.backgroundColor="#048337";
@@ -69,42 +72,79 @@ require_once('security/header.php');
         $profile_picture = $row['profile_picture'];
     }
     ?>
-    
+
+
 </header>
-<div class="content-body">
-    <div class="banner">
-        <h2 id= "profile_title" > Welcome back <?php echo "$firstname $surname";  ?></h2>
-    </div>
-    <div id="profile_picture">
-            <p ><strong>Username: </strong><?php echo $username;  ?></p>
-            <p ><strong>Title: </strong><?php echo $title;  ?></p>
-            <img src="<?php echo $profile_picture; ?>" class="site_images">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" >
-                <input type="file" name="profile_picture">
-                <input type="submit" name="update_profile_picture" value="Update profile picture">
-            </form>
-    </div>
-    
-    <form action="" method="POST">
-        <label for="email">Email:</label>
-        <input type ="email" name="email" id="email"value="<?php echo $email;  ?>"><br><br>
-        <label for="mobile">Mobile:</label>
-        <input type ="text" name="mobile" id="mobile"value="<?php echo $mobile;  ?>"><br><br>
-        
-        <label for="address">Address:</label>
-        <input type="text" name="address" id="address" value="<?php echo $address;  ?>"><br><br>
-        <input type="submit" name="update_profile_details" value="Update">
-    </form>
-
-
-</div>
-<footer style="padding-bottom: 32px;">
-    <div class="container my-auto">
-        <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>
-    </div>
-</footer>
-<script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
-<script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
+    <div class="container-fluid">
+                    <h3 class="text-dark mb-4"><?php echo "$firstname $surname - $title";  ?></h3>
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+                                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4 site_images" src="<?php echo $profile_picture; ?>">
+                                    <div class="mb-3">
+                                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" >
+                                            <input type="file" name="profile_picture">
+                                            <input type="submit" name="update_profile_picture" value="Update profile picture">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 fw-bold">User Settings</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="email">
+                                                                <strong>Email Address</strong>
+                                                            </label><br>
+                                                            <input  type="email" name="email" id="email"value="<?php echo $email;  ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="mobile">
+                                                                <strong>Mobile</strong>
+                                                            </label><br>
+                                                            <input  type="text" name="mobile" id="mobile"value="<?php echo $mobile;  ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="address">
+                                                        <strong>Address</strong>
+                                                    </label>
+                                                    <br>
+                                                    <input  type="text" name="address" id="address" value="<?php echo $address;  ?>">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input type="submit" name="update_profile_details" value="Update Profile Details">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy 2022</span></div>
+        </div>
+    </footer>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
+    <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>
 
 </html>

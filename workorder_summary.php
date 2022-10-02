@@ -119,11 +119,18 @@ global $host;
                 <tr>
                     <th><?php echo $workorder['techs'];?></th>
                     <td>
-                        <form action="assets/php/workorders_scripts.php" id="add_technician_form" method="POST">
+                        <form action="" id="add_technician_form" method="POST">
                             <select name="assignedto" id="assignedto">
                                 <?php
                                 $conn = get_db();
-                                $query = "SELECT employee_id, first_name, last_name FROM employees WHERE title = 'TECHNICIAN';";
+                                //SQL Code that gets value of employee id that is not assigned to a specific workorder
+                                $query = "SELECT employee_id, first_name, last_name 
+                                            FROM employees 
+                                            WHERE employee_id NOT IN 
+                                                  (SELECT employee_id 
+                                                   FROM assigned_technicians 
+                                                   WHERE wo_id = $id) 
+                                              AND title = 'TECHNICIAN';";
                                 $result = mysqli_query($conn, $query) OR DIE ("Could not get technicians!".$conn->error);
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<option value=\"{$row['employee_id']}\">{$row['first_name']} {$row['last_name']}</option>";
@@ -131,8 +138,13 @@ global $host;
                                 ?>
 
                             </select>
-                            <input type="hidden" value="<?php echo $id;?>">
+                            <input type="hidden" name="workorder_id" value="<?php echo $id;?>">
                             <input type="submit" name="add_assignee" value="Add Assignee">
+                            <?php
+                            if(isset($_REQUEST['add_assignee'])){
+
+                            }
+                            ?>
                         </form>
                     </td>
                 </tr>
@@ -221,11 +233,6 @@ global $host;
         </div>
     </footer>
     <script>
-        $("#add_technician_form").submit(function( event ) {
-            alert( "Handler for .submit() called." );
-            event.preventDefault();
-        });
-        
         // Get the modal
         var modal = document.getElementById("add_resources_modal");
 

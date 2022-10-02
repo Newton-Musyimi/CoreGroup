@@ -24,6 +24,33 @@ global $host;
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
+<style>
+    #messages { grid-area: messages; }
+    #message_text { grid-area: message_text; }
+    .grid-container {
+    display: grid;
+    grid-template-areas:
+        'messages messages message_text message_text message_text message_text message_text'
+        'messages messages message_text message_text message_text message_text message_text'
+        'messages messages message_text message_text message_text message_text message_text'
+        'messages messages message_text message_text message_text message_text message_text'
+        'messages messages message_text message_text message_text message_text message_text'
+        ;
+    }
+    #message_text{
+        border-style:solid;
+        max-width:75%;
+        padding:5vh;
+    }
+    .grid-container,h2,h3{
+        position: relative;
+    }
+    table{
+        border-style:solid;
+        width:25%;
+    }
+</style>
+
 
 <body id="page-top">
     <header>
@@ -31,21 +58,52 @@ global $host;
         getHeader();
         ?>
         <script>
-            let current = document.getElementById("template_button");
+            let current = document.getElementById("chatroom_button");
             current.style.backgroundColor="#048337";
             current.focus();
         </script>
+         
     </header>
-    <div class="content-body">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-    <h1>Chat</h1>
+    <input type="button" class ="modal-button" name="compose_modal_button"id="compose_modal_button" value="Compose">
+    <div class="content-body">
 
-    <label for="msg"><b>Message</b></label>
-    <textarea placeholder="Type message.." name="msg" required></textarea>
+            
+        <div class="grid-container">
+            
+            <div id="messages">
+                <table id="messaging">
+                    <tr class="message_summary" onclick="winow.location='messaging2.php';">
+                        <td>schedule:<br>From</td><td>Wo. id:<br>2022:10/01</td>                        
+                    </tr>
+                    <tr class="message_summary">
+                        <td>schedule:<br>From</td><td>Wo. id:<br>2022:10/01</td>                         
+                    </tr>
+                    <tr class="message_summary">
+                    <td>schedule:<br>From</td><td>Wo. id:<br>2022:10/01</td>                        
+                    </tr>
+                    <tr class="message_summary">
+                    <td>schedule:<br>From</td><td>Wo. id:<br>2022:10/01</td>                        
+                    </tr>
+                </table>
+            </div>
+            <div id="message_text">
+                <div id="message_header" style = "padding-right:10px;">
+                    <h2>Subject: </h2><p style = "float:right; "><strong>Date:</strong></p>
+                    <h3>From:</h3>
+                </div>
+                <div id="message_box">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus enim magna, at tristique est euismod et. Duis vel vehicula nibh. Nunc eget enim ultricies, egestas dolor sit amet, maximus felis. Morbi non tortor nisi. Quisque pulvinar libero vel nunc vehicula, non mattis dolor gravida. Nullam eget arcu in tellus tempor dictum. Cras feugiat nec turpis non eleifend. Nunc bibendum nisi et fringilla facilisis. Donec consequat, lectus sed posuere mollis, sapien erat bibendum urna, sed bibendum purus augue vulputate enim.
 
-    <button type="submit" class="btn">Send</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
+Ut non quam vestibulum ex mattis malesuada. Nulla dignissim dui non nisi tincidunt, sit amet sagittis magna consectetur. Mauris in bibendum arcu, at vulputate ante. Fusce lobortis aliquam risus ut gravida. Aliquam erat volutpat. Maecenas fringilla aliquam molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in efficitur metus. Morbi mattis lorem et ultricies posuere. Pellentesque accumsan ut eros at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie magna magna, et rutrum enim sagittis quis. In aliquet risus ipsum.
+
+Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendisse enim nunc, efficitur ut lectus at, interdum commodo urna. Proin efficitur urna justo, eu placerat velit placerat in. Cras pulvinar congue luctus. Etiam scelerisque tellus in odio hendrerit fermentum. Nam efficitur nisi ex, quis tempus lacus luctus eget. Etiam ultricies vel purus at sagittis.
+                </div>
+                <input type="button" class ="modal-button" name="reply_modal_button" id="reply_modal_button" style = "float:right;"  value="Reply">
+            </div>
+            
+        </div>
+        </form>
 
     </div>
     <footer style="padding-bottom: 32px;">
@@ -53,6 +111,58 @@ global $host;
             <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>
         </div>
     </footer>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("add_resources_modal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("compose_modal_button");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        // Get the modal
+        var modal2 = document.getElementById("add_resources_modal");
+
+        // Get the button that opens the modal
+        var btn2 = document.getElementById("reply_modal_button");
+
+        // Get the <span> element that closes the modal
+        var span2 = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn2.onclick = function() {
+            modal22.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span2.onclick = function() {
+            modal2.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal2) {
+                modal2.style.display = "none";
+            }
+        }
+    </script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 </body>
 

@@ -50,6 +50,7 @@ tr:hover {background-color: #048337;}
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Address</th>
+                        <th>View</th>
                     </tr>
                 </thead>
 
@@ -66,6 +67,12 @@ tr:hover {background-color: #048337;}
                         echo "<td>" . $row['email'] . "</td>";
                         echo "<td>" . $row['mobile'] . "</td>";
                         echo "<td>" . $row['address'] . "</td>";
+                        echo "<td>
+                                <form action ='employee_profile.php' method='post'>
+                                    <input type='hidden' name='employee_id' value='{$row['employee_id']}'>
+                                    <input type='submit' value='View'>
+                                </form>
+                             </td>";
                         echo "</tr>";
 
                     }

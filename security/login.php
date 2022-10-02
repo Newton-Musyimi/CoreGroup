@@ -11,7 +11,7 @@ if (isset($_SESSION['logged_in'])) {
     if($_SESSION['role']=='CLIENT' || $_SESSION['role']=='RECEPTIONIST'){
         header("location: $host/SysDev/CoreGroup/ticketing.php");
     }else if($_SESSION['role']=='ADMINISTRATOR'){
-        header("location:$host/SysDev/CoreGroup/dashboard.php");
+        header("location:$host/SysDev/CoreGroup/dashboard1.php");
     }else{
         header("location:$host/SysDev/CoreGroup/workorders.php");
     }
