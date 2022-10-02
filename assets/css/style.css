@@ -289,6 +289,23 @@ th, td {
 }
 tr:nth-child(even) {background-color: #f2f2f2;}
 /* workorder css*/
+
+.status[data-status="getPendingValue()"] {
+    color : brown;
+   }
+   
+   .status[data-status="getInProgressValue()"] {
+    color : blue;
+   }
+   
+   .status[data-status="getCompletedValue()"]:after {
+    color : green
+   }
+
+   .status[data-status="getCancelledValue()"] {
+    color : red
+   }
+
 .status ul {
     list-style-type: none;
     margin: 0;
@@ -296,6 +313,8 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     overflow: hidden;
   }
   
+
+
   .status li {
     display: inline;
     

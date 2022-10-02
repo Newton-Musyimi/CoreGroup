@@ -72,6 +72,11 @@ a {
     font-size: 11pt;
     text-align-last: center;
   }
+  #showPassword{
+    font-family: "Raleway", sans-serif;
+    font-size: 11pt;
+    text-align-last: right;
+  }
   #forgot-pass {
     color: #2dbd6e;
     font-family: "Raleway", sans-serif;

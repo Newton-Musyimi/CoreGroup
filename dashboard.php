@@ -106,9 +106,9 @@
                     <div class="chart" id="pie_chart_div_dbs"></div>
                 </div>
                 <div class="row chart" style="width:100%; margin:0px;">
-                    <div class="completed-card">
+                <div class="completed-card">
                         <div class="card-body">
-                            Completed
+                            Pending
                         </div>
                     </div>
                     <div class="completed-card">
@@ -118,7 +118,7 @@
                     </div>
                     <div class="completed-card">
                         <div class="card-body">
-                            Pending
+                            Completed
                         </div>
                     </div>
                     <div class="completed-card">

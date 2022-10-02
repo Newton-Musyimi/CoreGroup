@@ -102,7 +102,7 @@ if (isset($_SESSION['logged_in'])) {
                         </div>
                     </div>
 
-                    <button type="submit" id="submit-btn" class="form-content btn btn-primary">Submit</button><br><br>
+                    <button type="submit" id="submit-btn" class="form-content btn btn-primary">SUBMIT</button><br><br>
 
                     <?php
                     function standardize($string): string

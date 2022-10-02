@@ -46,6 +46,7 @@ global $host;
                 <li style="color:green";>Completed:<span><?php getCompletedValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
                 <li style="color:red";>Cancelled:<span><?php getCancelledValue(); //FOUND IN assets/php/workorders_scripts.php?></span></li>
             </ul>
+
     </div>
     <div class="border">
     <form action="ticketing.php" method ="POST">
