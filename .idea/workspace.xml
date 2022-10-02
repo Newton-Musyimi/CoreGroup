@@ -5,33 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Added username input code to the add employee modal">
-      <change afterPath="$PROJECT_DIR$/assets/php/orders_scripts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.php" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/php/send_mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/send_mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/php/workorders_scripts.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/workorders_scripts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/device_summary.php" beforeDir="false" afterPath="$PROJECT_DIR$/device_summary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devices.php" beforeDir="false" afterPath="$PROJECT_DIR$/devices.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employee_profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/employee_profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/employees.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpdesk.php" beforeDir="false" afterPath="$PROJECT_DIR$/helpdesk.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/invoice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging.php" beforeDir="false" afterPath="$PROJECT_DIR$/messaging.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging2.php" beforeDir="false" afterPath="$PROJECT_DIR$/messaging2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/orders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/security/employee_signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/employee_signup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/security/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/security/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/signup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/template.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ticketing.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workorder_summary.php" beforeDir="false" afterPath="$PROJECT_DIR$/workorder_summary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workorders.php" beforeDir="false" afterPath="$PROJECT_DIR$/workorders.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +136,7 @@
       <workItem from="1664644029376" duration="500000" />
       <workItem from="1664644589842" duration="4672000" />
       <workItem from="1664657677481" duration="13408000" />
+      <workItem from="1664673435909" duration="70000" />
     </task>
     <task id="LOCAL-00001" summary="PHPStorm configuration files">
       <created>1659551907951</created>
