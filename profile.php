@@ -16,7 +16,7 @@ require_once('security/header.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Woodstreet Academy</title>
+    <title>Wood Street Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
@@ -28,6 +28,7 @@ require_once('security/header.php');
         width: 150px;
         text-align: center;
       }
+      
 </style>
 
 <body id="page-top">
@@ -65,6 +66,7 @@ require_once('security/header.php');
         $mobile = $row['mobile'];
         $surname = $row['last_name'];
         $address = $row['address'];
+        $profile_picture = $row['profile_picture'];
     }
     ?>
     
@@ -73,18 +75,25 @@ require_once('security/header.php');
     <div class="banner">
         <h2 id= "profile_title" > Welcome back <?php echo "$firstname $surname";  ?></h2>
     </div>
+    <div id="profile_picture">
+            <p ><strong>Username: </strong><?php echo $username;  ?></p>
+            <p ><strong>Title: </strong><?php echo $title;  ?></p>
+            <img src="<?php echo $profile_picture; ?>" class="site_images">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" >
+                <input type="file" name="profile_picture">
+                <input type="submit" name="update_profile_picture" value="Update profile picture">
+            </form>
+    </div>
+    
     <form action="" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" value="<?php echo $username;  ?>"><br><br>
         <label for="email">Email:</label>
         <input type ="email" name="email" id="email"value="<?php echo $email;  ?>"><br><br>
         <label for="mobile">Mobile:</label>
         <input type ="text" name="mobile" id="mobile"value="<?php echo $mobile;  ?>"><br><br>
-        <label for="title"> Title: </label>
-        <input type="text" name = "title" id = "title" value="<?php echo $title;  ?>"><br><br>
+        
         <label for="address">Address:</label>
         <input type="text" name="address" id="address" value="<?php echo $address;  ?>"><br><br>
-        <input type="submit" value="Update">
+        <input type="submit" name="update_profile_details" value="Update">
     </form>
 
 
