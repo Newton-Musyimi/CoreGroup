@@ -70,6 +70,17 @@ global $host;
         </form>
     </div>";
         }
+    }else{
+        echo "<div id='ticketing_button_group'>
+        <form action ='ticketing.php' method='post'>
+            <input type='hidden' name='ticket_device_type' value='new'>
+            <input type='submit' value='New Device'>
+        </form>
+        <form action ='ticketing.php' method='post'>
+            <input type='hidden' name='ticket_device_type' value='existing'>
+            <input type='submit' value='Existing  Device'>
+        </form>
+    </div>";
     }
     ?>
     <form action="<?php echo htmlspecialchars('ticketing.php'); ?>" method="POST">
