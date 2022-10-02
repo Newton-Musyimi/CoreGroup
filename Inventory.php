@@ -18,7 +18,7 @@ global $host;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Woodstreet Academy</title>
+    <title>Wood Street Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
@@ -41,7 +41,8 @@ global $host;
         <h1></h1>
         <div class="border">
         <div>
-            <button id="add_order_button">Add Order</button>
+            <button class ="modal-button" id="add_order_button">Add Order</button>
+            <button class ="modal-button" id="add_product_button">Add Product</button>
         </div>
         <table>
             <tr>
@@ -50,7 +51,6 @@ global $host;
                 <th>Unit Price</th>
                 <th>Unit Cost</th>
                 <th>No. in Stock</th>
-                <th>View</th>
             </tr>
             <tr>
                 <td>20mm Screw</td>
@@ -71,7 +71,7 @@ global $host;
     <div id="add_order_modal" class="modal">
         <h3>Add Device</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" >&times;</span>
             <!-- Insert form below -->
                 <label for="order_id">Order Id</label><br>
                 <input type="text" id="order_id" name="order_id"><br>
@@ -97,13 +97,35 @@ global $host;
                 <label for="order_status">Order Status</label><br>
                 <input type="text" id="order_status" name="order_status"><br>
 
-                <label for="date_collected">Date Colcted</label><br>
+                <label for="date_collected">Date Collected</label><br>
                 <input type="text" id="date_collected" name="date_collected"><br>
 
                 <label for="collect">Collect</label><br>
                 <input type="text" id="collect" name="collect"><br>
 
-                <input type="button" value="Add Order"
+                <input type="button" value="Add Order">
+            <!-- Insert form above -->
+
+        </form>
+    </div>
+    <div id="add_product_modal" class="modal">
+        <h3>Add Product</h3>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
+            <span class="close">&times;</span>
+            <!-- Insert form below -->
+                <label for="product">Product Name</label><br>
+                <input type="text" name="product_name" id="product_name"><br>
+
+                <label for="category">Category</label><br>
+                <input type="text" name="category" id="category"><br>
+
+                <label for="sub-category">Sub-category</label><br>
+                <input type="text" name="sub-category" id="sub-category"><br>
+
+                <label for="vendor">Vendor</label><br>
+                <input type="text" name="vendor" id="vendor"><br>
+
+                <input type="button" value="Add Product">
             <!-- Insert form above -->
 
         </form>
@@ -133,10 +155,31 @@ global $host;
             modal.style.display = "none";
         }
 
+         // Get the modal
+         var modal2 = document.getElementById("add_product_modal");
+
+        // Get the button that opens the modal
+        var btn2 = document.getElementById("add_product_button");
+
+        // Get the <span> element that closes the modal
+        var span2 = document.getElementsByClassName("close")[1];
+
+        // When the user clicks the button, open the modal
+        btn2.onclick = function() {
+            modal2.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span2.onclick = function() {
+            modal2.style.display = "none";
+        }
+        
         // When the user clicks anywhere outside the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }else if(event.target == modal2) {
+                modal2.style.display = "none";
             }
         }
     </script>
