@@ -15,7 +15,7 @@ global $host;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Woodstreet Academy</title>
+    <title>Wood Street Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="assets/images/favicon_io/favicon-16x16.png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="assets/images/favicon_io/favicon-32x32.png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
@@ -45,7 +45,7 @@ global $host;
         </script>
     </header>
     <section class="banner1">
-        <h1>Woodstreet Academy</h1>
+        <h1>Wood Street Academy</h1>
         <h3>PCRepairs Department</h3>
         <p>At Woodstreet Academy we repair all kinds of brands<br><h2><span id="brands"></span></h2></p>
     </section>
@@ -66,11 +66,24 @@ global $host;
             </p>
 
         </section>
+        <section class="banner1">
+            <h3>Contact US</h3>
+            <form method="post">
+                <label for = "full_name">Full Name:</label><br>
+                <input type="text" name="full_name" required><br><br>
+                <label for = "email">eMail:</label><br>
+                <input type="email" name="email" required><br><br>
+                <label for = "message">Message:</label><br>
+                <textarea id="message" name="message" row="10" col="50"></textarea><br><br>
+                <input type="submit" name ="submit" value="SEND">
+            </form>
+        </section>
         <div class= "bottom-page">         
         </div>
         <!-- <section class="banner"></section> -->
     </div>
-    
+  
+            
     <footer style="padding: 5px 0 5px 5px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>
