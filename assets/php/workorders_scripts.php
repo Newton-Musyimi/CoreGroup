@@ -112,8 +112,7 @@ function adminWorkorderTable(){
                 <th>Status</th>
                 <th>Scheduled</th>
                 <th>Dropoff Date</th>                
-                <th>Assigned To</th>
-                <th>Assign Resources</th>
+                <th>Assigned To</th>    
                 <th>View</th>
             </tr>";
     while($row = mysqli_fetch_array($result)){
@@ -133,12 +132,6 @@ function adminWorkorderTable(){
                     <ul>".getAssignedTechnicians($row['wo_id'])."</ul>
                     </div>
                 </td>
-                <td>
-                    <form action ='workorder_summary.php' method='post'>
-                        <input type='hidden' name='work_order_id' value='{$row['wo_id']}'>
-                        <input type='submit' value='View'>
-                    </form>
-                 </td>
                 <td>
                     <form action ='workorder_summary.php' method='post'>
                         <input type='hidden' name='work_order_id' value='{$row['wo_id']}'>
