@@ -67,7 +67,8 @@ global $host;
 
         </section>
         <section class="banner1">
-            <h3>Contact US</h3>
+            <h3>Contact us</h3>
+            <h4>Need a hand? Write us a message</h4>
             <form method="post">
                 <label for = "full_name">Full Name:</label><br>
                 <input type="text" name="full_name" required><br><br>
@@ -77,7 +78,10 @@ global $host;
                 <textarea id="message" name="message" row="10" col="50"></textarea><br><br>
                 <input type="submit" name ="submit" value="SEND">
             </form>
-        </section>
+           <!-- <?php
+            echo "<p style=\"color: green;\">Your submitted message has been sent!</p>";
+        ?> -->
+            </section>
         <div class= "bottom-page">         
         </div>
         <!-- <section class="banner"></section> -->
