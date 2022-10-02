@@ -12,7 +12,7 @@ $subject = $_POST['subject'];
 // use wordwrap() if lines are longer than 70 characters
 $msg = wordwrap($msg,70, "\r\n", );
 
-$url = "http://delta.maliliconstruction.systems/assets/scripts/send_mail.php";
+$url = "https://delta.maliliconstruction.systems/assets/scripts/send_mail.php";
 
 $fields = array(
     'msg'=>$msg,
