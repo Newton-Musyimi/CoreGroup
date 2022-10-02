@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION['logged_in'])  && $_SESSION['role'] != 'CLIENT'){
     header("location: security/login.php");
 }
 /*
@@ -18,7 +18,7 @@ global $host;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Woodstreet Academy</title>
+    <title>Wood Street Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
@@ -48,44 +48,12 @@ global $host;
                 <th>Cost:</th>
                 <th>Order Status:</th>
                 <th>Date Collected:</th>
-                <th>Collected:</th>
+                <th>Collected/Not Collected:</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>Newton</td>
-                <td>20/9/2022</td>
-                <td>1</td>
-                <td>10</td>
-                <td>R1500</td>
-                <td>Ongoing</td>
-                <td>30/10/2022</td>
-                <td>Not Collectd</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>2</td>
-                <td>Newton</td>
-                <td>20/9/2022</td>
-                <td>2</td>
-                <td>700</td>
-                <td>R500</td>
-                <td>Ongoing</td>
-                <td>30/10/2022</td>
-                <td>Collectd</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>3</td>
-                <td>Sandra</td>
-                <td>20/9/2022</td>
-                <td>3</td>
-                <td>90</td>
-                <td>R1700</td>
-                <td>Ongoing</td>
-                <td>30/10/2022</td>
-                <td>Collectd</td>
-            </tr>   
+            <?php
+            require_once ('assets/php/orders_scripts.php');
+            echo getOrders();
+            ?>
         </table>
 
     </div>
