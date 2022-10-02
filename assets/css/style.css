@@ -187,6 +187,7 @@ input[type=submit], input[type=button] , .modal-button{
     margin: 10px 5px 5px 5px ;
     border-radius: 4px;
     cursor: pointer;   
+    float: left;
 }
 
   
@@ -288,7 +289,7 @@ th, td {
 tr:nth-child(even) {background-color: #f2f2f2;}
 /* workorder css*/
 
-.status[data-status="getPendingValue()"] {
+/*.status[data-status="getPendingValue()"] {
     color : brown;
    }
    
@@ -309,6 +310,15 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     margin: 0;
     padding: 0;
     overflow: hidden;
+  }*/
+
+  
+
+  .ticketing_button_group
+  {
+      text-align: center;
+      text-size-adjust: 50px;
+     float:left ;
   }
   
 

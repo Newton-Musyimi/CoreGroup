@@ -62,11 +62,11 @@ global $host;
         $row = mysqli_fetch_array($result);
         if(intval($row['number_of_devices']) > 0){
             echo "<div id='ticketing_button_group'>
-        <form action ='ticketing.php' method='post'>
+        <form action ='ticketing.php' method='post' id='ticketing_button_group'>
             <input type='hidden' name='ticket_device_type' value='new'>
-            <input type='submit' value='New Device'>
+            <input type='submit' value='New Device' id='ticketing_button_group'>
         </form>
-        <form action ='ticketing.php' method='post'>
+        <form action ='ticketing.php' method='post' id='ticketing_button_group'>
             <input type='hidden' name='ticket_device_type' value='existing'>
             <input type='submit' value='Existing  Device'>
         </form>
@@ -85,8 +85,9 @@ global $host;
     </div>";
     }
     ?>
+    <br><br>
     <form action="<?php echo htmlspecialchars('ticketing.php'); ?>" method="POST">
-        <p>Please select the type of ticket you want to open:</p>
+       <br><p>Please select the type of ticket you want to open:</p>
 
         <label for ="maintenance">Maintenance/Check-Up</label>
         <input type="radio" name="request_type" id="maintenance" value="maintenance">&emsp;

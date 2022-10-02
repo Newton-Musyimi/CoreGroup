@@ -50,25 +50,25 @@ if (isset($_SESSION['logged_in'])) {
             <div id="card-title">
                 <h2>EMPLOYEE SIGN-UP</h2>
                 <div class="underline-title">
-
+<!--  -->
                 </div>
             </div>
             <div class="form">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="form" method="post">
                     <div class="form-group">
-                        <label for="employee_id">Employee ID</label><br>
+                    <!--     <label for="employee_id">Employee ID</label><br>-->
                         <input type="number" class="form-content" id="employee_id" name="employee_id"  placeholder="Employee ID"><br><br>
                         <div class="form-border"></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="username">Username</label><br>
+                     <!--    <label for="username">Username</label><br>-->
                         <input type="text" class="form-content" id="username" name="username"  placeholder="Username"><br><br>
                         <div class="form-border"></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Password</label><br>
+                    <!--     <label for="password">Password</label><br>-->
                         <input type="password" class="form-content" id="password" name="password" placeholder="Password"><br><br>
                         <div class="form-border"></div>
                         <div class="form-check mb-3">
@@ -77,7 +77,7 @@ if (isset($_SESSION['logged_in'])) {
                         </div>
                     </div>
 
-                    <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="submit-btn" class="btn btn-primary">SUBMIT</button>
 
                     <?php
                     function standardize($string): string

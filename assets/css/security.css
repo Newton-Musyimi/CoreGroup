@@ -70,12 +70,14 @@ a {
   label {
     font-family: "Raleway", sans-serif;
     font-size: 11pt;
-    text-align-last: center;
+    
+    
   }
   #showPassword{
     font-family: "Raleway", sans-serif;
     font-size: 11pt;
-    text-align-last: right;
+    padding-left: 0;
+    text-align: center;
   }
   #forgot-pass {
     color: #2dbd6e;
@@ -84,11 +86,12 @@ a {
     margin-top: 3px;
     text-align: center;
   }
+  
   #card {
     background: #fbfbfb;
     border-radius: 8px;
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
-    height: 460px;
+    height: 500px;
     margin: 6rem auto 8.1rem auto;
     width: 329px;
   }
@@ -97,13 +100,13 @@ a {
     background: #fbfbfb;
     border-radius: 8px;
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
-    height: 750px;
+    height: 650px;
     margin: 6rem auto 8.1rem auto;
     width: 329px;
   }
   #card-content {
     padding: 12px 44px;
-    height: auto;
+   
   }
   #card-title {
     font-family: "Raleway Thin", sans-serif;
@@ -151,7 +154,8 @@ a {
     background: #fbfbfb;
     border: none;
     outline: none;
-    padding-top: 14px;
+    padding: 14px 14px 14px 14px;
+    
   }
   .underline-title {
     background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);

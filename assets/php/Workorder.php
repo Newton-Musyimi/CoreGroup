@@ -67,4 +67,7 @@ class Workorder
         return "0.00";
     }
 
+    //Trying to make invididual status cells relevant to their each own status colour
+    
+
 }

@@ -50,55 +50,55 @@ if (isset($_SESSION['logged_in'])) {
             <div id="card-title">
                 <h2>CLIENT<br>SIGN-UP</h2>
                 <div class="underline-title">
-
+<!--  -->
                 </div>
             </div>
             <div class="form">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <input type="hidden" name="client" value="CLIENT">
                     <div class="form-group">
-                        <label for="username">Username</label><br>
-                        <input type="text" class="form-content" id="username" name="username"  placeholder="Username"><br><br>
+                        <!--<label for="username">Username</label><br>-->
+                        <input type="text" class="form-content" id="username" name="username"  placeholder="Username">
                         <div class="form-border"></div>
                     </div>
                     <div class="form-group">
-                        <label for="first_name">First Name</label><br>
+                      <!--  <label for="first_name">First Name</label><br>-->
                         <input type="text" class="form-content" id="first_name" name="first_name" placeholder="First Name" >
                         <div class="form-border"></div>
                     </div>
                     <div class="form-group">
-                        <label for="last_name">Last Name</label><br>
-                        <input type="text" class="form-content" id="last_name" name="last_name" placeholder="Last Name"><br><br>
+                        <!--<label for="last_name">Last Name</label><br> -->
+                        <input type="text" class="form-content" id="last_name" name="last_name" placeholder="Last Name">
                         <div class="form-border"></div>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label><br>
-                        <input type="email" class="form-content" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br><br>
+                       <!-- <label for="email">Email</label><br> -->
+                        <input type="email" class="form-content" id="email" name="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                         <div class="form-border"></div>
                     </div>
                     <div class="form-group">
-                        <label for="mobile">Mobile</label><br>
-                        <input type="text" class="form-content" id="mobile" name="mobile" placeholder="Mobile"><br><br>
+                       <!-- <label for="mobile">Mobile</label><br>-->
+                        <input type="text" class="form-content" id="mobile" name="mobile" placeholder="Mobile">
                         <div class="form-border"></div>
                     </div>
                     <div class="form-group">
-                        <label for="address">Address</label><br>
-                        <input type="text" class="form-content" id="address" name="address" placeholder="Address"><br><br>
+                      <!--  <label for="address">Address</label><br>-->
+                        <input type="text" class="form-content" id="address" name="address" placeholder="Address">
                         <div class="form-border"></div>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label><br>
-                        <input type="password" class="form-content" id="password" name="password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"><br><br>
+                      <!--  <label for="password">Password</label><br>-->
+                        <input type="password" class="form-content" id="password" name="password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters">
                         <div class="form-border"></div>
                     </div>
                     <div class="form-group">
-                        <label for="confirm-password">Confirm Password</label><br>
-                        <input type="password" class="form-content" onchange="confirmPass(this)" id="confirm-password" name="confirm-password" placeholder="confirm-password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must be entered exactly the same as the password above"><br><br>
+                     <!--<label for="confirm-password">Confirm Password</label><br>-->
+                        <input type="password" class="form-content" onchange="confirmPass(this)" id="confirm-password" name="confirm-password" placeholder="confirm-password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must be entered exactly the same as the password above">
                         <p id="confirm-password-error"></p>
                         <div class="form-border"></div>
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" id="showPass" onclick="showPassword()">
-                            <label class="form-check-label" for="formCheck-1">Show Password</label>
+                            <label class="form-check-label" for="formCheck-1" id="showpass">Show Password</label>
                         </div>
                     </div>
 

@@ -103,7 +103,25 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
             </div>
             
         </div>
+    </form>
+        <div id="compose_modal" class="modal">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
+            <span class="close">&times;</span>
+            <!-- Insert form below -->
+                   
+            <!-- Insert form above -->
+
         </form>
+        <div id="reply_modal" class="modal">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
+        <span class="close">&times;</span>
+        <!-- Insert form below -->
+                    
+        <!-- Insert form above -->
+
+        </form>
+        </div>
+        </div>
 
     </div>
     <footer style="padding-bottom: 32px;">
@@ -113,7 +131,7 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
     </footer>
     <script>
         // Get the modal
-        var modal = document.getElementById("add_resources_modal");
+        var modal = document.getElementById("compose_modal");
 
         // Get the button that opens the modal
         var btn = document.getElementById("compose_modal_button");
@@ -131,14 +149,9 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
             modal.style.display = "none";
         }
 
-        // When the user clicks anywhere outside the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        
         // Get the modal
-        var modal2 = document.getElementById("add_resources_modal");
+        var modal2 = document.getElementById("reply_modal");
 
         // Get the button that opens the modal
         var btn2 = document.getElementById("reply_modal_button");
@@ -148,17 +161,18 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
 
         // When the user clicks the button, open the modal
         btn2.onclick = function() {
-            modal22.style.display = "block";
+            modal2.style.display = "block";
         }
 
         // When the user clicks on <span> (x), close the modal
         span2.onclick = function() {
             modal2.style.display = "none";
         }
-
-        // When the user clicks anywhere outside the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal2) {
+ // When the user clicks anywhere outside the modal, close it
+ window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }else if(event.target == modal2) {
                 modal2.style.display = "none";
             }
         }
