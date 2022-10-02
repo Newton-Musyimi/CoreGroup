@@ -17,7 +17,7 @@ global $host;
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Woodstreet Academy</title>
+    <title>Wood Street Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon_io/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon_io/favicon.png';?>">
@@ -49,8 +49,17 @@ global $host;
     </script>
 </header>
 <div class="grid-item2 content-body" id="ticket_body" >
+
     <h1>Create a ticket</h1>
-    <div id="ticketing_button_group">
+    <?php
+    if($_SESSION['role'] == 'CLIENT'){
+        $conn = get_db();
+        $id = $_SESSION['logged_in'];
+        $query = "SELECT count(device_id) AS number_of_devices FROM devices WHERE owner_id = $id";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        if(intval($row['number_of_devices']) > 0){
+            echo "<div id='ticketing_button_group'>
         <form action ='ticketing.php' method='post'>
             <input type='hidden' name='ticket_device_type' value='new'>
             <input type='submit' value='New Device'>
@@ -59,7 +68,10 @@ global $host;
             <input type='hidden' name='ticket_device_type' value='existing'>
             <input type='submit' value='Existing  Device'>
         </form>
-    </div>
+    </div>";
+        }
+    }
+    ?>
     <form action="<?php echo htmlspecialchars('ticketing.php'); ?>" method="POST">
         <p>Please select the type of ticket you want to open:</p>
 
@@ -102,6 +114,7 @@ global $host;
             }else{
                 echo "
                 <div class=\"form-group\">
+                <input type=\"hidden\" name=\"submit_type\" id=\"submit_type\" value=\"new\"><br><br>
                     <label for= \"client_id\"><strong>Client Id</strong></label><br><br>
                     <select name=\"client_id\" id=\"client_id\" required>".
                     getClientIds()
@@ -173,7 +186,7 @@ global $host;
         }
         if(isset($_REQUEST['ticket_device_type']) && !isset($_REQUEST['submit'])){
             if($_REQUEST['ticket_device_type'] == 'new'){
-                echo newDeviceInput();
+                newDeviceInput();
             }else{
                 echo "
                 <input type=\"hidden\" name=\"submit_type\" id=\"submit_type\" value=\"saved\"><br><br>
@@ -187,7 +200,7 @@ global $host;
                 </div>";
             }
         }else{
-            echo newDeviceInput();
+            newDeviceInput();
         }
         ?>
 
@@ -239,6 +252,9 @@ global $host;
         <?php
         function addDevice($client_id, $description, $category, $brand, $model, $serial, $location, $device_name){
             $conn = get_db();
+            $device_name = $conn -> real_escape_string($device_name);
+            $model = $conn -> real_escape_string($model);
+            $description = $conn -> real_escape_string($description);
             $dev_id = 0;
             $query = "INSERT INTO `coregroup`.`devices`
                         (`owner_id`,
@@ -250,15 +266,14 @@ global $host;
                         `location`,
                         `device_name`)
                         VALUES(
-                            $client_id,
+                            '$client_id',
                             '$description',
                             '$category',
                             '$brand',
                             '$model',
                             '$serial',
                             '$location',
-                            '$device_name');
-                            ";
+                            '$device_name'); ";
             if(mysqli_query($conn, $query) OR DIE ("Could not add device! ".$conn->error)){
                 $query = "SELECT device_id FROM devices WHERE owner_id = $client_id ORDER BY device_id DESC;";
                 $result = mysqli_query($conn, $query) OR DIE ("Could not get device! ".$conn->error);
@@ -311,7 +326,7 @@ global $host;
                 $brand = $_REQUEST['devicebrand'];
                 $model = $_REQUEST['modelname'];
                 $serial_number = $_REQUEST['serialnumber'];
-                $location = $_REQUEST['client'];
+                $location = $_REQUEST['client_id'];
                 $device_name = $_REQUEST['device_name'];
                 $dev_id = intval(addDevice($client_id, $description, $category, $brand, $model, $serial_number, $location, $device_name));
                 if($dev_id !== 0){
@@ -333,6 +348,7 @@ global $host;
 
             }
         }
+        if(isset($_REQUEST['']))
         ?>
     </form>
 </div>
