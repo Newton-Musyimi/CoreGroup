@@ -24,7 +24,7 @@ if (isset($_SESSION['logged_in'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Core Group</title>
+    <title>Wood Street Academy</title>
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/security.css';?>">
@@ -70,11 +70,11 @@ if (isset($_SESSION['logged_in'])) {
                     <div class="form-group">
                         <label for="password">Password</label><br>
                         <input type="password" class="form-content" id="password" name="password" placeholder="Password"><br><br>
+                        <div class="form-border"></div>
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" id="showPass" onclick="showPassword()">
                             <label class="form-check-label" for="formCheck-1">Show Password</label>
                         </div>
-                        <div class="form-border"></div>
                     </div>
 
                     <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>

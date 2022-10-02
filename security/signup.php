@@ -94,12 +94,12 @@ if (isset($_SESSION['logged_in'])) {
                     <div class="form-group">
                         <label for="confirm-password">Confirm Password</label><br>
                         <input type="password" class="form-content" onchange="confirmPass(this)" id="confirm-password" name="confirm-password" placeholder="confirm-password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must be entered exactly the same as the password above"><br><br>
+                        <p id="confirm-password-error"></p>
+                        <div class="form-border"></div>
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" id="showPass" onclick="showPassword()">
                             <label class="form-check-label" for="formCheck-1">Show Password</label>
                         </div>
-                        <p id="confirm-password-error"></p>
-                        <div class="form-border"></div>
                     </div>
 
                     <button type="submit" id="submit-btn" class="form-content btn btn-primary">Submit</button><br><br>

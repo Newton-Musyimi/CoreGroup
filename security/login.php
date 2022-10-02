@@ -22,7 +22,7 @@ if (isset($_SESSION['logged_in'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Core Group</title>
+    <title>Wood Street Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php global $host; echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
@@ -58,11 +58,11 @@ if (isset($_SESSION['logged_in'])) {
             <label for="user-password" style="padding-top:22px">&nbsp;Password
             </label>
             <input id="user-password" class="form-content" type="password" name="password" />
+        <div class="form-border"></div>
         <div class="form-check mb-3">
           <input class="form-check-input" type="checkbox" id="showPass" onclick="showPassword()">
           <label class="form-check-label" for="formCheck-1">Show Password</label>
         </div>
-        <div class="form-border"></div>
         <a href="#">
           <legend id="forgot-pass">Forgot password?</legend>
         </a>
@@ -126,21 +126,17 @@ if (isset($_SESSION['logged_in'])) {
             $result = mysqli_query($conn, "SELECT `role_id` FROM `employee_role` WHERE `employee_id` = '$id';");
 
             if ($row = mysqli_fetch_array($result)){
-                $result = mysqli_query($conn, "SELECT `role_id` FROM `employee_role` WHERE `employee_id` = '$id';");
+                $role_id = $row['role_id'];
+                $result = mysqli_query($conn, "SELECT `role_name` FROM `roles` WHERE `role_id` = '$role_id';");
                 if ($row = mysqli_fetch_array($result)){
-                    $result = mysqli_query($conn, "SELECT `role_name` FROM `roles` WHERE `role_id` = '$id';");
-                    if ($row = mysqli_fetch_array($result)){
-                        $role = $row['role_name'];
-                        $_SESSION['role'] = $role;
+                    $role_name = $row['role_name'];
+                    $_SESSION['role'] = $role_name;
                     }else{
                         $_SESSION['role'] = 'TECHNICIAN';
                     }
                 }else{
                     $_SESSION['role'] = 'TECHNICIAN';
                 }
-            }else{
-                $_SESSION['role'] = 'TECHNICIAN';
-            }
         }else{
             mysqli_close($conn);
             echo '<p>You have entered the wrong password. Try again!</p>';
