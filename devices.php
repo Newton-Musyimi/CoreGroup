@@ -15,7 +15,7 @@ require_once('security/header.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Woodstreet Academy</title>
+    <title>Wood Street Academy</title>
     <meta http-equiv="Cache-control" content="no-store">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
@@ -35,7 +35,7 @@ require_once('security/header.php');
     </header>
     <div class="content-body">
         <div>
-        <button type= "button" name = "add_device_button" id="add_device_button">Add Device</button>
+        <button type= "button" class ="modal-button" name = "add_device_button" id="add_device_button">Add Device</button>
         </div>
         <table>
             <tr>
@@ -101,10 +101,10 @@ require_once('security/header.php');
         </table>  
     </div>
     <div id="add_device_modal" class="modal">
-        <h3>Add Device</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
             <span class="close">&times;</span>
             <!-- Insert form below -->
+            <h3>Add Device</h3>
             <div class="form-group">
                 <label for="device_name">Device Name</label><br>
                 <input type="text" name="device_name" id="device_name"><br><br>
@@ -151,6 +151,7 @@ require_once('security/header.php');
 
             <div class="form-group">
             </div>
+            <input type= "submit" name="add_device" id="add_device" value="Add Device">
             <!-- Insert form above -->
 
         </form>
