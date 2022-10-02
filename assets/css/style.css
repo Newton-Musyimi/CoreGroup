@@ -181,7 +181,7 @@ input[type=text],input[type=password], input[type=email]{
     box-sizing: border-box;
   }
   
-input[type=submit], input[type=button], add_device_button {
+input[type=submit], input[type=button] , .modal-button{
     background-color: #2a802d;
     color: white;
     padding: 14px 20px;
@@ -190,7 +190,6 @@ input[type=submit], input[type=button], add_device_button {
     border-radius: 4px;
     cursor: pointer;   
 }
-
 
   
 input[type=submit]:hover {
@@ -278,7 +277,7 @@ hr{
 
 /* The work order summary table*/
 
-.table1, .table2, .table3, .table4{
+#table1, #table2, #table3, #table4{
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;

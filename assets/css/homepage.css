@@ -83,6 +83,15 @@ section, .banner1 {
   background: white;
   color: #af6b4c;
 }
+.banner1 input[type=submit]{
+  background-color: #af6b4c;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  margin: 10px 5px 5px 5px ;
+  border-radius: 4px;
+  cursor: pointer;
+}
 section, .banner2 {
   width: 100%;
   padding:60px 0;
