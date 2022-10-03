@@ -58,123 +58,107 @@ if (isset($_SESSION['logged_in'])) {
             <label for="user-password" style="padding-top:22px">&nbsp;Password
             </label>
             <input id="user-password" class="form-content" type="password" name="password" />
+          <?php
+          function standardize($string): string
+          {
+              $string = str_replace(' ', '', $string);
+              $string = stripslashes($string);
+              return strtolower($string);
+          }
+
+          function clientLogIn(): void
+          {
+              global $host;
+              $conn = get_db();
+              $username = standardize($_POST['username']);
+              $password = $_POST['password'];
+              $query = "SELECT `client_id`, `username`, `password` FROM `clients` WHERE `username` = '$username';";
+              $result = mysqli_query($conn, $query) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
+              //echo "<p class='access_form'>Log in <span style='color:green;'>Success!</span> Username entered is okay.</p> ";
+              $row = mysqli_fetch_array($result);
+              $hashed_pass = $row['password'];
+              if(password_verify($password, $hashed_pass)){
+                  $id = $row['client_id'];
+                  $username_query = $row['username'];
+                  $_SESSION['role'] = "CLIENT";
+                  $_SESSION['logged_in'] = $id;
+                  $_SESSION['username'] = $username_query;
+                  $_SESSION['user_table'] = "clients";
+                  mysqli_close($conn);
+                  header("location:$host/SysDev/CoreGroup/workorders.php");
+              }else{
+                  mysqli_close($conn);
+                  echo '<p>You have entered the wrong password. Try again!</p>';
+              }
+          }
+
+          function employeeLogIn(): void
+          {
+              global $host;
+              $conn = get_db();
+              $username = standardize($_POST['username']);
+              $password = str_replace(' ', '', $_POST['password']);
+              $query = "SELECT `employee_id`, `username`, `password` FROM `employees` WHERE `username` = '$username';";
+              $result = mysqli_query($conn, $query) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
+              //echo "<p class='access_form'>Log in <span style='color:green;'>Success!</span> Username entered is okay.</p> ";
+              $row = mysqli_fetch_array($result);
+              $hashed_pass = $row['password'];
+              if(password_verify($password, $hashed_pass)){
+                  $id = $row['employee_id'];
+                  $username_query = $row['username'];
+                  $result = mysqli_query($conn, "SELECT `role_id` FROM `employee_role` WHERE `employee_id` = '$id';");
+
+                  if ($row = mysqli_fetch_array($result)){
+                      $role_id = $row['role_id'];
+                      $result = mysqli_query($conn, "SELECT `role_name` FROM `roles` WHERE `role_id` = '$role_id';");
+                      if ($row = mysqli_fetch_array($result)){
+                          $role_name = $row['role_name'];
+                          $_SESSION['role'] = $role_name;
+                      }else{
+                          $_SESSION['role'] = 'TECHNICIAN';
+                      }
+                  }else{
+                      $_SESSION['role'] = 'TECHNICIAN';
+                  }
+                  mysqli_close($conn);
+                  $_SESSION['logged_in'] = $id;
+                  $_SESSION['username'] = $username_query;
+                  $_SESSION['user_table'] = "employees";
+                  header("location:$host/SysDev/CoreGroup/workorders.php");
+              }else{
+                  mysqli_close($conn);
+                  echo('<p>You have entered the wrong password. Try again!</p>');
+              }
+
+          }
+
+          if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+              $conn = get_db();
+              $username = $_POST['username'];
+              $query = "SELECT `table` FROM `users` WHERE `username` = '$username';";
+              $result = mysqli_query($conn, $query) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
+              $row = mysqli_fetch_array($result);
+              if($row['table'] == 'clients'){
+                  clientLogIn();
+              }else{
+                  employeeLogIn();
+              }
+          }
+
+          ?>
         <div class="form-border"></div>
         <div class="form-check mb-3">
           <input class="form-check-input" type="checkbox" id="showPass" onclick="showPassword()">
           <label class="form-check-label" for="formCheck-1">Show Password</label>
         </div>
-        <a href="#">
-          <legend id="forgot-pass">Forgot password?</legend>
+        
+          <a href="forgot-password.php" id="forgot-password">Forgot your password?</a>
         </a>
         <input id="submit-btn" type="submit" name="submit" value="LOGIN" />
-        <a href="security/login.php" id="signup">Don't have account yet?</a>
+        <a href="signup.php" id="signup">Don't have account yet?</a>
       </form>
     </div>
   </div>
-        
-
-    <?php
-    function standardize($string): string
-    {
-        $string = str_replace(' ', '', $string);
-        $string = stripslashes($string);
-        return strtolower($string);
-    }
-
-    function clientLogIn(): void
-    {
-        global $host;
-        $conn = get_db();
-        $username = standardize($_POST['username']);
-        $password = $_POST['password'];
-        $query = "SELECT `client_id`, `username`, `password` FROM `clients` WHERE `username` = '$username';";
-        $result = mysqli_query($conn, $query) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
-        //echo "<p class='access_form'>Log in <span style='color:green;'>Success!</span> Username entered is okay.</p> ";
-        $row = mysqli_fetch_array($result);
-        $hashed_pass = $row['password'];
-        if(password_verify($password, $hashed_pass)){
-            $id = $row['client_id'];
-            $username_query = $row['username'];
-            $_SESSION['role'] = "CLIENT";
-            $_SESSION['logged_in'] = $id;
-            $_SESSION['username'] = $username_query;
-            $_SESSION['user_table'] = "clients";
-        }else{
-            mysqli_close($conn);
-            echo '<p>You have entered the wrong password. Try again!</p>';
-            exit;
-        }
-        mysqli_close($conn);
-
-        header("location:$host/SysDev/CoreGroup/workorders.php");
-    }
-
-    function employeeLogIn(): void
-    {
-        global $host;
-        $conn = get_db();
-        $username = standardize($_POST['username']);
-        $password = str_replace(' ', '', $_POST['password']);
-        $query = "SELECT `employee_id`, `username`, `password` FROM `employees` WHERE `username` = '$username';";
-        $result = mysqli_query($conn, $query) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
-        //echo "<p class='access_form'>Log in <span style='color:green;'>Success!</span> Username entered is okay.</p> ";
-        $row = mysqli_fetch_array($result);
-        $hashed_pass = $row['password'];
-        if(password_verify($password, $hashed_pass)){
-            $id = $row['employee_id'];
-            $username_query = $row['username'];
-            $result = mysqli_query($conn, "SELECT `role_id` FROM `employee_role` WHERE `employee_id` = '$id';");
-
-            if ($row = mysqli_fetch_array($result)){
-                $role_id = $row['role_id'];
-                $result = mysqli_query($conn, "SELECT `role_name` FROM `roles` WHERE `role_id` = '$role_id';");
-                if ($row = mysqli_fetch_array($result)){
-                    $role_name = $row['role_name'];
-                    $_SESSION['role'] = $role_name;
-                    }else{
-                        $_SESSION['role'] = 'TECHNICIAN';
-                    }
-                }else{
-                    $_SESSION['role'] = 'TECHNICIAN';
-                }
-        }else{
-            mysqli_close($conn);
-            echo '<p>You have entered the wrong password. Try again!</p>';
-            exit;
-        }
-        mysqli_close($conn);
-        $_SESSION['logged_in'] = $id;
-        $_SESSION['username'] = $username_query;
-        $_SESSION['user_table'] = "employees";
-        header("location:$host/SysDev/CoreGroup/workorders.php");
-    }
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $conn = get_db();
-        $username = $_POST['username'];
-        $query = "SELECT `table` FROM `users` WHERE `username` = '$username';";
-        $result = mysqli_query($conn, $query) or die("<p class='access_form'>Log in <span style='color:red;'>failed!</span> Username entered is incorrect.</p> " . $conn->error);
-        $row = mysqli_fetch_array($result);
-        if($row['table'] == 'clients'){
-            clientLogIn();
-        }else{
-            employeeLogIn();
-        }
-    }
-
-    ?>
-
-    <script>
-        function showPassword() {
-            var x = document.getElementById("user-password");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-    </script>
-  
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/theme.js';?>"></script>
 </body>

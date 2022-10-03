@@ -14,7 +14,7 @@ $employees = "<li><a href=\"$host/SysDev/CoreGroup/employees.php\" class=\"nav-i
 $inventory = "<li><a href=\"$host/SysDev/CoreGroup/inventory.php\" class=\"nav-item\"><button id=\"inventory_button\">Inventory</button></a> </li>";
 $devices = "<li><a href=\"$host/SysDev/CoreGroup/devices.php\" class=\"nav-item\"><button id=\"devices_button\">Devices</button></a> </li>";
 $orders = "<li><a href=\"$host/SysDev/CoreGroup/orders.php\" class=\"nav-item\"><button id=\"orders_button\">Orders</button></a> </li>";
-$chatroom= "<li><a href=\"$host/SysDev/CoreGroup/messaging2.php\" class=\"nav-item\"><button id=\"chatroom_button\">Chat to a technician</button></a> </li>";
+$chatroom= "<li><a href=\"$host/SysDev/CoreGroup/messaging.php\" class=\"nav-item\"><button id=\"chatroom_button\">Chat to a technician</button></a> </li>";
 
 $links = array(
     'dashboard' => $dashboard,
