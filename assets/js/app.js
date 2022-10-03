@@ -11,7 +11,14 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-
+function showPassword() {
+    let x = document.getElementById("user-password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
 //make current page button active
 window.onload = function () {
     document.getElementById("defaultOpen").click();
