@@ -71,6 +71,7 @@ require_once('security/header.php');
         $address = $row['address'];
         $profile_picture = $row['profile_picture'];
     }
+    mysqli_close($conn);
     ?>
 
 
@@ -85,6 +86,39 @@ require_once('security/header.php');
                                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" >
                                             <input type="file" name="profile_picture">
                                             <input type="submit" name="update_profile_picture" value="Update profile picture">
+                                            <?php
+                                            if(isset($_REQUEST['update_profile_picture'])){
+                                                $conn = get_db();
+                                                $check_image = getimagesize($_FILES["profile_picture"]["tmp_name"]);
+
+                                                if($check_image !== false){
+                                                    $id = intval($_SESSION['logged_in']);
+                                                    $file_name = basename($_FILES["profile_picture"]["name"]);
+                                                    $extension = pathinfo($file_name, PATHINFO_EXTENSION);
+                                                    $target = "assets/images/avatars/$username.$extension";
+                                                    move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target);
+                                                    if($table == 'clients'){
+                                                        $user = 'client_id';
+                                                        $query = "UPDATE clients
+                                                                SET
+                                                                `profile_picture` = '$target'
+                                                                WHERE `client_id` = $id;
+                                                                ";
+                                                    }else{
+                                                        $user = 'employee_id';
+                                                        $query = "UPDATE employees
+                                                                SET
+                                                                `profile_picture` = '$target'
+                                                                WHERE `employee_id` = $id;
+                                                                ";
+                                                    }
+                                                    mysqli_query($conn, $query) or die($conn->error);
+                                                    mysqli_close($conn);
+                                                }else{
+                                                    echo "File is not an image!";
+                                                }
+                                            }
+                                            ?>
                                         </form>
                                     </div>
                                 </div>
