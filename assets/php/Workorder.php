@@ -10,8 +10,11 @@ class Workorder
 
     function getByWorkorderId($wo_id){
         $conn = get_db();
-        $query = "SELECT `workorders`.*, `devices`.`device_name` AS device_name
-                        FROM `coregroup`.`workorders` JOIN coregroup.devices ON workorders.device_id = devices.device_id WHERE wo_id = $wo_id;";
+        $query = "SELECT `workorders`.*, `devices`.`device_name` AS device_name, `clients`.`first_name` AS first_name, `clients`.`last_name` AS last_name 
+                        FROM workorders 
+                            LEFT JOIN clients ON clients.client_id = workorders.client_id
+                            JOIN devices ON workorders.device_id = devices.device_id 
+                        WHERE wo_id = $wo_id;";
         $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number:$wo_id! Contact admin for assistance: " . $conn->error);
         if ($row = mysqli_fetch_array($result)) {
             if(strlen($row['date_started']) < 4){
@@ -23,11 +26,13 @@ class Workorder
 
             $techs = $this->getAssignedTechnicians($wo_id);
             $cost = $this->getCost($wo_id);
+            $client_name = "{$row['first_name']} {$row['last_name']}";
             $workOrder = array(
                 'status' => $row['status'],
                 'priority' => $row['priority'],
                 'requested_by' => $row['requested_by'],
                 'client_id' => $row['client_id'],
+                'client_name' => $client_name,
                 'request_type' => $row['request_type'],
                 'dropoff_date' => $dropOffDate,
                 'date_started' => $date,
