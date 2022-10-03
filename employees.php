@@ -38,9 +38,9 @@ tr:hover {background-color: #048337;}
             current.focus();
         </script>
     </header>
-    <button id="add_employee_button">Add Employee</button>
+    <button id="add_employee_button" class = "tab_button">Add Employee</button>
     <div id='Employees'>
-        <h3>Employees</h3>
+        <h3 style="margin-top:90px;">Employees</h3>
         <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -128,7 +128,7 @@ tr:hover {background-color: #048337;}
                 <label for="address">Address</label><br>
                 <input type="text" class="form-control" id="address" name="address" placeholder="Address" required><br>
             </div><br>
-            <button type="submit" class="btn btn-primary">Submit</button><br>
+            <button type="submit" class="btn btn-primary modal_button">Submit</button><br>
 
         </form>
     </div>

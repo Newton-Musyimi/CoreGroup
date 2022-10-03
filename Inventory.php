@@ -37,7 +37,7 @@ global $host;
         </script>      
     </header>
     <div class="content-body">
-        <h3>All Inventory Information</h3>
+        <h3 class="h3_heading">All Inventory Information</h3>
         <h1></h1>
         <div class="border">
         <div>
@@ -69,7 +69,7 @@ global $host;
         </table>
     </div>
     <div id="add_order_modal" class="modal">
-        <h3>Add Device</h3>
+        <h3 class="h3_heading">Add Device</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
             <span class="close" >&times;</span>
             <!-- Insert form below -->
@@ -109,7 +109,7 @@ global $host;
         </form>
     </div>
     <div id="add_product_modal" class="modal">
-        <h3>Add Product</h3>
+        <h3 class="h3_heading">Add Product</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
             <span class="close">&times;</span>
             <!-- Insert form below -->

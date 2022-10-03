@@ -108,7 +108,7 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
             <span class="close">&times;</span>
             <!-- Insert form below -->
-                   
+            <textarea rows="4" cols="50" name="comment" form="usrform">
             <!-- Insert form above -->
 
         </form>
@@ -168,14 +168,14 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
         span2.onclick = function() {
             modal2.style.display = "none";
         }
- // When the user clicks anywhere outside the modal, close it
- window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }else if(event.target == modal2) {
-                modal2.style.display = "none";
-            }
-        }
+        // When the user clicks anywhere outside the modal, close it
+        window.onclick = function(event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }else if(event.target == modal2) {
+                        modal2.style.display = "none";
+                    }
+                }
     </script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 </body>

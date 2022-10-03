@@ -43,7 +43,7 @@ if (isset($_SESSION['logged_in'])) {
 </header>
 <div class="content-body">
     <form action="employee_signup.php" method ="POST">
-        <input type="submit" value="EMPLOYEE SIGNUP" id = emp_sign_up_button>
+        <input type="submit" value="EMPLOYEE SIGNUP"  class="tab_button" id = emp_sign_up_button>
     </form>
     <div id="card2">
         <div id="card-content">

@@ -207,7 +207,7 @@ global $host;
             <span class="close">&times;</span>
             <!-- Insert form below -->
                         <h2>Assign Resources</h2>
-                        <h3>Workorder</h3>
+                        <h3 class="h3_heading">Workorder</h3>
                         <table>
                             <tr> 
                                 <th>Product_Id</th>
@@ -219,7 +219,7 @@ global $host;
                                 <td>1</td>
                                 <td>Screen</td>
                                 <td>2</td>
-                                <td><input type= "number" name="quantity_to_assign" id="quantity_to_assign">
+                                <td><input type= "number" name="quantity_to_assign" id="quantity_to_assign" style="margin-leff: 50px">
                                     <input type="submit" value="Assign"></td>
                             </tr>
                         </table>

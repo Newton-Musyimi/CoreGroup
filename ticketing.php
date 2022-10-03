@@ -177,7 +177,7 @@ global $host;
 
                 <label for=\"modelname\"><strong>Model Name</strong>(eg. MacBook Pro, HP L110, Dell Inspiron 15)</label><br>
                 <input type = \"text\" name = \"modelname\" id = \"modelname\"><br>
-                <label for =\"serial number\"><strong>Serial Number</strong></label><br>
+                <label for =\"serial number\"><strong>Serial Number</strong> (Up to 8 digits) </label><br>
                 <input type= \"text\" name = \"serialnumber\" id = \"serialnumber\"><br>  ";
         }
         function getDevices(){
