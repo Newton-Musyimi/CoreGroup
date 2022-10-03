@@ -186,8 +186,7 @@ input[type=submit], input[type=button] , .modal-button, .tab_button{
     border: none;
     margin: 10px 5px 5px 5px ;
     border-radius: 4px;
-    cursor: pointer;   
-    float: left;
+    cursor: pointer;
 }
   
 input[type=submit]:hover {
@@ -254,7 +253,8 @@ hr{
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 90%;
+    height: 30% ;
 }
 
 /* The Close Button */
