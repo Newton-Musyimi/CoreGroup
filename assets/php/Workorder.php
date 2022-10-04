@@ -10,7 +10,9 @@ class Workorder
 
     function getByWorkorderId($wo_id){
         $conn = get_db();
-        $query = "SELECT `workorders`.*, `devices`.`device_name` AS device_name, `clients`.`first_name` AS first_name, `clients`.`last_name` AS last_name 
+        $query = "SELECT `workorders`.*, 
+                    `devices`.`device_name` AS device_name, `devices`.`category` AS device_type, `devices`.`brand` AS device_brand, `devices`.`model` AS device_model, `devices`.`serial_number` AS device_serial_number, `devices`.`location` AS device_location,
+                    `clients`.`first_name` AS first_name, `clients`.`last_name` AS last_name 
                         FROM workorders 
                             LEFT JOIN clients ON clients.client_id = workorders.client_id
                             JOIN devices ON workorders.device_id = devices.device_id 
@@ -23,12 +25,12 @@ class Workorder
                 $date = date('D d M Y', strtotime($row['date_started']));
             }
             $dropOffDate = date('D d M Y', strtotime($row['dropoff_date']));
-
+            $status = $this->setStatus($wo_id, $row['status']);
             $techs = $this->getAssignedTechnicians($wo_id);
             $cost = $this->getCost($wo_id);
             $client_name = "{$row['first_name']} {$row['last_name']}";
-            $workOrder = array(
-                'status' => $row['status'],
+            return array(
+                'status' => $status,
                 'priority' => $row['priority'],
                 'requested_by' => $row['requested_by'],
                 'client_id' => $row['client_id'],
@@ -41,11 +43,15 @@ class Workorder
                 'dispatch_status' => $row['dispatch_status'],
                 'dispatch_date' => $row['dispatch_date'],
                 'device_id'=> $row['device_id'],
+                'device_type'=> $row['device_type'],
+                'device_brand'=> $row['device_brand'],
+                'device_model'=> $row['device_model'],
+                'device_serial_number'=> $row['device_serial_number'],
+                'device_location'=> $row['device_location'],
                 'client_comments'=> $row['client_comments'],
                 'techs'=> $techs,
                 'cost' => $cost
             );
-            return $workOrder;
         } else {
             return false;
         }
@@ -72,7 +78,21 @@ class Workorder
         return "0.00";
     }
 
-    //Trying to make invididual status cells relevant to their each own status colour
-    
-
+    protected function setStatus($wo_id, $status){
+        if($status == 'pending'){
+            $query = "SELECT count(wo_id) AS count FROM assigned_technicians WHERE wo_id = $wo_id;";
+            $conn = get_db();
+            $result = mysqli_query($conn, $query) or die("Could not query number of technicians with id number:$wo_id! Contact admin for assistance: " . $conn->error);
+            $row = mysqli_fetch_array($result);
+            if($row['count'] > 0) {
+                $query = "UPDATE workorders SET status = 'in-progress' WHERE wo_id = $wo_id;";
+                $result = mysqli_query($conn, $query) or die("Could not update status of workorder with id number:$wo_id! Contact admin for assistance: " . $conn->error);
+                return "in-progress";
+            }else{
+                return "pending";
+            }
+        }else{
+            return $status;
+        }
+    }
 }
