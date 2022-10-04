@@ -24,6 +24,20 @@ global $host;
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
+<style>
+    #table1 { grid-area: summary; }
+   .grid-container {
+    display: grid;
+    grid-template-areas:
+        'summary summary'
+        'summary summary'
+        'summary summary'
+        'summary summary';
+    }
+    .table1{
+        border-style: solid;
+    }
+</style>
 
 <body id="page-top">
     <header>
@@ -39,54 +53,55 @@ global $host;
     <div class="content-body">
         <h1>Device Summary</h1>
         <div class="grid-container">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method ="POST">
-        <table class="table1" style="margin-bottom:30px;">
-            <tr>
-                <th>IMAGE:</th>
-                <td><img src="assets/images/hardware-bg.jpg" class="site_images" ></td>
-            </tr>
-            <tr>
-                <th>Device ID:</th>
-                <td>1</td>
-            </tr> 
-            <tr>
-                <th>Owner ID:</th>
-                <td>3</td>
-            </tr>
-            <tr>
-                <th>Description:</th>
-                <td><input type="text" name="description" value="descript" /></td>
-            </tr>
-            <tr>
-                <th>Category:</th>
-                <td>desktop </td>
-            </tr>
-            <tr>
-                <th>Brand:</th>
-                <td>APPLE</td>
-            </tr>
-            <tr>
-                <th>Model:</th>
-                <td>MacBook Pro</td>
-            </tr>
-            <tr>
-                <th>Serial Number:</th>
-                <td>0000900753</td>
-            </tr>
-            <tr>
-                <th>Location:</th>
-                <td><input type="text" name="location" value="location" /></td>
-            </tr>
-            <tr>
-                <th>Device Name:</th>
-                <td><input type="text"  name="device_name" value="device name" /></td>
-            </tr>
-        </table>
-        </form>
-           
-        
-
-    </div>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method ="POST">
+                <?php
+                $device_id = $_POST['device_id'];
+                $query ="SELECT * FROM coregroup.devices WHERE `device_id` = $device_id;";
+                $conn = get_db();
+                $result = mysqli_query($conn, $query);
+                $row = mysqli_fetch_array($result);
+                ?>
+                <table class="table1" id ="summary" style="margin-bottom:30px;">
+                    <tr>
+                        <th>Image:</th>
+                        <td><?php echo $row['device_image'];?></td>
+                    </tr>
+                    <tr>
+                        <th>Device ID:</th>
+                        <td><?php echo $row['device_id'];?></td>
+                    </tr>
+                    <tr>
+                        <th>Owner ID:</th>
+                        <td><?php echo $row['owner_id'];?></td>
+                    </tr>
+                    <tr>
+                        <th>Description:</th>
+                        <td><?php echo $row['description'];?></td>
+                    </tr>
+                    <tr>
+                        <th>Category:</th>
+                        <td><?php echo $row['category'];?></td>
+                    </tr>
+                    <tr>
+                        <th>Brand:</th>
+                        <td><?php echo $row['brand'];?></td>
+                    </tr>
+                    <tr>
+                        <th>Model:</th>
+                        <td><?php echo $row['model'];?></td>
+                    </tr>
+                    <tr>
+                        <th>Serial Number:</th>
+                        <td><?php echo $row['serial_number'];?></td>
+                    </tr>
+                    <tr>
+                        <th>Location:</th>
+                        <td><?php echo $row['location'];?></td>
+                    </tr>
+                    
+                </table>
+            </form>
+        </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>

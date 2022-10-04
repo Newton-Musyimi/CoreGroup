@@ -69,48 +69,70 @@ global $host;
 
             
         <div class="grid-container">
-            
+            <div id="message_text" >
+            <?php
+            $conn = get_db();
+            $username = $_SESSION['username'];
+            if($_SESSION['role'] == 'RECEPTIONIST' OR $_SESSION['role'] == 'TECHNICIAN') {
+                "SELECT * FROM messages WHERE sender = $username OR recipient = $username OR recipient = 'helpdesk' ORDER BY datetime DESC;";
+            }else if($_SESSION['role'] == 'ADMINISTRATOR') {
+                "SELECT * FROM messages";
+            }else{
+                "SELECT * FROM messages WHERE sender = $username OR recipient = $username ORDER BY datetime DESC;";
+            }
+            $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username ORDER BY datetime DESC;";
+
+            $result = mysqli_query($conn, $sql);
+            if(isset($_REQUEST['message_id'])){
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $message_id = $row['message_id'];
+                        $recipient = $row['recipient'];
+                        $datetime = date('dS D F Y H:i:s A', strtotime($row['datetime']));
+                        $message = $row['message'];
+            ?>
+
+                <div id="message_header" style = "padding-right:10px;">
+                    <h2>Subject:<?php echo $row['title'];?> </h2><p style = "float:right; "><strong>Date:<?php echo $datetime;?></strong></p>
+                    <h3>From:<?php echo $row['sender'];?></h3>
+                </div>
+            </div>
+            <div id="message_box">
+                <?php echo $row['message'];
+                    }
+                }
+            }?>
+            </div>
+            <input type="button" class ="modal-button" name="reply_modal_button" id="reply_modal_button" style = "float:right;"  value="Reply">
+        </div>
             <div id="messages">
                 <table id="messaging">
-                    <tr class="message_summary" onclick="window.location='messaging.php?message_id=1';">
-                        <td>schedule:<br>From</td><td>Wo. id:<br>2022:10/01</td>                        
-                    </tr>
-                    <tr class="message_summary">
-                        <td>schedule:<br>From</td><td>Wo. id:<br>2022:10/01</td>                         
-                    </tr>
-                    <tr class="message_summary">
-                    <td>schedule:<br>From</td><td>Wo. id:<br>2022:10/01</td>                        
-                    </tr>
-                    <tr class="message_summary">
-                    <td>schedule:<br>From</td><td>Wo. id:<br>2022:10/01</td>                        
-                    </tr>
+                    <?php
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $datetime = date('dS D F Y H:i:s A', strtotime($row['datetime']));
+                            echo "<tr class=\"message_summary\" onclick='window.location=\"messaging.php?message_id={$row['message_id']}\"'>
+                                        <td>{$row['title']}<br>From:{$row['sender']}</td>
+                                        <td>Wo. id:{$row['recipient']}<br>$datetime</td>
+                                    </tr>";
+                        }
+                    }
+                    ?>
                 </table>
-            </div>
-            <div id="message_text">
-                <div id="message_header" style = "padding-right:10px;">
-                    <h2>Subject: </h2><p style = "float:right; "><strong>Date:</strong></p>
-                    <h3>From:</h3>
-                </div>
-                <div id="message_box">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus enim magna, at tristique est euismod et. Duis vel vehicula nibh. Nunc eget enim ultricies, egestas dolor sit amet, maximus felis. Morbi non tortor nisi. Quisque pulvinar libero vel nunc vehicula, non mattis dolor gravida. Nullam eget arcu in tellus tempor dictum. Cras feugiat nec turpis non eleifend. Nunc bibendum nisi et fringilla facilisis. Donec consequat, lectus sed posuere mollis, sapien erat bibendum urna, sed bibendum purus augue vulputate enim.
 
-Ut non quam vestibulum ex mattis malesuada. Nulla dignissim dui non nisi tincidunt, sit amet sagittis magna consectetur. Mauris in bibendum arcu, at vulputate ante. Fusce lobortis aliquam risus ut gravida. Aliquam erat volutpat. Maecenas fringilla aliquam molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in efficitur metus. Morbi mattis lorem et ultricies posuere. Pellentesque accumsan ut eros at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie magna magna, et rutrum enim sagittis quis. In aliquet risus ipsum.
-
-Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendisse enim nunc, efficitur ut lectus at, interdum commodo urna. Proin efficitur urna justo, eu placerat velit placerat in. Cras pulvinar congue luctus. Etiam scelerisque tellus in odio hendrerit fermentum. Nam efficitur nisi ex, quis tempus lacus luctus eget. Etiam ultricies vel purus at sagittis.
-                </div>
-                <input type="button" class ="modal-button" name="reply_modal_button" id="reply_modal_button" style = "float:right;"  value="Reply">
-            </div>
             
         </div>
         <div id="compose_modal" class="modal">
             <span class="close">&times;</span>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
                 <!-- Insert form below -->
+                    <h3>Compose</h3>
                     <label for="title"><strong>Title:</strong></label><br>
                     <input type="text" name="title"><br><br>
                     <label for="to"><strong>To:</strong></label><br>
                     <input type="text" name="to"><br><br>
-                    <textarea id="message" name="message" rows="4" cols="50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus enim magna, at tristique est euismod et. Duis vel vehicula nibh. Nunc eget enim ultricies, egestas dolor sit amet, maximus felis. Morbi non tortor nisi. Quisque pulvinar libero vel nunc vehicula, non mattis dolor gravida. Nullam eget arcu in tellus tempor dictum. Cras feugiat nec turpis non eleifend. Nunc bibendum nisi et fringilla facilisis. Donec consequat, lectus sed posuere mollis, sapien erat bibendum urna, sed bibendum purus augue vulputate enim.</textarea><br>
+                    <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
                     <input type="submit"name="submit" value="Send">
                 <!-- Insert form above -->
 
@@ -120,11 +142,12 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
                 <span class="close">&times;</span>
                 <!-- Insert form below -->
+                    <h3>Reply</h3>
                     <label for="title"><strong>Title:</strong></label><br>
                     <input type="text" name="title"><br><br>
                     <label for="to"><strong>To:</strong></label><br>
                     <input type="text" name="to"><br><br>
-                    <textarea id="response" name="response" rows="4" cols="50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus enim magna, at tristique est euismod et. Duis vel vehicula nibh. Nunc eget enim ultricies, egestas dolor sit amet, maximus felis. Morbi non tortor nisi. Quisque pulvinar libero vel nunc vehicula, non mattis dolor gravida. Nullam eget arcu in tellus tempor dictum. Cras feugiat nec turpis non eleifend. Nunc bibendum nisi et fringilla facilisis. Donec consequat, lectus sed posuere mollis, sapien erat bibendum urna, sed bibendum purus augue vulputate enim.</textarea><br>
+                    <textarea id="response" name="response" rows="4" cols="50"></textarea><br>
                     <input type="submit"name="submit" value="Send">
                 <!-- Insert form above -->
 

@@ -44,66 +44,66 @@ require_once('security/header.php');
                 <th>Category</th>
                 <th>Brand</th>
                 <th>Model</th>
-                <th>Assigned To</th>
+                <th>Owner Id</th>
                 <th>View</th>
             </tr>
             <?php
             $query = "SELECT * FROM coregroup.devices;";
             $conn = get_db();
             $result = mysqli_query($conn,$query);
-                while($row=mysqli_fecth_array($result)){
+                while($row = mysqli_fetch_array($result)){
                     echo "<tr>";
                     echo "<td>{$row['device_image']}</td>";
                     echo "<td>{$row['device_id']}</td>";
                     echo "<td>{$row['category']}</td>";
                     echo "<td>{$row['brand']}</td>";
                     echo "<td>{$row['model']}</td>";
-                    echo "<td>{$row['']}</td>";
-                    echo "<td>{$row['']}</td>";
+                    echo "<td><form action=\"device_summary.php\" method=\"post\">
+                        <input type=\"hidden\" name=\"device_id\" value=\"{$row['device_id']}\">
+                        <input type=\"submit\" value=\"View\">
+                    </form></td>";
+                    echo "<td>
+                                <a href=\"assets/php/delete.php?device_id={$row['device_id']}\">
+                                    <button class =\"tab_button\" type=\"button\">Delete Device</button>
+                                </a>
+                            </td>";
                     echo "</tr>";
                 }
             ?>
         </table>
             <?php
             if(isset($_REQUEST['add_device'])){
-                $device_id= $_REQUEST['device_id'];
                 $category = $_REQUEST['category'];
-                $brand= $_REQUEST['brand'];
-                $model = $_REQUEST['model'];
-                $picture= time() . $_FILES['device_image'][];
+                $brand= $_REQUEST['devicebrand'];
+                $model = $_REQUEST['modelname'];
+                $device_name = $_REQUEST['device_name'];
+                $device_serial = $_REQUEST['serialnumber'];
+                $picture= time() . basename($_FILES['device_image']['name']);
                 //move picture to the upload file
                 $destination = "assets\images\devices\ ". $picture;
-                move_uploaded_file($_FILES['device_image'][''], $destination);
+                move_uploaded_file($_FILES['device_image']['tmp_name'], $destination);
                 $query="INSERT INTO `coregroup`.`devices`
-                    (`device_id`,
-                    `owner_id`,
-                    `description`,
+                    (
                     `category`,
                     `brand`,
                     `model`,
                     `serial_number`,
-                    `location`,
                     `device_name`,
                     `device_image`)
                     VALUES
-                    ($device_id,
-                    $categoy,
-                    $brand,
-                    $model,
-                    $picture,
+                    (
+                     $category,
+                     $brand,
+                     $model,
+                     $device_serial,
+                     $device_name,
+                     $picture
                     )";
                 
 
             }
             ?>
-                    <form action="device_summary.php" method="post">
-                        <input type="hidden" name="work_order_id" value="1">
-                        <input type="submit" value="View">
-                    </form>
-                </td>
-                <td><a href="assets/php/delete.php?device_id=1"><button class ="tab_button" type="button">Delete</button></a></td>";
-            </tr>
-        </table>  
+          
     </div>
     <div id="add_device_modal" class="modal">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">

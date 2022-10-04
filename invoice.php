@@ -58,22 +58,29 @@ global $host;
                 <p>49 Bastile Drive</p>
                 <p>046 566 8795</p>
             </div>
+            <?php
+                $invoice_id = $_POST['invoice_id'];
+                $query ="SELECT * FROM coregroup.invocies WHERE `invoice_id` = $invoice_id;";
+                $conn = get_db();
+                $result = mysqli_query($conn, $query);
+                $row = mysqli_fetch_array($result);
+            ?>
             <table id="side-table">
                 <tr>
                     <th>Invoice Date</th>
-                    <td>24 August 2022<td>
+                    <td><?php echo $row['date'];?></td>
                 </tr>
                 <tr>
                     <th>Invoice Number</th>
-                    <td>IVN AA0001<td>
+                    <td><?php echo $row['invoice_number'];?></td>
                 </tr>
                 <tr>
                     <th>Reference</th>
-                    <td>JoeSoap@gmail.com // MikeOxlong@gmail.com<td>
+                    <td><?php echo $row['reference'];?></td>
                 </tr>
                 <tr>
                     <th>Balance Due</th>
-                    <td><strong>R 414.00</strong><td>
+                    <td><?php echo $row['balance_due'];?></td>
                 </tr>
 
             </table>
@@ -84,13 +91,12 @@ global $host;
                     <th>Unit Price</th>
                     <th>Vat</th>
                     <th id= "inv_sum">Amount ZAR</th>
+                    <?php
+                    
+                    ?>
                 </tr>
                 <tr>
-                    <td>Samsung A22 Glass Screen</td>
-                    <td>1</td>
-                    <td>250</td>
-                    <td>15%</td>
-                    <td id= "inv_sum">250.00</td>
+                    
                 </tr>
                 <tr>
                     <td>Glue Binding</td>
