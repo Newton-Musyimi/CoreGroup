@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Added username input code to the add employee modal">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_26_2022_1_41_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_26_2022_1_41_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/avatars/Thumbs.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/avatars/avatar1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/avatars/avatar2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/avatars/avatar3.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/avatars/avatar4.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/avatars/avatar5.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/dogs/image2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging.php" beforeDir="false" afterPath="$PROJECT_DIR$/messaging.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/Thumbs.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/php/Workorder.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/Workorder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/php/workorders_scripts.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/php/workorders_scripts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security/delete_account.php" beforeDir="false" afterPath="$PROJECT_DIR$/security/delete_account.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/table.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/template.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ticketing.php" beforeDir="false" afterPath="$PROJECT_DIR$/ticketing.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/workorder_summary.php" beforeDir="false" afterPath="$PROJECT_DIR$/workorder_summary.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +149,8 @@
       <workItem from="1664673435909" duration="70000" />
       <workItem from="1664708287169" duration="12518000" />
       <workItem from="1664825425572" duration="83000" />
-      <workItem from="1664825551745" duration="11237000" />
+      <workItem from="1664825551745" duration="27963000" />
+      <workItem from="1664854786874" duration="1040000" />
     </task>
     <task id="LOCAL-00001" summary="PHPStorm configuration files">
       <created>1659551907951</created>
