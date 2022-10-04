@@ -64,8 +64,7 @@ global $host;
         </script>
          
     </header>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-    <input type="button" class ="modal-button" name="compose_modal_button"id="compose_modal_button" value="Compose">
+        <button id="compose_modal_button" class ="modal-button">Compose</button>
     <div class="content-body">
 
             
@@ -73,7 +72,7 @@ global $host;
             
             <div id="messages">
                 <table id="messaging">
-                    <tr class="message_summary" onclick="winow.location='messaging2.php';">
+                    <tr class="message_summary" onclick="window.location='messaging.php?message_id=1';">
                         <td>schedule:<br>From</td><td>Wo. id:<br>2022:10/01</td>                        
                     </tr>
                     <tr class="message_summary">
@@ -103,24 +102,33 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
             </div>
             
         </div>
-    </form>
         <div id="compose_modal" class="modal">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
             <span class="close">&times;</span>
-            <!-- Insert form below -->
-            <textarea rows="4" cols="50" name="comment" form="usrform">
-            <!-- Insert form above -->
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
+                <!-- Insert form below -->
+                    <label for="title"><strong>Title:</strong></label><br>
+                    <input type="text" name="title"><br><br>
+                    <label for="to"><strong>To:</strong></label><br>
+                    <input type="text" name="to"><br><br>
+                    <textarea id="message" name="message" rows="4" cols="50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus enim magna, at tristique est euismod et. Duis vel vehicula nibh. Nunc eget enim ultricies, egestas dolor sit amet, maximus felis. Morbi non tortor nisi. Quisque pulvinar libero vel nunc vehicula, non mattis dolor gravida. Nullam eget arcu in tellus tempor dictum. Cras feugiat nec turpis non eleifend. Nunc bibendum nisi et fringilla facilisis. Donec consequat, lectus sed posuere mollis, sapien erat bibendum urna, sed bibendum purus augue vulputate enim.</textarea><br>
+                    <input type="submit"name="submit" value="Send">
+                <!-- Insert form above -->
 
-        </form>
-        <div id="reply_modal" class="modal">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
-        <span class="close">&times;</span>
-        <!-- Insert form below -->
-                    
-        <!-- Insert form above -->
-
-        </form>
+            </form>
         </div>
+        <div id="reply_modal" class="modal">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
+                <span class="close">&times;</span>
+                <!-- Insert form below -->
+                    <label for="title"><strong>Title:</strong></label><br>
+                    <input type="text" name="title"><br><br>
+                    <label for="to"><strong>To:</strong></label><br>
+                    <input type="text" name="to"><br><br>
+                    <textarea id="response" name="response" rows="4" cols="50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tempus enim magna, at tristique est euismod et. Duis vel vehicula nibh. Nunc eget enim ultricies, egestas dolor sit amet, maximus felis. Morbi non tortor nisi. Quisque pulvinar libero vel nunc vehicula, non mattis dolor gravida. Nullam eget arcu in tellus tempor dictum. Cras feugiat nec turpis non eleifend. Nunc bibendum nisi et fringilla facilisis. Donec consequat, lectus sed posuere mollis, sapien erat bibendum urna, sed bibendum purus augue vulputate enim.</textarea><br>
+                    <input type="submit"name="submit" value="Send">
+                <!-- Insert form above -->
+
+            </form>
         </div>
 
     </div>
@@ -149,7 +157,14 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
             modal.style.display = "none";
         }
 
-        
+         // When the user clicks anywhere outside the modal, close it
+         window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }else if(event.target == modal2){
+                    modal2.style.display = "none";
+                }
+        }   
         // Get the modal
         var modal2 = document.getElementById("reply_modal");
 
@@ -157,7 +172,7 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
         var btn2 = document.getElementById("reply_modal_button");
 
         // Get the <span> element that closes the modal
-        var span2 = document.getElementsByClassName("close")[0];
+        var span2 = document.getElementsByClassName("close")[1];
 
         // When the user clicks the button, open the modal
         btn2.onclick = function() {
@@ -168,14 +183,6 @@ Cras maximus turpis eu velit consectetur, vitae mollis lacus laoreet. Suspendiss
         span2.onclick = function() {
             modal2.style.display = "none";
         }
-        // When the user clicks anywhere outside the modal, close it
-        window.onclick = function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }else if(event.target == modal2) {
-                        modal2.style.display = "none";
-                    }
-                }
     </script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>
 </body>

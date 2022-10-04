@@ -57,7 +57,6 @@ nav button {
  
 }
 
-
 a {
     text-decoration: none;
   }
@@ -140,6 +139,16 @@ a {
   #submit-btn:hover {
     box-shadow: 0px 1px 18px #a7d2b4fb;
   }
+  
+  .tab_button{
+    background-color: #2a802d;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    margin: 10px 5px 5px 5px ;
+    border-radius: 4px;
+    cursor: pointer;
+}
   .form {
     display: flex;
     flex-direction: column;

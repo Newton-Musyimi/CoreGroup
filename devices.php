@@ -41,62 +41,67 @@ require_once('security/header.php');
             <tr>
                 <th>Device Image</th>
                 <th>Device ID</th>
-                <th>Device</th>
-                <th>Type</th>
+                <th>Category</th>
+                <th>Brand</th>
+                <th>Model</th>
                 <th>Assigned To</th>
                 <th>View</th>
             </tr>
-            <tr>
-                <td><img src="assets/images/hardware-bg.jpg" class="site_images" ></td>
-                <td>1.</td>
-                <td>Inspiron 15</td>
-                <td>Laptop</td>
-                <td>Assigned To</td>
-                <td>
+            <?php
+            $query = "SELECT * FROM coregroup.devices;";
+            $conn = get_db();
+            $result = mysqli_query($conn,$query);
+                while($row=mysqli_fecth_array($result)){
+                    echo "<tr>";
+                    echo "<td>{$row['device_image']}</td>";
+                    echo "<td>{$row['device_id']}</td>";
+                    echo "<td>{$row['category']}</td>";
+                    echo "<td>{$row['brand']}</td>";
+                    echo "<td>{$row['model']}</td>";
+                    echo "<td>{$row['']}</td>";
+                    echo "<td>{$row['']}</td>";
+                    echo "</tr>";
+                }
+            ?>
+        </table>
+            <?php
+            if(isset($_REQUEST['add_device'])){
+                $device_id= $_REQUEST['device_id'];
+                $category = $_REQUEST['category'];
+                $brand= $_REQUEST['brand'];
+                $model = $_REQUEST['model'];
+                $picture= time() . $_FILES['device_image'][];
+                //move picture to the upload file
+                $destination = "assets\images\devices\ ". $picture;
+                move_uploaded_file($_FILES['device_image'][''], $destination);
+                $query="INSERT INTO `coregroup`.`devices`
+                    (`device_id`,
+                    `owner_id`,
+                    `description`,
+                    `category`,
+                    `brand`,
+                    `model`,
+                    `serial_number`,
+                    `location`,
+                    `device_name`,
+                    `device_image`)
+                    VALUES
+                    ($device_id,
+                    $categoy,
+                    $brand,
+                    $model,
+                    $picture,
+                    )";
+                
+
+            }
+            ?>
                     <form action="device_summary.php" method="post">
                         <input type="hidden" name="work_order_id" value="1">
                         <input type="submit" value="View">
                     </form>
                 </td>
-            </tr>
-            <tr>
-                <td><img src="assets/images/hardware-bg.jpg" class="site_images" ></td>
-                <td>2.</td>
-                <td>Dell</td>
-                <td>Desktop</td>
-                <td>Assigned To</td>
-                <td>
-                    <form action="device_summary.php" method="post">
-                        <input type="hidden" name="work_order_id" value="1">
-                        <input type="submit" value="View">
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="assets/images/hardware-bg.jpg" class="site_images" ></td>
-                <td>3.</td>
-                <td>Macbook Pro</td>
-                <td>Laptop</td>
-                <td>Assigned To</td>
-                <td>
-                    <form action="device_summary.php" method="post">
-                        <input type="hidden" name="work_order_id" value="1">
-                        <input type="submit" value="View">
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="assets/images/hardware-bg.jpg" class="site_images" ></td>
-                <td>4.</td>
-                <td>NOC</td>
-                <td>Monitor</td>
-                <td>Assigned To</td>
-                <td>
-                    <form action="device_summary.php" method="post">
-                        <input type="hidden" name="work_order_id" value="1">
-                        <input type="submit" value="View">
-                    </form>
-                </td>
+                <td><a href="assets/php/delete.php?device_id=1"><button class ="tab_button" type="button">Delete</button></a></td>";
             </tr>
         </table>  
     </div>
@@ -152,6 +157,7 @@ require_once('security/header.php');
             <div class="form-group">
             </div>
             <input type= "submit" name="add_device" id="add_device" value="Add Device">
+
             <!-- Insert form above -->
 
         </form>

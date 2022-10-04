@@ -97,7 +97,7 @@ global $host;
         <input type="radio" name="request_type" id="replace" value="replace">&emsp;
 
 
-        <h3><strong>Device</strong></h3>
+        <h3 class="h3_heading"><strong>Device</strong></h3>
 
         <?php
         $client_id = "";
@@ -176,9 +176,9 @@ global $host;
 
 
                 <label for=\"modelname\"><strong>Model Name</strong>(eg. MacBook Pro, HP L110, Dell Inspiron 15)</label><br>
-                <input type = \"text\" name = \"modelname\" id = \"modelname\"><br>
+                <input type = \"text\" name = \"modelname\" id = \"modelname\" required><br>
                 <label for =\"serial number\"><strong>Serial Number</strong> (Up to 8 digits) </label><br>
-                <input type= \"text\" name = \"serialnumber\" id = \"serialnumber\"><br>  ";
+                <input type= \"text\" name = \"serialnumber\" id = \"serialnumber\" maxlength='8' required><br>  ";
         }
         function getDevices(){
             if ($_SESSION['role'] == 'CLIENT'){
@@ -250,7 +250,7 @@ global $host;
         <label for ="date"><strong>Please choose a drop-off date</strong></label>
         <input type="date" name="date" id="date" class="date-today" min=""><br><br>
 
-        <h3><strong>Requests</strong></h3>
+        <h3 class="h3_heading"><strong>Requests</strong></h3>
         <p>Please state any special requests</p>
         <textarea id="requestbox" name="request_box" rows="4" cols="50">
         </textarea>
