@@ -187,8 +187,11 @@ function receptionistWorkorderTable(){
 function technicianWorkorderTable(){
     global $user_id, $conn;
     $query = "SELECT `workorders`.`wo_id`, `workorders`.`status`, `workorders`.`date_started`, `devices`.`device_name` AS name
-                        FROM `coregroup`.`workorders` JOIN coregroup.devices ON workorders.device_id = devices.device_id
-                        WHERE client_id = $user_id;";
+                        FROM `coregroup`.`workorders` 
+                        JOIN coregroup.devices ON workorders.device_id = devices.device_id
+                        JOIN coregroup.assigned_technicians ON workorders.wo_id = assigned_technicians.wo_id
+                        WHERE assigned_technicians.employee_id = $user_id
+                        GROUP BY wo_id;";
 
     $result = mysqli_query($conn, $query) or die("Could not query for client workorder with id number:$user_id! Contact admin for assistance: " . $conn->error);
     echo "<tr>
