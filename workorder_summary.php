@@ -181,7 +181,6 @@ global $host;
                 </tr> 
                 <tr>
                     <th>Hours Worked</th>
-                    <td></td>
                 </tr>
                 <tr>
                     <th>Dispatch:</th>
