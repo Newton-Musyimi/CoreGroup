@@ -114,6 +114,10 @@ require_once('security/header.php');
                                                     }
                                                     mysqli_query($conn, $query) or die($conn->error);
                                                     mysqli_close($conn);
+                                                    echo "
+                                                    <script>
+                                                    window.location.href = 'profile.php';
+                                                    </script>";
                                                 }else{
                                                     echo "File is not an image!";
                                                 }
