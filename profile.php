@@ -133,7 +133,7 @@ require_once('security/header.php');
                                 <div class="col">
                                     <div class="card shadow mb-3">
                                         <div class="card-header py-3">
-                                            <p class="text-primary m-0 fw-bold">User Settings</p>
+                                            <p class="text-primary m-0 fw-bold">User Infomation</p>
                                         </div>
                                         <div class="card-body">
                                             <form>
@@ -175,7 +175,7 @@ require_once('security/header.php');
                 </div>
     <footer class="bg-white sticky-footer">
         <div class="container my-auto">
-            <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy 2022</span></div>
+            <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>
         </div>
     </footer>
     <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>

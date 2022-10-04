@@ -62,7 +62,6 @@ global $host;
             <h4>How do we do it?</h4>
             <p>We operate in a fully equipped technical workshop by highly trained technicians that love what they do.<br>
                 Our well-trained staff will provide students with excellent service.
-
             </p>
 
         </section>
@@ -78,13 +77,22 @@ global $host;
                 <textarea id="message" name="message" row="10" col="50"></textarea><br><br>
                 <input type="submit" name ="submit" value="SEND">
             </form>
-           <!-- <?php
-            echo "<p style=\"color: green;\">Your submitted message has been sent!</p>";
-        ?> -->
-            </section>
+           <?php
+           if(isset($_REQUEST['submit'])){
+               $sender = $_REQUEST['email'].": ".$_REQUEST['full_name'];
+               $message = $_REQUEST['message'];
+               $type = "contact_us";
+               $conn = get_db();
+               $query = "INSERT INTO messages (sender, recipient, message, type) VALUE ('$sender','helpdesk', '$message','$type');";
+               $result = mysqli_query($conn, $query) OR DIE(mysqli_error($conn));
+                if($result){
+                    echo "<p style=\"color: green;\">Your submitted message has been sent!</p>";
+                }
+           }
+           ?>
+        </section>
         <div class= "bottom-page">         
         </div>
-        <!-- <section class="banner"></section> -->
     </div>
   
             

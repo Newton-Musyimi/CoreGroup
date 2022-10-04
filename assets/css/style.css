@@ -77,10 +77,6 @@ padding: 2vh 2vh 2vh 2vh;
     border-bottom: 2px solid black;
   
 }
-#ticketing_button_group{
-    
-}
-
 .top-content{
     margin-left: 10px; 
         
@@ -197,6 +193,9 @@ input[type=submit] :active{
     box-shadow:  0 5px #FFFF;
     transform: translateY(4px)
 
+}
+#message, #response{
+    height: 5vh;
 }
 .site_images {
     border: 1px solid #ddd;
@@ -350,20 +349,6 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*messaging page*/
 #wrapper{
     margin: 0 auto;
@@ -395,8 +380,6 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     font-weight: bold;
     border-radius: 4px;
   }
-
-
 
 .notification {
     background-color: #555;

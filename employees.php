@@ -156,6 +156,23 @@ tr:hover {background-color: #048337;}
         $string = stripslashes($string);
         return strtolower($string);
     }
+    function addRole($conn, $username, $title){
+        $query = "SELECT employee_id FROM employees WHERE username = '$username'";
+        $result = mysqli_query($conn, $query) or die ("Employee SELECT error!" . $conn->error);
+        $row = mysqli_fetch_array($result);
+        $employee_id = $row['employee_id'];
+        $role_id = 3;
+        if($title === 'MANAGER'){
+            $role_id = 1;
+        }elseif ($title === 'SECRETARY') {
+            $role_id = 2;
+        }
+        $query = "INSERT INTO employee_role (employee_id, role_id) VALUES ('$employee_id', '$role_id')";
+        $result = mysqli_query($conn, $query) or die ("Employee Role INSERT error!" . $conn->error);
+        echo "<script>
+                window.location.href = 'employees.php';
+              </script>";
+    }
     if(isset($_REQUEST['title'])){
         $title = $_REQUEST['title'];
         $first_name = $_REQUEST['first_name'];
@@ -169,6 +186,7 @@ tr:hover {background-color: #048337;}
             $sql = "INSERT INTO employees (title, first_name, last_name, email, mobile, address, username) VALUES ('$title', '$first_name', '$last_name', '$email', '$mobile', '$address', '$username');";
             if ($conn->query($sql) === TRUE) {
                 echo "<p style='color: green'>$first_name $last_name has been added to the database</p>";
+                addRole($conn, $username, $title);
             } else {
                 echo "<p style='color: darkred'><strong style='color: red'>Error:</strong> Could not add $first_name $last_name into the databse because:".current_employee($conn, $email, $mobile)."</p><p style='color: red'><strong>Message: </strong>" .$conn->error."</p>";
             }

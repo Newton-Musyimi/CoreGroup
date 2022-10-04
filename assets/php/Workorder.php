@@ -22,13 +22,14 @@ class Workorder
             if(strlen($row['date_started']) < 4){
                 $date = "Not Started";
             }else{
-                $date = date('D d M Y', strtotime($row['date_started']));
+                $date = date('dS D F Y H:i:s A', strtotime($row['date_started']));
             }
-            $dropOffDate = date('D d M Y', strtotime($row['dropoff_date']));
+            $dropOffDate = date('dS D F Y H:i:s A', strtotime($row['dropoff_date']));
             $status = $this->setStatus($wo_id, $row['status']);
             $techs = $this->getAssignedTechnicians($wo_id);
             $cost = $this->getCost($wo_id);
             $client_name = "{$row['first_name']} {$row['last_name']}";
+            $hours_worked = 0;
             return array(
                 'status' => $status,
                 'priority' => $row['priority'],
@@ -50,7 +51,8 @@ class Workorder
                 'device_location'=> $row['device_location'],
                 'client_comments'=> $row['client_comments'],
                 'techs'=> $techs,
-                'cost' => $cost
+                'cost' => $cost,
+                'hours_worked' => $hours_worked
             );
         } else {
             return false;

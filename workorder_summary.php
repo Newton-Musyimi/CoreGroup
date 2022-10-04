@@ -63,7 +63,7 @@ global $host;
         function addAssignee($role, $id): void
         {
             if ($role == 'ADMINISTRATOR' || $role == 'RECEPTIONIST') {
-                echo "<form action=\"\" id=\"add_technician_form\" method=\"POST\">
+                echo "<form action=\"\" id=\"add_technician_form\" method=\"POST\" style='height: 100%;'>
                             <select name=\"assignedto\" id=\"assignedto\">";
                 $conn = get_db();
                 //SQL Code that gets value of employee id that is not assigned to a specific workorder
@@ -120,7 +120,46 @@ global $host;
                 <tr>
                     <th>Customer Name:</th>
                     <td><?php echo $workorder['client_name'];?></td>
-                </tr> 
+                </tr>
+                <tr>
+                    <th><?php echo $workorder['techs'];?></th>
+                    <td>
+
+
+                        <?php
+                        $role = $_SESSION['role'];
+                        addAssignee($role, $id);
+                        if(isset($_REQUEST['add_assignee'])){
+                            $technician_id = $_REQUEST['assignedto'];
+                            $workorder_id = $_REQUEST['workorder_id'];
+                            $conn = get_db();
+                            $query = "INSERT INTO assigned_technicians (employee_id, wo_id) VALUES ($technician_id, $workorder_id);";
+                            $result = mysqli_query($conn, $query) or die ("Could not add technician!" . $conn->error);
+                            if($result){
+                                echo "<p style='color:green;'>Technician added successfully!</p>";
+                                echo "<script>
+                                            window.location.href = 'workorder_summary.php?work_order_id=$id';
+                                            </script>";
+                            }else{
+                                echo "<p style='color:red;'>Failed to add technician!</p>";
+                            }
+                        }
+                        ?>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>Parts used: <button type= "button" class ="modal-button" name="view_resources_button" id="view_resources_button">View Parts</button>
+                    <th>Invoice:<a href="invoice.php"><button type= "button" class ="modal-button" name="view_invoice_button" id="view_invoice_button">View Invoice</button>
+
+                    </th>
+                    <td>
+                        <?php
+                        if ($role != 'CLIENT') {
+                            echo "<button type= \"button\" class =\"modal-button\" name = \"add_resources_button\" id=\"add_resources_button\">Add Parts</button></td>";
+                        }
+                        ?>
+                </tr>
             </table>
             <table id="table2" style="margin-bottom:30px;"> 
                 <tr>
@@ -139,44 +178,6 @@ global $host;
                     <th>Serial Number:</th>
                     <td><?php echo $workorder['device_serial_number'];?></td>
                 </tr>
-                <tr>
-                    <th><?php echo $workorder['techs'];?></th>
-                    <td>
-
-
-                            <?php
-                            $role = $_SESSION['role'];
-                            addAssignee($role, $id);
-                            if(isset($_REQUEST['add_assignee'])){
-                                $technician_id = $_REQUEST['assignedto'];
-                                $workorder_id = $_REQUEST['workorder_id'];
-                                $conn = get_db();
-                                $query = "INSERT INTO assigned_technicians (employee_id, wo_id) VALUES ($technician_id, $workorder_id);";
-                                $result = mysqli_query($conn, $query) or die ("Could not add technician!" . $conn->error);
-                                if($result){
-                                    echo "<p style='color:green;'>Technician added successfully!</p>";
-                                    echo "<script>
-                                            window.location.href = 'workorder_summary.php?work_order_id=$id';
-                                            </script>";
-                                }else{
-                                    echo "<p style='color:red;'>Failed to add technician!</p>";
-                                }
-                            }
-                            ?>
-
-                    </td>
-                </tr>
-                <tr>
-                    <th>Parts used: <button type= "button" class ="modal-button" name="view_resources_button" id="view_resources_button">View Parts</button>
-
-                    </th>
-                    <td>
-                        <?php
-                        if ($role != 'CLIENT') {
-                            echo "<button type= \"button\" class =\"modal-button\" name = \"add_resources_button\" id=\"add_resources_button\">Add Parts</button></td>";
-                        }
-                        ?>
-                </tr>
             </table>
             <table id="table3" style="margin-bottom:30px;">
                 <tr>
@@ -184,8 +185,8 @@ global $host;
                     <td><?php echo $workorder['requested_by'];?></td>
                 </tr>
                 <tr>
-                    <th>Date started:</th>
-                    <td><?php echo $workorder['date_started'];?></td>
+                    <th>Date dropped-off:</th>
+                    <td><?php echo $workorder['dropoff_date'];?></td>
                 </tr>   
                 <tr>
                     <th>Date completed</th>
@@ -245,33 +246,16 @@ global $host;
                 <?php
                 if ($role == "TECHNICIAN"){
                     echo "<tr>
-                    <th>Hours Worked:</th>
+                    <th>Hours Worked:{$workorder['hours_worked']}</th>
                     <td><form action=\"\" method=\"POST\">
                         <input type='number' name='hours_worked'>
-                            <input type='submit' name='update_status' value='Update Workorder Status'>
+                            <input type='submit' name='update_technician_hours' value='Update Technician Hours'>
                     </form></td>
                 </tr>";
-                }elseif($role == 'ADMINISTRATOR' || $role == 'RECEPTIONIST'){
-                    echo "<form action=\"\" id=\"add_technician_form\" method=\"POST\">
-                        <select name=\"assignedto\" id=\"assignedto\">";
-                    $conn = get_db();
-                    //SQL Code that gets value of employee id that is not assigned to a specific workorder
-                    $query = "SELECT employee_id, first_name, last_name 
-                                        FROM employees 
-                                        WHERE employee_id NOT IN 
-                                              (SELECT employee_id 
-                                               FROM assigned_technicians 
-                                               WHERE wo_id = $id) 
-                                          AND title = 'TECHNICIAN';";
-                    $result = mysqli_query($conn, $query) or die ("Could not get technicians!" . $conn->error);
-                    while ($row = mysqli_fetch_array($result)) {
-                        echo "<option value=\"{$row['employee_id']}\">{$row['first_name']} {$row['last_name']}</option>";
-                    }
-                    echo "</select>
-                    <input type=\"hidden\" name=\"workorder_id\" value=\"$id\">
-                    <input type=\"submit\" name=\"add_assignee\" value=\"Add Assignee\">";
                 }else{
-                    
+                    echo "<tr>
+                    <th>Hours Worked:</th>
+                    <td>{$workorder['hours_worked']}</td>";
                 }
                 ?>
 
@@ -284,7 +268,7 @@ global $host;
                     <th>Job Status: </th>
                     <td>
                         <?php
-                        if ($role == 'ADMINISTRATOR' || $role == 'TECHNICIAN') {
+                        if (($role == 'ADMINISTRATOR' || $role == 'TECHNICIAN') && $workorder['status'] !== 'completed') {
                             echo "<form action=\"\" method=\"POST\">
                         <select name=\"job_status\" id=\"job_status\" style='height: 100%;'>
                             <option value=\"pending\">Pending</option>
