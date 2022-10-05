@@ -98,7 +98,7 @@ global $host;
         }
         ?>
         <h1>WorkOrder Summary</h1>
-        <h2>Work Order number:<?php echo $id;?></h2> 
+        <h2>Work Order Title:<?php echo $workorder['title'];?></h2>
         <div class="grid-container">
             <table id="table1" style="margin-bottom:30px;">
                 <tr>
@@ -150,15 +150,19 @@ global $host;
                 </tr>
                 <tr>
                     <th>Parts used: <button type= "button" class ="modal-button" name="view_resources_button" id="view_resources_button">View Parts</button>
-                    <th>Invoice:<a href="invoice.php"><button type= "button" class ="modal-button" name="view_invoice_button" id="view_invoice_button">View Invoice</button>
-
-                    </th>
-                    <td>
                         <?php
                         if ($role != 'CLIENT') {
-                            echo "<button type= \"button\" class =\"modal-button\" name = \"add_resources_button\" id=\"add_resources_button\">Add Parts</button></td>";
+                            echo "<button type= \"button\" class =\"modal-button\" name = \"add_resources_button\" id=\"add_resources_button\">Add Parts</button>";
                         }
                         ?>
+                    </th>
+
+                </tr>
+                <tr>
+                    <th>Cost:<?php echo $workorder['cost'];?></th>
+                    <td>
+                        <button type= "button" class ="modal-button" name="view_invoice_button" id="view_invoice_button">View Invoice</button>
+                    </td>
                 </tr>
             </table>
             <table id="table2" style="margin-bottom:30px;"> 
@@ -302,7 +306,7 @@ global $host;
                             </tr>
                             <?php
                             $conn = get_db();
-                            $query = "SELECT count(`resources`.`product_id`) AS quantity, product, category, resources.price AS price, resources.product_id FROM products
+                            $query = "SELECT count(`resources`.`product_id`) AS quantity, product, resources.product_id FROM products
                             INNER JOIN resources ON `resources`.`product_id` = `products`.`product_id`
                             WHERE `resources`.`wo_id` IS NULL
                             GROUP BY resources.product_id;";
@@ -315,6 +319,7 @@ global $host;
                                     <td>
                                     <form>
                                         <input type='number' name='quantity' min='0' max='{$row['quantity']}'>
+                                        <input type='hidden' name='product_id' value='{$row['product_id']}'>
                                         <input type='submit' name='assign_resources' value='Assign'>
                                     </form>
                                     </td>
@@ -328,16 +333,14 @@ global $host;
                 $quantity_to_assign = $_POST['quantity_to_assign'];
                 $product_id = $_POST['product_id'];
                 $workorder_id = $_POST['workorder_id'];
-                $query = "INSERT INTO `coregroup`.`assigned_resources`
-                            (`workorder_id`,
-                            `product_id`,
-                            `quantity_assigned`)
-                            VALUES
-                            ($workorder_id,
-                            $product_id,
-                            $quantity_to_assign);";
+                $query = "SELECT asset_id FROM `resources` WHERE `product_id` = $product_id AND `wo_id` IS NULL LIMIT $quantity_to_assign;";
                 $conn = get_db();
-                $result = mysqli_query($conn, $query) or die("query not successfully executed");
+                $result = mysqli_query($conn, $query) or die("<p style='color:red;'>query not successfully executed</p>");
+                while($row = mysqli_fetch_array($result)){
+                    $asset_id = $row['asset_id'];
+                    $query = "UPDATE `resources` SET `wo_id` = $workorder_id WHERE `asset_id` = $asset_id;";
+                    $result = mysqli_query($conn, $query) or die("<p style='color:red;'>query not successfully executed</p>");
+                }
                 echo "<p style='color:green;'>Resources successfully assigned!</p>";
                 echo "<script>
                         window.location.href = 'workorder_summary.php?work_order_id=$id';
