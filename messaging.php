@@ -69,12 +69,18 @@ global $host;
 
             
         <div class="grid-container">
-            <input type="button" class ="modal-button" name="reply_modal_button" id="reply_modal_button" style = "float:right;"  value="Reply">
-            <div id="messages">
-                <table id="messaging">
-                    <?php
-                    $conn = get_db();
-                    $username = $_SESSION['username'];
+            <div id="message_text" >
+                <?php
+                $conn = get_db();
+                $username = $_SESSION['username'];
+                $title = "";
+                $message_id = "";
+                $recipient = "";
+                $datetime = "";
+                $message = "";
+                $sender = "";
+                if(isset($_REQUEST['message_id'])){
+
                     if($_SESSION['role'] == 'RECEPTIONIST' OR $_SESSION['role'] == 'TECHNICIAN') {
                         $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username OR recipient = 'helpdesk' ORDER BY datetime DESC;";
                     }else if($_SESSION['role'] == 'ADMINISTRATOR') {
@@ -82,8 +88,45 @@ global $host;
                     }else{
                         $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username ORDER BY datetime DESC;";
                     }
-
                     $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_assoc($result);
+                        $title = $row['title'];
+                        $message_id = $row['message_id'];
+                        $recipient = $row['recipient'];
+                        $sender = $row['sender'];
+                        $datetime = date('dS D F Y H:i:s A', strtotime($row['datetime']));
+                        $message = $row['message'];
+                    }
+                }
+                ?>
+
+
+
+                <div id="message_header" style = "padding-right:10px;">
+                    <h2>Subject:<?php echo $title;?> </h2><p style = "float:right; "><strong>Date:<?php echo $datetime;?></strong></p>
+                    <h3>From:<?php echo $sender;?></h3>
+                </div>
+
+                <div id="message_box">
+                    <?php echo $message;?>
+                </div>
+                <input type="button" class ="modal-button" name="reply_modal_button" id="reply_modal_button" style = "float:right;"  value="Reply">
+            </div>
+
+            <div id="messages">
+                <table id="messaging">
+                    <?php
+
+                    if($_SESSION['role'] == 'RECEPTIONIST' OR $_SESSION['role'] == 'TECHNICIAN') {
+                        $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username OR recipient = 'helpdesk' ORDER BY datetime DESC;";
+                    }else if($_SESSION['role'] == 'ADMINISTRATOR') {
+                        $sql = "SELECT * FROM messages";
+                    }else{
+                        $sql = "SELECT * FROM messages WHERE sender = '$username' OR recipient = '$username' ORDER BY `datetime` DESC;";
+                    }
+
+                    $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             $datetime = date('dS D F Y H:i:s A', strtotime($row['datetime']));
@@ -98,39 +141,7 @@ global $host;
 
 
             </div>
-            <div id="message_text" >
-                <?php
 
-                if(isset($_REQUEST['message_id'])){
-                    if($_SESSION['role'] == 'RECEPTIONIST' OR $_SESSION['role'] == 'TECHNICIAN') {
-                        $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username OR recipient = 'helpdesk' ORDER BY datetime DESC;";
-                    }else if($_SESSION['role'] == 'ADMINISTRATOR') {
-                        $sql = "SELECT * FROM messages";
-                    }else{
-                        $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username ORDER BY datetime DESC;";
-                    }
-                    $result = mysqli_query($conn, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                        $row = mysqli_fetch_assoc($result);
-                        $message_id = $row['message_id'];
-                        $recipient = $row['recipient'];
-                        $datetime = date('dS D F Y H:i:s A', strtotime($row['datetime']));
-                        $message = $row['message'];
-
-                ?>
-
-
-
-                <div id="message_header" style = "padding-right:10px;">
-                    <h2>Subject:<?php echo $row['title'];?> </h2><p style = "float:right; "><strong>Date:<?php echo $datetime;?></strong></p>
-                    <h3>From:<?php echo $row['sender'];?></h3>
-                </div>
-                <div id="message_box">
-                    <?php echo $row['message'];
-                    }
-                    }?>
-                </div>
-            </div>
         </div>
 
         <div id="compose_modal" class="modal">
@@ -139,11 +150,12 @@ global $host;
                 <!-- Insert form below -->
                     <h3>Compose</h3>
                     <label for="title"><strong>Title:</strong></label><br>
-                    <input type="text" name="title"><br><br>
-                    <label for="to"><strong>To:</strong></label><br>
-                    <input type="text" name="to"><br><br>
+                    <input type="text" id="title" name="title"><br><br>
+                    <label for="recipient"><strong>To:</strong></label><br>
+                    <input type="text" id="recipient" name="to"><br><br>
+                    <input type="hidden" id="sender" name="sender" value="<?php echo $_SESSION['username'];?>">
                     <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
-                    <input type="submit"name="submit" value="Send">
+                    <input type="submit"name="compose_message" value="Send">
                 <!-- Insert form above -->
 
             </form>
