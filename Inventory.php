@@ -46,65 +46,85 @@ global $host;
         </div>
         <table>
             <tr>
-                <th>Product Id</th>
-                <th>Name</th>
+                <th>Item</th>
+                <th>Category</th>
                 <th>Unit Price</th>
                 <th>Unit Cost</th>
-                <th>No. in Stock</th>
+                <th>In Stock</th>
             </tr>
-            <tr>
-                <td>20mm Screw</td>
-                <td>R0.25</td>
-                <td>25</td>
-                <td>Green</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td> iPhone 15 Scree</td>
-                <td>R200</td>
-                <td>3</td>
-                <td>Red</td>
-                <td>20</td>
-            </tr>
+            <?php
+            $conn = get_db();
+            $query = "SELECT count(`resources`.`product_id`) AS quantity, product, category, resources.price AS price, resources.cost AS cost, resources.product_id FROM products
+                            INNER JOIN resources ON `resources`.`product_id` = `products`.`product_id`
+                            WHERE `resources`.`wo_id` IS NULL
+                            GROUP BY resources.product_id;";
+            $result = mysqli_query($conn, $query) or die ("Could not get products!" . $conn->error);
+            while($row = mysqli_fetch_array($result)){
+                echo "<tr>
+                                    <td>{$row['product']}</td>
+                                    <td>{$row['category']}</td>
+                                    <td>{$row['price']}</td>
+                                    <td>{$row['cost']}</td>
+                                    <td>{$row['quantity']}</td>
+                                </tr>";
+            }
+            ?>
+
         </table>
     </div>
     <div id="add_order_modal" class="modal">
-        <h3 class="h3_heading">Add Device</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
+            <h3 class="h3_heading">Add Order</h3>
             <span class="close" >&times;</span>
             <!-- Insert form below -->
-                <label for="order_id">Order Id</label><br>
-                <input type="text" id="order_id" name="order_id"><br>
-
-                <label for="product_id">Product Id</label><br>
+                <label for="product_id">Item</label><br>
                 <select id="product_id" name="product_id">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                    <?php
+                    $query = "SELECT product_id, product, `sub-category` FROM products;";
+                    $conn = get_db();
+                    $result = mysqli_query($conn, $query);
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo "<option value='".$row['product_id']."'>{$row['product']} - {$row['sub-category']}</option>";
+                    }
+                    ?>
+                </select><br><br>
+                <label for="wo_id">Workorder</label><br>
+                <select id="wo_id" name="wo_id">
+                    <?php
+                    $query = "SELECT wo_id, title FROM workorders WHERE status != 'completed' AND status != 'cancelled';";
+                    $conn = get_db();
+                    $result = mysqli_query($conn, $query);
+                    while($row = mysqli_fetch_assoc($result)){
+                        if(empty($row['title'])) {
+                            echo "<option value='". $row['wo_id'] ."'>Workorder - ". $row['wo_id'] ."</option>";
+                        }else{
+                            echo "<option value='".$row['wo_id']."'>".$row['title']."</option>";
+                        }
+
+                    }
+                    ?>
                 </select><br><br>
 
-                <label for="ordered_by">Ordered by:</label><br>
-                <input type="text" id="ordered_by" name="ordered_by"><br>
-
-                <label for="date_ordered">Date Order:</label><br>
-                <input type="text" id="date_ordered" name="date_ordered"><br>
-
-                <label for="wo_id">WO_Id</label><br>
-                <input type="text" id="wo_id" name="wo_id"><br>
-
                 <label for="quantity">Quantity</label><br>
-                <input type="text" id="quantity" name="quantity"><br>
+                <input type="number" id="quantity" name="quantity"><br>
 
-                <label for="order_status">Order Status</label><br>
-                <input type="text" id="order_status" name="order_status"><br>
-
-                <label for="date_collected">Date Collected</label><br>
-                <input type="text" id="date_collected" name="date_collected"><br>
-
-                <label for="collect">Collect</label><br>
-                <input type="text" id="collect" name="collect"><br>
-
-                <input type="button" value="Add Order">
+                <input type="submit" name="add_order" value="Add Order">
             <!-- Insert form above -->
+            <?php
+            if(isset($_REQUEST['add_order'])){
+                $product_id = $_REQUEST['product_id'];
+                $wo_id = $_REQUEST['wo_id'];
+                $quantity = $_REQUEST['quantity'];
+                $query = "INSERT INTO orders (product_id, wo_id, ordered_by, quantity) VALUES ('$product_id', '$wo_id', '{$_SESSION['logged_in']}', '$quantity');";
+                $conn = get_db();
+                $result = mysqli_query($conn, $query) or die ("Could not add order!" . $conn->error);
+                mysqli_close($conn);
+                echo "<script>
+                           alert('Order added successfully!');
+                           window.location.href = 'orders.php';
+                       </script>";
+            }
+            ?>
 
         </form>
     </div>
@@ -114,10 +134,10 @@ global $host;
             <span class="close">&times;</span>
             <!-- Insert form below -->
                 <label for="product">Product Name</label><br>
-                <input type="text" name="product_name" id="product_name"><br>
+                <input type="text" name="product_name" id="product_name" required><br>
 
                 <label for="category">Category</label><br>
-                <input type="text" name="category" id="category"><br>
+                <input type="text" name="category" id="category" required><br>
 
                 <label for="sub-category">Sub-category</label><br>
                 <input type="text" name="sub-category" id="sub-category"><br>
@@ -125,8 +145,25 @@ global $host;
                 <label for="vendor">Vendor</label><br>
                 <input type="text" name="vendor" id="vendor"><br>
 
-                <input type="button" value="Add Product">
+                <input type="submit" value="Add Product">
             <!-- Insert form above -->
+            <?php
+            if(isset($_REQUEST['product_name'])){
+                $product_name = $_REQUEST['product_name'];
+                $category = $_REQUEST['category'];
+                $sub_category = $_REQUEST['sub-category'];
+                $sub_category = $_REQUEST['sub-category'];
+                $vendor = $_REQUEST['vendor'];
+                $query = "INSERT INTO products (product, category, `sub-category`, vendor) VALUES ('$product_name', '$category', '$sub_category', '$vendor');";
+                $conn = get_db();
+                $result = mysqli_query($conn, $query) OR die ("Could not add product!" . $conn->error);
+                mysqli_close($conn);
+                echo "<script>
+                           alert('Product added successfully!');
+                           window.location.href = 'inventory.php';
+                       </script>";
+            }
+            ?>
 
         </form>
     </div>
