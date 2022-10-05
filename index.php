@@ -65,6 +65,10 @@ global $host;
             </p>
 
         </section>
+        <section class = "track">
+            <h2 style="color: #af6b4c;">Track my device</h2>
+                <button class = "btn-bgstroke" id="track_ticket_number">Track your ticket</button>
+        </section>
         <section class="banner1">
             <h3>Contact us</h3>
             <h4>Need a hand? Write us a message</h4>
@@ -91,6 +95,16 @@ global $host;
            }
            ?>
         </section>
+        <div id="track_ticket_modal" class="modal">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
+            <span class="close">&times;</span>
+            <!-- Insert form below -->
+            <h2 style= "color:#af6b4c; float:inline:">Track my Ticket Number</h2>
+            <input type="number" id="ticket_number"><br><br>
+            <input type= "submit" name="submit" class="" value="Check Status">
+            <!-- Insert form above -->
+            
+        </form>          
         <div class= "bottom-page">         
         </div>
     </div>
@@ -100,7 +114,33 @@ global $host;
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>
         </div>
-        
+        <script>
+            // Get the modal
+            var modal = document.getElementById("track_ticket_modal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("track_ticket_number");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+            modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+            modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+}
+</script>
     </footer>
     <script>
         let brands_array = ["Samsung", "iPhone", "Dell", "ACER", "HP", "Sony"];

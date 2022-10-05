@@ -92,11 +92,18 @@ section, .banner1 {
   border-radius: 4px;
   cursor: pointer;
 }
-section, .banner2 {
+section, .banner2{
   width: 100%;
   padding:60px 0;
   text-align: center;
   background: #af6b4c;
+  color: white;
+}
+.track{
+  width: 100%;
+  padding:60px 0;
+  text-align: center;
+  background: #d2c4a7;
   color: white;
 }
 .btn-bgstroke {
@@ -108,7 +115,19 @@ section, .banner2 {
   cursor: pointer;
   font-weight: 300;
   float:center;
-  color:white 
+  color: white;
+ 
+}
+#track_ticket_number {
+  font-size: 20px;
+  display: inline-block;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 300;
+  float:center;
+  color:#af6b4c;
 }
 .btn-bgstroke:hover {
   background-color: white;
@@ -133,3 +152,50 @@ h2{
   background-size: cover;
 }
 
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: antiquewhite; /* Fallback color */
+  background-color: white; /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+input[type=submit]{
+  background-color: #2a802d;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  margin: 10px 5px 5px 5px ;
+  border-radius: 4px;
+  cursor: pointer;
+}
