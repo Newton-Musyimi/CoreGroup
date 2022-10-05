@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Added username input code to the add employee modal">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.php" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/theme.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/messaging.php" beforeDir="false" afterPath="$PROJECT_DIR$/messaging.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/orders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workorder_summary.php" beforeDir="false" afterPath="$PROJECT_DIR$/workorder_summary.php" afterDir="false" />
-    </list>
+    <list default="true" id="6849e4cb-3c4e-4d5c-98e6-17b87f706bf2" name="Changes" comment="Added username input code to the add employee modal" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,7 +135,8 @@
       <workItem from="1664825551745" duration="27963000" />
       <workItem from="1664854786874" duration="1040000" />
       <workItem from="1664907808685" duration="14553000" />
-      <workItem from="1664957271571" duration="14452000" />
+      <workItem from="1664957271571" duration="15945000" />
+      <workItem from="1664988771148" duration="533000" />
     </task>
     <task id="LOCAL-00001" summary="PHPStorm configuration files">
       <created>1659551907951</created>

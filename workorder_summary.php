@@ -161,8 +161,14 @@ global $host;
                 <tr>
                     <th>Cost:<?php echo $workorder['cost'];?></th>
                     <td>
-                        <button type= "button" class ="modal-button" name="view_invoice_button" id="view_invoice_button">View Invoice</button>
+                        <button <?php
+                                if ($workorder['cost'] == 0) {
+                                    echo "style='display:none;'";
+                                }
+                                ?>
+                                type= "button" class ="modal-button" name="view_invoice_button" id="view_invoice_button">View Invoice</button>
                     </td>
+
                 </tr>
             </table>
             <table id="table2" style="margin-bottom:30px;"> 
