@@ -1,7 +1,9 @@
 <?php
 function getOrders(){
     $conn = get_db();
-    $query = "SELECT * FROM orders;";
+    $query = "SELECT orders.*, products.product AS product, employees.username AS username FROM `orders` as orders
+                LEFT JOIN employees ON orders.ordered_by = employees.employee_id
+                JOIN products ON orders.product_id = products.product_id;";
     $result = mysqli_query($conn, $query) or die("Could not get orders! Contact admin for assistance: " . $conn->error);
     $list = "";
     while($row = mysqli_fetch_array($result)){
@@ -16,9 +18,8 @@ function getOrders(){
             $order_status = 'Fullfilled';
         }
         $date_ordered = date('D d M Y', strtotime($row['date_ordered']));
-        $list .= "<tr>             
-            <th>Order Id:</th>
-            <th>Product Id:</th>
+        $list .= "<tr>
+            <th>Item:</th>
             <th>Ordered by:</th>
             <th>Date Ordered:</th>
             <th>WorkOrder Id:</th>
@@ -29,9 +30,8 @@ function getOrders(){
             <th>Collected/Not Collected:</th>
             </tr>
             <tr>
-                <td>{$row['order_id']}</td>
-                <td>{$row['product_id']}</td>
-                <td>{$row['ordered_by']}</td>
+                <td>{$row['product']}</td>
+                <td>{$row['username']}</td>
                 <td>$date_ordered</td>
                 <td>{$row['wo_id']}</td>
                 <td>{$row['quantity']}</td>
