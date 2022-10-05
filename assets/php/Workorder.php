@@ -52,7 +52,8 @@ class Workorder
                 'client_comments'=> $row['client_comments'],
                 'techs'=> $techs,
                 'cost' => $cost,
-                'hours_worked' => $hours_worked
+                'hours_worked' => $hours_worked,
+                'title'=> $row['title']
             );
         } else {
             return false;
