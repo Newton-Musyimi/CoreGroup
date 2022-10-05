@@ -52,7 +52,8 @@ class Workorder
                 'client_comments'=> $row['client_comments'],
                 'techs'=> $techs,
                 'cost' => $cost,
-                'hours_worked' => $hours_worked
+                'hours_worked' => $hours_worked,
+                'title'=> $row['title']
             );
         } else {
             return false;
@@ -77,7 +78,14 @@ class Workorder
     }
 
     protected function getCost($wo_id){
-        return "0.00";
+        $query = "SELECT SUM(amount) AS cost FROM invoices WHERE wo_id = $wo_id;";
+        $conn = get_db();
+        $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number:$wo_id! Contact admin for assistance: " . $conn->error);
+        if ($row = mysqli_fetch_array($result)) {
+            return $row['cost'];
+        } else {
+            return 0;
+        };
     }
 
     protected function setStatus($wo_id, $status){

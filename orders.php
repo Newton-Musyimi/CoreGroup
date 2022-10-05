@@ -38,18 +38,6 @@ global $host;
     </header>
     <div class="content-body">
         <table id="order_details">
-            <tr>
-                <th>Order Id:</th>
-                <th>Product Id:</th>
-                <th>Ordered by:</th>
-                <th>Date Ordered:</th>
-                <th>WorkOrder Id:</th>
-                <th>Quantity:</th>
-                <th>Cost:</th>
-                <th>Order Status:</th>
-                <th>Date Collected:</th>
-                <th>Collected/Not Collected:</th>
-            </tr>
             <?php
             require_once ('assets/php/orders_scripts.php');
             echo getOrders();
