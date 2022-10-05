@@ -58,7 +58,7 @@ global $host;
         getHeader();
         ?>
         <script>
-            let current = document.getElementById("chatroom_button");
+            let current = document.getElementById("messaging_button");
             current.style.backgroundColor="#048337";
             current.focus();
         </script>
@@ -69,45 +69,20 @@ global $host;
 
             
         <div class="grid-container">
-            <div id="message_text" >
-            <?php
-            $conn = get_db();
-            $username = $_SESSION['username'];
-            if($_SESSION['role'] == 'RECEPTIONIST' OR $_SESSION['role'] == 'TECHNICIAN') {
-                "SELECT * FROM messages WHERE sender = $username OR recipient = $username OR recipient = 'helpdesk' ORDER BY datetime DESC;";
-            }else if($_SESSION['role'] == 'ADMINISTRATOR') {
-                "SELECT * FROM messages";
-            }else{
-                "SELECT * FROM messages WHERE sender = $username OR recipient = $username ORDER BY datetime DESC;";
-            }
-            $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username ORDER BY datetime DESC;";
-
-            $result = mysqli_query($conn, $sql);
-            if(isset($_REQUEST['message_id'])){
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $message_id = $row['message_id'];
-                        $recipient = $row['recipient'];
-                        $datetime = date('dS D F Y H:i:s A', strtotime($row['datetime']));
-                        $message = $row['message'];
-            ?>
-
-                <div id="message_header" style = "padding-right:10px;">
-                    <h2>Subject:<?php echo $row['title'];?> </h2><p style = "float:right; "><strong>Date:<?php echo $datetime;?></strong></p>
-                    <h3>From:<?php echo $row['sender'];?></h3>
-                </div>
-            </div>
-            <div id="message_box">
-                <?php echo $row['message'];
-                    }
-                }
-            }?>
-            </div>
             <input type="button" class ="modal-button" name="reply_modal_button" id="reply_modal_button" style = "float:right;"  value="Reply">
-        </div>
             <div id="messages">
                 <table id="messaging">
                     <?php
+                    $conn = get_db();
+                    $username = $_SESSION['username'];
+                    if($_SESSION['role'] == 'RECEPTIONIST' OR $_SESSION['role'] == 'TECHNICIAN') {
+                        $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username OR recipient = 'helpdesk' ORDER BY datetime DESC;";
+                    }else if($_SESSION['role'] == 'ADMINISTRATOR') {
+                        $sql = "SELECT * FROM messages";
+                    }else{
+                        $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username ORDER BY datetime DESC;";
+                    }
+
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -121,8 +96,43 @@ global $host;
                     ?>
                 </table>
 
-            
+
+            </div>
+            <div id="message_text" >
+                <?php
+
+                if(isset($_REQUEST['message_id'])){
+                    if($_SESSION['role'] == 'RECEPTIONIST' OR $_SESSION['role'] == 'TECHNICIAN') {
+                        $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username OR recipient = 'helpdesk' ORDER BY datetime DESC;";
+                    }else if($_SESSION['role'] == 'ADMINISTRATOR') {
+                        $sql = "SELECT * FROM messages";
+                    }else{
+                        $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username ORDER BY datetime DESC;";
+                    }
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_assoc($result);
+                        $message_id = $row['message_id'];
+                        $recipient = $row['recipient'];
+                        $datetime = date('dS D F Y H:i:s A', strtotime($row['datetime']));
+                        $message = $row['message'];
+
+                ?>
+
+
+
+                <div id="message_header" style = "padding-right:10px;">
+                    <h2>Subject:<?php echo $row['title'];?> </h2><p style = "float:right; "><strong>Date:<?php echo $datetime;?></strong></p>
+                    <h3>From:<?php echo $row['sender'];?></h3>
+                </div>
+                <div id="message_box">
+                    <?php echo $row['message'];
+                    }
+                    }?>
+                </div>
+            </div>
         </div>
+
         <div id="compose_modal" class="modal">
             <span class="close">&times;</span>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
