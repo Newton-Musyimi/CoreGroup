@@ -86,6 +86,7 @@ require_once('security/header.php');
                                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" >
                                             <input type="file" name="profile_picture">
                                             <input type="submit" name="update_profile_picture" value="Update profile picture">
+                                            <input type = "submit" name="delete_account"  value = "Delete Account">
                                             <?php
                                             if(isset($_REQUEST['update_profile_picture'])){
                                                 $conn = get_db();
