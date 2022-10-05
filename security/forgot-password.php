@@ -22,9 +22,6 @@ global $host;
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/forgot_password.css';?>">/
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/style.css';?>">
 </head>
-
-
-
 <body id="page-top">
     <header>
         <?php
@@ -78,12 +75,22 @@ if(isset($_POST["email"]) && (!empty($_POST["email"]))) {
 </form>";
 }
 if(isset($_REQUEST['confirm'])){
-        
+    $user = 'username';
+    $query = "UPDATE `coregroup`.`plain_text_pass`
+                SET
+                `password` = {password: }
+                  WHERE `username` = {expr};
+                 SELECT * FROM coregroup.plain_text_pass";
+}else{
+    $user = 'employee_id';
+    $query = "UPDATE `coregroup`.`plain_text_pass`
+    SET
+    `password` = {password: }
+      WHERE `username` = {expr};
+     SELECT * FROM coregroup.plain_text_pass";
 
 }
 
-      
-       
        
 ?>
 

@@ -40,7 +40,7 @@ global $host;
     </div>
     <table>
        
-        <table id="side_table" >
+        <table id="side_table" style="margin-bottom: 50px;">
             <tr>
                 <th>Quote Date</th>
                 <td>24 August 2022<td>
@@ -54,7 +54,7 @@ global $host;
                 <td>JoeSoap@gmail.com // MikeOxlong@gmail.com<td>
             </tr>
 
-        <table style="margin-top: 150px;">
+        <table calss = "table2" style="margin-top: 150px;">
             <tr>
                 <th>Description</th>
                 <th>Quantity</th>

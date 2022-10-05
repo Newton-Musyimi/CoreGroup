@@ -53,13 +53,16 @@ nav button {
 }
 
 .navbar  a:hover {
-  background-color: #af6b4c;
- 
+  background-color: #af6b4c; 
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none;    
   }
+#forgot-password{
+  padding-top: 50px;
+  text-align: right;
+}
   body {
     background: -webkit-linear-gradient(bottom,  #fbfbfb, #fff5ee);
     background-repeat: no-repeat;

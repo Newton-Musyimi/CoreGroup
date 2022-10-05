@@ -44,8 +44,8 @@ require_once('security/header.php');
                 <th>Category</th>
                 <th>Brand</th>
                 <th>Model</th>
-                <th>Owner Id</th>
                 <th>View</th>
+                <th>Delete</th>
             </tr>
             <?php
             $query = "SELECT * FROM coregroup.devices;";
@@ -64,7 +64,7 @@ require_once('security/header.php');
                     </form></td>";
                     echo "<td>
                                 <a href=\"assets/php/delete.php?device_id={$row['device_id']}\">
-                                    <button class =\"tab_button\" type=\"button\">Delete Device</button>
+                                    <button class =\"tab_button\" type=\"button\" onClick=\"return confirm('are you sure you want to delete this device)\">Delete Device</button>
                                 </a>
                             </td>";
                     echo "</tr>";
@@ -165,6 +165,12 @@ require_once('security/header.php');
     <?php
     if(isset($_REQUEST['device_name'])){
     }
+    ?>
+    <?php
+    $conn = getdb();
+    $query = "DELETE FROM `coregroup`.`devices`
+            WHERE device_id = $device_id";
+    $result = mysqli_query($conn, $query) or die("couldn't delete the device")
     ?>
 </header>
     <footer style="padding-bottom: 32px;">

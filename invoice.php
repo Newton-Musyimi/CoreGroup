@@ -96,43 +96,31 @@ global $host;
                     ?>
                 </tr>
                 <tr>
-                    
-                </tr>
-                <tr>
-                    <td>Glue Binding</td>
-                    <td>1</td>
-                    <td>10</td>
-                    <td>15%</td>
-                    <td id= "inv_sum">10.00</td>
-                </tr>
-                <tr>
-                    <td>2mm Screws</td>
-                    <td>2</td>
-                    <td>50</td>
-                    <td>15%</td>
-                    <td id= "inv_sum">100.00</td>
-                </tr>
-            <tr></tr>
+                    <td><?php echo $row['description']?></td>
+                    <td><?php echo $row['quantity']?></td>
+                    <td><?php echo $row['unit_price']?></td>
+                    <td><?php echo $row['vat']?>%</td>
+                    <td id= "inv_sum"><?php echo $row['amount_ZAR']?></td>
             <tr>
                 <th>Invoice Total:</th>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td><?php echo $row['invoice_total']?></td>
             </tr>
             <tr>
                     <td>Subtotal</td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td id= "inv_sum">360.00</td>
+                    <td id= "inv_sum"><?php echo $row['subtotal']?></td>
                 </tr>
                 <tr>
                     <td>Total standard Sales Tax</td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td id= "inv_sum">54.00</td>
+                    <td id= "inv_sum"><?php echo $row['total_standard_sales_tax']?></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -143,14 +131,14 @@ global $host;
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td id= "inv_sum">0.00</td>
+                    <td id= "inv_sum"><?php echo $row['discounts']?></td>
                 </tr>
                 <tr>
                     <th>TOTAL ZAR</th>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td id= "inv_sum"><strong>R 414.00</strong></td> 
+                    <td id= "inv_sum"><strong><?php echo $row['total_ZAR']?></strong></td> 
                 </tr>
             </table>
         </div>

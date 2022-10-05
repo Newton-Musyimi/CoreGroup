@@ -180,6 +180,8 @@ global $host;
                 <label for =\"serial number\"><strong>Serial Number</strong> (Up to 8 digits) </label><br>
                 <input type= \"text\" name = \"serialnumber\" id = \"serialnumber\" maxlength='8' required><br>  ";
         }
+
+        
         function getDevices(){
             if ($_SESSION['role'] == 'CLIENT'){
                 $id = $_SESSION['logged_in'];
