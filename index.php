@@ -47,12 +47,12 @@ global $host;
     <section class="banner1">
         <h1>Wood Street Academy</h1>
         <h3>PCRepairs Department</h3>
-        <p>At Woodstreet Academy we repair all kinds of brands<br><h2><span id="brands"></span></h2></p>
+        <p>At Wood Street Academy we repair all kinds of brands<br><h2><span id="brands"></span></h2></p>
     </section>
     <div class="middle-page">
         <section class="middle" style="background-image: url('assets/images/pexels-mateusz-dach-450035.jpg');" >
             <h2 id="image_text">Would you like to</h2>
-            <a href="ticketing.php" class="btn-bgstroke">Create a ticket?</a>
+            <a href="ticketing.php" class="btn-bgstroke" id="index_buttons">Create a ticket?</a>
         </section>
         <section class="banner2 ">
             
@@ -67,7 +67,7 @@ global $host;
         </section>
         <section class = "track">
             <h2 style="color: #af6b4c;">Track my device</h2>
-                <button class = "btn-bgstroke" id="track_ticket_number">Track your ticket</button>
+                <button class = "btn-bgstroke" id="track_ticket_number" min= "0";>Track your ticket</button>
         </section>
         <section class="banner1">
             <h3>Contact us</h3>
@@ -100,7 +100,7 @@ global $host;
             <span class="close">&times;</span>
             <!-- Insert form below -->
             <h2 style= "color:#af6b4c; float:inline:">Track my Ticket Number</h2>
-            <input type="number" id="ticket_number"><br><br>
+            <input type="number" id="ticket_number" min = "1"><br><br>
             <input type= "submit" name="submit" class="" value="Check Status">
             <!-- Insert form above -->
             

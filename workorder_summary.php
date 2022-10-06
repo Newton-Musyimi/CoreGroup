@@ -93,9 +93,6 @@ global $host;
             $workorder = (new Workorder)->getByWorkorderId($id);
 
         }
-        if (isset($_REQUEST['documentation'])){
-            echo "<p>Document sucessfully uploaded. style=' color:green;'</p>";
-        }
         ?>
         <h1>WorkOrder Summary</h1>
         <h2>Work Order Title:<?php echo $workorder['title'];?></h2>
@@ -213,6 +210,7 @@ global $host;
                     <td>
                         <form action="" method="POST" enctype="multipart/form-data">
                             <input type="file" id="documentation" name="documentation">
+                            <input type="hidden" name="workorder_id" value="<?php echo $id; ?>">
                             <input type="submit" name="add_documentation" value="Upload Document">
                         </form>
                     </td>
@@ -243,11 +241,11 @@ global $host;
                             );
                             ";
                         $conn = get_db();
-                        $result = mysqli_query($conn, $query) or die("query not successfully executed");
+                        $result = mysqli_query($conn, $query) or die("query not successfully executed". $conn->error);
                         if ($result) {
                             echo "<p style='color:green;'>Document successfully uploaded!</p>";
                             echo "<script>
-                                    window.location.href = 'workorder_summary.php?work_order_id=$id';
+                                    window.location.href = 'workorder_summary.php?work_order_id={$workorder['wo_id']}';
                                     </script>";
                         }
                     }
@@ -326,6 +324,7 @@ global $host;
                                     <form>
                                         <input type='number' name='quantity' min='0' max='{$row['quantity']}'>
                                         <input type='hidden' name='product_id' value='{$row['product_id']}'>
+                                        <input type='hidden' name='workorder_id' value='{$workorder['wo_id']}'>
                                         <input type='submit' name='assign_resources' value='Assign'>
                                     </form>
                                     </td>
@@ -335,10 +334,10 @@ global $host;
                         </table>
             <!-- Insert form above -->
             <?php
-            if(isset($_POST['assign_resources'])){
-                $quantity_to_assign = $_POST['quantity_to_assign'];
-                $product_id = $_POST['product_id'];
-                $workorder_id = $_POST['workorder_id'];
+            if(isset($_REQUEST['assign_resources'])){
+                $quantity_to_assign = $_REQUEST['quantity'];
+                $product_id = $_REQUEST['product_id'];
+                $workorder_id = $workorder['wo_id'];
                 $query = "SELECT asset_id FROM `resources` WHERE `product_id` = $product_id AND `wo_id` IS NULL LIMIT $quantity_to_assign;";
                 $conn = get_db();
                 $result = mysqli_query($conn, $query) or die("<p style='color:red;'>query not successfully executed</p>");
@@ -360,20 +359,22 @@ global $host;
 
         <table class="modal-content">
             <span class="close">&times;</span>
-            <th>
-                <td>Product Id</td>
-                <td>Product Name</td>
-                <td>Quantity Assigned</td>
-                <td>Price Per Unit</td>
-                <td>Total Cost</td>
-            </th>
+
             <?php
             $conn = get_db();
+            $id = $workorder['wo_id'];
             $query = "SELECT count(`resources`.`product_id`) AS quantity, product, category, resources.price AS price, resources.product_id FROM products
                             INNER JOIN resources ON `resources`.`product_id` = `products`.`product_id`
                             WHERE `resources`.`wo_id` = $id
                             GROUP BY resources.product_id;";
             $result = mysqli_query($conn, $query) or die ("Could not get parts!" . $conn->error);
+            echo "<tr>
+                <th>Product Name</th>
+                <th>Product Category</th>
+                <th>Quantity Assigned</th>
+                <th>Price Per Unit</th>
+                <th>Total Cost</th>
+            </tr>";
             while($row = mysqli_fetch_array($result)) {
                 $total_cost = floatval($row['price']) * floatval($row['quantity']);
                 echo "<tr>

@@ -40,7 +40,7 @@ tr:hover {background-color: #048337;}
     </header>
     <button id="add_employee_button" class = "tab_button">Add Employee</button>
     <div id='Employees'>
-        <h3 style="margin-top:90px;">Employees</h3>
+        <h3 style="margin:30px 0 7px 10px;">Employees</h3>
         <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>

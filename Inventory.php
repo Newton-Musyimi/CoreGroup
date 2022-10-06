@@ -106,16 +106,20 @@ global $host;
                 </select><br><br>
 
                 <label for="quantity">Quantity</label><br>
-                <input type="number" id="quantity" name="quantity"><br>
+                <input type="number" id="quantity" name="quantity" min = "1"><br>
 
                 <input type="submit" name="add_order" value="Add Order">
             <!-- Insert form above -->
             <?php
             if(isset($_REQUEST['add_order'])){
                 $product_id = $_REQUEST['product_id'];
-                $wo_id = $_REQUEST['wo_id'];
                 $quantity = $_REQUEST['quantity'];
-                $query = "INSERT INTO orders (product_id, wo_id, ordered_by, quantity) VALUES ('$product_id', '$wo_id', '{$_SESSION['logged_in']}', '$quantity');";
+                if(!empty($_REQUEST['wo_id'])){
+                    $wo_id = $_REQUEST['wo_id'];
+                    $query = "INSERT INTO orders (product_id, wo_id, ordered_by, quantity) VALUES ('$product_id', '$wo_id', '{$_SESSION['logged_in']}', '$quantity');";
+                }else{
+                    $query = "INSERT INTO orders (product_id, ordered_by, quantity) VALUES ('$product_id', '{$_SESSION['logged_in']}', '$quantity');";
+                }
                 $conn = get_db();
                 $result = mysqli_query($conn, $query) or die ("Could not add order!" . $conn->error);
                 mysqli_close($conn);

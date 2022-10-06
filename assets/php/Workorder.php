@@ -28,9 +28,11 @@ class Workorder
             $status = $this->setStatus($wo_id, $row['status']);
             $techs = $this->getAssignedTechnicians($wo_id);
             $cost = $this->getCost($wo_id);
+            $location = $this->getLocation($row['dispatch_status'], $dropOffDate);
             $client_name = "{$row['first_name']} {$row['last_name']}";
             $hours_worked = 0;
             return array(
+                'wo_id' => $row['wo_id'],
                 'status' => $status,
                 'priority' => $row['priority'],
                 'requested_by' => $row['requested_by'],
@@ -48,7 +50,7 @@ class Workorder
                 'device_brand'=> $row['device_brand'],
                 'device_model'=> $row['device_model'],
                 'device_serial_number'=> $row['device_serial_number'],
-                'device_location'=> $row['device_location'],
+                'device_location'=> $location,
                 'client_comments'=> $row['client_comments'],
                 'techs'=> $techs,
                 'cost' => $cost,
@@ -104,5 +106,19 @@ class Workorder
         }else{
             return $status;
         }
+    }
+
+    protected function getLocation($dispatch, $dropoff){
+        if($dispatch == 1){
+            return "Client";
+        }else{
+            $today = date("dS D F Y H:i:s A", time());
+            if($dropoff < $today) {
+                return "Client";
+            }else{
+                return "Technician";
+            }
+        }
+
     }
 }

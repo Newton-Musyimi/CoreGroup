@@ -63,10 +63,6 @@ global $host;
                 ?>
                 <table class="table1" id ="summary" style="margin-bottom:30px;">
                     <tr>
-                        <th>Image:</th>
-                        <td><?php echo $row['device_image'];?></td>
-                    </tr>
-                    <tr>
                         <th>Device ID:</th>
                         <td><?php echo $row['device_id'];?></td>
                     </tr>
@@ -101,6 +97,7 @@ global $host;
                     
                 </table>
             </form>
+
         </div>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">

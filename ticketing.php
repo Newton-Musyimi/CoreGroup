@@ -182,21 +182,28 @@ global $host;
         }
 
         
-        function getDevices(){
+        function getDevices(): string
+        {
+
+            $devices = "";
+            $conn = get_db();
             if ($_SESSION['role'] == 'CLIENT'){
                 $id = $_SESSION['logged_in'];
                 $query = "SELECT device_id, device_name FROM devices WHERE owner_id = $id";
+                $result = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_array($result)){
+                    $devices .= "<option value=\"{$row['device_id']}\">{$row['device_name']}</option>";
+                }
             }else{
                 $query = "SELECT device_id, device_name, clients.username AS username , clients.client_id
                             FROM devices 
                                 JOIN clients ON clients.client_id = devices.owner_id;";
+                $result = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_array($result)){
+                    $devices .= "<option value=\"{$row['device_id']}+{$row['client_id']}\">{$row['device_name']} - {$row['username']}</option>";
+                }
             }
-            $conn = get_db();
-            $result = mysqli_query($conn, $query);
-            $devices = "";
-            while($row = mysqli_fetch_array($result)){
-                $devices .= "<option value=\"{$row['device_id']}+{$row['client_id']}\">{$row['device_name']} - {$row['username']}</option>";
-            }
+
             mysqli_close($conn);
             return $devices;
         }

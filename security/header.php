@@ -6,7 +6,6 @@ $login = "<li><a href=\"$host/SysDev/CoreGroup/security/login.php\" class=\"nav-
 $logout = "<li><a href=\"$host/SysDev/CoreGroup/security/logout.php\" class=\"nav-item\"><button id=\"logout_button\">Logout</button></a> </li>";
 $signup = "<li><a href=\"$host/SysDev/CoreGroup/security/signup.php\" class=\"nav-item\"><button id=\"signup_button\">Signup</button></a> </li>";
 $ticketing = "<li><a href=\"$host/SysDev/CoreGroup/ticketing.php\" class=\"nav-item\"><button id=\"ticketing_button\">Create Ticket</button></a> </li>";
-$helpdesk = "<li><a href=\"$host/SysDev/CoreGroup/helpdesk.php\" class=\"nav-item\"><button id=\"helpdesk_button\">Helpdesk</button></a> </li>";
 $home = "<li id=\"home_button\"><a href=\"$host/SysDev/CoreGroup/\" class=\"nav-item\"><button id=\"home_button\">Home</button></a> </li>";
 $profile = "<li><a href=\"$host/SysDev/CoreGroup/profile.php\" class=\"nav-item\"><button id=\"profile_button\">Profile</button></a> </li>";
 $employees = "<li><a href=\"$host/SysDev/CoreGroup/employees.php\" class=\"nav-item\"><button id=\"employees_button\">Employees</button></a> </li>";
@@ -21,7 +20,6 @@ $links = array(
     'login' => $login,
     'logout' => $logout,
     'signup' => $signup,
-    'helpdesk' => $helpdesk,
     'home' => $home,
     'profile' => $profile,
     'employees' => $employees,
@@ -65,7 +63,6 @@ function getReceptionistHeader($role): void
     <nav class=\"top-nav\">
         <ul>
             {$links['home']}
-            {$links['helpdesk']}
             {$links['ticketing']}
             {$links['employees']}
             {$links['workorders']}

@@ -45,6 +45,11 @@ global $host;
         </table>
 
     </div>
+    <?php
+    if(isset($_REQUEST['update_collection_status'])){
+
+    }
+    ?>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
             <div class="text-center my-auto copyright"><span>Copyright © Wood Street Academy; Powered by Core Group</span></div>

@@ -80,15 +80,9 @@ global $host;
                 $message = "";
                 $sender = "";
                 if(isset($_REQUEST['message_id'])){
-
-                    if($_SESSION['role'] == 'RECEPTIONIST' OR $_SESSION['role'] == 'TECHNICIAN') {
-                        $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username OR recipient = 'helpdesk' ORDER BY datetime DESC;";
-                    }else if($_SESSION['role'] == 'ADMINISTRATOR') {
-                        $sql = "SELECT * FROM messages";
-                    }else{
-                        $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username ORDER BY datetime DESC;";
-                    }
-                    $result = mysqli_query($conn, $sql);
+                    $message_id = $_REQUEST['message_id'];
+                    $sql = "SELECT * FROM messages WHERE message_id = $message_id AND (sender = $username OR recipient = $username);";
+                    $result = mysqli_query($conn, $sql) OR die(mysqli_error($conn));
                     if (mysqli_num_rows($result) > 0) {
                         $row = mysqli_fetch_assoc($result);
                         $title = $row['title'];
@@ -119,14 +113,14 @@ global $host;
                     <?php
 
                     if($_SESSION['role'] == 'RECEPTIONIST' OR $_SESSION['role'] == 'TECHNICIAN') {
-                        $sql = "SELECT * FROM messages WHERE sender = $username OR recipient = $username OR recipient = 'helpdesk' ORDER BY datetime DESC;";
+                        $sql = "SELECT * FROM messages WHERE (sender = $username) OR (recipient = $username) OR (type = 'contact_us') ORDER BY `datetime` DESC;";
                     }else if($_SESSION['role'] == 'ADMINISTRATOR') {
                         $sql = "SELECT * FROM messages";
                     }else{
-                        $sql = "SELECT * FROM messages WHERE sender = '$username' OR recipient = '$username' ORDER BY `datetime` DESC;";
+                        $sql = "SELECT * FROM messages WHERE (sender = $username) OR (recipient = $username) ORDER BY `datetime` DESC;";
                     }
 
-                    $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                    $result = mysqli_query($conn, $sql) or die( "Error" .mysqli_error($conn));
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             $datetime = date('dS D F Y H:i:s A', strtotime($row['datetime']));
@@ -152,7 +146,14 @@ global $host;
                     <label for="title"><strong>Title:</strong></label><br>
                     <input type="text" id="title" name="title"><br><br>
                     <label for="recipient"><strong>To:</strong></label><br>
-                    <input type="text" id="recipient" name="to"><br><br>
+                    <select id="to" name="to">
+                        <option value="NewtonMuysimi">Newton Muysimi</option>
+                        <option value="Billwilliam">Bill William</option>
+                        <option value="MatthewStrachan">Matthew Strachan</option>
+                        <option value="AkhonaBastile">Akhona Bastile</option>
+                        <option value="sandramm">Sandra Muyodi</option>
+                        <option value="NewtonMuysimi">Martin Kibe</option>
+                    </select><br><br>
                     <input type="hidden" id="sender" name="sender" value="<?php echo $_SESSION['username'];?>">
                     <textarea id="message" name="message" rows="4" cols="50"></textarea><br>
                     <input type="submit"name="compose_message" value="Send">
