@@ -90,6 +90,7 @@ global $host;
                 </select><br><br>
                 <label for="wo_id">Workorder</label><br>
                 <select id="wo_id" name="wo_id">
+                    <option value=''>Select Workorder</option>
                     <?php
                     $query = "SELECT wo_id, title FROM workorders WHERE status != 'completed' AND status != 'cancelled';";
                     $conn = get_db();

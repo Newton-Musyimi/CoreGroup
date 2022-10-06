@@ -40,6 +40,7 @@ global $host;
         <table id="order_details">
             <?php
             require_once ('assets/php/orders_scripts.php');
+            require_once ('assets/php/delete.php');
             echo getOrders();
             ?>
         </table>

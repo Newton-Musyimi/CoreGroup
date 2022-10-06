@@ -1,9 +1,19 @@
 <?php
 function getOrders(){
     $conn = get_db();
-    $query = "SELECT orders.*, products.product AS product, employees.username AS username FROM `orders` as orders
+    $role = $_SESSION['role'];
+    $username = $_SESSION['username'];
+    if($role == 'ADMINISTRATOR'){
+        $query = "SELECT orders.*, products.product AS product, employees.username AS username FROM `orders` as orders
                 LEFT JOIN employees ON orders.ordered_by = employees.employee_id
                 JOIN products ON orders.product_id = products.product_id;";
+    }elseif($role == 'TECHNICIAN') {
+        $query = "SELECT orders.*, products.product AS product, employees.username AS username FROM `orders` as orders
+                LEFT JOIN employees ON orders.ordered_by = employees.employee_id
+                JOIN products ON orders.product_id = products.product_id
+                WHERE username = '$username' ;";
+    }
+
     $result = mysqli_query($conn, $query) or die("Could not get orders! Contact admin for assistance: " . $conn->error);
     $list = "<tr>
             <th>Item:</th>
@@ -40,13 +50,13 @@ function getOrders(){
                 <td>$order_status</td>
                 <td>$date_collected</td>
                 <td>
-                    <form method=\"POST\" class=\"update_collection\">
+                <form method=\"POST\" class=\"update_collection\">
                         <input type=\"hidden\" name=\"order_id\" value=\"{$row['order_id']}\">
                         <input type=\"submit\" name=\"update_collection_status\" value=\"Not Collected\">
                     </form>
                 </td>
-                <td>
-                    <form method=\"POST\" class=\"update_collection\">
+                <td>";
+        $list .=  "<form method=\"POST\" class=\"update_collection\">
                         <input type=\"hidden\" name=\"order_id\" value=\"{$row['order_id']}\">
                         <input type=\"submit\" name=\"delete_order\" value=\"Delete Order\" id=\"delete_order\" style= 'background-color: red'>
                     </form>

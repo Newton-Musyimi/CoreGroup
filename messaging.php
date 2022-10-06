@@ -146,7 +146,7 @@ global $host;
                     <label for="title"><strong>Title:</strong></label><br>
                     <input type="text" id="title" name="title"><br><br>
                     <label for="recipient"><strong>To:</strong></label><br>
-                    <select id="to" name="to">
+                    <select id="recipient" name="recipient">
                         <option value="NewtonMuysimi">Newton Muysimi</option>
                         <option value="Billwilliam">Bill William</option>
                         <option value="MatthewStrachan">Matthew Strachan</option>

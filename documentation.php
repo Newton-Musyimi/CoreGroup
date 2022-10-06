@@ -43,7 +43,7 @@ global $host;
             <th></th>
         </tr>
         <?php
-        $query = "SELECT * FROM coregroup.documents;";
+        $query = "SELECT * FROM coregroup.documents where device_id = {$_REQUEST['id']};";
         $conn = get_db();
         $result = mysqli_query($conn, $query);
         while ( $row = mysqli_fetch_array($result)){
@@ -62,35 +62,6 @@ global $host;
         }
         ?>
     </table>
-        <?php
-        if(isset($_REQUEST['add_documentation'])){
-            $document_id=$_REQUEST['document_id'];
-            $name = $_REQUEST['name'];
-            $device_id = $_REQUEST['device_id'];
-            $uploaded_by = $_REQUEST['uploaded_by'];
-            $type = $_REQUEST['type'];
-            $description = $_REQUEST['description'];
-            $query = "INSERT INTO `coregroup`.`documents`
-                (`document_id`,
-                `name`,
-                `device_id`,
-                `uploaded_by`,
-                `file_path`,
-                `type`,
-                `description`)
-                VALUES
-                ($document_id,
-                $name,
-                $device_id,
-                $uploaded_by,
-                $type,
-                $description,
-                );
-                ";
-            $conn = get_db();
-            $result = mysqli_query($conn, $query);        
-    }
-        ?>
         
     
     </div>
