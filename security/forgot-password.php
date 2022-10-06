@@ -35,7 +35,7 @@ global $host;
     </header>
     <div class="content-body">
 <?php
-$conn=get_db();
+$conn=get_db() or die("ERROR: unable to connect to the database");
 if(isset($_POST["email"]) && (!empty($_POST["email"]))) {
     $email = $_POST["email"];
     $username = $_POST["username"];
@@ -56,6 +56,7 @@ if(isset($_POST["email"]) && (!empty($_POST["email"]))) {
                 <input type=\"password\" name=\"password\" id=\"password\"><br /><br />
                 <label for=\"confirm\"><strong>reEnter Your new Password:</strong></label><br /><br />
                 <input type=\"password\" name=\"confirm\" id=\"confirm\" />
+                <input type='hidden' name='username' value='$username'>
             <br /><br />
             <input type=\"submit\" value=\"Reset Password\"/>
             </form>";
@@ -75,22 +76,27 @@ if(isset($_POST["email"]) && (!empty($_POST["email"]))) {
 </form>";
 }
 if(isset($_REQUEST['confirm'])){
-    $user = 'username';
-    $query = "UPDATE `coregroup`.`plain_text_pass`
-                SET
-                `password` = {password: }
-                  WHERE `username` = {expr};
-                 SELECT * FROM coregroup.plain_text_pass";
-}else{
-    $user = 'employee_id';
-    $query = "UPDATE `coregroup`.`plain_text_pass`
-    SET
-    `password` = {password: }
-      WHERE `username` = {expr};
-     SELECT * FROM coregroup.plain_text_pass";
-
+    $user = $_REQUEST['username'];
+    $table ="";
+    $query = "SELECT `table` FROM users WHERE username = '$user';";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $table = $row['table'];
+    $password = $_REQUEST['password'];
+    $pass_hash = password_hash($password, PASSWORD_DEFAULT);
+    $sql = "UPDATE `coregroup`.$table SET `password` = $pass_hash WHERE `username` = $user;";
+    $result = mysqli_query($conn, $query) or die("<script>
+    alert('Password change unsuccesfull!!!!');</script>");
+    echo "<script>
+    alert('Password change succesfull');</script>";
 }
 
+/*$result = mysqli_query($conn,$query) or die("Error, Unable to change the password");
+mysqli_close($conn);
+echo "<p style=\"color= green;\"> Your password has been succesfully updated </p>" 
+or die("<p style=\"color= red;\"> Your password has been unsuccesfully updated </p>");*/
+
+mysqli_close($conn);
        
 ?>
 

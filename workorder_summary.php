@@ -216,7 +216,6 @@ global $host;
                     </td>
                     <?php
                     if(isset($_REQUEST['add_documentation'])) {
-                        $document_id = $_REQUEST['document_id'];
                         $name = $_REQUEST['name'];
                         $device_id = $_REQUEST['device_id'];
                         $uploaded_by = $_REQUEST['uploaded_by'];

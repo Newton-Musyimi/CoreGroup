@@ -86,7 +86,6 @@ require_once('security/header.php');
                                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" >
                                             <input type="file" name="profile_picture">
                                             <input type="submit" name="update_profile_picture" value="Update profile picture">
-                                            <input type = "submit" name="delete_account"  value = "Delete Account">
                                             <?php
                                             if(isset($_REQUEST['update_profile_picture'])){
                                                 $conn = get_db();
@@ -166,6 +165,51 @@ require_once('security/header.php');
                                                 <div class="mb-3">
                                                     <input type="submit" name="update_profile_details" value="Update Profile Details">
                                                 </div>
+                                                <?php
+                                                if(isset($_REQUEST['update_profile_details'])){
+                                                    $conn = get_db();
+                                                    $email = $_REQUEST['email'];
+                                                    $mobile = $_REQUEST['mobile'];
+                                                    $address = $_REQUEST['address'];
+                                                    $id = intval($_SESSION['logged_in']);
+                                                    if($table == 'clients'){
+                                                        $user = 'client_id';
+                                                        $query = "UPDATE clients
+                                                                SET
+                                                                `email` = '$email',
+                                                                `mobile` = '$mobile',
+                                                                `address` = '$address'
+                                                                WHERE `client_id` = $id;
+                                                                ";
+                                                    }else{
+                                                        $user = 'employee_id';
+                                                        $query = "UPDATE employees
+                                                                SET
+                                                                `email` = '$email',
+                                                                `mobile` = '$mobile',
+                                                                `address` = '$address'
+                                                                WHERE `employee_id` = $id;
+                                                                ";
+                                                    }
+                                                    mysqli_query($conn, $query) or die($conn->error);
+                                                    mysqli_close($conn);
+                                                    echo "
+                                                    <script>
+                                                    window.location.href = 'profile.php';
+                                                    </script>";
+                                                }
+                                                ?>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 fw-bold">Delete Account</p>
+                                        </div>
+                                        <div class="card-body">
+                                                <div class="mb-3">
+                                                    <button onclick="deleteAccount()" type="submit" class="tab_button" name="delete_account"style="float: right; color: black; background-color: red;">Delete Account</button>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
@@ -180,6 +224,16 @@ require_once('security/header.php');
         </div>
     </footer>
     <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <script>
+        function deleteAccount(){
+            let r = confirm("Are you sure you want to delete your account?");
+            if (r == true) {
+                window.location.href = 'security/delete_account.php';
+            } else {
+                window.location.href = 'profile.php';
+            }
+        }
+    </script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>

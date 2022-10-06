@@ -115,10 +115,21 @@ section, .banner2{
   cursor: pointer;
   font-weight: 300;
   float:center;
-  color: white;
- 
+  color: rgb(255, 255, 255);
 }
-#track_ticket_number {
+
+#track_ticket_number{
+  font-size: 20px;
+  display: inline-block;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 300;
+  float:center;
+  color: #af6b4c;
+}
+#index_button {
   font-size: 20px;
   display: inline-block;
   border: 1px solid white;

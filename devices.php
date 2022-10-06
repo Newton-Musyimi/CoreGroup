@@ -35,26 +35,57 @@ require_once('security/header.php');
     </header>
     <div class="content-body">
         <div>
-        <button type= "button" class ="modal-button" name = "add_device_button" id="add_device_button">Add Device</button>
+            <?php
+            if($_SESSION['role'] != 'CLIENT'){
+                echo "<button type= \"button\" class =\"modal-button\" name = \"add_device_button\" id=\"add_device_button\" style='display: none;'>Add Device</button>";
+            }else{
+                echo "<button type= \"button\" class =\"modal-button\" name = \"add_device_button\" id=\"add_device_button\">Add Device</button>";
+            }
+            ?>
+
         </div>
         <table>
             <tr>
-                <th>Device Image</th>
                 <th>Device ID</th>
+                <th>Workorders Assigned</th>
                 <th>Category</th>
                 <th>Brand</th>
                 <th>Model</th>
                 <th>View</th>
-                <th>Delete</th>
             </tr>
             <?php
-            $query = "SELECT * FROM coregroup.devices;";
+            function getQuery(): string
+            {
+                if($_SESSION['role'] == 'CLIENT') {
+                    $query = "SELECT * FROM devices WHERE owner_id = " . $_SESSION['logged_in'];
+                }elseif($_SESSION['role'] == 'TECHNICIAN'){
+                    $query = "SELECT devices.*, workorders.wo_id, assigned_technicians.employee_id FROM devices 
+                                JOIN workorders ON workorders.device_id = devices.device_id
+                                JOIN assigned_technicians ON assigned_technicians.wo_id = workorders.wo_id 
+                                                                     WHERE assigned_technicians.employee_id = " . $_SESSION['logged_in'];
+                }else{
+                    $query = "SELECT * FROM devices";
+                }
+                return $query;
+            }
+            function workordersAssigned($device_id){
+                $conn = get_db();
+                $query = "SELECT COUNT(device_id) AS workorders FROM workorders WHERE device_id = $device_id GROUP BY device_id;";
+                $result = mysqli_query($conn, $query);
+                $row = mysqli_fetch_array($result);
+                if($row['workorders'] === null){
+                    return 0;
+                }else {
+                    return $row['workorders'];
+                }
+            }
+            $query = getQuery();
             $conn = get_db();
             $result = mysqli_query($conn,$query);
                 while($row = mysqli_fetch_array($result)){
                     echo "<tr>";
-                    echo "<td>{$row['device_image']}</td>";
                     echo "<td>{$row['device_id']}</td>";
+                    echo "<td>".workordersAssigned($row['device_id'])."</td>";
                     echo "<td>{$row['category']}</td>";
                     echo "<td>{$row['brand']}</td>";
                     echo "<td>{$row['model']}</td>";
@@ -62,11 +93,6 @@ require_once('security/header.php');
                         <input type=\"hidden\" name=\"device_id\" value=\"{$row['device_id']}\">
                         <input type=\"submit\" value=\"View\">
                     </form></td>";
-                    echo "<td>
-                                <a href=\"assets/php/delete.php?device_id={$row['device_id']}\">
-                                    <button class =\"tab_button\" type=\"button\" onClick=\"return confirm('are you sure you want to delete this device)\">Delete Device</button>
-                                </a>
-                            </td>";
                     echo "</tr>";
                 }
             ?>
@@ -78,29 +104,26 @@ require_once('security/header.php');
                 $model = $_REQUEST['modelname'];
                 $device_name = $_REQUEST['device_name'];
                 $device_serial = $_REQUEST['serialnumber'];
-                $picture= time() . basename($_FILES['device_image']['name']);
-                //move picture to the upload file
-                $destination = "assets\images\devices\ ". $picture;
-                move_uploaded_file($_FILES['device_image']['tmp_name'], $destination);
+
                 $query="INSERT INTO `coregroup`.`devices`
                     (
                     `category`,
                     `brand`,
                     `model`,
                     `serial_number`,
-                    `device_name`,
-                    `device_image`)
+                    `device_name`)
                     VALUES
                     (
                      $category,
                      $brand,
                      $model,
                      $device_serial,
-                     $device_name,
-                     $picture
+                     $device_name
                     )";
-                
-
+                $result = mysqli_query($conn,$query) or die(mysqli_error($conn));
+                if($result){
+                    echo "<script>alert('Device Added Successfully')</script>";
+                }
             }
             ?>
           
@@ -162,16 +185,6 @@ require_once('security/header.php');
 
         </form>
     </div>
-    <?php
-    if(isset($_REQUEST['device_name'])){
-    }
-    ?>
-    <?php
-    $conn = getdb();
-    $query = "DELETE FROM `coregroup`.`devices`
-            WHERE device_id = $device_id";
-    $result = mysqli_query($conn, $query) or die("couldn't delete the device")
-    ?>
 </header>
     <footer style="padding-bottom: 32px;">
         <div class="container my-auto">
