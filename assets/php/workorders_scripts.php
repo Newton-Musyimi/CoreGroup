@@ -92,11 +92,6 @@ function getAssignedTechnicians($workorder_id){
     return $list;
 }
 
-function getCost($wo_id){
-    //TO DO: Add cost to workorder table
-
-    return 0.00;
-}
 
 function adminWorkorderTable(){
     global $user_id, $conn;
@@ -108,7 +103,6 @@ function adminWorkorderTable(){
                 <th>Job Code</th>
                 <th>Client Id</th>
                 <th>Device</th>
-                <th>Cost</th>
                 <th>Status</th>
                 <th>Scheduled</th>
                 <th>Dropoff Date</th>                
@@ -116,13 +110,16 @@ function adminWorkorderTable(){
                 <th>View</th>
             </tr>";
     while($row = mysqli_fetch_array($result)){
-        $date = date('D d M Y', strtotime($row['date_started']));
+        if(strlen($row['date_started']) < 4){
+            $date = "Not Started";
+        }else{
+            $date = date('dS D F Y H:i:s A', strtotime($row['date_started']));
+        }
         $dropOffDate = date('D d M Y', strtotime($row['dropoff_date']));
         echo "<tr>
                 <td>{$row['wo_id']}</td>
                 <td>{$row['client_id']}</td>
                 <td>{$row['device_name']}</td>
-                <td>".getCost($row['wo_id'])."</td>
                 <td>{$row['status']}</td>
                 <td>$date</td>
                 <td>$dropOffDate</td>
@@ -151,18 +148,20 @@ function clientWorkorderTable(){
     echo "<tr>
                 <th>Job Code</th>
                 <th>Device</th>
-                <th>Cost</th>
                 <th>Status</th>
                 <th>Scheduled</th>
                 <th>Assigned To</th>
                 <th>View</th>
             </tr>";
     while($row = mysqli_fetch_array($result)){
-        $date = date('D d M Y', strtotime($row['date_started']));
+        if(strlen($row['date_started']) < 4){
+            $date = "Not Started";
+        }else{
+            $date = date('dS D F Y H:i:s A', strtotime($row['date_started']));
+        }
         echo "<tr>
                 <td>{$row['wo_id']}</td>
                 <td>{$row['name']}</td>
-                <td>0.00</td>
                 <td>{$row['status']}</td>
                 <td>$date</td>
                 <td>
@@ -197,18 +196,20 @@ function technicianWorkorderTable(){
     echo "<tr>
                 <th>Job Code</th>
                 <th>Device</th>
-                <th>Cost</th>
                 <th>Status</th>
                 <th>Scheduled</th>
                 <th>Assigned To</th>
                 <th>View</th>
             </tr>";
     while($row = mysqli_fetch_array($result)){
-        $date = date('D d M Y', strtotime($row['date_started']));
+        if(strlen($row['date_started']) < 4){
+            $date = "Not Started";
+        }else{
+            $date = date('dS D F Y H:i:s A', strtotime($row['date_started']));
+        }
         echo "<tr>
                 <td>{$row['wo_id']}</td>
                 <td>{$row['name']}</td>
-                <td>0.00</td>
                 <td>{$row['status']}</td>
                 <td>$date</td>
                 <td>

@@ -3,12 +3,15 @@
 class Workorder
 {
     public array $properties;
+    public int $workorder_id;
 
-    public function __construct() {
+    public function __construct($workorder_id) {
         $this->properties = array();
+        $this->workorder_id = $workorder_id;
     }
 
-    function getByWorkorderId($wo_id){
+    function getByWorkorderId(){
+        $wo_id = $this->workorder_id;
         $conn = get_db();
         $query = "SELECT `workorders`.*, 
                     `devices`.`device_name` AS device_name, `devices`.`category` AS device_type, `devices`.`brand` AS device_brand, `devices`.`model` AS device_model, `devices`.`serial_number` AS device_serial_number, `devices`.`location` AS device_location,
@@ -61,6 +64,19 @@ class Workorder
             return false;
         }
 
+
+    }
+    function updateDate(){
+        $conn = get_db();
+        $query = "UPDATE `workorders` SET `date_started` = CURRENT_TIMESTAMP WHERE `workorders`.`wo_id` = $this->workorder_id;";
+        $result = mysqli_query($conn, $query) or die("Could not update date for workorder with id number:$this->workorder_id! Contact admin for assistance: " . $conn->error);
+        if($result){
+            mysqli_close($conn);
+            return true;
+        }else{
+            mysqli_close($conn);
+            return false;
+        }
     }
     protected function getAssignedTechnicians($workorder_id){
         $conn = get_db();
@@ -72,6 +88,7 @@ class Workorder
         while($row = mysqli_fetch_array($result)){
             $list .= "<a href=\"employee_profile.php?employee_id={$row['id']}\"><li>{$row['username']}</li></a>";
         }
+        mysqli_close($conn);
         $techs = "<button class='accordion'>Assigned Technicians</button>
                     <div class='panel'>
                     <ul>$list</ul>
@@ -84,8 +101,10 @@ class Workorder
         $conn = get_db();
         $result = mysqli_query($conn, $query) or die("Could not query for workorder with id number:$wo_id! Contact admin for assistance: " . $conn->error);
         if ($row = mysqli_fetch_array($result)) {
+            mysqli_close($conn);
             return $row['cost'];
         } else {
+            mysqli_close($conn);
             return 0;
         };
     }
@@ -99,9 +118,11 @@ class Workorder
             if($row['count'] > 0) {
                 $query = "UPDATE workorders SET status = 'in-progress' WHERE wo_id = $wo_id;";
                 $result = mysqli_query($conn, $query) or die("Could not update status of workorder with id number:$wo_id! Contact admin for assistance: " . $conn->error);
+                mysqli_close($conn);
                 return "in-progress";
             }else{
                 return "pending";
+                mysqli_close($conn);
             }
         }else{
             return $status;

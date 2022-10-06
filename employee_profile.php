@@ -87,7 +87,8 @@ require_once('security/header.php');
     <div class="row mb-3">
         <div class="col-lg-4">
             <div class="card mb-3">
-                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4 site_images" src="<?php echo $profile_picture; ?>">
+                <div class="card-body text-center shadow">
+                    <img class="rounded-circle mb-3 mt-4 site_images" src="<?php echo $profile_picture; ?>">
                 </div>
             </div>
         </div>
@@ -96,7 +97,7 @@ require_once('security/header.php');
                 <div class="col">
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">User Settings</p>
+                            <p class="text-primary m-0 fw-bold">Employee Information</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -111,12 +112,27 @@ require_once('security/header.php');
                                     </div>
                                 </div>
                             </div>
+
                             <div class="mb-3">
                                 <label class="form-label" for="address">
                                     <strong>Address: </strong><?php echo $address;  ?>
                             </div>
+                            
                         </div>
                     </div>
+                    <div class="card shadow mb-3" <?php if($_SESSION['role'] !== 'ADMINISTRATOR'){
+                        echo "style='display: none;'";
+                    } ?>>
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Fire Employee</p>
+                        </div>
+                        <div class="card-body">
+                                <div class="mb-3">
+                                    <button onclick="fireEmployee(<?php echo $_REQUEST['employee_id'];?>)" type="submit" class="tab_button" name="fire_employee"style="float: right; color: black; background-color: red;">Fire Employee</button>
+                                </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -128,6 +144,16 @@ require_once('security/header.php');
     </div>
 </footer>
 <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+<script>
+    function fireEmployee(employeeId){
+        let r = confirm("Are you sure you want to fire this employee?");
+        if (r == true) {
+            window.location.href = 'security/delete.php?fire_employee='+employeeId;
+        } else {
+            window.location.href = 'profile.php';
+        }
+    }
+</script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/bs-init.js"></script>
 <script src="<?php echo $host.'/SysDev/CoreGroup/assets/js/app.js';?>"></script>

@@ -89,9 +89,14 @@ global $host;
         }else{
             require_once("assets/php/Workorder.php");
             $id = $_REQUEST['work_order_id'] ?? $_REQUEST['workorder_id'];
-
-            $workorder = (new Workorder)->getByWorkorderId($id);
-
+            $role = $_SESSION['role'];
+            $workOrder = new Workorder($id);
+            $workorder = $workOrder->getByWorkorderId();
+            if ($role == "TECHNICIAN"){
+                if($workorder['date_started'] == 'Not Started'){
+                    $workOrder->updateDate();
+                }
+            }
         }
         ?>
         <h1>WorkOrder Summary</h1>
@@ -208,6 +213,7 @@ global $host;
                 <tr>
                     <th>Documentation:</th>
                     <td>
+                        <a href="documentation.php?id=<?php echo $workorder['device_id']; ?>"><button id="documentation_page" class ="modal-button">View</button></a>
                         <form action="" method="POST" enctype="multipart/form-data">
                             <input type="file" id="documentation" name="documentation">
                             <input type="hidden" name="workorder_id" value="<?php echo $id; ?>">
@@ -216,31 +222,28 @@ global $host;
                     </td>
                     <?php
                     if(isset($_REQUEST['add_documentation'])) {
-                        $name = $_REQUEST['name'];
-                        $device_id = $_REQUEST['device_id'];
-                        $uploaded_by = $_REQUEST['uploaded_by'];
-                        $today = date("Y-m-d");
-                        $type = $_REQUEST['type'];
-                        $description = $_REQUEST['description'];
+                        $file_name = time().basename($_FILES["documentation"]["name"]);
+                        $target = "assets/documents/" . $file_name;
+                        move_uploaded_file($_FILES["documentation"]["tmp_name"], $target);
+                        $device_id = $workorder['device_id'];
+                        $uploaded_by = $_SESSION['username'];
+                        $type = $_FILES["documentation"]["type"];
                         $query = "INSERT INTO `coregroup`.`documents`
-                            (`document_id`,
-                            `name`,
+                            (`name`,
                             `device_id`,
                             `uploaded_by`,
                             `file_path`,
-                            `type`,
-                            `description`)
+                            `type`)
                             VALUES
-                            ($document_id,
-                            $name,
+                            ('$file_name',
                             $device_id,
-                            $uploaded_by,
-                            $type,
-                            $description,
+                            '$uploaded_by',
+                            '$target',
+                            '$type'
                             );
                             ";
                         $conn = get_db();
-                        $result = mysqli_query($conn, $query) or die("query not successfully executed". $conn->error);
+                        $result = mysqli_query($conn, $query) or die("query not successfully executed - ". $conn->error);
                         if ($result) {
                             echo "<p style='color:green;'>Document successfully uploaded!</p>";
                             echo "<script>
@@ -251,13 +254,36 @@ global $host;
                     ?>
                 </tr>
                 <?php
+                if(isset($_REQUEST['update_technician_hours'])){
+                    $normal = $_REQUEST['normal_hours'];
+                    $overtime = $_REQUEST['overtime_hours'];
+                    $technician_id = $_SESSION['logged_in'];
+                    $workorder_id = $_REQUEST['workorder_id'];
+                    $conn = get_db();
+                    $query = "UPDATE assigned_technicians SET normal_hours = $normal, overtime_hours = $overtime WHERE employee_id = $technician_id AND wo_id = $workorder_id;";
+                    $result = mysqli_query($conn, $query) or die ("Could not update technician hours!" . $conn->error);
+                    if($result){
+                        echo "<p style='color:green;'>Technician hours updated successfully!</p>";
+                        echo "<script>
+                                    window.location.href = 'workorder_summary.php?work_order_id=$id';
+                                    </script>";
+                    }else{
+                        echo "<p style='color:red;'>Failed to update technician hours!</p>";
+                    }
+                }
                 if ($role == "TECHNICIAN"){
                     echo "<tr>
                     <th>Hours Worked:{$workorder['hours_worked']}</th>
-                    <td><form action=\"\" method=\"POST\">
-                        <input type='number' name='hours_worked'>
+                    <td>
+                        <form action=\"\" method=\"POST\">
+                        <label for=\"normal_hours\">Normal Hours:</label>
+                            <input type='number' id='normal_hours' name='normal_hours'>
+                            <label for='overtime_hours'>Overtime Hours:</label>
+                            <input type='number' id='overtime_hours' name='overtime_hours'>
+                            <input type='hidden' name='workorder_id' value='{$workorder['wo_id']}'>
                             <input type='submit' name='update_technician_hours' value='Update Technician Hours'>
-                    </form></td>
+                        </form>
+                    </td>
                 </tr>";
                 }else{
                     echo "<tr>
@@ -283,12 +309,28 @@ global $host;
                             <option value=\"completed\">Completed</option>
                             <option value=\"cancelled\">Cancelled</option> 
                             </select>
+                            <input type='hidden' name='workorder_id' value='{$workorder['wo_id']}'>
                             <input type='submit' name='update_status' value='Update Workorder Status'>
                     </form>";
                         }else{
                             echo $workorder['status'];
                         }
                         ?></td>
+                    <?php
+                    if(isset($_REQUEST['update_status'])) {
+                        $conn = get_db();
+                        $status = $_REQUEST['job_status'];
+                        $query = "UPDATE `coregroup`.`workorders` SET `status` = '$status' WHERE (`wo_id` = {$workorder['wo_id']} );";
+                        $result = mysqli_query($conn, $query) or die("query not successfully executed - ". $conn->error);
+                        if ($result) {
+                            mysqli_close($conn);
+                            echo "<p style='color:green;'>Workorder status successfully updated!</p>";
+                            echo "<script>
+                                    window.location.href = 'workorder_summary.php?work_order_id={$workorder['wo_id']}';
+                                    </script>";
+                        }
+                    }
+                    ?>
                 </tr>
             </table>  
         </div>             

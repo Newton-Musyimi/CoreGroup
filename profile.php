@@ -81,7 +81,8 @@ require_once('security/header.php');
                     <div class="row mb-3">
                         <div class="col-lg-4">
                             <div class="card mb-3">
-                                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4 site_images" src="<?php echo $profile_picture; ?>">
+                                <div class="card-body text-center shadow">
+                                    <img class="rounded-circle mb-3 mt-4 site_images" src="<?php echo $profile_picture; ?>">
                                     <div class="mb-3">
                                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" >
                                             <input type="file" name="profile_picture">
@@ -210,7 +211,6 @@ require_once('security/header.php');
                                                 <div class="mb-3">
                                                     <button onclick="deleteAccount()" type="submit" class="tab_button" name="delete_account"style="float: right; color: black; background-color: red;">Delete Account</button>
                                                 </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
