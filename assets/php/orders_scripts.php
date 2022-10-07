@@ -3,7 +3,7 @@ function getOrders(){
     $conn = get_db();
     $role = $_SESSION['role'];
     $username = $_SESSION['username'];
-    if($role == 'ADMINISTRATOR'){
+    if($role == 'ADMINISTRATOR' || $role == 'RECEPTIONIST'){
         $query = "SELECT orders.*, products.product AS product, employees.username AS username FROM `orders` as orders
                 LEFT JOIN employees ON orders.ordered_by = employees.employee_id
                 JOIN products ON orders.product_id = products.product_id;";

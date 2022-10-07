@@ -20,6 +20,7 @@ global $host;
     <link rel="icon" type="assets/images/favicon_io/favicon-16x16.png" sizes="16x16" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon16.png';?>">
     <link rel="icon" type="assets/images/favicon_io/favicon-32x32.png" sizes="32x32" href="<?php echo $host.'/SysDev/CoreGroup/assets/images/favicon.png';?>">
     <link rel="stylesheet" href="<?php echo $host.'/SysDev/CoreGroup/assets/css/homepage.css';?>">
+    <script src="assets/js/jquery.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -96,15 +97,17 @@ global $host;
            ?>
         </section>
         <div id="track_ticket_modal" class="modal">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="modal-content">
+        <form onsubmit="getTicket()" method="post" class="modal-content">
             <span class="close">&times;</span>
             <!-- Insert form below -->
             <h2 style= "color:#af6b4c; float:inline:">Track my Ticket Number</h2>
-            <input type="number" id="ticket_number" min = "1"><br><br>
-            <input type= "submit" name="submit" class="" value="Check Status">
-            <!-- Insert form above -->
+            <input type="number" id="ticket_number" name="ticket_number" min = "1"><br><br>
+            <input type= "submit" name="ticket_submit" class="" value="Check Status">
             
-        </form>          
+            <!-- Insert form above -->
+           
+        </form>
+            <p id="ticket_status_string"></p>
         <div class= "bottom-page">         
         </div>
     </div>
@@ -158,4 +161,24 @@ global $host;
             }
         }
         typeWriter();
+
+        function getTicket(){
+            $("form").submit(function(event){
+                var formData = {
+                    ticket_number: $("#ticket_number").val(),
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "track_ticket_number.php",
+                    data: formData,
+                    dataType: "json",
+                    encode: true,
+                }).done(function(data){
+                    if (data != false){
+                        console.log(data);
+                    }
+                });
+                event.preventDefault();
+            })
+        }
     </script>

@@ -13,6 +13,7 @@ $inventory = "<li><a href=\"$host/SysDev/CoreGroup/inventory.php\" class=\"nav-i
 $devices = "<li><a href=\"$host/SysDev/CoreGroup/devices.php\" class=\"nav-item\"><button id=\"devices_button\">Devices</button></a> </li>";
 $orders = "<li><a href=\"$host/SysDev/CoreGroup/orders.php\" class=\"nav-item\"><button id=\"orders_button\">Orders</button></a> </li>";
 $messaging= "<li><a href=\"$host/SysDev/CoreGroup/messaging.php\" class=\"nav-item\"><button id=\"messaging_button\">Chat to a technician</button></a> </li>";
+$helpdesk= "<li><a href=\"$host/SysDev/CoreGroup/helpdesk.php\" class=\"nav-item\"><button id=\"messaging_button\">Helpdesk</button></a> </li>";
 
 $links = array(
     'dashboard' => $dashboard,
@@ -27,7 +28,8 @@ $links = array(
     'inventory'=> $inventory,
     'devices'=> $devices,
     'orders'=> $orders,
-    'messaging'=> $messaging
+    'messaging'=> $messaging,
+    'helpdesk'=> $helpdesk,
 );
 
 function getAdminHeader($role): void
@@ -44,7 +46,8 @@ function getAdminHeader($role): void
             {$links['profile']}
             {$links['devices']}
             {$links['orders']}
-            {$links['inventory']}            
+            {$links['inventory']}
+            {$links['helpdesk']}              
             {$links['logout']}
             <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are an $role</p></li>
             
@@ -90,6 +93,7 @@ function getClientHeader($role): void
             {$links['devices']}
             {$links['profile']}
             {$links['messaging']}
+            {$links['helpdesk']}  
             {$links['logout']}
             <li class='nav-title nav-item'><p>Welcome, {$_SESSION['username']}<br>You are a $role</p></li>
         </ul>

@@ -323,6 +323,11 @@ global $host;
                         $query = "UPDATE `coregroup`.`workorders` SET `status` = '$status' WHERE (`wo_id` = {$workorder['wo_id']} );";
                         $result = mysqli_query($conn, $query) or die("query not successfully executed - ". $conn->error);
                         if ($result) {
+                            if($status == 'completed'){
+                                $today = date("Y-m-d");
+                                $query ="UPDATE `coregroup`.`workorders` SET coregroup.workorders.`date_completed` = '$today' WHERE (`wo_id` = {$workorder['wo_id']} );";
+                                $result = mysqli_query($conn, $query) or die("Date not successfully updated". $conn->error);
+                            }
                             mysqli_close($conn);
                             echo "<p style='color:green;'>Workorder status successfully updated!</p>";
                             echo "<script>

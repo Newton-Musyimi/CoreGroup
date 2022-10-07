@@ -231,6 +231,7 @@ input[type=submit] :active{
     display: none;
     background-color: white;
     overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
 hr{
     border: 1px solid black;

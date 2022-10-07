@@ -86,7 +86,7 @@ if(isset($_REQUEST['confirm'])){
     $pass_hash = password_hash($password, PASSWORD_DEFAULT);
     $sql = "UPDATE `coregroup`.$table SET `password` = $pass_hash WHERE `username` = $user;";
     $result = mysqli_query($conn, $query) or die("<script>
-    alert('Password change unsuccesfull!!!!');</script>");
+    alert('Password change unsuccesfull!');</script>");
     echo "<script>
     alert('Password change succesfull');</script>";
 }

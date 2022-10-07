@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['username'])){
+    header("location: security/login.php");
+}
 global $host;
 /*
 require_once($_SERVER['DOCUMENT_ROOT'].'/SysDev/CoreGroup/security/admin/config.php');
@@ -73,7 +76,7 @@ require_once('security/header.php');
                 $query = "SELECT COUNT(device_id) AS workorders FROM workorders WHERE device_id = $device_id GROUP BY device_id;";
                 $result = mysqli_query($conn, $query);
                 $row = mysqli_fetch_array($result);
-                if($row['workorders'] === null){
+                if($row === null){
                     return 0;
                 }else {
                     return $row['workorders'];
